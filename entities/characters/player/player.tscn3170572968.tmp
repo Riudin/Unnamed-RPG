@@ -2,17 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://dsqqflnbklf8y" path="res://entities/characters/player/assets/Börg.png" id="1_eoic6"]
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
+[ext_resource type="PackedScene" uid="uid://ctiwbyu642slc" path="res://shared/components/animation_component.tscn" id="2_qrd5i"]
 [ext_resource type="Script" uid="uid://bua6rtv8t5825" path="res://shared/components/input_component.gd" id="4_wqnow"]
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="6_a3s12"]
-[ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_m0gj2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 4.1231055
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
-y_sort_enabled = true
 script = ExtResource("1_qrd5i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -26,36 +24,19 @@ shape = SubResource("CircleShape2D_wqnow")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-target_desired_distance = 1.0
-path_postprocessing = 1
-debug_enabled = true
-debug_use_custom = true
-debug_path_custom_color = Color(0.7515501, 0.15704575, 1.92523e-07, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-process_callback = 0
-position_smoothing_enabled = true
 
 [node name="InputComponent" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_wqnow")
-metadata/_custom_type_script = "uid://bua6rtv8t5825"
 
-[node name="NavigationComponent" type="Node" parent="." node_paths=PackedStringArray("parent")]
-unique_name_in_owner = true
-script = ExtResource("5_lbevp")
-parent = NodePath("..")
-metadata/_custom_type_script = "uid://blu5xbdwvxdg3"
-
-[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("parent")]
+[node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("6_a3s12")
 parent = NodePath("..")
-metadata/_custom_type_script = "uid://cw7ul52kdf4k7"
 
-[node name="AnimationComponent" type="Node" parent="."]
+[node name="AnimationComponent" parent="." instance=ExtResource("2_qrd5i")]
 unique_name_in_owner = true
-script = ExtResource("6_m0gj2")
-metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
+
+[node name="NavigationComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_lbevp")
