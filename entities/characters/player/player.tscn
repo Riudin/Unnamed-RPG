@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mu31biemy71"]
+[gd_scene load_steps=12 format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Texture2D" uid="uid://dsqqflnbklf8y" path="res://entities/characters/player/assets/Börg.png" id="1_eoic6"]
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
@@ -9,6 +9,96 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 4.1231055
+
+[sub_resource type="Animation" id="Animation_a3s12"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_m0gj2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0d5hj"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -5), Vector2(0, -4), Vector2(0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646, 0.0, 0.08726646]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mx21o"]
+_data = {
+&"RESET": SubResource("Animation_m0gj2"),
+&"idle": SubResource("Animation_a3s12"),
+&"walk": SubResource("Animation_0d5hj")
+}
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -28,11 +118,15 @@ shape = SubResource("CircleShape2D_wqnow")
 unique_name_in_owner = true
 target_desired_distance = 1.0
 path_postprocessing = 1
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.7515501, 0.15704575, 1.92523e-07, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_mx21o")
+}
+autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0

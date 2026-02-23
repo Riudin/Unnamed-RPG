@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cis43bm6us85o"
-path="res://.godot/imported/ClubGoblin.png-38df902ac6eba8ffefe57510a43c089d.ctex"
+path="res://.godot/imported/ClubGoblin.png-44834148e6c6da0fdc6d53b230fdbb09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/16x16-mini-world-sprites by Shade/MiniWorldSprites/Characters/Monsters/Orcs/ClubGoblin.png"
-dest_files=["res://.godot/imported/ClubGoblin.png-38df902ac6eba8ffefe57510a43c089d.ctex"]
+source_file="res://entities/enemies/basic_enemy/assets/ClubGoblin.png"
+dest_files=["res://.godot/imported/ClubGoblin.png-44834148e6c6da0fdc6d53b230fdbb09.ctex"]
 
 [params]
 

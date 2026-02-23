@@ -22,7 +22,6 @@ func _physics_process(_delta: float) -> void:
 	if nav_agent.is_navigation_finished():
 		emit_signal("navigation_finished")
 		navigating = false
-		print("nav done")
 		return
 	
 	var next_pos = nav_agent.get_next_path_position()
