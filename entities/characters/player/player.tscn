@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_m0gj2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
-radius = 4.1231055
+radius = 3.0
 
-[sub_resource type="Animation" id="Animation_a3s12"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_m0gj2"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,8 +37,8 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_m0gj2"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_a3s12"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -118,6 +118,8 @@ shape = SubResource("CircleShape2D_wqnow")
 unique_name_in_owner = true
 target_desired_distance = 1.0
 path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.7515501, 0.15704575, 1.92523e-07, 1)
 
