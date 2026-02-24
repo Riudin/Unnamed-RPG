@@ -8,7 +8,7 @@ extends Node
 
 var navigating := false
 
-signal movement_direction_defined(direction)
+signal navigating_to_target(direction)
 signal navigation_finished
 
 
@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 	
 	var next_pos = nav_agent.get_next_path_position()
 	var direction = (next_pos - parent.global_position).normalized()
-	emit_signal("movement_direction_defined", direction)
+	emit_signal("navigating_to_target", direction)
 
 
 func navigate_to_target(target):

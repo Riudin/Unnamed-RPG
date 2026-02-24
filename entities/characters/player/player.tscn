@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mu31biemy71"]
+[gd_scene load_steps=18 format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Texture2D" uid="uid://dsqqflnbklf8y" path="res://entities/characters/player/assets/Börg.png" id="1_eoic6"]
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="6_a3s12"]
 [ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_m0gj2"]
+[ext_resource type="Script" uid="uid://bqry6wrakykcp" path="res://shared/components/leveling_component.gd" id="7_m0gj2"]
+[ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="8_0d5hj"]
+[ext_resource type="Script" uid="uid://gb65rpgk814y" path="res://shared/components/combat_stats_component.gd" id="9_mx21o"]
+[ext_resource type="Script" uid="uid://i5puns5ayv24" path="res://shared/components/equipment_component.gd" id="10_sybl7"]
+[ext_resource type="Script" uid="uid://csbxj52367kyv" path="res://shared/components/status_effect_component.gd" id="11_5otfs"]
+[ext_resource type="Script" uid="uid://buqk3jmwtfqyw" path="res://shared/components/combat_component.gd" id="12_0s3gd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 3.0
@@ -132,6 +138,11 @@ autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
+limit_left = -112
+limit_top = -80
+limit_right = 720
+limit_bottom = 448
+limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="InputComponent" type="Node2D" parent="."]
@@ -155,3 +166,28 @@ metadata/_custom_type_script = "uid://cw7ul52kdf4k7"
 unique_name_in_owner = true
 script = ExtResource("6_m0gj2")
 metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_0d5hj")
+metadata/_custom_type_script = "uid://urdreyx4totx"
+
+[node name="LevelingComponent" type="Node" parent="."]
+script = ExtResource("7_m0gj2")
+metadata/_custom_type_script = "uid://bqry6wrakykcp"
+
+[node name="CombatStatsComponent" type="Node" parent="."]
+script = ExtResource("9_mx21o")
+metadata/_custom_type_script = "uid://gb65rpgk814y"
+
+[node name="EquipmentComponent" type="Node" parent="."]
+script = ExtResource("10_sybl7")
+metadata/_custom_type_script = "uid://i5puns5ayv24"
+
+[node name="StatusEffectComponent" type="Node" parent="."]
+script = ExtResource("11_5otfs")
+metadata/_custom_type_script = "uid://csbxj52367kyv"
+
+[node name="CombatComponent" type="Node" parent="."]
+script = ExtResource("12_0s3gd")
+metadata/_custom_type_script = "uid://buqk3jmwtfqyw"

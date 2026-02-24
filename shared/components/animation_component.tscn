@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctiwbyu642slc"]
-
-[ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="1_30wib"]
-
-[node name="AnimationComponent" type="Node"]
-script = ExtResource("1_30wib")
