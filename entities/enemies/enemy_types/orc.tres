@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b2juo74fyf2wm"]
+
+[ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="1_26l5q"]
+[ext_resource type="Texture2D" uid="uid://cmkfsgs5de5tx" path="res://entities/enemies/basic_enemy/assets/Orc.png" id="2_0a1bf"]
+
+[resource]
+script = ExtResource("1_26l5q")
+name = "Green Orc"
+texture = ExtResource("2_0a1bf")
+metadata/_custom_type_script = "uid://eut4fcsnf5nn"

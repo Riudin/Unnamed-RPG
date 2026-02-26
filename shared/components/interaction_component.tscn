@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b28f70xx3mnj4"]
+
+[ext_resource type="Script" uid="uid://g5qxxrt7qxcc" path="res://shared/components/interaction_component.gd" id="1_trdlp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vt6dp"]
+radius = 16.0
+
+[node name="InteractionComponent" type="Area2D"]
+script = ExtResource("1_trdlp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_vt6dp")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

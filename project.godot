@@ -15,6 +15,10 @@ run/main_scene="uid://djwoy1lx2jwd5"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventBus="*res://shared/scripts/autoload/event_bus.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -26,3 +30,4 @@ window/stretch/mode="canvas_items"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"

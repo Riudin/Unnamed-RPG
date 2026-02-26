@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfqknvi0je5a8"]
+
+[ext_resource type="Script" uid="uid://dpx12o0hh73et" path="res://entities/enemies/basic_enemy/enemy.gd" id="1_fmpxo"]
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_576nf"]
+[ext_resource type="PackedScene" uid="uid://b28f70xx3mnj4" path="res://shared/components/interaction_component.tscn" id="2_plvsb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plvsb"]
+radius = 5.0990195
+
+[node name="Enemy" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_fmpxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(0, -5)
+texture = ExtResource("2_576nf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_plvsb")
+disabled = true
+
+[node name="InteractionComponent" parent="." instance=ExtResource("2_plvsb")]

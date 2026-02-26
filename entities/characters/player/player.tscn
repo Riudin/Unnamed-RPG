@@ -173,21 +173,26 @@ script = ExtResource("8_0d5hj")
 metadata/_custom_type_script = "uid://urdreyx4totx"
 
 [node name="LevelingComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("7_m0gj2")
 metadata/_custom_type_script = "uid://bqry6wrakykcp"
 
 [node name="CombatStatsComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("9_mx21o")
 metadata/_custom_type_script = "uid://gb65rpgk814y"
 
 [node name="EquipmentComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("10_sybl7")
 metadata/_custom_type_script = "uid://i5puns5ayv24"
 
 [node name="StatusEffectComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("11_5otfs")
 metadata/_custom_type_script = "uid://csbxj52367kyv"
 
 [node name="CombatComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("12_0s3gd")
 metadata/_custom_type_script = "uid://buqk3jmwtfqyw"
