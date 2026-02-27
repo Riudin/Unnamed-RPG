@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djwoy1lx2jwd5"]
+[gd_scene load_steps=9 format=3 uid="uid://djwoy1lx2jwd5"]
 
 [ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://systems/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/player.tscn" id="2_0wfyh"]
@@ -7,18 +7,21 @@
 [ext_resource type="Script" uid="uid://dvftg54rogyhg" path="res://scenes/ui.gd" id="4_tbgi4"]
 [ext_resource type="Resource" uid="uid://b2juo74fyf2wm" path="res://entities/enemies/enemy_types/orc.tres" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/ui/ui_manager.gd" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_o6xl0")
 
-[node name="World" type="Node" parent="."]
-
-[node name="Player" parent="World" instance=ExtResource("2_0wfyh")]
-position = Vector2(329, 163)
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="MysticWoodsLevel" parent="World" instance=ExtResource("3_jyhfs")]
+
+[node name="Player" parent="World" instance=ExtResource("2_0wfyh")]
+position = Vector2(284, 149)
 
 [node name="EnemyContainer" type="Node" parent="World"]
 
@@ -38,3 +41,6 @@ script = ExtResource("5_tefeu")
 unique_name_in_owner = true
 
 [node name="ScreenContainer" type="Node" parent="UI"]
+
+[node name="BattleScreen" parent="UI/ScreenContainer" instance=ExtResource("8_tipki")]
+unique_name_in_owner = true

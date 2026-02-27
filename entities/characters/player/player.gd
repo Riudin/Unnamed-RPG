@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var leveling_component: LevelingComponent = %LevelingComponent
 @onready var health_component: HealthComponent = %HealthComponent
 
+@onready var sprite: Sprite2D = %Sprite2D
+
 
 func _ready() -> void:
 	input_component.connect("movement_input", _on_movement_input)

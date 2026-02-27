@@ -59,3 +59,7 @@ text = "Battle!"
 [node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/Buttons"]
 layout_mode = 2
 text = "Cancel"
+
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/Buttons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/Buttons/CancelButton" to="." method="_on_cancel_button_pressed"]

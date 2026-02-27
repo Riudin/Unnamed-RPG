@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://mu31biemy71"]
+[gd_scene load_steps=19 format=3 uid="uid://mu31biemy71"]
 
-[ext_resource type="Texture2D" uid="uid://dsqqflnbklf8y" path="res://entities/characters/player/assets/Börg.png" id="1_eoic6"]
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
+[ext_resource type="Texture2D" uid="uid://c12kvg6kbiha6" path="res://entities/characters/player/assets/Soldier.png" id="2_0s3gd"]
+[ext_resource type="Script" uid="uid://ttshiel80die" path="res://entities/characters/player/sprite_2d.gd" id="3_2jd2e"]
 [ext_resource type="Script" uid="uid://bua6rtv8t5825" path="res://shared/components/input_component.gd" id="4_wqnow"]
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="6_a3s12"]
@@ -106,16 +107,16 @@ _data = {
 &"walk": SubResource("Animation_0d5hj")
 }
 
-[node name="Player" type="CharacterBody2D"]
-z_index = 1
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_qrd5i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -4)
-texture = ExtResource("1_eoic6")
-hframes = 6
-vframes = 8
+texture = ExtResource("2_0s3gd")
+script = ExtResource("3_2jd2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wqnow")

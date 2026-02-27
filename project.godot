@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://shared/scripts/autoload/event_bus.gd"
+SignalBus="*res://shared/scripts/autoload/signal_bus.gd"
 
 [display]
 
@@ -26,6 +26,14 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+player=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [rendering]
 

@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://pbulugqfsgep"]
+
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
+[ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc1s1"]
+
+[node name="BattleScreen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dc1s1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11858145, 0.11858136, 0.11858138, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -8.0
+offset_right = 137.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_awsep")
+stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 2)
+layout_mode = 2
+size_flags_vertical = 4
+value = 48.85
+show_percentage = false
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 234
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dc1s1")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="EnemyIcon1" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_awsep")
+stretch_mode = 5
+flip_h = true
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 2)
+layout_mode = 2
+size_flags_vertical = 4
+value = 48.85
+show_percentage = false
