@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://djwoy1lx2jwd5"]
+[gd_scene load_steps=10 format=3 uid="uid://djwoy1lx2jwd5"]
 
 [ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://systems/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/player.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://systems/combat/battle_manager.gd" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bfqknvi0je5a8" path="res://entities/enemies/basic_enemy/enemy.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://dvftg54rogyhg" path="res://scenes/ui.gd" id="4_tbgi4"]
@@ -14,6 +15,17 @@ y_sort_enabled = true
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_o6xl0")
+metadata/_custom_type_script = "uid://phpv4usybbgj"
+
+[node name="BattleManager" type="Node" parent="GameManager"]
+unique_name_in_owner = true
+script = ExtResource("2_85g3d")
+metadata/_custom_type_script = "uid://b6kuyg6t88oy6"
+
+[node name="UIManager" type="Node" parent="GameManager"]
+unique_name_in_owner = true
+script = ExtResource("5_tefeu")
+metadata/_custom_type_script = "uid://butt1q8h63mk1"
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -31,9 +43,6 @@ enemy_data = ExtResource("5_o6xl0")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_tbgi4")
-
-[node name="UIManager" type="Node" parent="UI"]
-script = ExtResource("5_tefeu")
 
 [node name="HUD" type="Node" parent="UI"]
 

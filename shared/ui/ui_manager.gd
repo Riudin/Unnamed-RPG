@@ -5,6 +5,7 @@ extends Node
 @onready var popup_container: Node = %PopupContainer
 @onready var battle_screen: Control = %BattleScreen
 
+
 @onready var battle_confirmation_popup: PackedScene = preload("uid://clibstgxaah3l")
 
 

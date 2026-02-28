@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://pbulugqfsgep"]
+[gd_scene load_steps=4 format=3 uid="uid://pbulugqfsgep"]
 
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
 [ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
-[ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://systems/combat/battle_manager.gd" id="2_arlx4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc1s1"]
 
@@ -15,9 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dc1s1")
-
-[node name="BattleManager" type="Node" parent="."]
-script = ExtResource("2_arlx4")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -42,16 +38,17 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="PlayerDisplay" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="PlayerIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+[node name="PlayerIcon" type="TextureRect" parent="HBoxContainer/PlayerDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="PlayerAttackBar" type="ProgressBar" parent="HBoxContainer/PlayerDisplay"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2)
 layout_mode = 2
 size_flags_vertical = 4
@@ -63,17 +60,18 @@ layout_mode = 2
 theme_override_constants/separation = 234
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dc1s1")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="EnemyDisplay" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="EnemyIcon1" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+[node name="EnemyIcon1" type="TextureRect" parent="HBoxContainer/EnemyDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 flip_h = true
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/HBoxContainer"]
+[node name="EnemyAttackBar" type="ProgressBar" parent="HBoxContainer/EnemyDisplay"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2)
 layout_mode = 2
 size_flags_vertical = 4

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdsupgb8khl7q"]
+
+[ext_resource type="Script" uid="uid://cvxi8uopc4t4w" path="res://systems/combat/entities/battle_entity.gd" id="1_wcy1t"]
+[ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="2_u6olp"]
+
+[node name="BattleEntity" type="Node"]
+script = ExtResource("1_wcy1t")
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_u6olp")
+metadata/_custom_type_script = "uid://urdreyx4totx"

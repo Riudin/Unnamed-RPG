@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_h2sck")
 damage = 10.0
+attack_speed = 7.0
 metadata/_custom_type_script = "uid://cahthes1o5rpw"
