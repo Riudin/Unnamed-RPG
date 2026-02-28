@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+@export var combat_stats: CombatStats
+
 @onready var animation_component: AnimationComponent = %AnimationComponent
 @onready var input_component: InputComponent = %InputComponent
 @onready var navigation_component: NavigationComponent = %NavigationComponent

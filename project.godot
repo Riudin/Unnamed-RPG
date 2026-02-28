@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://shared/scripts/autoload/signal_bus.gd"
+TickManager="*res://shared/scripts/autoload/tick_manager.gd"
 
 [display]
 

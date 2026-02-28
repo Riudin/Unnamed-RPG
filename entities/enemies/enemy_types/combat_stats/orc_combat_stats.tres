@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CombatStats" load_steps=2 format=3 uid="uid://1elbkoi4wvga"]
+
+[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/combat_stats.gd" id="1_rv7hm"]
+
+[resource]
+script = ExtResource("1_rv7hm")
+damage = 5.0
+metadata/_custom_type_script = "uid://cahthes1o5rpw"

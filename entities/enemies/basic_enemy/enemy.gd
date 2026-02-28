@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var enemy_data: EnemyData
 
+@onready var combat_stats: CombatStats = enemy_data.combat_stats
 @onready var sprite: Sprite2D = %Sprite2D
 
 
