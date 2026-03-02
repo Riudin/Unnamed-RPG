@@ -12,5 +12,5 @@ func _ready() -> void:
 	if enemy_data == null:
 		prints("No enemy_data found on", self )
 		return
-	
+
 	sprite.texture = enemy_data.texture

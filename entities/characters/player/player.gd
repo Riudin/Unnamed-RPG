@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var navigation_component: NavigationComponent = %NavigationComponent
 @onready var movement_component: MovementComponent = %MovementComponent
 @onready var leveling_component: LevelingComponent = %LevelingComponent
-@onready var health_component: HealthComponent = %HealthComponent
 
 @onready var sprite: Sprite2D = %Sprite2D
 

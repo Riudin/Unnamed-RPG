@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://pbulugqfsgep"]
+[gd_scene load_steps=6 format=3 uid="uid://pbulugqfsgep"]
 
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
 [ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
+[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="2_arlx4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc1s1"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arlx4"]
+
 [node name="BattleScreen" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11858145, 0.11858136, 0.11858138, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="BattleDisplay" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,42 +41,164 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerDisplay" type="VBoxContainer" parent="HBoxContainer"]
+[node name="PlayerDisplay" type="VBoxContainer" parent="BattleDisplay"]
 layout_mode = 2
 
-[node name="PlayerIcon" type="TextureRect" parent="HBoxContainer/PlayerDisplay"]
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="BattleDisplay/PlayerDisplay"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.1
+value = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_arlx4")
+texture_progress = ExtResource("2_arlx4")
+tint_under = Color(0.14, 0.14, 0.14, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="PlayerIcon" type="TextureRect" parent="BattleDisplay/PlayerDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 
-[node name="PlayerAttackBar" type="ProgressBar" parent="HBoxContainer/PlayerDisplay"]
+[node name="PlayerAttackBar" type="ProgressBar" parent="BattleDisplay/PlayerDisplay"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2)
 layout_mode = 2
 size_flags_vertical = 4
-value = 48.85
+max_value = 1.0
 show_percentage = false
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="BattleDisplay"]
 layout_mode = 2
 theme_override_constants/separation = 234
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dc1s1")
 
-[node name="EnemyDisplay" type="VBoxContainer" parent="HBoxContainer"]
+[node name="EnemyDisplay" type="VBoxContainer" parent="BattleDisplay"]
 layout_mode = 2
 
-[node name="EnemyIcon1" type="TextureRect" parent="HBoxContainer/EnemyDisplay"]
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="BattleDisplay/EnemyDisplay"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.1
+value = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_arlx4")
+texture_progress = ExtResource("2_arlx4")
+tint_under = Color(0.14, 0.14, 0.14, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="EnemyIcon1" type="TextureRect" parent="BattleDisplay/EnemyDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 flip_h = true
 
-[node name="EnemyAttackBar" type="ProgressBar" parent="HBoxContainer/EnemyDisplay"]
+[node name="EnemyAttackBar" type="ProgressBar" parent="BattleDisplay/EnemyDisplay"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2)
 layout_mode = 2
 size_flags_vertical = 4
-value = 48.85
+max_value = 1.0
 show_percentage = false
+
+[node name="VictoryScreen" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/MarginContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Victory!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="XPGained" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPGained"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "XP gained:"
+
+[node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPGained"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="GoldGained" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldGained"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Gold gained:"
+
+[node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldGained"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="HSeparator2" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Loot:"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("1_awsep")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Loot Name"
+
+[node name="HSeparator3" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_arlx4")
+
+[node name="ContinueButton" type="Button" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Continue"
+
+[connection signal="pressed" from="VictoryScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_victory_screen_continue_button_pressed"]

@@ -4,57 +4,54 @@ extends Node
 
 @onready var battle_screen: Control = %BattleScreen
 
-var tick_counter: int = 0
-
 var player_stats: CombatStats = null
 var enemy_stats: CombatStats = null
 
-var in_combat: bool = false
-
+@onready var battle_entity: PackedScene = preload("uid://bdsupgb8khl7q")
 var player_battle_entity: BattleEntity = null
 var enemy_battle_entity: BattleEntity = null
 
 
-func _ready() -> void:
-	TickManager.connect("tick", _on_tick)
-	add_to_group("battle_manager")
-
-
-func _on_tick():
-	if not in_combat:
-		return
-	
-	tick_counter += 1
-
-	if tick_counter >= TickManager.tick_rate / 30: # TODO: remove placeholder
-		tick_counter = 0
-		# code that runs on tick based - timer here
-
-
 func start_battle(enemy):
-	player_battle_entity = BattleEntity.new()
+	player_battle_entity = battle_entity.instantiate()
 	player_battle_entity.combat_stats = get_tree().get_first_node_in_group("player").combat_stats
+	add_child(player_battle_entity)
 
-	enemy_battle_entity = BattleEntity.new()
+	enemy_battle_entity = battle_entity.instantiate()
 	enemy_battle_entity.combat_stats = enemy.combat_stats
+	add_child(enemy_battle_entity)
 
-	# Connect attack signals for damage resolution
-	player_battle_entity.connect("attack_ready", Callable(self , "_on_player_attack"))
-	enemy_battle_entity.connect("attack_ready", Callable(self , "_on_enemy_attack"))
+	# TODO: This should be set based on a system in an own method, when there's more possible targets
+	player_battle_entity.attack_component.target = enemy_battle_entity
+	enemy_battle_entity.attack_component.target = player_battle_entity
 
-	in_combat = true
+
+	# Connect attack signals for damage resolution TODO: connect to singular resolving func
+	player_battle_entity.attack_component.connect("attack_ready", _on_player_attack)
+	enemy_battle_entity.attack_component.connect("attack_ready", _on_enemy_attack)
+
+	player_battle_entity.health_component.connect("died", _on_player_died)
+	enemy_battle_entity.health_component.connect("died", _on_enemy_died)
 	
 	# Notify the UI that battle started and pass the entities
 	battle_screen._on_battle_started(player_battle_entity, enemy_battle_entity)
 
 
-func _on_player_attack():
-	if enemy_battle_entity and player_battle_entity:
-		print("enemy takes damage")
-		#enemy_battle_entity.health_component.take_damage(player_battle_entity.combat_stats.damage)
+func _on_player_attack(target):
+	if target is BattleEntity:
+		print("Player attacks for ", player_battle_entity.combat_stats.damage, " damage.")
+		target.health_component.take_damage(player_battle_entity.combat_stats.damage)
 
 
-func _on_enemy_attack():
-	if player_battle_entity and enemy_battle_entity:
-		print("player takes damage")
-		#player_battle_entity.health_component.take_damage(enemy_battle_entity.combat_stats.damage)
+func _on_enemy_attack(target):
+	if target is BattleEntity:
+		print("Enemy attacks for ", enemy_battle_entity.combat_stats.damage, " damage.")
+		target.health_component.take_damage(enemy_battle_entity.combat_stats.damage)
+
+
+func _on_player_died():
+	enemy_battle_entity.queue_free()
+
+
+func _on_enemy_died():
+	player_battle_entity.queue_free()
