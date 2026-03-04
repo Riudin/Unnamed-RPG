@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arlx4"]
 
 [node name="BattleScreen" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,29 +143,29 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="XPGained" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="XPDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="XPLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPGained"]
+[node name="XPLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "XP gained:"
 
-[node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPGained"]
+[node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
 text = "99999"
 
-[node name="GoldGained" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="GoldDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="GoldLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldGained"]
+[node name="GoldLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Gold gained:"
 
-[node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldGained"]
+[node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
@@ -173,20 +174,20 @@ text = "99999"
 [node name="HSeparator2" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="LootLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Loot:"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="LootDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="LootIcon" type="TextureRect" parent="VictoryScreen/MarginContainer/VBoxContainer/LootDisplay"]
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="LootText" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/LootDisplay"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Loot Name"
@@ -201,4 +202,67 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Continue"
 
+[node name="DefeatScreen" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DefeatScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DefeatScreen/MarginContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Defeat!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="XPGained" type="HBoxContainer" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer/XPGained"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "XP lost:"
+
+[node name="XPAmount" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer/XPGained"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="HSeparator2" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_arlx4")
+
+[node name="ContinueButton" type="Button" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Continue"
+
 [connection signal="pressed" from="VictoryScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_victory_screen_continue_button_pressed"]
+[connection signal="pressed" from="DefeatScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_defeat_screen_continue_button_pressed"]

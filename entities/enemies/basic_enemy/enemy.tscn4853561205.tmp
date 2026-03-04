@@ -90,12 +90,6 @@ shape = SubResource("CircleShape2D_plvsb")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-target_desired_distance = 1.0
-path_postprocessing = 1
-avoidance_enabled = true
-debug_enabled = true
-debug_use_custom = true
-debug_path_custom_color = Color(0, 0.07500011, 0.75, 0.5568628)
 
 [node name="NavigationTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -1,14 +1,21 @@
-[gd_scene load_steps=7 format=4 uid="uid://d0l3a6vg7x0re"]
+[gd_scene load_steps=10 format=4 uid="uid://d0l3a6vg7x0re"]
 
+[ext_resource type="Script" uid="uid://c6pwmxwrwscic" path="res://entities/environment/level.gd" id="1_drkdw"]
 [ext_resource type="TileSet" uid="uid://cpxm6tkbgrcn6" path="res://entities/environment/tilesets/mystic_woods_ground.tres" id="1_gboje"]
 [ext_resource type="Script" uid="uid://bhq63fm7eieu5" path="res://entities/environment/tilesets/tile_map_layer.gd" id="2_1c0jq"]
 [ext_resource type="TileSet" uid="uid://ccgblxx6oxvgs" path="res://entities/environment/tilesets/mystic_woods_decor_8x8.tres" id="2_by613"]
 [ext_resource type="TileSet" uid="uid://t638ofrsoeh5" path="res://entities/environment/tilesets/mystic_woods_objects.tres" id="3_pjvwj"]
 [ext_resource type="TileSet" uid="uid://da18f7a2kn5ky" path="res://entities/environment/tilesets/mystic_woods_plains.tres" id="4_pjvwj"]
 [ext_resource type="TileSet" uid="uid://hyu6bpcc1d2u" path="res://entities/environment/tilesets/mystic_woods_plains2.tres" id="5_44fdc"]
+[ext_resource type="Script" uid="uid://djq6cxukoxdb3" path="res://systems/environment/spawn_area.gd" id="7_3qp8s"]
 
-[node name="MysticWoodsLevel" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drkdw"]
+size = Vector2(567, 278)
+
+[node name="MysticWoodsLevel" type="Node2D" node_paths=PackedStringArray("spawn_areas")]
 y_sort_enabled = true
+script = ExtResource("1_drkdw")
+spawn_areas = [NodePath("SpawnArea")]
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -42,3 +49,16 @@ tile_map_data = PackedByteArray("AAD6//3/AAADAAYAAAD6//z/AAADAAUAAAD5//3/AAAEAAQ
 tile_set = ExtResource("5_44fdc")
 script = ExtResource("2_1c0jq")
 colliding_layers = [NodePath("../Objects"), NodePath("../Plains"), NodePath(".")]
+
+[node name="SpawnArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("7_3qp8s")
+min_entities = 10
+max_entities = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+unique_name_in_owner = true
+position = Vector2(288.5, 189)
+shape = SubResource("RectangleShape2D_drkdw")
+disabled = true

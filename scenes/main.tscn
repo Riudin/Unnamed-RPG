@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://djwoy1lx2jwd5"]
+[gd_scene load_steps=9 format=3 uid="uid://djwoy1lx2jwd5"]
 
 [ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://systems/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/player.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://systems/combat/battle_manager.gd" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://bfqknvi0je5a8" path="res://entities/enemies/basic_enemy/enemy.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://systems/environment/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://dvftg54rogyhg" path="res://scenes/ui.gd" id="4_tbgi4"]
-[ext_resource type="Resource" uid="uid://b2juo74fyf2wm" path="res://entities/enemies/enemy_types/orc.tres" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/ui/ui_manager.gd" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
 
@@ -27,7 +26,12 @@ unique_name_in_owner = true
 script = ExtResource("5_tefeu")
 metadata/_custom_type_script = "uid://butt1q8h63mk1"
 
+[node name="SpawnManager" type="Node" parent="GameManager"]
+script = ExtResource("4_choun")
+metadata/_custom_type_script = "uid://cuo88opv8am4k"
+
 [node name="World" type="Node2D" parent="."]
+unique_name_in_owner = true
 y_sort_enabled = true
 
 [node name="MysticWoodsLevel" parent="World" instance=ExtResource("3_jyhfs")]
@@ -35,11 +39,9 @@ y_sort_enabled = true
 [node name="Player" parent="World" instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
 
-[node name="EnemyContainer" type="Node" parent="World"]
-
-[node name="Enemy" parent="World/EnemyContainer" instance=ExtResource("3_sugp2")]
-position = Vector2(258, 106)
-enemy_data = ExtResource("5_o6xl0")
+[node name="EnemyContainer" type="Node2D" parent="World"]
+unique_name_in_owner = true
+y_sort_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_tbgi4")

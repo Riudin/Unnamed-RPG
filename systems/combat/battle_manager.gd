@@ -2,17 +2,25 @@ class_name BattleManager
 extends Node
 
 
+# Signals
+signal battle_won(opponent)
+
+# UI references
 @onready var battle_screen: Control = %BattleScreen
 
+# Combatant stats
 var player_stats: CombatStats = null
 var enemy_stats: CombatStats = null
 
+# Combatant entities
 @onready var battle_entity: PackedScene = preload("uid://bdsupgb8khl7q")
 var player_battle_entity: BattleEntity = null
 var enemy_battle_entity: BattleEntity = null
+var current_opponent = null
 
 
 func start_battle(enemy):
+	current_opponent = enemy
 	player_battle_entity = battle_entity.instantiate()
 	player_battle_entity.combat_stats = get_tree().get_first_node_in_group("player").combat_stats
 	add_child(player_battle_entity)
@@ -24,7 +32,6 @@ func start_battle(enemy):
 	# TODO: This should be set based on a system in an own method, when there's more possible targets
 	player_battle_entity.attack_component.target = enemy_battle_entity
 	enemy_battle_entity.attack_component.target = player_battle_entity
-
 
 	# Connect attack signals for damage resolution TODO: connect to singular resolving func
 	player_battle_entity.attack_component.connect("attack_ready", _on_player_attack)
@@ -54,4 +61,6 @@ func _on_player_died():
 
 
 func _on_enemy_died():
+	# TODO: when group battles are implemented, check if it was the last enemy
+	emit_signal("battle_won", current_opponent)
 	player_battle_entity.queue_free()
