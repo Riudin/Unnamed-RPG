@@ -3,7 +3,7 @@ extends Node
 
 
 signal progress_changed(progress: float)
-signal attack_ready(target)
+signal attack_ready(target, damage_info)
 
 var attack_interval_ticks: int = 0
 var tick_counter: int = 0
@@ -18,9 +18,9 @@ func _ready() -> void:
 
 
 func calculate_attack_interval() -> void:
-	if parent.combat_stats and parent.combat_stats.attack_speed > 0.0:
+	if parent.combat_stats and parent.attack_speed > 0.0:
 		# how many ticks must elapse between attacks
-		attack_interval_ticks = int(ceil(TickManager.tick_rate / parent.combat_stats.attack_speed)) # Note that ceil introduces breakpoints.
+		attack_interval_ticks = int(ceil(TickManager.tick_rate / parent.attack_speed)) # Note that ceil introduces breakpoints.
 		# for example attackspeed of 6.7 and 7.4 both return 9 attack_interval_ticks. You'd need 7.5 attackspeed to get 8 attack_interval_ticks.
 		# This is not clean because attack_speed should be == attacks per second. But it works for now.
 	else:
@@ -44,5 +44,5 @@ func _on_tick():
 
 	if tick_counter >= attack_interval_ticks:
 		tick_counter = 0
-		emit_signal("attack_ready", target)
+		emit_signal("attack_ready", target, parent.calculate_damage_info())
 		emit_signal("progress_changed", 0.0)

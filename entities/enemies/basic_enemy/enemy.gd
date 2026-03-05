@@ -3,8 +3,9 @@ extends CharacterBody2D
 
 
 @export var enemy_data: EnemyData
-
 @onready var combat_stats: CombatStats = enemy_data.combat_stats
+@export var active_skill: Skill
+
 @onready var sprite: Sprite2D = %Sprite2D
 @onready var nav_timer: Timer = %NavigationTimer
 
@@ -27,6 +28,9 @@ func _ready() -> void:
 	nav_timer.start()
 	navigation_component.connect("navigating_to_target", _on_navigating_to_target)
 	navigation_component.connect("navigation_finished", _on_navigation_finished)
+
+	if active_skill == null:
+		active_skill = preload("uid://cyp3bjll45wav") # if there's no active skill, use default attack
 
 
 func _on_navigation_timer_timeout() -> void:

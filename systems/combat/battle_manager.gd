@@ -23,10 +23,12 @@ func start_battle(enemy):
 	current_opponent = enemy
 	player_battle_entity = battle_entity.instantiate()
 	player_battle_entity.combat_stats = get_tree().get_first_node_in_group("player").combat_stats
+	player_battle_entity.active_skill = get_tree().get_first_node_in_group("player").active_skill
 	add_child(player_battle_entity)
 
 	enemy_battle_entity = battle_entity.instantiate()
 	enemy_battle_entity.combat_stats = enemy.combat_stats
+	enemy_battle_entity.active_skill = enemy.active_skill
 	add_child(enemy_battle_entity)
 
 	# TODO: This should be set based on a system in an own method, when there's more possible targets
@@ -44,16 +46,16 @@ func start_battle(enemy):
 	battle_screen._on_battle_started(player_battle_entity, enemy_battle_entity)
 
 
-func _on_player_attack(target):
+func _on_player_attack(target, dmg_info):
 	if target is BattleEntity:
-		print("Player attacks for ", player_battle_entity.combat_stats.damage, " damage.")
-		target.health_component.take_damage(player_battle_entity.combat_stats.damage)
+		print("Player attacks for ", dmg_info.damage, " damage of type ", dmg_info.type)
+		target.health_component.take_damage(dmg_info.damage)
 
 
-func _on_enemy_attack(target):
+func _on_enemy_attack(target, dmg_info):
 	if target is BattleEntity:
-		print("Enemy attacks for ", enemy_battle_entity.combat_stats.damage, " damage.")
-		target.health_component.take_damage(enemy_battle_entity.combat_stats.damage)
+		print("Enemy attacks for ", dmg_info.damage, " damage of type ", dmg_info.type)
+		target.health_component.take_damage(dmg_info.damage)
 
 
 func _on_player_died():

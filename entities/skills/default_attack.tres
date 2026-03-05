@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cyp3bjll45wav"]
+
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill.gd" id="1_7p3xv"]
+
+[resource]
+script = ExtResource("1_7p3xv")
+base_dmg_min = 1.0
+base_dmg_max = 2.0
+base_speed = 0.5
+metadata/_custom_type_script = "uid://diqj52rxjhysk"
