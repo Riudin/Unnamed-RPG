@@ -2,8 +2,8 @@ class_name DamageData
 extends Resource
 
 
-@export var source: NodePath
-@export var target: NodePath
+@export var source: NodePath # unused
+@export var target: NodePath # unused
 @export var skill_name: String = ""
 @export var damage_type: String = "Physical"
 

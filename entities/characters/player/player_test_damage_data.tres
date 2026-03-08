@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DamageData" load_steps=2 format=3 uid="uid://csxj1aee8r6q"]
+
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="1_qt0jy"]
+
+[resource]
+script = ExtResource("1_qt0jy")
+skill_name = "Default Attack"
+base_min_damage = 5.0
+base_max_damage = 12.0
+flat_added_damage = 2.0
+crit_chance_pct = 20.0
+metadata/_custom_type_script = "uid://cqocpb582lhcq"

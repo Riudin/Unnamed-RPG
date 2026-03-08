@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 @export var attribute_data: AttributeData
-@export var active_skill: Skill
+@export var damage_data: DamageData
+# @export var active_skill: Skill
 
 @onready var animation_component: AnimationComponent = %AnimationComponent
 @onready var input_component: InputComponent = %InputComponent
@@ -18,8 +19,8 @@ func _ready() -> void:
 	navigation_component.connect("navigating_to_target", _on_navigating_to_target)
 	navigation_component.connect("navigation_finished", _on_navigation_finished)
 
-	if active_skill == null:
-		active_skill = preload("uid://cyp3bjll45wav") # if there's no active skill, use default attack
+	# if active_skill == null:
+	# 	active_skill = preload("uid://cyp3bjll45wav") # if there's no active skill, use default attack
 
 
 func _on_movement_input(target):

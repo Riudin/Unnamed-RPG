@@ -25,6 +25,8 @@ func apply_damage(damage_data: DamageData, attacker_attributes: AttributeData, d
 
 	if target.has_method("take_damage"):
 		target.take_damage(mitigated, damage_data, is_crit)
+	elif target.health_component and target.health_component.has_method("take_damage"):
+		target.health_component.take_damage(mitigated, damage_data, is_crit)
 
 
 func _get_attribute_scaling(damage_data: DamageData, attributes: AttributeData) -> float:

@@ -3,7 +3,7 @@ extends Node
 
 
 signal progress_changed(progress: float)
-signal attack_ready(target, damage_info)
+#signal attack_ready(target, damage_info)
 
 var attack_interval_ticks: int = 0
 var tick_counter: int = 0
@@ -11,13 +11,17 @@ var tick_counter: int = 0
 @onready var parent = get_parent()
 var target: BattleEntity
 
+var damage_data: DamageData
+
 
 func _ready() -> void:
 	TickManager.connect("tick", _on_tick)
-	calculate_attack_interval()
+	_calculate_attack_interval()
+
+	damage_data = parent.damage_data
 
 
-func calculate_attack_interval() -> void:
+func _calculate_attack_interval() -> void:
 	if parent.attribute_data and parent.attack_speed > 0.0:
 		# how many ticks must elapse between attacks
 		attack_interval_ticks = int(ceil(TickManager.tick_rate / parent.attack_speed)) # Note that ceil introduces breakpoints.
@@ -37,12 +41,16 @@ func _on_tick():
 		return
 
 	tick_counter += 1
+
+	# Calculate Progress
 	var progress: float = float(tick_counter) / float(attack_interval_ticks)
 	progress = clamp(progress, 0.0, 1.0)
 
 	emit_signal("progress_changed", progress)
 
+	# Attack
 	if tick_counter >= attack_interval_ticks:
 		tick_counter = 0
-		emit_signal("attack_ready", target, parent.calculate_damage_info())
+		DamageSystem.apply_damage(damage_data, parent.attribute_data, target.attribute_data, target)
+		# emit_signal("attack_ready", target, parent.calculate_damage_info())
 		emit_signal("progress_changed", 0.0)

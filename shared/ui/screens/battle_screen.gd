@@ -35,16 +35,16 @@ func _ready() -> void:
 func set_player(p):
 	player = p
 	player_icon.texture = player.sprite.texture
-	player_health_bar.max_value = player.attribute_data.max_health
-	player_health_bar.value = player.attribute_data.max_health
+	player_health_bar.max_value = player.attribute_data.get_total_health()
+	player_health_bar.value = player.attribute_data.get_total_health()
 
 
 func set_enemy(e):
 	# for now only one enemy
 	enemy = e
 	enemy_icon_1.texture = enemy.enemy_data.texture
-	enemy_health_bar.max_value = enemy.attribute_data.max_health
-	enemy_health_bar.value = enemy.attribute_data.max_health
+	enemy_health_bar.max_value = enemy.attribute_data.get_total_health()
+	enemy_health_bar.value = enemy.attribute_data.get_total_health()
 
 
 func _on_battle_started(player_ent: BattleEntity, enemy_ent: BattleEntity) -> void:
@@ -61,9 +61,11 @@ func _on_battle_started(player_ent: BattleEntity, enemy_ent: BattleEntity) -> vo
 	player_battle_entity.health_component.connect("died", _on_player_died)
 	enemy_battle_entity.health_component.connect("died", _on_enemy_died)
 
-	# Reset bars to 0
+	# Reset bars
 	player_attack_bar.value = 0.0
 	enemy_attack_bar.value = 0.0
+	player_health_bar.value = player.attribute_data.get_total_health()
+	enemy_health_bar.value = enemy.attribute_data.get_total_health()
 
 
 func _on_player_progress_changed(progress: float) -> void:

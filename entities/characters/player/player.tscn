@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://mu31biemy71"]
+[gd_scene load_steps=17 format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
 [ext_resource type="Texture2D" uid="uid://c12kvg6kbiha6" path="res://entities/characters/player/assets/Soldier.png" id="2_0s3gd"]
-[ext_resource type="Resource" uid="uid://byykxl7u0k3a7" path="res://entities/characters/player/player_attribute_data.tres" id="2_mnavw"]
+[ext_resource type="Resource" uid="uid://byykxl7u0k3a7" path="res://entities/characters/player/player_attributes.tres" id="2_mnavw"]
 [ext_resource type="Script" uid="uid://ttshiel80die" path="res://entities/characters/player/sprite_2d.gd" id="3_2jd2e"]
+[ext_resource type="Resource" uid="uid://csxj1aee8r6q" path="res://entities/characters/player/player_test_damage_data.tres" id="3_5otfs"]
 [ext_resource type="Script" uid="uid://bua6rtv8t5825" path="res://shared/components/input_component.gd" id="4_wqnow"]
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="6_a3s12"]
@@ -109,6 +110,7 @@ z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_qrd5i")
 attribute_data = ExtResource("2_mnavw")
+damage_data = ExtResource("3_5otfs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true

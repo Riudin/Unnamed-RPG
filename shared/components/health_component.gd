@@ -2,7 +2,7 @@ class_name HealthComponent
 extends Node
 
 
-@export var health: float
+var health: float
 
 @onready var parent := get_parent()
 
