@@ -86,12 +86,13 @@ func _on_enemy_health_changed(health):
 	enemy_health_bar.value = health
 
 
-func _on_player_died():
+# TODO: handle both dying at the same time
+func _on_player_died(_player):
 	battle_display.visible = false
 	defeat_screen.visible = true
 
 
-func _on_enemy_died():
+func _on_enemy_died(_enemy):
 	battle_display.visible = false
 	victory_screen.visible = true
 

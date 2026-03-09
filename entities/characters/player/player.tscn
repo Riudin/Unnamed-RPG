@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mu31biemy71"]
+[gd_scene load_steps=19 format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
 [ext_resource type="Texture2D" uid="uid://c12kvg6kbiha6" path="res://entities/characters/player/assets/Soldier.png" id="2_0s3gd"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_m0gj2"]
 [ext_resource type="Script" uid="uid://bqry6wrakykcp" path="res://shared/components/leveling_component.gd" id="7_m0gj2"]
 [ext_resource type="Script" uid="uid://i5puns5ayv24" path="res://shared/components/equipment_component.gd" id="10_sybl7"]
+[ext_resource type="Resource" uid="uid://c13ny8tub55jl" path="res://entities/characters/player/player_class_data.tres" id="11_2jd2e"]
+[ext_resource type="Resource" uid="uid://6f5fkkj5jj7r" path="res://entities/characters/player/player_level_table.tres" id="12_mnavw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 3.0
@@ -170,6 +172,8 @@ metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
 [node name="LevelingComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_m0gj2")
+class_data = ExtResource("11_2jd2e")
+level_table = ExtResource("12_mnavw")
 metadata/_custom_type_script = "uid://bqry6wrakykcp"
 
 [node name="EquipmentComponent" type="Node" parent="."]

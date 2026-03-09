@@ -11,4 +11,5 @@ name = "Green Orc"
 texture = ExtResource("2_0a1bf")
 attribute_data = ExtResource("1_gpld7")
 damage_data = ExtResource("2_w5aoc")
+xp_reward = 10
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

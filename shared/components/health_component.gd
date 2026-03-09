@@ -8,7 +8,7 @@ var max_health: float
 @onready var parent := get_parent()
 
 signal health_changed(new_health)
-signal died
+signal died(body)
 
 
 func _ready() -> void:
@@ -29,4 +29,4 @@ func take_damage(mitigated, damage_data: DamageData, is_crit):
 	)
 
 	if health <= 0.0:
-		emit_signal("died")
+		died.emit(parent)
