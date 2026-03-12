@@ -7,5 +7,4 @@ extends Resource
 
 @export var attribute_data: AttributeData
 @export var damage_data: DamageData
-
-@export var xp_reward: int
+@export var drop_table: ItemDropTable

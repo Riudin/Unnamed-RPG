@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://djwoy1lx2jwd5"]
 
-[ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://systems/game_manager.gd" id="1_o6xl0"]
+[ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://shared/scripts/global/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/player.tscn" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://systems/combat/battle_manager.gd" id="2_85g3d"]
+[ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://shared/scripts/global/battle_manager.gd" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
-[ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://systems/environment/spawn_manager.gd" id="4_choun"]
-[ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/ui/ui_manager.gd" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
+[ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
 

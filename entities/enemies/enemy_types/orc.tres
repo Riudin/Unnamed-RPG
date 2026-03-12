@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://b2juo74fyf2wm"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://b2juo74fyf2wm"]
 
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="1_26l5q"]
 [ext_resource type="Resource" uid="uid://1elbkoi4wvga" path="res://entities/enemies/enemy_types/attributes/orc_attributes.tres" id="1_gpld7"]
 [ext_resource type="Texture2D" uid="uid://cmkfsgs5de5tx" path="res://entities/enemies/basic_enemy/assets/Orc.png" id="2_0a1bf"]
-[ext_resource type="Resource" uid="uid://csxj1aee8r6q" path="res://entities/characters/player/player_test_damage_data.tres" id="2_w5aoc"]
+[ext_resource type="Resource" uid="uid://c0d6ey0nglsvg" path="res://entities/enemies/orc_damage_data.tres" id="2_w5aoc"]
+[ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/orc_drop_table.tres" id="3_w5aoc"]
 
 [resource]
 script = ExtResource("1_26l5q")
@@ -11,5 +12,5 @@ name = "Green Orc"
 texture = ExtResource("2_0a1bf")
 attribute_data = ExtResource("1_gpld7")
 damage_data = ExtResource("2_w5aoc")
-xp_reward = 10
+drop_table = ExtResource("3_w5aoc")
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

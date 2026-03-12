@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDropTable" load_steps=5 format=3 uid="uid://31w675mxggbn"]
+
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_c88yf"]
+[ext_resource type="Resource" uid="uid://p5wny18hkmk6" path="res://entities/items/base_items/one_handed_weapons/iron_sword.tres" id="2_i8k0r"]
+[ext_resource type="Resource" uid="uid://cla5lbp1rus06" path="res://entities/items/base_items/armor/leather_armor.tres" id="3_o2txx"]
+[ext_resource type="Script" uid="uid://do1qvhnlso3h6" path="res://entities/items/item_drop_table.gd" id="4_1bquh"]
+
+[resource]
+script = ExtResource("4_1bquh")
+item_weights = Dictionary[ExtResource("1_c88yf"), int]({
+ExtResource("2_i8k0r"): 5,
+ExtResource("3_o2txx"): 10
+})
+metadata/_custom_type_script = "uid://do1qvhnlso3h6"

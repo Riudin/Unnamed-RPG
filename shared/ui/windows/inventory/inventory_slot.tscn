@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcmgm128i2mnr"]
+
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_8jeop"]
+
+[node name="InventorySlot" type="Control"]
+custom_minimum_size = Vector2(240, 38)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ItemIcon" type="TextureRect" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_8jeop")
+stretch_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ItemName" type="Label" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 11
+text = "If you can read this, there is a Bug"
+vertical_alignment = 1

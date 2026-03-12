@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3 uid="uid://ck614is6yqmfc"]
+
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_u2nlh"]
+
+[resource]
+script = ExtResource("1_u2nlh")
+name_format = "Healthy %s"
+metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

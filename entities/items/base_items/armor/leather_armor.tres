@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cla5lbp1rus06"]
+
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_3axa4"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_n4bgt"]
+
+[resource]
+script = ExtResource("1_n4bgt")
+name = "Leather Armor"
+type = 1
+icon = ExtResource("1_3axa4")
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"
