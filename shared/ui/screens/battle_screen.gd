@@ -61,7 +61,7 @@ func _on_battle_started(player_ent: BattleEntity, enemy_ent: BattleEntity) -> vo
 	player_battle_entity.health_component.connect("health_changed", _on_player_health_changed)
 	enemy_battle_entity.health_component.connect("health_changed", _on_enemy_health_changed)
 	player_battle_entity.health_component.connect("died", _on_player_died)
-	enemy_battle_entity.health_component.connect("died", _on_enemy_died)
+	#enemy_battle_entity.health_component.connect("died", _on_enemy_died)
 
 	# Reset bars
 	player_attack_bar.value = 0.0
@@ -92,8 +92,12 @@ func _on_player_died(_player):
 	defeat_screen.visible = true
 
 
-func _on_enemy_died(_enemy):
+func show_victory_screen(loot):
 	battle_display.visible = false
+	victory_screen.loot_items.clear()
+	print(loot)
+	victory_screen.loot_items.append(loot)
+	victory_screen.update_loot_display()
 	victory_screen.visible = true
 
 

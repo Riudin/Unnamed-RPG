@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djwoy1lx2jwd5"]
+[gd_scene load_steps=10 format=3 uid="uid://djwoy1lx2jwd5"]
 
 [ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://shared/scripts/global/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/player.tscn" id="2_0wfyh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://bg7m8wp0tpmf1" path="res://shared/ui/windows/inventory/inventory_ui.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
@@ -16,15 +17,14 @@ y_sort_enabled = true
 script = ExtResource("1_o6xl0")
 metadata/_custom_type_script = "uid://phpv4usybbgj"
 
+[node name="UIManager" type="Node" parent="GameManager"]
+script = ExtResource("5_tefeu")
+metadata/_custom_type_script = "uid://butt1q8h63mk1"
+
 [node name="BattleManager" type="Node" parent="GameManager"]
 unique_name_in_owner = true
 script = ExtResource("2_85g3d")
 metadata/_custom_type_script = "uid://b6kuyg6t88oy6"
-
-[node name="UIManager" type="Node" parent="GameManager"]
-unique_name_in_owner = true
-script = ExtResource("5_tefeu")
-metadata/_custom_type_script = "uid://butt1q8h63mk1"
 
 [node name="SpawnManager" type="Node" parent="GameManager"]
 script = ExtResource("4_choun")
@@ -94,6 +94,10 @@ texture_under = ExtResource("7_tipki")
 texture_progress = ExtResource("7_tipki")
 tint_under = Color(0.26, 0.26, 0.26, 0.45490196)
 tint_progress = Color(0.16940002, 0.33957, 0.77, 1)
+
+[node name="InventoryUI" parent="UI/HUD" instance=ExtResource("8_85g3d")]
+unique_name_in_owner = true
+visible = false
 
 [node name="PopupContainer" type="Node" parent="UI"]
 unique_name_in_owner = true

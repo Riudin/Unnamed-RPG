@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://pbulugqfsgep"]
+[gd_scene load_steps=8 format=3 uid="uid://pbulugqfsgep"]
 
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
 [ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="2_arlx4"]
+[ext_resource type="Script" uid="uid://cfojmjig3nuux" path="res://shared/ui/screens/victory_screen.gd" id="4_iq00i"]
+[ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="5_3qkq6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc1s1"]
 
@@ -109,7 +111,6 @@ show_percentage = false
 
 [node name="VictoryScreen" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,6 +123,8 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_iq00i")
+slot_scene = ExtResource("5_3qkq6")
 
 [node name="MarginContainer" type="MarginContainer" parent="VictoryScreen"]
 layout_mode = 2
@@ -151,6 +154,7 @@ theme_override_font_sizes/font_size = 8
 text = "XP gained:"
 
 [node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
@@ -165,6 +169,7 @@ theme_override_font_sizes/font_size = 8
 text = "Gold gained:"
 
 [node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
@@ -178,18 +183,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Loot:"
 
-[node name="LootDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="LootDisplay" type="GridContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="LootIcon" type="TextureRect" parent="VictoryScreen/MarginContainer/VBoxContainer/LootDisplay"]
-layout_mode = 2
-texture = ExtResource("1_awsep")
-stretch_mode = 5
-
-[node name="LootText" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/LootDisplay"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Loot Name"
 
 [node name="HSeparator3" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)

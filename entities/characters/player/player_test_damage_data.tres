@@ -6,8 +6,8 @@
 script = ExtResource("1_qt0jy")
 skill_name = "Default Attack"
 damage_type = "Fire"
-base_min_damage = 30.0
-base_max_damage = 40.0
+base_min_damage = 100.0
+base_max_damage = 120.0
 flat_added_damage = 2.0
 crit_chance_pct = 20.0
 attack_speed_pct = 100.0

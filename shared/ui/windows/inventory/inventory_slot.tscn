@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcmgm128i2mnr"]
+[gd_scene load_steps=3 format=3 uid="uid://dcmgm128i2mnr"]
 
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_8jeop"]
+[ext_resource type="Script" uid="uid://dupjb1ri4op8c" path="res://shared/ui/windows/inventory/inventory_slot.gd" id="1_a3w5j"]
 
 [node name="InventorySlot" type="Control"]
 custom_minimum_size = Vector2(240, 38)
@@ -8,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+script = ExtResource("1_a3w5j")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -30,7 +32,8 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ItemIcon" type="TextureRect" parent="Background/MarginContainer/HBoxContainer"]
+[node name="ItemIconDisplay" type="TextureRect" parent="Background/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_8jeop")
 stretch_mode = 3
@@ -39,9 +42,13 @@ stretch_mode = 3
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="ItemName" type="Label" parent="Background/MarginContainer/HBoxContainer"]
+[node name="ItemNameDisplay" type="Label" parent="Background/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 11
 text = "If you can read this, there is a Bug"
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]
+[connection signal="mouse_exited" from="Background" to="." method="_on_background_mouse_exited"]

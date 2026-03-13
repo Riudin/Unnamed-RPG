@@ -2,9 +2,6 @@ class_name BattleManager
 extends Node
 
 
-# Signals
-#signal battle_won(opponent)
-
 # UI references
 @onready var battle_screen: Control = %BattleScreen
 
@@ -51,19 +48,18 @@ func _on_entity_died(entity):
 		# Generate Loot
 		var loot: ItemInstance = LootGenerator.generate_loot(entity.drop_table)
 
-		if loot: # TODO: Loot gets generated but it needs to be given to the player and stored somewhere
-			print(loot.get_display_name())
-			print("Rarity: ", loot.rarity)
-			print("Affixes: ", loot.rolled_stats)
-			# var pre: Array = []
-			# for l in loot.prefixes:
-			# 	pre.append(l.name, 
-			# print("Prefixes: ", loot.prefixes)
-			# print("Suffixes: ", loot.suffixes)
+		if loot:
+			InventoryManager.add_item(loot)
+			# print(loot.get_display_name())
+			# print("Rarity: ", loot.rarity)
+			# print("Affixes: ", loot.rolled_stats)
 		
 		# Grant player XP reward
 		if player.leveling_component != null:
 			player.leveling_component.add_xp(entity.drop_table.xp_reward)
+
+		# Inform battle_screen that victory happened and what was looted
+		battle_screen.show_victory_screen(loot)
 
 		# Delete enemy (not battle entity but enemy in world)
 		current_opponent.queue_free()
