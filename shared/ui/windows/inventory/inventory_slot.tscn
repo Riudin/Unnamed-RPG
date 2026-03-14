@@ -1,56 +1,16 @@
 [gd_scene format=3 uid="uid://dcmgm128i2mnr"]
 
-[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_8jeop"]
 [ext_resource type="Script" uid="uid://dupjb1ri4op8c" path="res://shared/ui/windows/inventory/inventory_slot.gd" id="1_a3w5j"]
 
-[node name="InventorySlot" type="Control" unique_id=241003434]
-custom_minimum_size = Vector2(240, 50)
-layout_mode = 3
-anchors_preset = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="InventorySlot" type="PanelContainer" unique_id=1258193749]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
 script = ExtResource("1_a3w5j")
 
-[node name="Background" type="PanelContainer" parent="." unique_id=1215074708]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=67657534]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer" unique_id=1744530272]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="ItemIconDisplay" type="TextureRect" parent="Background/MarginContainer/HBoxContainer" unique_id=1460486580]
+[node name="ItemIconDisplay" type="TextureRect" parent="." unique_id=1460486580]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_8jeop")
 stretch_mode = 3
-
-[node name="VSeparator" type="VSeparator" parent="Background/MarginContainer/HBoxContainer" unique_id=145584433]
-layout_mode = 2
-mouse_filter = 1
-theme_override_constants/separation = 8
-
-[node name="ItemNameDisplay" type="Label" parent="Background/MarginContainer/HBoxContainer" unique_id=222496495]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-mouse_filter = 1
-theme_override_font_sizes/font_size = 11
-text = "If you can read this, there is a Bug"
-vertical_alignment = 1
-
-[connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]
-[connection signal="mouse_exited" from="Background" to="." method="_on_background_mouse_exited"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b60rc4rdpir0a"]
 
-[node name="ItemInfoPopup" type="Control" unique_id=290448782]
+[node name="ItemTooltip" type="Control" unique_id=290448782]
 z_index = 3
 layout_mode = 3
 anchors_preset = 8
