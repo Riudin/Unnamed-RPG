@@ -122,7 +122,6 @@ tint_progress = Color(0.16940002, 0.33957, 0.77, 1)
 
 [node name="CharacterScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1274726946]
 unique_name_in_owner = true
-visible = false
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 250.0
@@ -164,14 +163,19 @@ layout_mode = 2
 
 [node name="UpperBody" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body" unique_id=477753068]
 layout_mode = 2
+alignment = 1
 
 [node name="InventorySlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody" unique_id=1258193749 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody" unique_id=53051005]
 layout_mode = 2
 
 [node name="InventorySlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer" unique_id=529303498 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -181,6 +185,7 @@ theme_override_constants/separation = 54
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
 
 [node name="InventorySlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer" unique_id=1921585209 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -193,6 +198,7 @@ theme_override_constants/separation = 24
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
 
 [node name="InventorySlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=2113207750 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -202,10 +208,12 @@ theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
 
 [node name="InventorySlot6" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=786707167 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="InventorySlot7" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=89967201 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -213,6 +221,7 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="InventorySlot8" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=1700136523 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -222,23 +231,30 @@ theme_override_constants/separation = 24
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
 
 [node name="InventorySlot9" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=1572966284 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="InventorySlot10" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=1430366319 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="InventorySlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/UpperBody" unique_id=1829557985 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="MiddleBody" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body" unique_id=1021346099]
 layout_mode = 2
+alignment = 1
 
 [node name="InventorySlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/MiddleBody" unique_id=1511010721 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 
 [node name="InventorySlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentBackgroundPlaceholder/MarginContainer/Body/MiddleBody" unique_id=552747070 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1116281239]
@@ -249,25 +265,40 @@ theme_override_constants/margin_right = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/MarginContainer" unique_id=1580626685]
 layout_mode = 2
+alignment = 1
 
 [node name="InventorySlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1206819025 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="InventorySlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1939554124 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="InventorySlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=410790896 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="InventorySlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=241771413 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="InventorySlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=864177512 instance=ExtResource("9_eb6dy")]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="InventoryUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1120944326]
 unique_name_in_owner = true
-visible = false
 offset_left = 390.0
 offset_top = 20.0
 offset_right = 620.0
@@ -288,23 +319,29 @@ layout_mode = 2
 layout_mode = 2
 text = "This is where tabs will go"
 
-[node name="InventoryGridUI" type="Control" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer" unique_id=321966380]
+[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer" unique_id=1300235299]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryGridUI" type="Control" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/CenterContainer" unique_id=1379799651]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_ya4ey")
 slot_scene = ExtResource("9_eb6dy")
 item_scene = ExtResource("10_eb6dy")
 
-[node name="InventorySlotsBorder" type="NinePatchRect" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI" unique_id=611472216]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="InventorySlotsBorder" type="NinePatchRect" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/CenterContainer" unique_id=611472216]
+custom_minimum_size = Vector2(202, 268)
+layout_mode = 2
 texture = ExtResource("11_eb6dy")
-region_rect = Rect2(2, 2, 16, 16)
+draw_center = false
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="PopupContainer" type="Node" parent="UI" unique_id=2028271384]
 unique_name_in_owner = true

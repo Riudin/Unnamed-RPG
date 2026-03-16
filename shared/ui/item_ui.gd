@@ -68,8 +68,13 @@ func _update_tooltip_position():
 		var pos: Vector2
 		pos.x = self.global_position.x - tooltip.size.x
 		pos.y = self.global_position.y
+		
+		
+		var y_extent = pos.y + tooltip.size.y
+		if !get_viewport_rect().has_point(Vector2(0, y_extent)):
+			pos.y = pos.y - (tooltip.size.y - CELL_SIZE)
+		
 		tooltip.global_position = pos
-
 
 # Leave that here because we will need click functionality later
 
