@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b60rc4rdpir0a" path="res://shared/ui/popups/item_tooltip.tscn" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://4t8yg3frui80" path="res://shared/ui/item_ui.tscn" id="10_eb6dy"]
+[ext_resource type="Script" uid="uid://dvtmlsihlcopl" path="res://scenes/item_info_pop.gd" id="11_trceg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
 
@@ -290,7 +291,6 @@ layout_mode = 2
 
 [node name="InventoryUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1120944326]
 unique_name_in_owner = true
-visible = false
 offset_left = 390.0
 offset_top = 20.0
 offset_right = 620.0
@@ -317,6 +317,53 @@ size_flags_vertical = 3
 script = ExtResource("8_ya4ey")
 slot_scene = ExtResource("9_eb6dy")
 item_scene = ExtResource("10_eb6dy")
+
+[node name="ItemInfoPop" type="Panel" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI" unique_id=1116113076]
+visible = false
+z_index = 2
+custom_minimum_size = Vector2(80, 100)
+layout_direction = 2
+layout_mode = 1
+offset_right = 80.0
+offset_bottom = 100.0
+script = ExtResource("11_trceg")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI/ItemInfoPop" unique_id=1099880709]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI/ItemInfoPop/MarginContainer" unique_id=74583183]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI/ItemInfoPop/MarginContainer/VBoxContainer" unique_id=1992557543]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI/ItemInfoPop/MarginContainer/VBoxContainer/HBoxContainer" unique_id=729766490]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="ItemName" type="RichTextLabel" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI/ItemInfoPop/MarginContainer/VBoxContainer/HBoxContainer" unique_id=565345245]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Name"
+fit_content = true
+
+[node name="InfoText" type="RichTextLabel" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI/ItemInfoPop/MarginContainer/VBoxContainer" unique_id=2059009565]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
 
 [node name="PopupContainer" type="Node" parent="UI" unique_id=2028271384]
 unique_name_in_owner = true

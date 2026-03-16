@@ -5,6 +5,10 @@ extends Control
 @export var slot_scene: PackedScene
 @export var item_scene: PackedScene
 
+@onready var item_info_pop = $ItemInfoPop
+
+var current_focus_item :set = _new_focus
+
 const CELL_SIZE := 22
 
 var slots: Array[InventorySlot] = []
@@ -48,6 +52,20 @@ func _get_slot_at(pos: Vector2i) -> InventorySlot:
 			return s
 	return null
 
+
+func _new_focus(new):
+	current_focus_item = new
+	if new:
+		var item = new.item
+		var slot = _get_slot_at(new.grid_pos)
+		var pos = slot.global_position
+		pos.x = pos.x + CELL_SIZE
+		item_info_pop._show_pop(item, pos)
+		
+	else:
+		item_info_pop._hide_pop()
+
+	
 
 # func _on_items_changed(new_items: Array[ItemInstance]):
 # 	if new_items.size() > inventory_size:
