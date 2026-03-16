@@ -12,7 +12,6 @@ extends Node
 @onready var level_text: Label = %LevelLabel
 
 @onready var battle_confirmation_popup: PackedScene = preload("uid://clibstgxaah3l")
-@onready var item_tooltip = %ItemTooltip
 
 func _ready() -> void:
 	# Battle Signals

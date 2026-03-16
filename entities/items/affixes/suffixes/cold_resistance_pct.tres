@@ -6,5 +6,5 @@
 script = ExtResource("1_r1eos")
 is_prefix = false
 name_format = "%s of heat"
-stat_name = "Increased Cold Resistance"
+stat_name = "cold_resist_pct"
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

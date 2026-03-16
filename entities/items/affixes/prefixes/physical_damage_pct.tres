@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_hvsku")
 name_format = "Brutal %s"
-stat_name = "Increased Physical Damage"
+stat_name = "physical_damage_pct"
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

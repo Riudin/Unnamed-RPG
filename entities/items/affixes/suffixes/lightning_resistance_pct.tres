@@ -6,5 +6,5 @@
 script = ExtResource("1_cogge")
 is_prefix = false
 name_format = "%s of grounding"
-stat_name = "Increased Lightning Resistance"
+stat_name = "lightning_resist_pct"
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

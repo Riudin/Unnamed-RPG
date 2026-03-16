@@ -53,8 +53,12 @@ func _rand_suffix() -> AffixData:
 
 
 func _roll_affix_values(loot: ItemInstance):
+	loot.rolled_stats.clear()
+
 	for a in loot.prefixes:
-		loot.rolled_stats[a] = a.roll_value()
+		var v := a.roll_value()
+		loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
 	
 	for a in loot.suffixes:
-		loot.rolled_stats[a] = a.roll_value()
+		var v := a.roll_value()
+		loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v

@@ -8,7 +8,7 @@ extends Resource
 @export var prefixes: Array[AffixData] = []
 @export var suffixes: Array[AffixData] = []
 
-var rolled_stats: Dictionary = {} # AffixData: rolled_value
+var rolled_stats: Dictionary = {} # stat_name: rolled_value
 
 const RARITY_COLORS := {
 	LootEnums.Rarity.COMMON: Color.WHITE,

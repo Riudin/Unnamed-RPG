@@ -11,8 +11,7 @@
 [ext_resource type="Script" uid="uid://ctgym2ebc4lj7" path="res://shared/ui/windows/inventory/inventory_ui.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://4t8yg3frui80" path="res://shared/ui/item_ui.tscn" id="10_eb6dy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
+[ext_resource type="Texture2D" uid="uid://ckdef60ubjgvg" path="res://assets/inventory_slots_border.png" id="11_eb6dy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya4ey"]
 
@@ -120,27 +119,6 @@ tint_under = Color(0.26, 0.26, 0.26, 0.45490196)
 tint_progress = Color(0.16940002, 0.33957, 0.77, 1)
 
 [node name="InterfaceContainer" type="Node" parent="UI" unique_id=1991207263]
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer" unique_id=1295539413]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/MarginContainer" unique_id=788678339]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="VSeparator" type="VSeparator" parent="UI/InterfaceContainer/MarginContainer/HBoxContainer" unique_id=807667306]
-layout_mode = 2
-theme_override_constants/separation = 140
-theme_override_styles/separator = SubResource("StyleBoxEmpty_choun")
 
 [node name="CharacterScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1274726946]
 unique_name_in_owner = true
@@ -316,6 +294,17 @@ size_flags_vertical = 3
 script = ExtResource("8_ya4ey")
 slot_scene = ExtResource("9_eb6dy")
 item_scene = ExtResource("10_eb6dy")
+
+[node name="InventorySlotsBorder" type="NinePatchRect" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/InventoryGridUI" unique_id=611472216]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_eb6dy")
+region_rect = Rect2(2, 2, 16, 16)
 
 [node name="PopupContainer" type="Node" parent="UI" unique_id=2028271384]
 unique_name_in_owner = true

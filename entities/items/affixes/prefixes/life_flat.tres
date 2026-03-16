@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_u2nlh")
 name_format = "Healthy %s"
-stat_name = "Max Life"
+stat_name = "max_health"
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"
