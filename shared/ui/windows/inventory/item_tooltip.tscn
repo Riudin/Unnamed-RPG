@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c0noo2eqn5l61"]
+
+[ext_resource type="Script" uid="uid://dvtmlsihlcopl" path="res://shared/ui/windows/inventory/item_tooltip.gd" id="1_h8hhs"]
+
+[node name="ItemTooltip" type="PanelContainer" unique_id=221857265]
+z_index = 100
+custom_minimum_size = Vector2(120, 180)
+layout_direction = 2
+offset_right = 120.0
+offset_bottom = 180.0
+script = ExtResource("1_h8hhs")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=10223940]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=739503988]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=197784734]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1437519101]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="ItemName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2006340319]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+bbcode_enabled = true
+text = "Name"
+fit_content = true
+
+[node name="ItemRarity" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1318186713]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+bbcode_enabled = true
+
+[node name="ItemStats" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1344920157]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3

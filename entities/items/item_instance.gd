@@ -8,7 +8,7 @@ extends Resource
 @export var prefixes: Array[AffixData] = []
 @export var suffixes: Array[AffixData] = []
 
-var rolled_stats: Dictionary = {}
+var rolled_stats: Dictionary = {} # AffixData: rolled_value
 
 const RARITY_COLORS := {
 	LootEnums.Rarity.COMMON: Color.WHITE,
@@ -21,12 +21,17 @@ const RARITY_COLORS := {
 func get_display_name() -> String:
 	var n = base.name
 
-	for p in prefixes:
-		n = p.name_format % n
+	if rarity == LootEnums.Rarity.UNCOMMON:
+		for p in prefixes:
+			n = p.name_format % n
 
-	for s in suffixes:
-		n = s.name_format % n
-	
+		for s in suffixes:
+			n = s.name_format % n
+	elif rarity == LootEnums.Rarity.RARE:
+		n = "Rare " + n
+	elif rarity == LootEnums.Rarity.UNIQUE:
+		n = "Unique Item Placeholder Name"
+
 	return n
 
 

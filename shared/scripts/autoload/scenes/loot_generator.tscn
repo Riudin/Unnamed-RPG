@@ -12,10 +12,10 @@
 [sub_resource type="Resource" id="Resource_j4wck"]
 script = ExtResource("2_s2to6")
 rarity_weights = Dictionary[int, int]({
-0: 40,
+0: 10,
 1: 30,
-2: 20,
-3: 10
+2: 30,
+3: 100
 })
 metadata/_custom_type_script = "uid://bld8qrtjx2gk0"
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3 uid="uid://xl6jnga2jdm"]
+[gd_resource type="Resource" script_class="AffixData" format=3 uid="uid://xl6jnga2jdm"]
 
 [ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_cogge"]
 
@@ -6,4 +6,5 @@
 script = ExtResource("1_cogge")
 is_prefix = false
 name_format = "%s of grounding"
+stat_name = "Increased Lightning Resistance"
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

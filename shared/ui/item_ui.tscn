@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://4t8yg3frui80"]
 
 [ext_resource type="Script" uid="uid://ckuqamuti4yj6" path="res://shared/ui/item_ui.gd" id="1_kfu1v"]
+[ext_resource type="PackedScene" uid="uid://c0noo2eqn5l61" path="res://shared/ui/windows/inventory/item_tooltip.tscn" id="2_13pny"]
 
 [node name="ItemUI" type="Control" unique_id=381047854]
 layout_mode = 3
@@ -8,6 +9,7 @@ anchors_preset = 0
 offset_right = 22.0
 offset_bottom = 22.0
 script = ExtResource("1_kfu1v")
+tooltip_scene = ExtResource("2_13pny")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1764452406]
 unique_name_in_owner = true
@@ -22,3 +24,6 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -12,17 +12,12 @@ extends Node
 @onready var level_text: Label = %LevelLabel
 
 @onready var battle_confirmation_popup: PackedScene = preload("uid://clibstgxaah3l")
-@onready var item_info_popup: PackedScene = preload("uid://b60rc4rdpir0a")
-@onready var item_info_pop = %ItemInfoPopup
-
-var item_focused = null: set = new_focus
+@onready var item_tooltip = %ItemTooltip
 
 func _ready() -> void:
 	# Battle Signals
 	SignalBus.connect("enemy_clicked", _on_enemy_clicked)
 	SignalBus.connect("battle_started", _on_battle_started)
-	SignalBus.inventory_slot_mouse_entered.connect(_on_inventory_slot_mouse_entered)
-	SignalBus.inventory_slot_mouse_exited.connect(_on_inventory_slot_mouse_exited)
 	DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
 
 	# XP and Level Signals
@@ -74,24 +69,4 @@ func xp_bar_update(new_xp, xp_to_next):
 
 ### Handling Inventory UI
 
-func _on_inventory_slot_mouse_entered(slot):
-	#if active_item_info_popup == null:
-		#var popup = item_info_popup.instantiate()
-		#active_item_info_popup = popup
-		#popup_container.add_child(popup)
-	if item_focused != slot:
-		item_focused = slot
-
-
-func _on_inventory_slot_mouse_exited(slot):
-	if item_focused == slot:
-		item_focused = null
-	#if active_item_info_popup != null:
-		#active_item_info_popup.queue_free()
-		
-func new_focus(new):
-	item_focused = new
-	if item_focused and !item_info_pop.visible:
-		item_info_pop.visible = true
-	else:
-		item_info_pop.visible = false
+# Here we can add slot highlights back in later
