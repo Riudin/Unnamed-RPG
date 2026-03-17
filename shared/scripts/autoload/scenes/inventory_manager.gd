@@ -6,10 +6,6 @@ const GRID_SIZE := Vector2i(9, 12)
 var grid := {} # Vector2i -> ItemInstance
 var inventory_ui: InventoryUI
 
-# var inventory_items: Array[ItemInstance] = []
-
-# signal items_changed(new_items)
-
 
 func register_ui(ui: InventoryUI):
 	inventory_ui = ui
@@ -40,12 +36,3 @@ func add_item(item: ItemInstance) -> bool:
 				inventory_ui.spawn_item_ui(item, pos)
 				return true
 	return false
-
-# func add_item(item: ItemInstance):
-# 	inventory_items.append(item)
-# 	items_changed.emit(inventory_items)
-
-
-# func remove_item(item: ItemInstance):
-# 	inventory_items.erase(item)
-# 	items_changed.emit(inventory_items)

@@ -56,18 +56,28 @@ func _input(event: InputEvent) -> void:
 
 			
 func _drop():
+	# check if dropped in equipment slot
 	var equipment_slot = EquipmentSlot.hovered_slot
 
+	# dropped on equipment slot
 	if equipment_slot:
 		if equipment_slot.drop_item(item):
 			queue_free()
 			return
 
+	# check if dropped in inventory
 	var inventory_ui := get_parent() as InventoryUI
 	
 	var local := inventory_ui.get_local_mouse_position()
 	var target := (local / CELL_SIZE).floor()
 
+	# dropped outside of inventory
+	if target.x < 0 or target.x >= InventoryManager.GRID_SIZE.x or target.y < 0 or target.y >= InventoryManager.GRID_SIZE.y:
+		InventoryManager.add_item(item)
+		queue_free()
+		return
+
+	# dropped inside inventory
 	if InventoryManager.can_place(item, target):
 		InventoryManager.place(item, target)
 		grid_pos = target

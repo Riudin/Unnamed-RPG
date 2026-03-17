@@ -10,4 +10,4 @@ extends Resource
 @export var max_value: float = 10.0
 
 func roll_value() -> float:
-	return randf_range(min_value, max_value)
+	return roundf(randf_range(min_value, max_value))

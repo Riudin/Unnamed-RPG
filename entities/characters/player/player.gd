@@ -22,6 +22,12 @@ func _ready() -> void:
 	navigation_component.connect("navigation_finished", _on_navigation_finished)
 
 
+func _physics_process(delta: float) -> void:
+	print("Fire res: ", attribute_data.fire_resist_pct)
+	print("Cold res: ", attribute_data.cold_resist_pct)
+	print("Lightning res: ", attribute_data.lightning_resist_pct)
+
+
 func _on_movement_input(target):
 	navigation_component.navigate_to_target(target)
 
