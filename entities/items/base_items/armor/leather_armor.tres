@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_n4bgt")
 name = "Leather Armor"
-type = 1
+type = 2
 icon = ExtResource("1_3axa4")
 metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

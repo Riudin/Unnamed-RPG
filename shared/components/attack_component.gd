@@ -51,6 +51,10 @@ func _on_tick():
 	# Attack
 	if tick_counter >= attack_interval_ticks:
 		tick_counter = 0
-		DamageSystem.apply_damage(damage_data, parent.attribute_data, target.attribute_data, target)
+		DamageSystem.apply_damage(damage_data,
+								parent.attribute_data,
+								target.attribute_data,
+								target)
+
 		# emit_signal("attack_ready", target, parent.calculate_damage_info())
 		emit_signal("progress_changed", 0.0)

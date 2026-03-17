@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bd34tdxcop5he"]
+
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="1_hegyk"]
+[ext_resource type="Script" uid="uid://dsd1e2fn7356o" path="res://shared/ui/windows/character_screen/equipment_slot.gd" id="1_sjtbe"]
+
+[node name="EquipmentSlot" type="Control" unique_id=690335858]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 22.0
+offset_bottom = 22.0
+script = ExtResource("1_sjtbe")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1066253770]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_hegyk")
+
+[node name="ItemIcon" type="TextureRect" parent="." unique_id=448942461]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

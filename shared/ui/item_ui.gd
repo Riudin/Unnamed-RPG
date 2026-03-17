@@ -31,24 +31,38 @@ func _process(_delta: float) -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.is_pressed():
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed:
 			initial_pos = event.global_position
+
 			dragging = true
+			mouse_filter = Control.MOUSE_FILTER_IGNORE
 			set_z_index(100)
+
 			drag_offset = get_global_mouse_position() - global_position
 			InventoryManager.clear_item(item)
 
-			_on_mouse_exited() # Workaround to hide Tooltip, may cause bugs
-			
-		else:
+
+func _input(event: InputEvent) -> void:
+	if dragging \
+	and event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and !event.pressed:
 			dragging = false
+			mouse_filter = Control.MOUSE_FILTER_STOP
 			set_z_index(0)
 			_drop()
-			_on_mouse_entered() # Workaround to show Tooltip again. Might cause bugs
 
 			
 func _drop():
+	var equipment_slot = EquipmentSlot.hovered_slot
+
+	if equipment_slot:
+		if equipment_slot.drop_item(item):
+			queue_free()
+			return
+
 	var inventory_ui := get_parent() as InventoryUI
 	
 	var local := inventory_ui.get_local_mouse_position()

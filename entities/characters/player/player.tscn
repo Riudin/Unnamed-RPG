@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://mu31biemy71"]
+[gd_scene format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
 [ext_resource type="Texture2D" uid="uid://c12kvg6kbiha6" path="res://entities/characters/player/assets/Soldier.png" id="2_0s3gd"]
@@ -107,23 +107,23 @@ _data = {
 &"walk": SubResource("Animation_sybl7")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1391985060 groups=["player"]]
 z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_qrd5i")
-attribute_data = ExtResource("2_mnavw")
+base_attribute_data = ExtResource("2_mnavw")
 damage_data = ExtResource("3_5otfs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643251234]
 unique_name_in_owner = true
 position = Vector2(0, -4)
 texture = ExtResource("2_0s3gd")
 script = ExtResource("3_2jd2e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341241969]
 shape = SubResource("CircleShape2D_wqnow")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=156670767]
 unique_name_in_owner = true
 target_desired_distance = 1.0
 path_postprocessing = 1
@@ -131,14 +131,12 @@ avoidance_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.75, 0.16250002, 0, 0.76862746)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1053706185]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_mx21o")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_mx21o")
+autoplay = &"idle"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=633592372]
 process_callback = 0
 limit_left = -112
 limit_top = -80
@@ -147,36 +145,36 @@ limit_bottom = 448
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="InputComponent" type="Node2D" parent="."]
+[node name="InputComponent" type="Node2D" parent="." unique_id=934274383]
 unique_name_in_owner = true
 script = ExtResource("4_wqnow")
 metadata/_custom_type_script = "uid://bua6rtv8t5825"
 
-[node name="NavigationComponent" type="Node" parent="." node_paths=PackedStringArray("parent")]
+[node name="NavigationComponent" type="Node" parent="." unique_id=80579756 node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("5_lbevp")
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://blu5xbdwvxdg3"
 
-[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("parent")]
+[node name="MovementComponent" type="Node" parent="." unique_id=2108381558 node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("6_a3s12")
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://cw7ul52kdf4k7"
 
-[node name="AnimationComponent" type="Node" parent="."]
+[node name="AnimationComponent" type="Node" parent="." unique_id=92815714]
 unique_name_in_owner = true
 script = ExtResource("6_m0gj2")
 metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
 
-[node name="LevelingComponent" type="Node" parent="."]
+[node name="LevelingComponent" type="Node" parent="." unique_id=1232427938]
 unique_name_in_owner = true
 script = ExtResource("7_m0gj2")
 class_data = ExtResource("11_2jd2e")
 level_table = ExtResource("12_mnavw")
 metadata/_custom_type_script = "uid://bqry6wrakykcp"
 
-[node name="EquipmentComponent" type="Node" parent="."]
+[node name="EquipmentComponent" type="Node" parent="." unique_id=115356877]
 unique_name_in_owner = true
 script = ExtResource("10_sybl7")
 metadata/_custom_type_script = "uid://i5puns5ayv24"
