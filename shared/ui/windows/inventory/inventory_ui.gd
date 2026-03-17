@@ -15,11 +15,13 @@ func _ready() -> void:
 
 
 func _create_slots():
+	custom_minimum_size = InventoryManager.GRID_SIZE * CELL_SIZE
+	
 	for y in range(InventoryManager.GRID_SIZE.y):
 		for x in range(InventoryManager.GRID_SIZE.x):
 			var s: InventorySlot = slot_scene.instantiate()
 			s.grid_pos = Vector2i(x, y)
-			s.position = Vector2(x, y) * CELL_SIZE
+			s.position = Vector2i(x, y)* CELL_SIZE
 			add_child(s)
 			slots.append(s)
 
@@ -31,6 +33,8 @@ func spawn_item_ui(item: ItemInstance, pos: Vector2i):
 	ui.setup(item)
 	ui.grid_pos = pos
 	ui.position = pos * CELL_SIZE
+	
+
 
 
 func _get_slot_at(pos: Vector2i) -> InventorySlot:
