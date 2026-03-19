@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
-[ext_resource type="Resource" uid="uid://byykxl7u0k3a7" path="res://entities/characters/player/player_attributes.tres" id="7_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
 [ext_resource type="Script" uid="uid://dbmoyj38ooa3s" path="res://shared/ui/windows/character_screen/character_screen_ui.gd" id="8_trceg"]
@@ -14,11 +13,20 @@
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bd34tdxcop5he" path="res://shared/ui/windows/character_screen/equipment_slot.tscn" id="10_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://4t8yg3frui80" path="res://shared/ui/item_ui.tscn" id="10_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://c05bg5sre33u3" path="res://assets/slot_bg_armor.png" id="10_muem4"]
+[ext_resource type="Texture2D" uid="uid://dge8fqe7m5ugd" path="res://assets/slot_bg_weapon.png" id="10_yc10j"]
 [ext_resource type="Texture2D" uid="uid://ckdef60ubjgvg" path="res://assets/inventory_slots_border.png" id="11_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://bcj532eyf8tm0" path="res://assets/slot_bg_helmet.png" id="11_jscy8"]
+[ext_resource type="Texture2D" uid="uid://da5w5hif8pdkh" path="res://assets/slot_bg_pet.png" id="11_vxglm"]
+[ext_resource type="Texture2D" uid="uid://cv1sc6cea61dq" path="res://assets/slot_bg_ring.png" id="11_y6deb"]
+[ext_resource type="Texture2D" uid="uid://doqogxrtftl4f" path="res://assets/slot_bg_gloves.png" id="12_og1vs"]
+[ext_resource type="Texture2D" uid="uid://cgtyeufs67f45" path="res://assets/slot_bg_offhand.png" id="13_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://bucia7wqoa65e" path="res://assets/slot_bg_boots.png" id="14_y6deb"]
+[ext_resource type="Texture2D" uid="uid://bs5suuc5hp2cb" path="res://assets/slot_bg_amulet.png" id="15_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://beiqj8ko03k1q" path="res://assets/slot_bg_belt.png" id="16_2f3dj"]
 [ext_resource type="Script" uid="uid://csvrl7v1kaipr" path="res://systems/debug/debug_button_generate_loot.gd" id="16_jbj1t"]
 [ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/orc_drop_table.tres" id="17_muem4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/slot_bg_wings.png" id="17_yq6so"]
 
 [node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
@@ -48,7 +56,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
-attribute_data = ExtResource("7_jkv2x")
 
 [node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true
@@ -175,137 +182,150 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="Body" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer" unique_id=1110473539]
+[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer" unique_id=1551640689]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer" unique_id=846947485]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer" unique_id=1898982199]
+layout_mode = 2
+
+[node name="Placeholder" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1678423500]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="UpperBody" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body" unique_id=477753068]
+[node name="Placeholder2" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=354989371]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
-alignment = 1
 
-[node name="EquipmentSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody" unique_id=690335858 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="WeaponSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=690335858 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-player = NodePath("../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("10_yc10j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody" unique_id=53051005]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer" unique_id=726978423]
 layout_mode = 2
-mouse_filter = 2
 
-[node name="EquipmentSlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer" unique_id=1240349119 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="PetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1240349119 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 10
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("11_vxglm")
 
-[node name="HSeparator3" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer" unique_id=1339567008]
+[node name="Placeholder3" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=909449694]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 54
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
 
-[node name="EquipmentSlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer" unique_id=1771888230 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="Ring1Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1771888230 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 7
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("11_y6deb")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody" unique_id=1892000921]
+[node name="GlovesSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1395101949 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+slot_type = 4
+player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("12_og1vs")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer" unique_id=366096315]
+layout_mode = 2
+
+[node name="Placeholder4" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=292631679]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HSeparator" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=2116578544]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
-
-[node name="EquipmentSlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=1943579368 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="HelmetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1943579368 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 3
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("11_jscy8")
 
-[node name="HSeparator2" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=608409177]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 12
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
-
-[node name="EquipmentSlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=517960564 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="ArmorSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=517960564 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 2
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("10_muem4")
 
-[node name="EquipmentSlot6" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer2" unique_id=1393569912 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="BeltSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1393569912 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 6
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("16_2f3dj")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody" unique_id=1232013522]
+[node name="VBoxContainer4" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer" unique_id=2107453448]
 layout_mode = 2
-mouse_filter = 2
 
-[node name="EquipmentSlot7" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=1187576450 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="WingsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1187576450 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("17_yq6so")
 
-[node name="HSeparator3" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=447246565]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ya4ey")
-
-[node name="EquipmentSlot8" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=1218695085 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="AmuletSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1218695085 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 9
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("15_2wyq8")
 
-[node name="EquipmentSlot9" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody/VBoxContainer3" unique_id=925026479 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="Ring2Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=925026479 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 8
 player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("11_y6deb")
 
-[node name="EquipmentSlot10" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/UpperBody" unique_id=1543856037 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-slot_type = 1
-player = NodePath("../../../../../../../../../../World/Player")
-
-[node name="MiddleBody" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body" unique_id=1021346099]
-layout_mode = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="EquipmentSlot11" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/MiddleBody" unique_id=1395101949 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-slot_type = 4
-player = NodePath("../../../../../../../../../../World/Player")
-
-[node name="EquipmentSlot12" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/Body/MiddleBody" unique_id=1236920918 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="BootsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1236920918 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 slot_type = 5
-player = NodePath("../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("14_y6deb")
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer" unique_id=1532423031]
+layout_mode = 2
+
+[node name="Placeholder5" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=824732362]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Placeholder6" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=668400509]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OffhandSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentSlots/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=1543856037 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+slot_type = 1
+player = NodePath("../../../../../../../../../../../World/Player")
+slot_type_background_texture = ExtResource("13_pm3ni")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1116281239]
 custom_minimum_size = Vector2(0, 64)

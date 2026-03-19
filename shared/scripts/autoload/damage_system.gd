@@ -6,28 +6,35 @@ var active_dot_sources: Array[DamageData] = []
 
 
 func apply_damage(damage_data: DamageData, attacker_attributes: AttributeData, defender_attributes: AttributeData, target: BattleEntity) -> void:
+	# base damage + scaling through attributes
 	var base_damage = randf_range(damage_data.base_min_damage, damage_data.base_max_damage) + damage_data.flat_added_damage
 	var scaling_bonus = _get_attribute_scaling(damage_data, attacker_attributes)
 	var scaled_damage = base_damage * (1.0 + scaling_bonus)
 
+	# general increased and more damage
 	var increased_mult = 1.0 + (damage_data.increased_damage_pct / 100.0)
 	var more_mult = damage_data.more_damage_multiplier
 	var modified_damage = scaled_damage * increased_mult * more_mult
 
+	# increases to type of dmg (e.g. if physical then apply increased physical dmg)
 	var element_bonus = attacker_attributes.get_damage_bonus_for_type(damage_data.damage_type) / 100.0
 	modified_damage *= (1.0 + element_bonus)
 
+	# determine if crit and apply crit dmg
 	var is_crit = randf() <= (damage_data.crit_chance_pct / 100.0 + attacker_attributes.crit_chance_pct / 100.0)
 	if is_crit:
 		modified_damage *= damage_data.crit_multiplier * attacker_attributes.crit_damage_multiplier
 	
+	# apply mitigation from defender
 	var mitigated = _apply_mitigation(modified_damage, damage_data.damage_type, defender_attributes)
 
+	# do damage to target
 	if target.has_method("take_damage"):
 		target.take_damage(mitigated, damage_data, is_crit)
 	elif target.health_component and target.health_component.has_method("take_damage"):
 		target.health_component.take_damage(mitigated, damage_data, is_crit)
 	
+	# apply dot
 	if damage_data.applies_dot:
 		_apply_dot_effect(damage_data, attacker_attributes, defender_attributes, target)
 

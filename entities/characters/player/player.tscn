@@ -112,6 +112,7 @@ z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_qrd5i")
 base_attribute_data = ExtResource("2_mnavw")
+attribute_data = ExtResource("2_mnavw")
 damage_data = ExtResource("3_5otfs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643251234]

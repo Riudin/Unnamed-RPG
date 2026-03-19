@@ -2,12 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cou0axlx0brce" path="res://shared/scripts/autoload/scenes/loot_generator.gd" id="1_ke4ts"]
 [ext_resource type="Script" uid="uid://bld8qrtjx2gk0" path="res://entities/items/rarity_table.gd" id="2_s2to6"]
-[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="3_xm83h"]
-[ext_resource type="Resource" uid="uid://ck614is6yqmfc" path="res://entities/items/affixes/prefixes/life_flat.tres" id="4_2u8qr"]
-[ext_resource type="Resource" uid="uid://olx57ciftt2g" path="res://entities/items/affixes/prefixes/physical_damage_pct.tres" id="5_2ye0d"]
-[ext_resource type="Resource" uid="uid://b3n3p3078ocjf" path="res://entities/items/affixes/suffixes/cold_resistance_pct.tres" id="6_vpnwc"]
-[ext_resource type="Resource" uid="uid://cc755ng54vb0" path="res://entities/items/affixes/suffixes/fire_resistance_pct.tres" id="7_q40ek"]
-[ext_resource type="Resource" uid="uid://xl6jnga2jdm" path="res://entities/items/affixes/suffixes/lightning_resistance_pct.tres" id="8_wcdr4"]
 
 [sub_resource type="Resource" id="Resource_j4wck"]
 script = ExtResource("2_s2to6")
@@ -22,5 +16,3 @@ metadata/_custom_type_script = "uid://bld8qrtjx2gk0"
 [node name="LootGenerator" type="Node" unique_id=1370177732]
 script = ExtResource("1_ke4ts")
 rarity_table = SubResource("Resource_j4wck")
-prefixes = Array[ExtResource("3_xm83h")]([ExtResource("4_2u8qr"), ExtResource("5_2ye0d")])
-suffixes = Array[ExtResource("3_xm83h")]([ExtResource("6_vpnwc"), ExtResource("7_q40ek"), ExtResource("8_wcdr4")])

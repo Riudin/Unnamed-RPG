@@ -3,6 +3,7 @@ extends Control
 
 
 @onready var icon: TextureRect = %Icon
+@onready var rarity_background: TextureRect = %RarityBackground
 
 @export var tooltip_scene: PackedScene
 var tooltip: ItemTooltip
@@ -23,6 +24,9 @@ func setup(i: ItemInstance):
 	item = i
 	if icon:
 		icon.texture = item.base.icon
+	
+	rarity_background.modulate = item.get_color()
+	rarity_background.modulate.a = 0.5
 
 
 func _process(_delta: float) -> void:
@@ -37,6 +41,7 @@ func _gui_input(event: InputEvent) -> void:
 			initial_pos = event.global_position
 
 			dragging = true
+			rarity_background.visible = false
 			mouse_filter = Control.MOUSE_FILTER_IGNORE
 			set_z_index(100)
 
@@ -50,6 +55,7 @@ func _input(event: InputEvent) -> void:
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and !event.pressed:
 			dragging = false
+			rarity_background.visible = true
 			mouse_filter = Control.MOUSE_FILTER_STOP
 			set_z_index(0)
 			_drop()

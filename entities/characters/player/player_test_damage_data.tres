@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="DamageData" load_steps=2 format=3 uid="uid://csxj1aee8r6q"]
+[gd_resource type="Resource" script_class="DamageData" format=3 uid="uid://csxj1aee8r6q"]
 
 [ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="1_qt0jy"]
 
 [resource]
 script = ExtResource("1_qt0jy")
 skill_name = "Default Attack"
-damage_type = "Fire"
 base_min_damage = 100.0
 base_max_damage = 120.0
 flat_added_damage = 2.0

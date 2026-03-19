@@ -22,9 +22,10 @@ func _ready() -> void:
 
 
 func _calculate_attack_interval() -> void:
-	if parent.attribute_data and parent.attack_speed > 0.0:
+	var attack_speed: float = parent.attribute_data.get_attack_speed()
+	if parent.attribute_data and attack_speed > 0.0:
 		# how many ticks must elapse between attacks
-		attack_interval_ticks = int(ceil(TickManager.tick_rate / parent.attack_speed)) # Note that ceil introduces breakpoints.
+		attack_interval_ticks = int(ceil(TickManager.tick_rate / attack_speed)) # Note that ceil introduces breakpoints.
 		# for example attackspeed of 6.7 and 7.4 both return 9 attack_interval_ticks. You'd need 7.5 attackspeed to get 8 attack_interval_ticks.
 		# This is not clean because attack_speed should be == attacks per second. But it works for now.
 	else:

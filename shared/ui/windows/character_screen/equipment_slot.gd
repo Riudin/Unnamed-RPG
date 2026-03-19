@@ -11,16 +11,22 @@ var tooltip_diplayable: bool = false # delete after handling item display differ
 @export var slot_type: LootEnums.ItemType
 @export var player: Player
 
+@export var slot_type_background_texture: Texture2D
+
 static var hovered_slot: EquipmentSlot = null
 
 var equipped_item: ItemInstance
+
+
+func _ready() -> void:
+	_update_icon()
 
 
 func _update_icon():
 	if equipped_item:
 		item_icon.texture = equipped_item.base.icon
 	else:
-		item_icon.texture = null
+		item_icon.texture = slot_type_background_texture
 
 
 func drop_item(item: ItemInstance) -> bool:
@@ -32,8 +38,7 @@ func drop_item(item: ItemInstance) -> bool:
 	equipped_item = item
 	_update_icon()
 
-	player.equipment_component.equip(item)
-	player.recalculate_stats()
+	player.equip_item(item)
 
 	if old:
 		InventoryManager.add_item(old)

@@ -16,9 +16,9 @@ extends Resource
 @export var crit_chance_pct: float = 0.0
 @export var crit_multiplier: float = 2.0
 
-@export var attack_speed_pct: float = 0.0
-@export var cast_speed_pct: float = 0.0
-@export var hits_per_second: float = 0.0
+# @export var attack_speed_pct: float = 0.0
+# @export var cast_speed_pct: float = 0.0
+# @export var hits_per_second: float = 0.0
 
 @export var strength_scaling: float = 0.0
 @export var dexterity_scaling: float = 0.0

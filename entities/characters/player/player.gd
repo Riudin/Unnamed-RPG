@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 @export var base_attribute_data: AttributeData
-@export var attribute_data: AttributeData
+@export var attribute_data: AttributeData # This is currently set in inspector because leveling component throws an error otherwise. fix later
 @export var damage_data: DamageData
 
 @onready var animation_component: AnimationComponent = %AnimationComponent
@@ -21,11 +21,12 @@ func _ready() -> void:
 	navigation_component.connect("navigating_to_target", _on_navigating_to_target)
 	navigation_component.connect("navigation_finished", _on_navigation_finished)
 
+	recalculate_stats()
 
-func _physics_process(delta: float) -> void:
-	print("Fire res: ", attribute_data.fire_resist_pct)
-	print("Cold res: ", attribute_data.cold_resist_pct)
-	print("Lightning res: ", attribute_data.lightning_resist_pct)
+# func _physics_process(delta: float) -> void:
+# 	print("Fire res: ", attribute_data.fire_resist_pct)
+# 	print("Cold res: ", attribute_data.cold_resist_pct)
+# 	print("Lightning res: ", attribute_data.lightning_resist_pct)
 
 
 func _on_movement_input(target):
