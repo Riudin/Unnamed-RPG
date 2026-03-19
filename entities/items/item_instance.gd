@@ -37,3 +37,16 @@ func get_display_name() -> String:
 
 func get_color() -> Color:
 	return RARITY_COLORS[rarity]
+
+
+func get_damages() -> Array[DamageData]:
+	var result: Array[DamageData] = []
+
+	for d in base.damages:
+		result.append(d.duplicate(true))
+	
+	for a in prefixes + suffixes:
+		if a.damage:
+			result.append(a.damage.duplicate(true))
+	
+	return result

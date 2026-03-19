@@ -3,7 +3,6 @@ extends Node
 
 
 signal progress_changed(progress: float)
-#signal attack_ready(target, damage_info)
 
 var attack_interval_ticks: int = 0
 var tick_counter: int = 0
@@ -11,14 +10,15 @@ var tick_counter: int = 0
 @onready var parent = get_parent()
 var target: BattleEntity
 
-var damage_data: DamageData
+# var damage_data: DamageData
+@export var damages: Array[DamageData] = []
 
 
 func _ready() -> void:
 	TickManager.connect("tick", _on_tick)
 	_calculate_attack_interval()
 
-	damage_data = parent.damage_data
+	# damage_data = parent.damage_data
 
 
 func _calculate_attack_interval() -> void:
@@ -33,6 +33,13 @@ func _calculate_attack_interval() -> void:
 	
 	tick_counter = 0
 	emit_signal("progress_changed", 0.0)
+
+
+func set_damages(list: Array[DamageData]):
+	damages.clear()
+
+	for d in list:
+		damages.append(d.duplicate(true))
 
 
 func _on_tick():
@@ -52,10 +59,13 @@ func _on_tick():
 	# Attack
 	if tick_counter >= attack_interval_ticks:
 		tick_counter = 0
-		DamageSystem.apply_damage(damage_data,
-								parent.attribute_data,
-								target.attribute_data,
-								target)
+		
+		for dmg in damages:
+			DamageSystem.apply_damage(
+				dmg,
+				parent.attribute_data,
+				target.attribute_data,
+				target
+				)
 
-		# emit_signal("attack_ready", target, parent.calculate_damage_info())
 		emit_signal("progress_changed", 0.0)

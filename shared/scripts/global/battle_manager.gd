@@ -18,7 +18,7 @@ func start_battle(enemy):
 	player_battle_entity = battle_entity.instantiate()
 	player_battle_entity.add_to_group("battle_entity")
 	player_battle_entity.attribute_data = player.attribute_data
-	player_battle_entity.damage_data = player.damage_data
+#	player_battle_entity.damage_data = player.damage_data
 	player_battle_entity.global_position = battle_screen.player_damage_popup_marker.global_position
 	add_child(player_battle_entity)
 	player_battle_entity.health_component.connect("died", _on_entity_died)
@@ -27,7 +27,7 @@ func start_battle(enemy):
 	enemy_battle_entity.add_to_group("battle_entity")
 	enemy_battle_entity.enemy_data = enemy.enemy_data
 	enemy_battle_entity.attribute_data = enemy.attribute_data
-	enemy_battle_entity.damage_data = enemy.damage_data
+#	enemy_battle_entity.damage_data = enemy.damage_data
 	enemy_battle_entity.drop_table = enemy.drop_table
 	enemy_battle_entity.global_position = battle_screen.enemy_damage_popup_marker.global_position
 	add_child(enemy_battle_entity)

@@ -9,5 +9,8 @@ extends Resource
 @export var min_value: int = 1
 @export var max_value: int = 10
 
+@export var damage: DamageData
+
+
 func roll_value() -> float:
 	return randi_range(min_value, max_value)

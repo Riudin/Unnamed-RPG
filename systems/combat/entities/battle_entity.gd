@@ -7,7 +7,6 @@ extends Node
 
 var enemy_data: EnemyData = null
 var attribute_data: AttributeData = null
-var damage_data: DamageData = null
 var drop_table: ItemDropTable = null
 
 
