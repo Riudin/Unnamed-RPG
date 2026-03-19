@@ -8,17 +8,15 @@ var attack_interval_ticks: int = 0
 var tick_counter: int = 0
 
 @onready var parent = get_parent()
-var target: BattleEntity
+var target: Node
 
-# var damage_data: DamageData
 @export var damages: Array[DamageData] = []
 
 
 func _ready() -> void:
+	await get_parent().ready
 	TickManager.connect("tick", _on_tick)
 	_calculate_attack_interval()
-
-	# damage_data = parent.damage_data
 
 
 func _calculate_attack_interval() -> void:
@@ -45,7 +43,6 @@ func set_damages(list: Array[DamageData]):
 func _on_tick():
 	if attack_interval_ticks <= 0: return
 	if target == null:
-		print("No target found for ", self )
 		return
 
 	tick_counter += 1

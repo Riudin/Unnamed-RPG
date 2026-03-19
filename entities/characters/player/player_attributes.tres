@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_gvptx")
-base_attack_speed = 3.0
 metadata/_custom_type_script = "uid://cahthes1o5rpw"

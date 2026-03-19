@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pbulugqfsgep"]
+[gd_scene format=3 uid="uid://pbulugqfsgep"]
 
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
 [ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
@@ -10,7 +10,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arlx4"]
 
-[node name="BattleScreen" type="Control"]
+[node name="BattleScreen" type="Control" unique_id=2093983423]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dc1s1")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=2054809080]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11858145, 0.11858136, 0.11858138, 1)
 
-[node name="BattleDisplay" type="HBoxContainer" parent="."]
+[node name="BattleDisplay" type="HBoxContainer" parent="." unique_id=774822383]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -43,10 +43,10 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerDisplay" type="VBoxContainer" parent="BattleDisplay"]
+[node name="PlayerDisplay" type="VBoxContainer" parent="BattleDisplay" unique_id=1368725215]
 layout_mode = 2
 
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="BattleDisplay/PlayerDisplay"]
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="BattleDisplay/PlayerDisplay" unique_id=481229864]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 4)
 layout_mode = 2
@@ -59,13 +59,13 @@ texture_progress = ExtResource("2_arlx4")
 tint_under = Color(0.14, 0.14, 0.14, 1)
 tint_progress = Color(1, 0, 0, 1)
 
-[node name="PlayerIcon" type="TextureRect" parent="BattleDisplay/PlayerDisplay"]
+[node name="PlayerIcon" type="TextureRect" parent="BattleDisplay/PlayerDisplay" unique_id=1561285895]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 
-[node name="PlayerAttackBar" type="ProgressBar" parent="BattleDisplay/PlayerDisplay"]
+[node name="PlayerAttackBar" type="ProgressBar" parent="BattleDisplay/PlayerDisplay" unique_id=758441465]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2)
 layout_mode = 2
@@ -73,15 +73,15 @@ size_flags_vertical = 4
 max_value = 1.0
 show_percentage = false
 
-[node name="VSeparator" type="VSeparator" parent="BattleDisplay"]
+[node name="VSeparator" type="VSeparator" parent="BattleDisplay" unique_id=531593666]
 layout_mode = 2
 theme_override_constants/separation = 234
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dc1s1")
 
-[node name="EnemyDisplay" type="VBoxContainer" parent="BattleDisplay"]
+[node name="EnemyDisplay" type="VBoxContainer" parent="BattleDisplay" unique_id=1347059328]
 layout_mode = 2
 
-[node name="EnemyHealthBar" type="TextureProgressBar" parent="BattleDisplay/EnemyDisplay"]
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="BattleDisplay/EnemyDisplay" unique_id=115662352]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 4)
 layout_mode = 2
@@ -94,14 +94,14 @@ texture_progress = ExtResource("2_arlx4")
 tint_under = Color(0.14, 0.14, 0.14, 1)
 tint_progress = Color(1, 0, 0, 1)
 
-[node name="EnemyIcon1" type="TextureRect" parent="BattleDisplay/EnemyDisplay"]
+[node name="EnemyIcon1" type="TextureRect" parent="BattleDisplay/EnemyDisplay" unique_id=632282175]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_awsep")
 stretch_mode = 5
 flip_h = true
 
-[node name="EnemyAttackBar" type="ProgressBar" parent="BattleDisplay/EnemyDisplay"]
+[node name="EnemyAttackBar" type="ProgressBar" parent="BattleDisplay/EnemyDisplay" unique_id=1950132128]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 2)
 layout_mode = 2
@@ -109,7 +109,7 @@ size_flags_vertical = 4
 max_value = 1.0
 show_percentage = false
 
-[node name="VictoryScreen" type="PanelContainer" parent="."]
+[node name="VictoryScreen" type="PanelContainer" parent="." unique_id=1906515979]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -126,78 +126,78 @@ grow_vertical = 2
 script = ExtResource("4_iq00i")
 slot_scene = ExtResource("5_3qkq6")
 
-[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen"]
+[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen" unique_id=1605250987]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/MarginContainer" unique_id=1936579264]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=850799505]
 layout_mode = 2
 text = "Victory!"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1347975763]
 layout_mode = 2
 
-[node name="XPDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="XPDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=706474205]
 layout_mode = 2
 
-[node name="XPLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay"]
+[node name="XPLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay" unique_id=510524605]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "XP gained:"
 
-[node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay"]
+[node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay" unique_id=811325565]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
 text = "99999"
 
-[node name="GoldDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="GoldDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1237102151]
 layout_mode = 2
 
-[node name="GoldLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay"]
+[node name="GoldLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay" unique_id=842922975]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Gold gained:"
 
-[node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay"]
+[node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay" unique_id=230931603]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
 text = "99999"
 
-[node name="HSeparator2" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=233167324]
 layout_mode = 2
 
-[node name="LootLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="LootLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1339350001]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Loot:"
 
-[node name="LootDisplay" type="GridContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="LootDisplay" type="GridContainer" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=144070697]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=845089525]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_arlx4")
 
-[node name="ContinueButton" type="Button" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1463007760]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Continue"
 
-[node name="DefeatScreen" type="PanelContainer" parent="."]
+[node name="DefeatScreen" type="PanelContainer" parent="." unique_id=1787204336]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -213,57 +213,57 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="DefeatScreen"]
+[node name="MarginContainer" type="MarginContainer" parent="DefeatScreen" unique_id=927837932]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DefeatScreen/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DefeatScreen/MarginContainer" unique_id=44052091]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer" unique_id=18280052]
 layout_mode = 2
 text = "Defeat!"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer" unique_id=1510544379]
 layout_mode = 2
 
-[node name="XPGained" type="HBoxContainer" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+[node name="XPGained" type="HBoxContainer" parent="DefeatScreen/MarginContainer/VBoxContainer" unique_id=773068261]
 layout_mode = 2
 
-[node name="XPLabel" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer/XPGained"]
+[node name="XPLabel" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer/XPGained" unique_id=35804879]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "XP lost:"
 
-[node name="XPAmount" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer/XPGained"]
+[node name="XPAmount" type="Label" parent="DefeatScreen/MarginContainer/VBoxContainer/XPGained" unique_id=1158922109]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 8
 text = "99999"
 
-[node name="HSeparator2" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer" unique_id=86878809]
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="DefeatScreen/MarginContainer/VBoxContainer" unique_id=859717294]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_arlx4")
 
-[node name="ContinueButton" type="Button" parent="DefeatScreen/MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="DefeatScreen/MarginContainer/VBoxContainer" unique_id=940892545]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Continue"
 
-[node name="PlayerDamagePopupMarker" type="Marker2D" parent="."]
+[node name="PlayerDamagePopupMarker" type="Marker2D" parent="." unique_id=1649583682]
 unique_name_in_owner = true
 position = Vector2(179, 182)
 
-[node name="EnemyDamagePopupMarker" type="Marker2D" parent="."]
+[node name="EnemyDamagePopupMarker" type="Marker2D" parent="." unique_id=280111691]
 unique_name_in_owner = true
 position = Vector2(461, 182)
 

@@ -5,7 +5,7 @@ var active_dots: Array = []
 var active_dot_sources: Array[DamageData] = []
 
 
-func apply_damage(damage_data: DamageData, attacker_attributes: AttributeData, defender_attributes: AttributeData, target: BattleEntity) -> void:
+func apply_damage(damage_data: DamageData, attacker_attributes: AttributeData, defender_attributes: AttributeData, target: Node) -> void:
 	# base damage + scaling through attributes
 	var base_damage = randf_range(damage_data.base_min_damage, damage_data.base_max_damage) + damage_data.flat_added_damage
 	var scaling_bonus = _get_attribute_scaling(damage_data, attacker_attributes)
@@ -79,7 +79,7 @@ func _apply_mitigation(damage: float, dmg_type: String, defender: AttributeData)
 	return max(0.0, final_damage)
 
 
-func _apply_dot_effect(damage_data: DamageData, _attacker: AttributeData, defender: AttributeData, target: BattleEntity) -> void:
+func _apply_dot_effect(damage_data: DamageData, _attacker: AttributeData, defender: AttributeData, target: Node) -> void:
 	if not is_instance_valid(target):
 		return
 	

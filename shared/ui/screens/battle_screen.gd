@@ -17,10 +17,8 @@ extends Control
 @onready var defeat_screen: Control = %DefeatScreen
 
 # Combatants
-var player: CharacterBody2D = null: set = set_player
-var player_battle_entity: BattleEntity = null
-var enemy: CharacterBody2D = null: set = set_enemy
-var enemy_battle_entity: BattleEntity = null
+var player: Node = null: set = set_player
+var enemy: Node = null: set = set_enemy
 
 
 func _ready() -> void:
@@ -32,42 +30,40 @@ func _ready() -> void:
 
 	# reference to the player is static at the moment. will need to change when multiplayer or teamfights are implemented
 	player = get_tree().get_first_node_in_group("player")
+	player.attack_component.connect("progress_changed", _on_player_progress_changed)
+	player.health_component.connect("health_changed", _on_player_health_changed)
+	player.health_component.connect("died", _on_player_died)
 
 
 func set_player(p):
 	player = p
 	player_icon.texture = player.sprite.texture
-	player_health_bar.max_value = player.attribute_data.get_total_health()
-	player_health_bar.value = player.attribute_data.get_total_health()
+	player_health_bar.max_value = player.health_component.max_health
+	player_health_bar.value = player.health_component.health
 
 
 func set_enemy(e):
 	# for now only one enemy
 	enemy = e
 	enemy_icon_1.texture = enemy.enemy_data.texture
-	enemy_health_bar.max_value = enemy.attribute_data.get_total_health()
-	enemy_health_bar.value = enemy.attribute_data.get_total_health()
+	enemy_health_bar.max_value = enemy.health_component.max_health
+	enemy_health_bar.value = enemy.health_component.health
 
 
-func _on_battle_started(player_ent: BattleEntity, enemy_ent: BattleEntity) -> void:
+func _on_battle_started(p: Node, e: Node) -> void:
 	visible = true
 	battle_display.visible = true
-	player_battle_entity = player_ent
-	enemy_battle_entity = enemy_ent
 
-	# Connect progress signals from both entities
-	player_battle_entity.attack_component.connect("progress_changed", _on_player_progress_changed)
-	enemy_battle_entity.attack_component.connect("progress_changed", _on_enemy_progress_changed)
-	player_battle_entity.health_component.connect("health_changed", _on_player_health_changed)
-	enemy_battle_entity.health_component.connect("health_changed", _on_enemy_health_changed)
-	player_battle_entity.health_component.connect("died", _on_player_died)
-	#enemy_battle_entity.health_component.connect("died", _on_enemy_died)
+	player = p
+	enemy = e
+
+	# Connect progress signals from enemy
+	enemy.attack_component.connect("progress_changed", _on_enemy_progress_changed)
+	enemy.health_component.connect("health_changed", _on_enemy_health_changed)
 
 	# Reset bars
 	player_attack_bar.value = 0.0
 	enemy_attack_bar.value = 0.0
-	player_health_bar.value = player.attribute_data.get_total_health()
-	enemy_health_bar.value = enemy.attribute_data.get_total_health()
 
 
 func _on_player_progress_changed(progress: float) -> void:

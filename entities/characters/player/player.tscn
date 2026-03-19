@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://i5puns5ayv24" path="res://shared/components/equipment_component.gd" id="10_sybl7"]
 [ext_resource type="Resource" uid="uid://c13ny8tub55jl" path="res://entities/characters/player/player_class_data.tres" id="11_2jd2e"]
 [ext_resource type="Resource" uid="uid://6f5fkkj5jj7r" path="res://entities/characters/player/player_level_table.tres" id="12_mnavw"]
+[ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="13_mnavw"]
+[ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="14_nuxbo"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="15_y66pm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 3.0
@@ -113,7 +116,6 @@ y_sort_enabled = true
 script = ExtResource("1_qrd5i")
 base_attribute_data = ExtResource("2_mnavw")
 attribute_data = ExtResource("2_mnavw")
-damage_data = ExtResource("3_5otfs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643251234]
 unique_name_in_owner = true
@@ -179,3 +181,14 @@ metadata/_custom_type_script = "uid://bqry6wrakykcp"
 unique_name_in_owner = true
 script = ExtResource("10_sybl7")
 metadata/_custom_type_script = "uid://i5puns5ayv24"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1994700331]
+unique_name_in_owner = true
+script = ExtResource("13_mnavw")
+metadata/_custom_type_script = "uid://urdreyx4totx"
+
+[node name="AttackComponent" type="Node" parent="." unique_id=559986507]
+unique_name_in_owner = true
+script = ExtResource("14_nuxbo")
+damages = Array[ExtResource("15_y66pm")]([ExtResource("3_5otfs")])
+metadata/_custom_type_script = "uid://casjk8xyj6crd"

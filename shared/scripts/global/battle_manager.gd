@@ -6,40 +6,30 @@ extends Node
 @onready var battle_screen: Control = %BattleScreen
 
 # Combatant entities
-@onready var battle_entity: PackedScene = preload("uid://bdsupgb8khl7q")
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
-var player_battle_entity: BattleEntity = null
-var enemy_battle_entity: BattleEntity = null
 var current_opponent = null
+
+
+func _ready() -> void:
+	await player.ready
+	player.health_component.connect("died", _on_entity_died)
 
 
 func start_battle(enemy):
 	current_opponent = enemy
-	player_battle_entity = battle_entity.instantiate()
-	player_battle_entity.add_to_group("battle_entity")
-	player_battle_entity.attribute_data = player.attribute_data
-#	player_battle_entity.damage_data = player.damage_data
-	player_battle_entity.global_position = battle_screen.player_damage_popup_marker.global_position
-	add_child(player_battle_entity)
-	player_battle_entity.health_component.connect("died", _on_entity_died)
 
-	enemy_battle_entity = battle_entity.instantiate()
-	enemy_battle_entity.add_to_group("battle_entity")
-	enemy_battle_entity.enemy_data = enemy.enemy_data
-	enemy_battle_entity.attribute_data = enemy.attribute_data
-#	enemy_battle_entity.damage_data = enemy.damage_data
-	enemy_battle_entity.drop_table = enemy.drop_table
-	enemy_battle_entity.global_position = battle_screen.enemy_damage_popup_marker.global_position
-	add_child(enemy_battle_entity)
-	enemy_battle_entity.health_component.connect("died", _on_entity_died)
+	player.health_component.damage_popup_position = battle_screen.player_damage_popup_marker.global_position
+	enemy.health_component.damage_popup_position = battle_screen.enemy_damage_popup_marker.global_position
+
+	enemy.health_component.connect("died", _on_entity_died)
 
 	# TODO: This should be set based on a system in an own method, when there's more possible targets
-	player_battle_entity.attack_component.target = enemy_battle_entity
-	enemy_battle_entity.attack_component.target = player_battle_entity
+	player.attack_component.target = enemy
+	enemy.attack_component.target = player
 
 	
 	# Notify the UI that battle started and pass the entities
-	battle_screen._on_battle_started(player_battle_entity, enemy_battle_entity)
+	battle_screen._on_battle_started(player, enemy)
 
 
 func _on_entity_died(entity):
@@ -50,9 +40,6 @@ func _on_entity_died(entity):
 
 		if loot:
 			InventoryManager.add_item(loot)
-			# print(loot.get_display_name())
-			# print("Rarity: ", loot.rarity)
-			# print("Affixes: ", loot.rolled_stats)
 		
 		# Grant player XP reward
 		if player.leveling_component != null:
@@ -61,9 +48,11 @@ func _on_entity_died(entity):
 		# Inform battle_screen that victory happened and what was looted
 		battle_screen.show_victory_screen(loot)
 
-		# Delete enemy (not battle entity but enemy in world)
-		current_opponent.queue_free()
+		# Reset player health
+		player.health_component.health = player.health_component.max_health
+
+		# Delete enemy
+		entity.queue_free()
 	
-	var entities = get_tree().get_nodes_in_group("battle_entity")
-	for e in entities:
-		e.queue_free()
+	else: # entity is the player
+		entity.health_component.health = entity.health_component.max_health

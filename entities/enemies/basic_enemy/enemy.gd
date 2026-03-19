@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var movement_component: MovementComponent = %MovementComponent
 @onready var navigation_component: NavigationComponent = %NavigationComponent
 @onready var animation_component: AnimationComponent = %AnimationComponent
+@onready var health_component: HealthComponent = %HealthComponent
+@onready var attack_component: AttackComponent = %AttackComponent
 
 var initial_position: Vector2 = Vector2.ZERO
 

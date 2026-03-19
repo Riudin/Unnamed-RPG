@@ -2,6 +2,9 @@ class_name EquipmentComponent
 extends Node
 
 
+@onready var parent := get_parent()
+
+
 var slots := {
 	LootEnums.ItemType.WEAPON: null,
 	LootEnums.ItemType.OFFHAND: null,
@@ -21,6 +24,10 @@ func equip(item: ItemInstance):
 	var slot = item.base.type
 	var old = slots[slot]
 	slots[slot] = item
+
+	if slot == LootEnums.ItemType.WEAPON:
+		parent.attack_component.set_damages(item.get_damages())
+
 	return old
 
 
