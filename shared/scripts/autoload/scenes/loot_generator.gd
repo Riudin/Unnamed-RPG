@@ -35,6 +35,13 @@ func generate_loot(drop_table: ItemDropTable) -> ItemInstance:
 	loot.rarity = rarity
 
 	# Generate Affixes based on Rarity
+	_generate_affixes(loot, rarity)
+	_roll_affix_values(loot)
+
+	return loot
+
+
+func _generate_affixes(item: ItemInstance, rarity):
 	prefix_pool = prefixes.duplicate(true)
 	suffix_pool = suffixes.duplicate(true)
 
@@ -43,26 +50,22 @@ func generate_loot(drop_table: ItemDropTable) -> ItemInstance:
 			pass
 		
 		LootEnums.Rarity.UNCOMMON:
-			loot.prefixes.append(_rand_prefix())
-			loot.suffixes.append(_rand_suffix())
+			item.prefixes.append(_rand_prefix())
+			item.suffixes.append(_rand_suffix())
 
 		LootEnums.Rarity.RARE:
-			loot.prefixes.append(_rand_prefix())
-			loot.prefixes.append(_rand_prefix())
-			loot.suffixes.append(_rand_suffix())
-			loot.suffixes.append(_rand_suffix())
+			item.prefixes.append(_rand_prefix())
+			item.prefixes.append(_rand_prefix())
+			item.suffixes.append(_rand_suffix())
+			item.suffixes.append(_rand_suffix())
 		
 		LootEnums.Rarity.UNIQUE:
-			loot.prefixes.append(_rand_prefix())
-			loot.prefixes.append(_rand_prefix())
-			loot.prefixes.append(_rand_prefix())
-			loot.suffixes.append(_rand_suffix())
-			loot.suffixes.append(_rand_suffix())
-			loot.suffixes.append(_rand_suffix())
-		
-	_roll_affix_values(loot)
-
-	return loot
+			item.prefixes.append(_rand_prefix())
+			item.prefixes.append(_rand_prefix())
+			item.prefixes.append(_rand_prefix())
+			item.suffixes.append(_rand_suffix())
+			item.suffixes.append(_rand_suffix())
+			item.suffixes.append(_rand_suffix())
 
 
 func _rand_prefix() -> AffixData:
@@ -134,3 +137,12 @@ func _load_affixes_from_folder(folder_path: String) -> Array[AffixData]:
 		file_name = dir.get_next()
 	
 	return affixes
+
+
+# Crafting Methods
+func reroll_affixes(item: ItemInstance):
+	item.prefixes.clear()
+	item.suffixes.clear()
+
+	_generate_affixes(item, item.rarity)
+	_roll_affix_values(item)

@@ -50,3 +50,8 @@ func get_damages() -> Array[DamageData]:
 			result.append(a.damage.duplicate(true))
 	
 	return result
+
+
+# Crafting methods
+func reroll_affixes():
+	LootGenerator.reroll_affixes(self )

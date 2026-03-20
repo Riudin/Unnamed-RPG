@@ -1,50 +1,39 @@
-class_name EquipmentSlot
+class_name CraftingSlot
 extends Control
-
 
 @onready var tooltip_scene: PackedScene = preload("uid://c0noo2eqn5l61") # delete after handling item display differently
 var tooltip: ItemTooltip # delete after handling item display differently
-# var tooltip_diplayable: bool = false # delete after handling item display differently
 
 @onready var item_icon: TextureRect = $ItemIcon
 
-@export var slot_type: LootEnums.ItemType
-@export var player: Player
-
 @export var slot_type_background_texture: Texture2D
 
-static var hovered_slot: EquipmentSlot = null
+static var hovered_slot: CraftingSlot = null
 
-var equipped_item: ItemInstance
+var item: ItemInstance
 
 
 func _ready() -> void:
 	_update_icon()
 
-	SaveManager.game_loaded.connect(_on_game_loaded)
-
 
 func _update_icon():
-	if equipped_item:
-		item_icon.texture = equipped_item.base.icon
+	if item:
+		item_icon.texture = item.base.icon
 	else:
 		item_icon.texture = slot_type_background_texture
 
 
-func drop_item(item: ItemInstance) -> bool:
-	if item.base.type != slot_type:
-		return false
-
-	var old := equipped_item
+func drop_item(i: ItemInstance) -> bool:
+	# return false if item is not craftable. there are no non-craftable items yet
+	var old := item
 
 	if old:
 		if not InventoryManager.add_item(old):
 			return false
-
-	equipped_item = item
+	
+	item = i
 	_update_icon()
-
-	player.equip_item(item)
 	
 	# delete after handling item display differently
 	# tooltip_diplayable = true
@@ -56,30 +45,43 @@ func drop_item(item: ItemInstance) -> bool:
 	return true
 
 
-func _unequip():
-	if not equipped_item:
+func _return_to_inventory():
+	if not item:
 		return
 	
-	if InventoryManager.add_item(equipped_item):
-		equipped_item = null
-		
-		player.equipment_component.unequip(slot_type)
-		player.recalculate_stats()
-
+	if InventoryManager.add_item(item):
+		item = null
 		_update_icon()
+	
+
+func _gui_input(event):
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_RIGHT \
+	and event.pressed:
+		_return_to_inventory()
 
 
 func _on_mouse_entered() -> void:
 	hovered_slot = self
 
 	# delete after handling item display differently
-	if not equipped_item:
+	if not item:
 		return
 	
 	tooltip = tooltip_scene.instantiate()
 	get_tree().current_scene.find_child("UI").add_child(tooltip)
-	tooltip.set_item(equipped_item)
+	tooltip.set_item(item)
 	call_deferred("_update_tooltip_position")
+
+
+func _on_mouse_exited() -> void:
+	if hovered_slot == self:
+		hovered_slot = null
+
+	# delete after handling item display differently
+	if tooltip:
+		tooltip.queue_free()
+		tooltip = null
 
 
 # delete after handling item display differently
@@ -97,34 +99,23 @@ func _update_tooltip_position():
 		tooltip.global_position = pos
 
 
-func _gui_input(event):
-	if event is InputEventMouseButton \
-	and event.button_index == MOUSE_BUTTON_RIGHT \
-	and event.pressed:
-		_unequip()
-
-
-func _on_mouse_exited() -> void:
-	if hovered_slot == self:
-		hovered_slot = null
-
-	# delete after handling item display differently
-	if tooltip:
-		tooltip.queue_free()
-		tooltip = null
-
-
 func _physics_process(_delta: float) -> void:
 	if hovered_slot != self and tooltip:
 		tooltip.queue_free()
 		tooltip = null
 
 
-func refresh_from_stats():
-	equipped_item = player.equipment_component.get_item(slot_type)
-
+func _on_reroll_affixes_button_pressed() -> void:
+	if not item:
+		return
+	
+	item.reroll_affixes()
 	_update_icon()
 
 
-func _on_game_loaded():
-	refresh_from_stats()
+func _on_increase_rarity_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_reset_item_button_pressed() -> void:
+	pass # Replace with function body.

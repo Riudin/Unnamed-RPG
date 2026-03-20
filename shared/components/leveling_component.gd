@@ -22,6 +22,8 @@ func _ready():
 	assert(level_table != null, "assign a LevelTable resource")
 
 	SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
+
+	SaveManager.game_loaded.connect(_on_game_loaded)
  
 
 func add_xp(amount: int) -> void:
@@ -50,3 +52,13 @@ func _check_level_up() -> void:
 	if levels_gained > 1:
 		SignalBus.leveled_up.emit(level, levels_gained, skill_points)
 	SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
+
+
+func refresh_ui():
+	# Send the level signals with just the current values so the ui refreshes
+	SignalBus.leveled_up.emit(level, 0, 0)
+	SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
+
+
+func _on_game_loaded():
+	refresh_ui()

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="2_a3w5j"]
 
 [node name="InventorySlot" type="Control" unique_id=1860370782]
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 22.0

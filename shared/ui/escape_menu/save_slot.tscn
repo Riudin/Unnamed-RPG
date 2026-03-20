@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://xrq8fksxqgrv"]
+
+[ext_resource type="Script" uid="uid://djr8mhn5cn5mx" path="res://shared/ui/escape_menu/save_slot.gd" id="1_5umue"]
+
+[node name="SaveSlot" type="Button" unique_id=1109201392]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5umue")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

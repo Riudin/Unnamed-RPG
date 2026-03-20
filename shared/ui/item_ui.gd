@@ -62,6 +62,15 @@ func _input(event: InputEvent) -> void:
 
 			
 func _drop():
+	# check if dropped in crafting slot
+	var crafting_slot = CraftingSlot.hovered_slot
+
+	# dropped on equipment slot
+	if crafting_slot:
+		if crafting_slot.drop_item(item):
+			queue_free()
+			return
+
 	# check if dropped in equipment slot
 	var equipment_slot = EquipmentSlot.hovered_slot
 

@@ -1,15 +1,17 @@
-[gd_scene format=3 uid="uid://bd34tdxcop5he"]
+[gd_scene format=3 uid="uid://ovmxuyq7rd0j"]
 
-[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="1_hegyk"]
-[ext_resource type="Script" uid="uid://dsd1e2fn7356o" path="res://shared/ui/windows/character_screen/equipment_slot.gd" id="1_sjtbe"]
+[ext_resource type="Script" uid="uid://cyatxq1yslw3h" path="res://shared/ui/windows/character_screen/crafting_slot.gd" id="1_lcq68"]
+[ext_resource type="Texture2D" uid="uid://ey45hadwflbr" path="res://assets/slot_bg_anvil.png" id="2_dyfsw"]
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="2_k7tce"]
 
-[node name="EquipmentSlot" type="Control" unique_id=690335858]
+[node name="CraftingSlot" type="Control" unique_id=690335858]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 22.0
 offset_bottom = 22.0
-script = ExtResource("1_sjtbe")
+script = ExtResource("1_lcq68")
+slot_type_background_texture = ExtResource("2_dyfsw")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1066253770]
 custom_minimum_size = Vector2(22, 22)
@@ -19,9 +21,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_hegyk")
+texture = ExtResource("2_k7tce")
 
 [node name="ItemIcon" type="TextureRect" parent="." unique_id=448942461]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = 15

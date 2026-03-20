@@ -14,4 +14,5 @@ enum ItemType {
 	RING1,
 	RING2,
 	AMULET,
+	WINGS,
 	PET}

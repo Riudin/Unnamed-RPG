@@ -16,6 +16,7 @@ var slots := {
 	LootEnums.ItemType.RING1: null,
 	LootEnums.ItemType.RING2: null,
 	LootEnums.ItemType.AMULET: null,
+	LootEnums.ItemType.WINGS: null,
 	LootEnums.ItemType.PET: null
 }
 

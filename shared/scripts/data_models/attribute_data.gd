@@ -100,3 +100,21 @@ func get_damage_bonus_for_type(damage_type: String) -> int:
 
 func get_attack_speed() -> float:
 	return base_attack_speed + base_attack_speed * (attack_speed_pct / 100.0)
+
+
+func to_dict() -> Dictionary:
+	var data := {}
+	for p in get_property_list():
+		if p.usage & PROPERTY_USAGE_EDITOR:
+			data[p.name] = get(p.name)
+	
+	return data
+
+
+func from_dict(data: Dictionary) -> void:
+	for key in data:
+		if key == "script":
+			continue
+
+		if key in self:
+			set(key, data[key])

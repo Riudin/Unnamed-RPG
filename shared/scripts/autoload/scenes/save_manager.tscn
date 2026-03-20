@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bfkj1war3ekoq"]
+
+[ext_resource type="Script" uid="uid://bw42ovtygxt4u" path="res://shared/scripts/autoload/scenes/save_manager.gd" id="1_gnsbi"]
+[ext_resource type="PackedScene" uid="uid://xrq8fksxqgrv" path="res://shared/ui/escape_menu/save_slot.tscn" id="2_vys5h"]
+[ext_resource type="Script" uid="uid://bw3mfhiedr1nl" path="res://shared/ui/escape_menu/mode_switch.gd" id="4_okvof"]
+
+[sub_resource type="GDScript" id="GDScript_kom5y"]
+script/source = "extends CanvasLayer
+
+
+@onready var save_slots: Control = %SaveSlots
+@onready var mode_switch: Control = %ModeSwitch
+
+
+func _ready() -> void:
+	visible = false
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.keycode == KEY_ESCAPE and event.is_pressed():
+			visible = !visible
+			if visible:
+				mode_switch.visible = visible
+				save_slots.visible = not visible
+"
+
+[node name="SaveManager" type="Node" unique_id=96394719]
+script = ExtResource("1_gnsbi")
+
+[node name="SaveUI" type="CanvasLayer" parent="." unique_id=784641045]
+script = SubResource("GDScript_kom5y")
+
+[node name="SaveSlots" type="VBoxContainer" parent="SaveUI" unique_id=1155312103]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SaveSlot" parent="SaveUI/SaveSlots" unique_id=1109201392 instance=ExtResource("2_vys5h")]
+layout_mode = 2
+
+[node name="SaveSlot2" parent="SaveUI/SaveSlots" unique_id=1972022227 instance=ExtResource("2_vys5h")]
+layout_mode = 2
+
+[node name="SaveSlot3" parent="SaveUI/SaveSlots" unique_id=1502660035 instance=ExtResource("2_vys5h")]
+layout_mode = 2
+
+[node name="ModeSwitch" type="VBoxContainer" parent="SaveUI" unique_id=2087153574]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_okvof")
+
+[node name="SaveButton" type="Button" parent="SaveUI/ModeSwitch" unique_id=292806115]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="SaveUI/ModeSwitch" unique_id=852472059]
+layout_mode = 2
+text = "Load"
+
+[connection signal="pressed" from="SaveUI/ModeSwitch/SaveButton" to="SaveUI/ModeSwitch" method="_on_save_button_pressed"]
+[connection signal="pressed" from="SaveUI/ModeSwitch/LoadButton" to="SaveUI/ModeSwitch" method="_on_load_button_pressed"]
