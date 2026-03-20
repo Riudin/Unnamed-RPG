@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_5as7i")
 name_format = "Flaming %s"
+stat_name = "added_fire_damage"
 min_value = 5
 max_value = 5
 damage = ExtResource("1_x6rvn")

@@ -11,6 +11,7 @@ var tick_counter: int = 0
 var target: Node
 
 @export var damages: Array[DamageData] = []
+@export var default_damage: DamageData
 
 
 func _ready() -> void:
@@ -33,8 +34,12 @@ func _calculate_attack_interval() -> void:
 	emit_signal("progress_changed", 0.0)
 
 
-func set_damages(list: Array[DamageData]):
+func set_damages(list):
 	damages.clear()
+
+	if list == null:
+		damages = [default_damage]
+		return
 
 	for d in list:
 		damages.append(d.duplicate(true))

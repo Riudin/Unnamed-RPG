@@ -191,4 +191,5 @@ metadata/_custom_type_script = "uid://urdreyx4totx"
 unique_name_in_owner = true
 script = ExtResource("14_nuxbo")
 damages = Array[ExtResource("15_y66pm")]([ExtResource("3_5otfs")])
+default_damage = ExtResource("3_5otfs")
 metadata/_custom_type_script = "uid://casjk8xyj6crd"

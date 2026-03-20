@@ -34,6 +34,10 @@ func equip(item: ItemInstance):
 func unequip(slot):
 	var old = slots[slot]
 	slots[slot] = null
+
+	if slot == LootEnums.ItemType.WEAPON:
+		parent.attack_component.set_damages(null)
+
 	return old
 
 
