@@ -63,7 +63,7 @@ func _unequip():
 	if InventoryManager.add_item(equipped_item):
 		equipped_item = null
 		
-		player.equipment_component.unequip(slot_type)
+		player.unequip_item(slot_type)
 		player.recalculate_stats()
 
 		_update_icon()

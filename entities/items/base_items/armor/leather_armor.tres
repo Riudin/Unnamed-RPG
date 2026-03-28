@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cla5lbp1rus06"]
 
-[ext_resource type="Texture2D" uid="uid://bq62i6bu7oqn6" path="res://assets/blue_armor.png" id="1_3axa4"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="1_j37ka"]
 [ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_n4bgt"]
+[ext_resource type="Texture2D" uid="uid://d2q8tx3womp8a" path="res://assets_external/idylwilds armory/leather_jacket.png" id="2_i23v1"]
 
 [resource]
 script = ExtResource("1_n4bgt")
 name = "Leather Armor"
 type = 2
-icon = ExtResource("1_3axa4")
+icon = ExtResource("2_i23v1")
 metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

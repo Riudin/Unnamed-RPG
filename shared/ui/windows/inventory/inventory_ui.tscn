@@ -15,7 +15,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_rgc74")
 slot_scene = ExtResource("1_j7r8t")
-item_scene = ExtResource("3_1dcxe")
+item_ui_scene = ExtResource("3_1dcxe")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=490105283]
 layout_mode = 2

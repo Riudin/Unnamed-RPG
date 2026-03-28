@@ -1,0 +1,2 @@
+class_name SkillEquipmentSlot
+extends Control

@@ -3,7 +3,7 @@ extends Control
 
 
 @export var slot_scene: PackedScene
-@export var item_scene: PackedScene
+@export var item_ui_scene: PackedScene
 
 const CELL_SIZE := 22
 
@@ -21,21 +21,19 @@ func _create_slots():
 		for x in range(InventoryManager.GRID_SIZE.x):
 			var s: InventorySlot = slot_scene.instantiate()
 			s.grid_pos = Vector2i(x, y)
-			s.position = Vector2i(x, y)* CELL_SIZE
+			s.position = Vector2i(x, y) * CELL_SIZE
 			add_child(s)
 			slots.append(s)
 
 
 func spawn_item_ui(item: ItemInstance, pos: Vector2i):
-	var ui := item_scene.instantiate()
+	var ui := item_ui_scene.instantiate()
 	add_child(ui)
 
 	ui.setup(item)
 	ui.grid_pos = pos
 	ui.position = pos * CELL_SIZE
 	
-
-
 
 func _get_slot_at(pos: Vector2i) -> InventorySlot:
 	for s in slots:

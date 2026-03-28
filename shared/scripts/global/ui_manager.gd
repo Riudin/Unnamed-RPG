@@ -4,7 +4,7 @@ extends Node
 
 @onready var popup_container: Node = %PopupContainer
 @onready var battle_screen: Control = %BattleScreen
-@onready var inventory_ui: Control = %InventoryUI
+@onready var inventory_ui: Control = %InventoryScreenUI
 @onready var character_screen_ui: Control = %CharacterScreenUI
 
 # LevelUI

@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/orc_drop_table.tres" id="17_muem4"]
 [ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/slot_bg_wings.png" id="17_yq6so"]
 [ext_resource type="PackedScene" uid="uid://ovmxuyq7rd0j" path="res://shared/ui/windows/character_screen/crafting_slot.tscn" id="21_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://bvascl83m001b" path="res://shared/ui/windows/skill_screen/skill_slot.tscn" id="22_yq6so"]
 
 [node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
@@ -401,32 +402,12 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="InventorySlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=1206819025 instance=ExtResource("9_eb6dy")]
+[node name="SkillEquipmentSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=1089589105 instance=ExtResource("22_yq6so")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="InventorySlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=1939554124 instance=ExtResource("9_eb6dy")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=410790896 instance=ExtResource("9_eb6dy")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=241771413 instance=ExtResource("9_eb6dy")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=864177512 instance=ExtResource("9_eb6dy")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventoryUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1120944326]
+[node name="InventoryScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1120944326]
 unique_name_in_owner = true
 visible = false
 offset_left = 390.0
@@ -436,7 +417,7 @@ offset_bottom = 340.0
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/InventoryUI" unique_id=1941823713]
+[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/InventoryScreenUI" unique_id=1941823713]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -444,27 +425,27 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/InventoryUI/MarginContainer" unique_id=593290602]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/InventoryScreenUI/MarginContainer" unique_id=593290602]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Panel" type="Label" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer" unique_id=1925251038]
+[node name="Panel" type="Label" parent="UI/InterfaceContainer/InventoryScreenUI/MarginContainer/VBoxContainer" unique_id=1925251038]
 layout_mode = 2
 text = "This is where tabs will go"
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer" unique_id=1300235299]
+[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/InventoryScreenUI/MarginContainer/VBoxContainer" unique_id=1300235299]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="InventoryGridUI" type="Control" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/CenterContainer" unique_id=1379799651]
+[node name="InventoryUI" type="Control" parent="UI/InterfaceContainer/InventoryScreenUI/MarginContainer/VBoxContainer/CenterContainer" unique_id=1379799651]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_ya4ey")
 slot_scene = ExtResource("9_eb6dy")
-item_scene = ExtResource("10_eb6dy")
+item_ui_scene = ExtResource("10_eb6dy")
 
-[node name="InventorySlotsBorder" type="NinePatchRect" parent="UI/InterfaceContainer/InventoryUI/MarginContainer/VBoxContainer/CenterContainer" unique_id=611472216]
+[node name="InventorySlotsBorder" type="NinePatchRect" parent="UI/InterfaceContainer/InventoryScreenUI/MarginContainer/VBoxContainer/CenterContainer" unique_id=611472216]
 custom_minimum_size = Vector2(202, 268)
 layout_mode = 2
 texture = ExtResource("11_eb6dy")
@@ -476,6 +457,37 @@ patch_margin_right = 18
 patch_margin_bottom = 18
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+
+[node name="SkillScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=204247632]
+unique_name_in_owner = true
+visible = false
+offset_left = 390.0
+offset_top = 20.0
+offset_right = 620.0
+offset_bottom = 340.0
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/SkillScreenUI" unique_id=869920187]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer" unique_id=1771413768]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Label" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer" unique_id=552998034]
+layout_mode = 2
+text = "Skills"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer" unique_id=789945104]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="PopupContainer" type="Node" parent="UI" unique_id=2028271384]
 unique_name_in_owner = true
