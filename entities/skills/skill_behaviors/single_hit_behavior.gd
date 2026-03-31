@@ -2,8 +2,11 @@ class_name SingleHitBehavior
 extends SkillBehavior
 
 
-signal hit(source, target)
+func execute(context: BattleContext, skill: SkillData):
+	var instance = context.build_damage_instance(
+		skill.base_damage_sources,
+		skill.stat_modifiers
+	)
+	print("--damage instance built: ", instance)
 
-
-func execute(source, target):
-	hit.emit(source, target)
+	context.deal_damage(instance)

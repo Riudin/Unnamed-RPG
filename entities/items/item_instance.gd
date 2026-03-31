@@ -39,8 +39,8 @@ func get_color() -> Color:
 	return RARITY_COLORS[rarity]
 
 
-func get_damages() -> Array[DamageData]:
-	var result: Array[DamageData] = []
+func get_damages() -> Array[DamageSource]:
+	var result: Array[DamageSource] = []
 
 	for d in base.damages:
 		result.append(d.duplicate(true))

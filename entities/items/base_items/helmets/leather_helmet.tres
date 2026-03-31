@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://da8gr86yg5u2c"]
 
 [ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_kooia"]
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="1_pq6j0"]
-[ext_resource type="Texture2D" uid="uid://3bulbt5wogw7" path="res://assets_external/idylwilds armory/leather_cap.png" id="2_qrsog"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="1_pq6j0"]
+[ext_resource type="Texture2D" uid="uid://jq3anl0ux62q" path="res://assets/icons/equipment/leather_cap.png" id="2_pq6j0"]
 
 [resource]
 script = ExtResource("1_kooia")
 name = "Leather Cap"
 type = 3
-icon = ExtResource("2_qrsog")
+icon = ExtResource("2_pq6j0")
 metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

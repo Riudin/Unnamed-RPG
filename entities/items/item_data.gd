@@ -6,4 +6,4 @@ extends Resource
 @export var type: LootEnums.ItemType
 @export var icon: Texture2D
 
-@export var damages: Array[DamageData]
+@export var damages: Array[DamageSource]

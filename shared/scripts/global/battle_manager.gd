@@ -7,7 +7,7 @@ extends Node
 
 # Combatant entities
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
-var current_opponent = null
+#var current_opponent = null
 
 
 func _ready() -> void:
@@ -16,8 +16,7 @@ func _ready() -> void:
 
 
 func start_battle(enemy):
-	current_opponent = enemy
-
+	#current_opponent = enemy
 	player.health_component.damage_popup_position = battle_screen.player_damage_popup_marker.global_position
 	enemy.health_component.damage_popup_position = battle_screen.enemy_damage_popup_marker.global_position
 

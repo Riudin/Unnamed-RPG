@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://cyp3bjll45wav"]
+
+[ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="1_a6xdi"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="1_go8wm"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="2_a6xdi"]
+[ext_resource type="Script" uid="uid://cafjthvgkr7t3" path="res://entities/skills/skill_behaviors/single_hit_behavior.gd" id="2_d5j1j"]
+[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="5_qg0xh"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="5_u7vvt"]
+
+[sub_resource type="Resource" id="Resource_u7vvt"]
+script = ExtResource("1_go8wm")
+min_damage = 10.0
+max_damage = 15.0
+metadata/_custom_type_script = "uid://cqocpb582lhcq"
+
+[sub_resource type="Resource" id="Resource_tucqm"]
+script = ExtResource("2_d5j1j")
+metadata/_custom_type_script = "uid://cafjthvgkr7t3"
+
+[sub_resource type="Resource" id="Resource_6d1ge"]
+script = ExtResource("5_qg0xh")
+crit_chance = 0.2
+metadata/_custom_type_script = "uid://c25esxltl1dpn"
+
+[resource]
+script = ExtResource("2_a6xdi")
+skill_name = "Heavy Blow"
+skill_icon = ExtResource("5_u7vvt")
+tags = Array[int]([0, 2])
+base_damage_sources = Array[ExtResource("1_go8wm")]([SubResource("Resource_u7vvt")])
+stat_modifiers = SubResource("Resource_6d1ge")
+behaviors = Array[ExtResource("1_a6xdi")]([SubResource("Resource_tucqm")])
+base_speed = 0.4
+metadata/_custom_type_script = "uid://diqj52rxjhysk"

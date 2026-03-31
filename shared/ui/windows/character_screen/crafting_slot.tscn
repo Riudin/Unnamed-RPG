@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ovmxuyq7rd0j"]
 
 [ext_resource type="Script" uid="uid://cyatxq1yslw3h" path="res://shared/ui/windows/character_screen/crafting_slot.gd" id="1_lcq68"]
-[ext_resource type="Texture2D" uid="uid://ey45hadwflbr" path="res://assets/slot_bg_anvil.png" id="2_dyfsw"]
-[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="2_k7tce"]
+[ext_resource type="Texture2D" uid="uid://ey45hadwflbr" path="res://assets/ui/inventory/slot_bg_anvil.png" id="2_dyfsw"]
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/ui/inventory/inventory_slot.png" id="2_k7tce"]
 
 [node name="CraftingSlot" type="Control" unique_id=690335858]
 custom_minimum_size = Vector2(22, 22)

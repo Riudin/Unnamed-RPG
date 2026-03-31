@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/player.gd" id="1_qrd5i"]
-[ext_resource type="Texture2D" uid="uid://c12kvg6kbiha6" path="res://entities/characters/player/assets/Soldier.png" id="2_0s3gd"]
 [ext_resource type="Resource" uid="uid://byykxl7u0k3a7" path="res://entities/characters/player/player_attributes.tres" id="2_mnavw"]
 [ext_resource type="Script" uid="uid://ttshiel80die" path="res://entities/characters/player/sprite_2d.gd" id="3_2jd2e"]
-[ext_resource type="Resource" uid="uid://csxj1aee8r6q" path="res://entities/characters/player/player_default_damage_data.tres" id="3_5otfs"]
+[ext_resource type="Texture2D" uid="uid://dix24437mr0vl" path="res://assets/characters/player/Soldier.png" id="3_ou7en"]
 [ext_resource type="Script" uid="uid://bua6rtv8t5825" path="res://shared/components/input_component.gd" id="4_wqnow"]
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="6_a3s12"]
@@ -15,7 +14,10 @@
 [ext_resource type="Resource" uid="uid://6f5fkkj5jj7r" path="res://entities/characters/player/player_level_table.tres" id="12_mnavw"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="13_mnavw"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="14_nuxbo"]
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="15_y66pm"]
+[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="15_ou7en"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="16_np65q"]
+[ext_resource type="Resource" uid="uid://ccsn7qcjcvh8p" path="res://entities/skills/skill_resources/fireball.tres" id="17_afbhy"]
+[ext_resource type="Resource" uid="uid://csriyw7thspcs" path="res://entities/skills/skill_resources/ice_shards.tres" id="18_ou7en"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 3.0
@@ -110,6 +112,10 @@ _data = {
 &"walk": SubResource("Animation_sybl7")
 }
 
+[sub_resource type="Resource" id="Resource_lhopy"]
+script = ExtResource("15_ou7en")
+metadata/_custom_type_script = "uid://c25esxltl1dpn"
+
 [node name="Player" type="CharacterBody2D" unique_id=1391985060 groups=["player"]]
 z_index = 2
 y_sort_enabled = true
@@ -120,7 +126,7 @@ attribute_data = ExtResource("2_mnavw")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643251234]
 unique_name_in_owner = true
 position = Vector2(0, -4)
-texture = ExtResource("2_0s3gd")
+texture = ExtResource("3_ou7en")
 script = ExtResource("3_2jd2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341241969]
@@ -190,6 +196,6 @@ metadata/_custom_type_script = "uid://urdreyx4totx"
 [node name="AttackComponent" type="Node" parent="." unique_id=559986507]
 unique_name_in_owner = true
 script = ExtResource("14_nuxbo")
-damages = Array[ExtResource("15_y66pm")]([ExtResource("3_5otfs")])
-default_damage = ExtResource("3_5otfs")
+base_stats = SubResource("Resource_lhopy")
+skills = Array[ExtResource("16_np65q")]([ExtResource("17_afbhy"), ExtResource("18_ou7en")])
 metadata/_custom_type_script = "uid://casjk8xyj6crd"

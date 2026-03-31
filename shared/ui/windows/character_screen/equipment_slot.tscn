@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bd34tdxcop5he"]
 
-[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="1_hegyk"]
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/ui/inventory/inventory_slot.png" id="1_hegyk"]
 [ext_resource type="Script" uid="uid://dsd1e2fn7356o" path="res://shared/ui/windows/character_screen/equipment_slot.gd" id="1_sjtbe"]
 
 [node name="EquipmentSlot" type="Control" unique_id=690335858]

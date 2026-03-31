@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AffixData" format=3 uid="uid://p6at7gmikrg3"]
 
 [ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_5as7i"]
-[ext_resource type="Resource" uid="uid://d0x76g4vq6h5o" path="res://entities/items/affixes/prefixes/damage_data/fire_damage.tres" id="1_x6rvn"]
+[ext_resource type="Resource" uid="uid://d0x76g4vq6h5o" path="res://entities/items/affixes/prefixes/damage_source/fire_damage.tres" id="1_x6rvn"]
 
 [resource]
 script = ExtResource("1_5as7i")

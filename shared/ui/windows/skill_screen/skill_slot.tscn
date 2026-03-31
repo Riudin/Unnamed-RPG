@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvascl83m001b"]
 
 [ext_resource type="Script" uid="uid://cdkxobk7frl6g" path="res://shared/ui/windows/skill_screen/skill_slot.gd" id="1_upc3x"]
-[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="3_vlhp4"]
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/ui/inventory/inventory_slot.png" id="3_vlhp4"]
 
 [node name="SkillSlot" type="Control" unique_id=690335858]
 custom_minimum_size = Vector2(22, 22)

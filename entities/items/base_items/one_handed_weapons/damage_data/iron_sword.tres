@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DamageData" format=3 uid="uid://daitfipqd2wmb"]
-
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="1_uu7u3"]
-
-[resource]
-script = ExtResource("1_uu7u3")
-base_min_damage = 10.0
-base_max_damage = 15.0
-metadata/_custom_type_script = "uid://cqocpb582lhcq"

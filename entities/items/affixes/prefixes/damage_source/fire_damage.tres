@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DamageSource" format=3 uid="uid://d0x76g4vq6h5o"]
+
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="1_ac66l"]
+
+[resource]
+script = ExtResource("1_ac66l")
+damage_type = "Fire"
+base_min_damage = 5.0
+base_max_damage = 5.0
+applies_dot = true
+dot_id = "Burn"
+dot_tick_damage = 2.0
+dot_tick_interval = 0.5
+dot_duration = 4.0
+metadata/_custom_type_script = "uid://cqocpb582lhcq"

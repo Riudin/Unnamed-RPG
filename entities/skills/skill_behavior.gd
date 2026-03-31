@@ -1,6 +1,8 @@
 class_name SkillBehavior
 extends Resource
 
+### Super class of different behaviors. They define how a skill behaves when triggered, e.g. single hit, multi hat, apply effect, etc.
 
-func execute(_source, _target):
-	pass
+
+func execute(context: BattleContext, skill: SkillData):
+	push_error("execute() not implemented")

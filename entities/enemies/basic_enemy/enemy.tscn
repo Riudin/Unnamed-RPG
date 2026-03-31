@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_6yg1j"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="7_g5hbx"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="8_rkfia"]
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_data.gd" id="9_s2dw5"]
-[ext_resource type="Resource" uid="uid://c0d6ey0nglsvg" path="res://entities/enemies/orc_damage_data.tres" id="10_wan4s"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="9_4ad0b"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="9_s2dw5"]
+[ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="11_yo0qu"]
+[ext_resource type="Script" uid="uid://cafjthvgkr7t3" path="res://entities/skills/skill_behaviors/single_hit_behavior.gd" id="12_mpr82"]
+[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="13_lm8q3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plvsb"]
 radius = 5.0990195
@@ -104,6 +107,33 @@ _data = {
 &"walk": SubResource("Animation_sybl7")
 }
 
+[sub_resource type="Resource" id="Resource_4ad0b"]
+script = ExtResource("13_lm8q3")
+metadata/_custom_type_script = "uid://c25esxltl1dpn"
+
+[sub_resource type="Resource" id="Resource_qgdjy"]
+script = ExtResource("9_s2dw5")
+metadata/_custom_type_script = "uid://cqocpb582lhcq"
+
+[sub_resource type="Resource" id="Resource_tucqm"]
+script = ExtResource("12_mpr82")
+metadata/_custom_type_script = "uid://cafjthvgkr7t3"
+
+[sub_resource type="Resource" id="Resource_6d1ge"]
+script = ExtResource("13_lm8q3")
+crit_chance = 0.2
+metadata/_custom_type_script = "uid://c25esxltl1dpn"
+
+[sub_resource type="Resource" id="Resource_pq1w1"]
+script = ExtResource("9_4ad0b")
+skill_name = "Heavy Blow"
+tags = Array[int]([0, 2])
+base_damage_sources = Array[ExtResource("9_s2dw5")]([SubResource("Resource_qgdjy")])
+stat_modifiers = SubResource("Resource_6d1ge")
+behaviors = Array[ExtResource("11_yo0qu")]([SubResource("Resource_tucqm")])
+base_speed = 0.4
+metadata/_custom_type_script = "uid://diqj52rxjhysk"
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1910956753]
 z_index = 2
 y_sort_enabled = true
@@ -162,7 +192,8 @@ metadata/_custom_type_script = "uid://urdreyx4totx"
 [node name="AttackComponent" type="Node" parent="." unique_id=1471861542]
 unique_name_in_owner = true
 script = ExtResource("8_rkfia")
-damages = Array[ExtResource("9_s2dw5")]([ExtResource("10_wan4s")])
+base_stats = SubResource("Resource_4ad0b")
+skills = Array[ExtResource("9_4ad0b")]([SubResource("Resource_pq1w1")])
 metadata/_custom_type_script = "uid://casjk8xyj6crd"
 
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]

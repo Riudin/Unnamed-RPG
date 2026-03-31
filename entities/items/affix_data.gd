@@ -9,7 +9,7 @@ extends Resource
 @export var min_value: int = 1
 @export var max_value: int = 10
 
-@export var damage: DamageData
+@export var damage: DamageSource
 
 
 func roll_value() -> float:

@@ -19,15 +19,16 @@ func _ready() -> void:
 	health = parent.attribute_data.get_total_health()
 
 
-func take_damage(mitigated, damage_data: DamageData, is_crit):
-	health -= mitigated
+func take_damage(damage, is_crit):
+	health -= damage
 	health = clamp(health, 0.0, max_health)
 	emit_signal("health_changed", health)
 
 	DamagePopupManager.spawn(
-		mitigated,
+		damage,
 		damage_popup_position,
-		DamagePopupManager.damage_colors[damage_data.damage_type],
+		#DamagePopupManager.damage_colors[damage_source.damage_type],
+		Color.WHITE,
 		is_crit
 	)
 

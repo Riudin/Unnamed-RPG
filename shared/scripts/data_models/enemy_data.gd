@@ -6,5 +6,5 @@ extends Resource
 @export var texture: Texture2D
 
 @export var attribute_data: AttributeData
-@export var damage_data: DamageData
+@export var damage_source: DamageSource
 @export var drop_table: ItemDropTable

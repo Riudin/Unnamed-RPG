@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var base_attribute_data: AttributeData
 @export var attribute_data: AttributeData # This is currently set in inspector because leveling component throws an error otherwise. fix later
-var damages: Array[DamageData] = []
+var damages: Array[DamageSource] = []
 
 @onready var animation_component: AnimationComponent = %AnimationComponent
 @onready var input_component: InputComponent = %InputComponent
