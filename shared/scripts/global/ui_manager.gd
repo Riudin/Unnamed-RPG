@@ -6,6 +6,7 @@ extends Node
 @onready var battle_screen: Control = %BattleScreen
 @onready var inventory_ui: Control = %InventoryScreenUI
 @onready var character_screen_ui: Control = %CharacterScreenUI
+@onready var skill_screen_ui: Control = %SkillScreenUI
 
 # LevelUI
 @onready var xp_bar: TextureProgressBar = %XPBar
@@ -26,11 +27,14 @@ func _ready() -> void:
 
 # Handling Inputs
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory"):
+	if event.is_action_pressed("open_inventory"):
 		inventory_ui.visible = !inventory_ui.visible
 
-	if event.is_action_pressed("character_screen"):
+	if event.is_action_pressed("open_character_screen"):
 		character_screen_ui.visible = !character_screen_ui.visible
+
+	if event.is_action_pressed("open_skill_screen"):
+		skill_screen_ui.visible = !skill_screen_ui.visible
 
 
 ### Handling Combat

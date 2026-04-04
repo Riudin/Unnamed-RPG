@@ -488,7 +488,126 @@ text = "Skills"
 layout_mode = 2
 columns = 8
 script = ExtResource("27_fv21b")
-slot_scene = ExtResource("22_yq6so")
+
+[node name="SkillSlot" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=908210823 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot2" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=998525391 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot3" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=296595647 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot4" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=529158439 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot5" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1067809843 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot6" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=2132821029 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot7" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1446742751 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot8" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=679118992 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot9" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=2145482603 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot10" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1518399792 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot11" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1670449176 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot12" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=726158347 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot13" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=601139488 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot14" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1174817667 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot15" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1375989569 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot16" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1503430024 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot17" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=121057803 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot18" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1138375406 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot19" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1546418139 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot20" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1390275881 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot21" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1512086703 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot22" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=2054000480 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot23" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1349059040 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot24" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1350867993 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot25" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=766282500 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot26" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=419391745 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot27" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1131277899 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot28" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1697929429 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot29" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=184536883 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot30" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=696100828 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot31" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1348503313 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot32" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=849829374 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot33" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1218227937 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot34" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1456333637 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot35" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1773221914 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot36" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=346517755 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot37" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=2094817098 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot38" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=1740619295 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot39" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=2058319455 instance=ExtResource("22_yq6so")]
+layout_mode = 2
+
+[node name="SkillSlot40" parent="UI/InterfaceContainer/SkillScreenUI/MarginContainer/VBoxContainer/SkillDisplayUI" unique_id=325513131 instance=ExtResource("22_yq6so")]
+layout_mode = 2
 
 [node name="PopupContainer" type="Node" parent="UI" unique_id=2028271384]
 unique_name_in_owner = true

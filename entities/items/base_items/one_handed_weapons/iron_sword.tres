@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://p5wny18hkmk6"]
 
 [ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_7vv2j"]
-[ext_resource type="Texture2D" uid="uid://by37cngssahw4" path="res://assets/icons/weapons/sword.png" id="1_8mrsc"]
 [ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="1_p6qg7"]
-[ext_resource type="Resource" uid="uid://daitfipqd2wmb" path="res://entities/items/base_items/one_handed_weapons/damage_data/iron_sword.tres" id="2_8ame4"]
+[ext_resource type="Texture2D" uid="uid://flr6a0md0n4f" path="res://assets/icons/weapons/sword_32p.png" id="2_gkcit"]
 
 [resource]
 script = ExtResource("1_7vv2j")
 name = "Iron Sword"
-icon = ExtResource("1_8mrsc")
-damages = Array[ExtResource("1_p6qg7")]([ExtResource("2_8ame4")])
+icon = ExtResource("2_gkcit")
 metadata/_custom_type_script = "uid://bhulkw7ubbvnu"
