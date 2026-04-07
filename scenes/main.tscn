@@ -28,8 +28,9 @@
 [ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/orc_drop_table.tres" id="17_muem4"]
 [ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/ui/inventory/slot_bg_wings.png" id="17_yq6so"]
 [ext_resource type="PackedScene" uid="uid://ovmxuyq7rd0j" path="res://shared/ui/windows/character_screen/crafting_slot.tscn" id="21_2f3dj"]
-[ext_resource type="PackedScene" uid="uid://bvascl83m001b" path="res://shared/ui/windows/skill_screen/skill_slot.tscn" id="22_yq6so"]
-[ext_resource type="Script" uid="uid://cf5gwatl0xgdv" path="res://shared/ui/windows/skill_screen/skill_display_ui.gd" id="27_fv21b"]
+[ext_resource type="Script" uid="uid://br42kaxbnvlef" path="res://shared/ui/windows/character_screen/skill_bar.gd" id="22_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://bvascl83m001b" path="res://shared/ui/windows/skill_screen/depr_skill_screen_slot.tscn" id="22_yq6so"]
+[ext_resource type="Script" uid="uid://cf5gwatl0xgdv" path="res://shared/ui/windows/skill_screen/depr_skill_display_ui.gd" id="27_fv21b"]
 
 [node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
@@ -146,7 +147,6 @@ offset_top = 20.0
 offset_right = 250.0
 offset_bottom = 340.0
 size_flags_horizontal = 3
-mouse_filter = 2
 script = ExtResource("8_trceg")
 player = NodePath("../../../World/Player")
 
@@ -215,8 +215,6 @@ mouse_filter = 2
 
 [node name="WeaponSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=690335858 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("10_yc10j")
 
@@ -225,9 +223,7 @@ layout_mode = 2
 
 [node name="PetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1240349119 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-slot_type = 11
+slot_type = 10
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_vxglm")
 
@@ -238,16 +234,12 @@ mouse_filter = 2
 
 [node name="Ring1Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1771888230 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 7
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_y6deb")
 
 [node name="GlovesSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1395101949 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 4
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("12_og1vs")
@@ -262,24 +254,18 @@ mouse_filter = 2
 
 [node name="HelmetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1943579368 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 3
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_jscy8")
 
 [node name="ArmorSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=517960564 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 2
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("10_muem4")
 
 [node name="BeltSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1393569912 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 6
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("16_2f3dj")
@@ -289,32 +275,25 @@ layout_mode = 2
 
 [node name="WingsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1187576450 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-slot_type = 10
+slot_type = 9
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("17_yq6so")
 
 [node name="AmuletSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1218695085 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-slot_type = 9
+slot_type = 8
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("15_2wyq8")
 
 [node name="Ring2Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=925026479 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-slot_type = 8
+slot_type = 7
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_y6deb")
+slot_index = 1
 
 [node name="BootsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1236920918 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 5
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("14_y6deb")
@@ -334,8 +313,6 @@ mouse_filter = 2
 
 [node name="OffhandSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=1543856037 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 slot_type = 1
 player = NodePath("../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("13_pm3ni")
@@ -398,15 +375,41 @@ mouse_filter = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills" unique_id=1580626685]
+[node name="SkillBar" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills" unique_id=1580626685]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
+script = ExtResource("22_qkpxi")
+slot_scene = ExtResource("10_a8y0u")
 
-[node name="SkillEquipmentSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/HBoxContainer" unique_id=1089589105 instance=ExtResource("22_yq6so")]
+[node name="SkillSlot1" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/SkillBar" unique_id=1854342854 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+slot_type = 11
+player = NodePath("../../../../../../../../World/Player")
+
+[node name="SkillSlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/SkillBar" unique_id=193908012 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+slot_type = 11
+player = NodePath("../../../../../../../../World/Player")
+slot_index = 1
+
+[node name="SkillSlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/SkillBar" unique_id=969830001 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+slot_type = 11
+player = NodePath("../../../../../../../../World/Player")
+slot_index = 2
+
+[node name="SkillSlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/SkillBar" unique_id=1513153986 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+slot_type = 11
+player = NodePath("../../../../../../../../World/Player")
+slot_index = 3
+
+[node name="SkillSlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Skills/SkillBar" unique_id=46264734 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+layout_mode = 2
+slot_type = 11
+player = NodePath("../../../../../../../../World/Player")
+slot_index = 4
 
 [node name="InventoryScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1120944326]
 unique_name_in_owner = true
@@ -416,7 +419,6 @@ offset_top = 20.0
 offset_right = 620.0
 offset_bottom = 340.0
 size_flags_horizontal = 3
-mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/InventoryScreenUI" unique_id=1941823713]
 layout_mode = 2
@@ -461,12 +463,12 @@ axis_stretch_vertical = 2
 
 [node name="SkillScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=204247632]
 unique_name_in_owner = true
+visible = false
 offset_left = 390.0
 offset_top = 20.0
 offset_right = 620.0
 offset_bottom = 340.0
 size_flags_horizontal = 3
-mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/SkillScreenUI" unique_id=869920187]
 layout_mode = 2

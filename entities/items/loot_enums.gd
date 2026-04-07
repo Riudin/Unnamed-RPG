@@ -11,8 +11,8 @@ enum ItemType {
 	GLOVES,
 	BOOTS,
 	BELT,
-	RING1,
-	RING2,
+	RING,
 	AMULET,
 	WINGS,
-	PET}
+	PET,
+	SKILL}

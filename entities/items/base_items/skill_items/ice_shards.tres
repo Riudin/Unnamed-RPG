@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d4nhjkh1mi4xa"]
+
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_tmy5u"]
+[ext_resource type="Texture2D" uid="uid://byw6imm61hrft" path="res://assets/icons/skill_gems/blue_gem.png" id="1_wd2wg"]
+[ext_resource type="Resource" uid="uid://csriyw7thspcs" path="res://entities/skills/skill_data/ice_shards.tres" id="3_4ydmg"]
+
+[resource]
+script = ExtResource("1_tmy5u")
+name = "Ice Shards"
+type = 11
+icon = ExtResource("1_wd2wg")
+skill_data = ExtResource("3_4ydmg")
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

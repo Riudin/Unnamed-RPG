@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var attribute_data: AttributeData # This is currently set in inspector because leveling component throws an error otherwise. fix later
 var damages: Array[DamageSource] = []
 
+var equipped_skills: Array[SkillData] = []
+
 @onready var animation_component: AnimationComponent = %AnimationComponent
 @onready var input_component: InputComponent = %InputComponent
 @onready var navigation_component: NavigationComponent = %NavigationComponent
@@ -24,6 +26,7 @@ func _ready() -> void:
 	navigation_component.connect("navigation_finished", _on_navigation_finished)
 
 	recalculate_stats()
+	recalculate_skills()
 
 # func _physics_process(delta: float) -> void:
 # 	print("Fire res: ", attribute_data.fire_resist_pct)
@@ -70,13 +73,20 @@ func recalculate_stats():
 					push_warning("Unknown stat: %s" % stat_name)
 
 
-func equip_item(item: ItemInstance):
-	if equipment_component:
-		equipment_component.equip(item)
-		recalculate_stats()
+func recalculate_skills():
+	equipped_skills = equipment_component.get_all_skills()
+	attack_component.set_skills(equipped_skills)
 
 
-func unequip_item(slot: LootEnums.ItemType):
+func equip_item(item: ItemInstance, slot_index: int = 0):
 	if equipment_component:
-		equipment_component.unequip(slot)
+		equipment_component.equip(item, slot_index)
 		recalculate_stats()
+		recalculate_skills()
+
+
+func unequip_item(slot: LootEnums.ItemType, slot_index: int = 0):
+	if equipment_component:
+		equipment_component.unequip(slot, slot_index)
+		recalculate_stats()
+		recalculate_skills()

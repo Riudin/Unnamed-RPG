@@ -27,13 +27,13 @@ func resolve(instance: DamageInstance, is_crit: bool) -> float:
 
 		total_damage += scaled
 
-		prints("----base dmg:", base, "(", source.min_damage, source.max_damage, ")")
-		prints("----increased by:", increased, "new dmg:", scaled)
+		#prints("----base dmg:", base, "(", source.min_damage, source.max_damage, ")")
+		#prints("----increased by:", increased, "new dmg:", scaled)
 
 	# Crit multiplies all damage from this instance
 	if is_crit:
 		total_damage *= instance.stats.crit_multiplier
-		prints("----critical hit! Damage increased by", instance.stats.crit_multiplier, "new dmg:", total_damage)
+		#prints("----critical hit! Damage increased by", instance.stats.crit_multiplier, "new dmg:", total_damage)
 
 	
 	return total_damage

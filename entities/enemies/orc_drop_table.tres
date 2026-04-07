@@ -5,12 +5,18 @@
 [ext_resource type="Resource" uid="uid://cla5lbp1rus06" path="res://entities/items/base_items/armor/leather_armor.tres" id="3_o2txx"]
 [ext_resource type="Script" uid="uid://do1qvhnlso3h6" path="res://entities/items/item_drop_table.gd" id="4_1bquh"]
 [ext_resource type="Resource" uid="uid://da8gr86yg5u2c" path="res://entities/items/base_items/helmets/leather_helmet.tres" id="4_i8k0r"]
+[ext_resource type="Resource" uid="uid://13oakuylsa27" path="res://entities/items/base_items/skill_items/fireball.tres" id="5_o2txx"]
+[ext_resource type="Resource" uid="uid://d4nhjkh1mi4xa" path="res://entities/items/base_items/skill_items/ice_shards.tres" id="6_nx4m1"]
+[ext_resource type="Resource" uid="uid://7w1iq5rtswq8" path="res://entities/items/base_items/skill_items/heavy_blow.tres" id="7_ibsyu"]
 
 [resource]
 script = ExtResource("4_1bquh")
 item_weights = Dictionary[ExtResource("1_c88yf"), int]({
 ExtResource("2_i8k0r"): 5,
 ExtResource("3_o2txx"): 5,
-ExtResource("4_i8k0r"): 5
+ExtResource("4_i8k0r"): 5,
+ExtResource("5_o2txx"): 10,
+ExtResource("6_nx4m1"): 10,
+ExtResource("7_ibsyu"): 10
 })
 metadata/_custom_type_script = "uid://do1qvhnlso3h6"

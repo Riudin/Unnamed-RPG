@@ -34,8 +34,13 @@ func generate_loot(drop_table: ItemDropTable) -> ItemInstance:
 	loot.base = base_item
 	loot.rarity = rarity
 
+	# If its a skill, pass skill data to item instance
+	if base_item.skill_data != null:
+		loot.skill_data = base_item.skill_data
+		loot.rarity = LootEnums.Rarity.COMMON # for now only common skills
+
 	# Generate Affixes based on Rarity
-	_generate_affixes(loot, rarity)
+	_generate_affixes(loot, loot.rarity)
 	_roll_affix_values(loot)
 
 	return loot

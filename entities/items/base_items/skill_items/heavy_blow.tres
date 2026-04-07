@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://7w1iq5rtswq8"]
+
+[ext_resource type="Texture2D" uid="uid://qr6cfkpsmre1" path="res://assets/icons/skill_gems/red_gem.png" id="1_31i1e"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_lmx02"]
+[ext_resource type="Resource" uid="uid://cyp3bjll45wav" path="res://entities/skills/skill_data/heavy_blow.tres" id="3_eyqw6"]
+
+[resource]
+script = ExtResource("1_lmx02")
+name = "Heavy Blow"
+type = 11
+icon = ExtResource("1_31i1e")
+skill_data = ExtResource("3_eyqw6")
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

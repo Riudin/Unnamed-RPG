@@ -1,3 +1,4 @@
+@tool # just so we can see the icons
 class_name EquipmentSlot
 extends Control
 
@@ -16,6 +17,7 @@ var tooltip: ItemTooltip # delete after handling item display differently
 static var hovered_slot: EquipmentSlot = null
 
 var equipped_item: ItemInstance
+@export var slot_index: int = 0 # For multi-slot items (rings, skills)
 
 
 func _ready() -> void:
@@ -44,10 +46,9 @@ func drop_item(item: ItemInstance) -> bool:
 	equipped_item = item
 	_update_icon()
 
-	player.equip_item(item)
+	player.equip_item(item, slot_index)
 	
 	# delete after handling item display differently
-	# tooltip_diplayable = true
 	if tooltip:
 		tooltip.queue_free()
 		tooltip = null
@@ -63,7 +64,7 @@ func _unequip():
 	if InventoryManager.add_item(equipped_item):
 		equipped_item = null
 		
-		player.unequip_item(slot_type)
+		player.unequip_item(slot_type, slot_index)
 		player.recalculate_stats()
 
 		_update_icon()
@@ -121,7 +122,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func refresh_from_stats():
-	equipped_item = player.equipment_component.get_item(slot_type)
+	equipped_item = player.equipment_component.get_item(slot_type, slot_index)
 
 	_update_icon()
 

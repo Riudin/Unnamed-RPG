@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://13oakuylsa27"]
+
+[ext_resource type="Texture2D" uid="uid://byw6imm61hrft" path="res://assets/icons/skill_gems/blue_gem.png" id="1_mx6kl"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_vngii"]
+[ext_resource type="Resource" uid="uid://ccsn7qcjcvh8p" path="res://entities/skills/skill_data/fireball.tres" id="3_3nyo2"]
+
+[resource]
+script = ExtResource("1_vngii")
+name = "Fireball"
+type = 11
+icon = ExtResource("1_mx6kl")
+skill_data = ExtResource("3_3nyo2")
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

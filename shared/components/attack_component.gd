@@ -14,7 +14,8 @@ var target: Node
 @export var base_stats: StatBlock
 
 var skill_index := 0
-@export var skills: Array[SkillData] # TODO: this should not be an export. just for debugging
+#var skills: Dictionary[int, SkillData] = {}
+var skills: Array[SkillData]: set = set_skills
 
 # @export var damages: Array[DamageSource] = []
 # @export var default_damage: DamageSource
@@ -23,7 +24,25 @@ var skill_index := 0
 func _ready() -> void:
 	await get_parent().ready
 	TickManager.connect("tick", _on_tick)
-	_calculate_attack_interval(skills[skill_index].base_speed)
+	#SignalBus.skills_changed.connect(set_skills)
+
+
+func set_skills(new_skills: Array[SkillData]):
+	skills = new_skills
+	skill_index = 0
+
+	# make sure skill index references the first equipped skill
+	for i in skills.size():
+		if skills[skill_index] == null:
+			skill_index = (skill_index + 1) % skills.size()
+	
+	# if no skill is equipped TODO: use default attack
+	if skills[skill_index] == null:
+		print("no skill equipped")
+		_calculate_attack_interval(0.0) # TODO: replace with default attack
+	else:
+		print("skill index: ", skill_index)
+		_calculate_attack_interval(skills[skill_index].base_speed)
 
 
 func _calculate_attack_interval(skill_speed: float) -> void:
@@ -92,5 +111,9 @@ func trigger_attack():
 
 	# rotate to next skill and loop back to beginning
 	skill_index = (skill_index + 1) % skills.size()
+
+	# rotate over empty slots
+	while skills[skill_index] == null:
+		skill_index = (skill_index + 1) % skills.size()
 
 	_calculate_attack_interval(skills[skill_index].base_speed)

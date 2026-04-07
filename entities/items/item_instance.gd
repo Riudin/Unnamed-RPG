@@ -5,6 +5,8 @@ extends Resource
 @export var base: ItemData
 @export var rarity: LootEnums.Rarity
 
+@export var skill_data: SkillData = null
+
 @export var prefixes: Array[AffixData] = []
 @export var suffixes: Array[AffixData] = []
 

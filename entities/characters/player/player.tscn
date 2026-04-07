@@ -15,9 +15,6 @@
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="13_mnavw"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="14_nuxbo"]
 [ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="15_ou7en"]
-[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="16_np65q"]
-[ext_resource type="Resource" uid="uid://ccsn7qcjcvh8p" path="res://entities/skills/skill_resources/fireball.tres" id="17_afbhy"]
-[ext_resource type="Resource" uid="uid://csriyw7thspcs" path="res://entities/skills/skill_resources/ice_shards.tres" id="18_ou7en"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 3.0
@@ -197,5 +194,4 @@ metadata/_custom_type_script = "uid://urdreyx4totx"
 unique_name_in_owner = true
 script = ExtResource("14_nuxbo")
 base_stats = SubResource("Resource_lhopy")
-skills = Array[ExtResource("16_np65q")]([ExtResource("17_afbhy"), ExtResource("18_ou7en")])
 metadata/_custom_type_script = "uid://casjk8xyj6crd"

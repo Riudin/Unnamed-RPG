@@ -5,7 +5,8 @@ var skills: Array[SkillData] = []
 
 
 func _ready() -> void:
-	get_skills_from_folder("res://entities/skills/skill_resources/")
+	pass
+	#get_skills_from_folder("res://entities/skills/skill_resources/")
 
 
 func get_skills_from_folder(folder_path):

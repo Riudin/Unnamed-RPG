@@ -9,6 +9,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 22.0
 offset_bottom = 22.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_sjtbe")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1066253770]
