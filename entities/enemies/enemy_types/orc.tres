@@ -1,16 +1,57 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://b2juo74fyf2wm"]
 
+[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/attribute_data.gd" id="1_5iiq5"]
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="1_26l5q"]
-[ext_resource type="Resource" uid="uid://1elbkoi4wvga" path="res://entities/enemies/enemy_types/attributes/orc_attributes.tres" id="1_gpld7"]
 [ext_resource type="Texture2D" uid="uid://cmkfsgs5de5tx" path="res://entities/enemies/basic_enemy/assets/Orc.png" id="2_0a1bf"]
-[ext_resource type="Resource" uid="uid://c0d6ey0nglsvg" path="res://entities/enemies/orc_damage_source.tres" id="2_w5aoc"]
+[ext_resource type="Resource" uid="uid://b6cx6dkblgem4" path="res://entities/enemies/enemy_types/attributes/orc_stats.tres" id="2_ubgyr"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="3_qq61c"]
 [ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/orc_drop_table.tres" id="3_w5aoc"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="4_5iiq5"]
+[ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="5_ubgyr"]
+[ext_resource type="Script" uid="uid://cafjthvgkr7t3" path="res://entities/skills/skill_behaviors/single_hit_behavior.gd" id="6_p4b8b"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="7_ot5ov"]
+[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="8_q6gly"]
+
+[sub_resource type="Resource" id="Resource_ubgyr"]
+script = ExtResource("1_5iiq5")
+strength = 5.0
+dexterity = 5.0
+intelligence = 5.0
+vitality = 5.0
+metadata/_custom_type_script = "uid://cahthes1o5rpw"
+
+[sub_resource type="Resource" id="Resource_gil4y"]
+script = ExtResource("4_5iiq5")
+min_damage = 5.0
+max_damage = 7.0
+metadata/_custom_type_script = "uid://cqocpb582lhcq"
+
+[sub_resource type="Resource" id="Resource_tucqm"]
+script = ExtResource("6_p4b8b")
+metadata/_custom_type_script = "uid://cafjthvgkr7t3"
+
+[sub_resource type="Resource" id="Resource_6d1ge"]
+script = ExtResource("8_q6gly")
+crit_chance = 0.2
+metadata/_custom_type_script = "uid://c25esxltl1dpn"
+
+[sub_resource type="Resource" id="Resource_luk0u"]
+script = ExtResource("3_qq61c")
+skill_name = "Heavy Blow"
+skill_icon = ExtResource("7_ot5ov")
+tags = Array[int]([0, 2])
+base_damage_sources = Array[ExtResource("4_5iiq5")]([SubResource("Resource_gil4y")])
+stat_modifiers = SubResource("Resource_6d1ge")
+behaviors = Array[ExtResource("5_ubgyr")]([SubResource("Resource_tucqm")])
+base_speed = 0.8
+metadata/_custom_type_script = "uid://diqj52rxjhysk"
 
 [resource]
 script = ExtResource("1_26l5q")
 name = "Green Orc"
 texture = ExtResource("2_0a1bf")
-attribute_data = ExtResource("1_gpld7")
-damage_source = ExtResource("2_w5aoc")
+base_attributes = SubResource("Resource_ubgyr")
+base_stats = ExtResource("2_ubgyr")
+equipped_skills = Array[ExtResource("3_qq61c")]([SubResource("Resource_luk0u")])
 drop_table = ExtResource("3_w5aoc")
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

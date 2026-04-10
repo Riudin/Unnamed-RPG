@@ -45,7 +45,8 @@ func spawn(value: int, world_position: Vector2, color: Color, is_crit := false):
 	if popup.get_parent():
 		popup.get_parent().remove_child(popup)
 	
-	emit_signal("damage_popup_ready", popup)
+	add_child(popup)
+	#emit_signal("damage_popup_ready", popup)
 
 	popup.global_position = world_position + Vector2(randf_range(-4, 4), -16)
 	popup.show_value(value, color, is_crit)

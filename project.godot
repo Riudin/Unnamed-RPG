@@ -42,7 +42,8 @@ DamagePopupManager="*res://shared/scripts/autoload/damage_popup_manager.gd"
 LootGenerator="*res://shared/scripts/autoload/scenes/loot_generator.tscn"
 LootDropManager="*res://shared/scripts/autoload/scenes/loot_drop_manager.tscn"
 InventoryManager="*res://shared/scripts/autoload/scenes/inventory_manager.tscn"
-SkillRegistry="*uid://u4bensaunv8r"
+GameState="*uid://xqvdmlebmu4k"
+SceneManager="*uid://mau2fmb7l1q1"
 
 [display]
 

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d3quc2ajwin7n"]
+
+[ext_resource type="Texture2D" uid="uid://wqsixjewhydq" path="res://assets/ui/backgrounds/battle_backgrounds/forrest.png" id="1_idkgt"]
+[ext_resource type="Script" uid="uid://bk6b3t38ulsst" path="res://scenes/battle_scene.gd" id="1_kinr6"]
+[ext_resource type="PackedScene" uid="uid://jc5l4rf047jn" path="res://entities/characters/player/combat_player.tscn" id="2_8qdv8"]
+[ext_resource type="PackedScene" uid="uid://udxrbudwfjc7" path="res://entities/enemies/basic_enemy/combat_enemy.tscn" id="3_pxwbd"]
+
+[node name="BattleScene" type="Node2D" unique_id=747615073]
+script = ExtResource("1_kinr6")
+combat_player = ExtResource("2_8qdv8")
+combat_enemy = ExtResource("3_pxwbd")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1593467192]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 638.2222
+offset_bottom = 360.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_idkgt")
+expand_mode = 3
+
+[node name="PlayerPos" type="Marker2D" parent="." unique_id=325225166]
+unique_name_in_owner = true
+position = Vector2(180, 260)
+
+[node name="EnemyPos" type="Marker2D" parent="." unique_id=1941750832]
+unique_name_in_owner = true
+position = Vector2(460, 260)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=153318736]

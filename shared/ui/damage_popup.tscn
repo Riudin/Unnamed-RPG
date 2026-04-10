@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbo3favm4c80p"]
+[gd_scene format=3 uid="uid://dbo3favm4c80p"]
 
 [ext_resource type="Script" uid="uid://c1vmj84g11kwh" path="res://shared/ui/damage_popup.gd" id="1_83271"]
 
-[node name="DamagePopup" type="Node2D"]
+[node name="DamagePopup" type="Node2D" unique_id=150374589]
 z_index = 100
 script = ExtResource("1_83271")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2037959953]
 unique_name_in_owner = true
 z_index = 100
 anchors_preset = 8

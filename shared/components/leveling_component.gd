@@ -5,8 +5,18 @@ extends Node
 @onready var parent: Node = get_parent()
  
 var attribute_data: AttributeData
-@export var class_data: ClassData
 @export var level_table: LevelTable
+
+# Attribute gains per level
+@export var strength_gain_per_level: float = 1.0
+@export var dexterity_gain_per_level: float = 1.0
+@export var intelligence_gain_per_level: float = 1.0
+@export var vitality_gain_per_level: float = 1.0
+
+# Secondary property gains per level
+@export var flat_max_life_per_level: float = 12.0
+@export var flat_max_mana_per_level: float = 2.0
+@export var skill_points_per_level: int = 1
  
 @export var level: int = 1
 @export var current_xp: int = 0
@@ -18,7 +28,6 @@ func _ready():
 	attribute_data = parent.attribute_data
 
 	assert(attribute_data != null, "assign an AttributeData resource")
-	assert(class_data != null, "assign a ClassData resource")
 	assert(level_table != null, "assign a LevelTable resource")
 
 	SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
@@ -42,12 +51,19 @@ func _check_level_up() -> void:
 		current_xp -= xp_required
 		level += 1
 		levels_gained += 1
- 
-		var res = class_data.apply_level_up(attribute_data, 1)
-		if res.has("skill_points_awarded"):
-			skill_points += int(res["skill_points_awarded"])
- 
-		SignalBus.leveled_up.emit(level, 1, res.get("skill_points_awarded", 0))
+
+		# Apply attribute gains for this level
+		attribute_data.strength += strength_gain_per_level
+		attribute_data.dexterity += dexterity_gain_per_level
+		attribute_data.intelligence += intelligence_gain_per_level
+		attribute_data.vitality += vitality_gain_per_level
+		
+		attribute_data.max_health += flat_max_life_per_level
+		attribute_data.max_mana += flat_max_mana_per_level
+		
+		skill_points += skill_points_per_level
+		
+		SignalBus.leveled_up.emit(level, 1, skill_points_per_level)
  
 	if levels_gained > 1:
 		SignalBus.leveled_up.emit(level, levels_gained, skill_points)

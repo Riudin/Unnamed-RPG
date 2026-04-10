@@ -3,10 +3,9 @@ extends Node
 
 
 @onready var popup_container: Node = %PopupContainer
-@onready var battle_screen: Control = %BattleScreen
+# @onready var battle_screen: Control = %BattleScreen
 @onready var inventory_ui: Control = %InventoryScreenUI
 @onready var character_screen_ui: Control = %CharacterScreenUI
-@onready var skill_screen_ui: Control = %SkillScreenUI
 
 # LevelUI
 @onready var xp_bar: TextureProgressBar = %XPBar
@@ -17,8 +16,8 @@ extends Node
 func _ready() -> void:
 	# Battle Signals
 	SignalBus.connect("enemy_clicked", _on_enemy_clicked)
-	SignalBus.connect("battle_started", _on_battle_started)
-	DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
+	# SignalBus.connect("battle_started", _on_battle_started)
+	# DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
 
 	# XP and Level Signals
 	SignalBus.leveled_up.connect(update_level_text)
@@ -33,9 +32,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_character_screen"):
 		character_screen_ui.visible = !character_screen_ui.visible
 
-	if event.is_action_pressed("open_skill_screen"):
-		skill_screen_ui.visible = !skill_screen_ui.visible
-
 
 ### Handling Combat
 
@@ -49,14 +45,14 @@ func show_battle_confirmation_popup(enemy):
 	popup.display_popup(enemy)
 
 
-func _on_battle_started(enemy):
-	battle_screen.enemy = enemy
-	battle_screen.visible = true
+# func _on_battle_started(enemy):
+# 	battle_screen.enemy = enemy
+# 	battle_screen.visible = true
 
 
-func _on_damage_popup_ready(popup):
-	if battle_screen:
-		battle_screen.add_child(popup)
+# func _on_damage_popup_ready(popup):
+# 	if battle_screen:
+# 		battle_screen.add_child(popup)
 
 
 ### Handling XP and Level

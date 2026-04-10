@@ -8,10 +8,13 @@ var attack_interval_ticks: int = 0
 var tick_counter: int = 0
 
 @onready var parent = get_parent()
+
+var parent_data: Resource = null # player_data or enemy_data
+
 var target: Node
 
 @export var base_damage_sources: Array[DamageSource]
-@export var base_stats: StatBlock
+#@export var base_stats: StatBlock = null
 
 var skill_index := 0
 #var skills: Dictionary[int, SkillData] = {}
@@ -26,6 +29,9 @@ func _ready() -> void:
 	TickManager.connect("tick", _on_tick)
 	#SignalBus.skills_changed.connect(set_skills)
 
+	assert(parent_data != null and parent_data.equipped_skills, "No Parent Data assigned, or parent has no Data with equipped_skills!")
+	set_skills(parent_data.equipped_skills)
+
 
 func set_skills(new_skills: Array[SkillData]):
 	skills = new_skills
@@ -38,10 +44,9 @@ func set_skills(new_skills: Array[SkillData]):
 	
 	# if no skill is equipped TODO: use default attack
 	if skills[skill_index] == null:
-		print("no skill equipped")
+		#print("no skill equipped")
 		_calculate_attack_interval(0.0) # TODO: replace with default attack
 	else:
-		print("skill index: ", skill_index)
 		_calculate_attack_interval(skills[skill_index].base_speed)
 
 
@@ -56,17 +61,6 @@ func _calculate_attack_interval(skill_speed: float) -> void:
 	
 	tick_counter = 0
 	emit_signal("progress_changed", 0.0)
-
-
-# func set_damages(list):
-# 	damages.clear()
-
-# 	if list == null:
-# 		damages = [default_damage]
-# 		return
-
-# 	for d in list:
-# 		damages.append(d.duplicate(true))
 
 
 func _on_tick():
@@ -105,7 +99,7 @@ func trigger_attack():
 	context.attacker = parent
 	context.defender = target
 	context.base_sources = base_damage_sources
-	context.base_stats = base_stats
+	context.base_stats = parent_data.base_stats
 
 	skill.execute(context)
 

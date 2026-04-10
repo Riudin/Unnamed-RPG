@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
 [ext_resource type="Script" uid="uid://dbmoyj38ooa3s" path="res://shared/ui/windows/character_screen/character_screen_ui.gd" id="8_trceg"]
 [ext_resource type="Script" uid="uid://ctgym2ebc4lj7" path="res://shared/ui/windows/inventory/inventory_ui.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
@@ -462,6 +463,10 @@ axis_stretch_vertical = 2
 unique_name_in_owner = true
 
 [node name="ScreenContainer" type="Node" parent="UI" unique_id=651419070]
+
+[node name="BattleScreen" parent="UI/ScreenContainer" unique_id=81351132 instance=ExtResource("8_tipki")]
+unique_name_in_owner = true
+visible = false
 
 [node name="Debug" type="Node" parent="UI" unique_id=1025480202]
 

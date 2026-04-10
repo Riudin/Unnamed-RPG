@@ -3,7 +3,7 @@ extends Node
 
 
 # UI references
-@onready var battle_screen: Control = %BattleScreen
+# @onready var battle_screen: Control = %BattleScreen
 
 # Combatant entities
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
@@ -12,14 +12,13 @@ extends Node
 
 func _ready() -> void:
 	await player.ready
-	player.health_component.connect("died", _on_entity_died)
+	#player.health_component.connect("died", _on_entity_died)
 
 
 func start_battle(enemy):
 	#current_opponent = enemy
-	player.health_component.damage_popup_position = battle_screen.player_damage_popup_marker.global_position
-	enemy.health_component.damage_popup_position = battle_screen.enemy_damage_popup_marker.global_position
-
+	# player.health_component.damage_popup_position = battle_screen.player_damage_popup_marker.global_position
+	# enemy.health_component.damage_popup_position = battle_screen.enemy_damage_popup_marker.global_position
 	enemy.health_component.connect("died", _on_entity_died)
 
 	# TODO: This should be set based on a system in an own method, when there's more possible targets
@@ -28,7 +27,7 @@ func start_battle(enemy):
 
 	
 	# Notify the UI that battle started and pass the entities
-	battle_screen._on_battle_started(player, enemy)
+	# battle_screen._on_battle_started(player, enemy)
 
 
 func _on_entity_died(entity):
@@ -45,7 +44,7 @@ func _on_entity_died(entity):
 			player.leveling_component.add_xp(entity.drop_table.xp_reward)
 
 		# Inform battle_screen that victory happened and what was looted
-		battle_screen.show_victory_screen(loot)
+		# battle_screen.show_victory_screen(loot)
 
 		# Reset player health
 		player.health_component.health = player.health_component.max_health

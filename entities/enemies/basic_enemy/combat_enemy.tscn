@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://udxrbudwfjc7"]
+
+[ext_resource type="Script" uid="uid://cqkgll07yq4oa" path="res://entities/enemies/basic_enemy/combat_enemy.gd" id="1_4jwpl"]
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_r7al3"]
+[ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="3_hsq6x"]
+[ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="4_lq8k6"]
+
+[node name="CombatEnemy" type="Node2D" unique_id=1458892804]
+script = ExtResource("1_4jwpl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=574382540]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("2_r7al3")
+flip_h = true
+
+[node name="AttackComponent" type="Node" parent="." unique_id=1852123726]
+unique_name_in_owner = true
+script = ExtResource("3_hsq6x")
+metadata/_custom_type_script = "uid://casjk8xyj6crd"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=939295579]
+unique_name_in_owner = true
+script = ExtResource("4_lq8k6")
+metadata/_custom_type_script = "uid://urdreyx4totx"

@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://bfqknvi0je5a8"]
+
+[ext_resource type="Script" uid="uid://dpx12o0hh73et" path="res://entities/enemies/basic_enemy/world_enemy.gd" id="1_ecfun"]
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_kx8ri"]
+[ext_resource type="PackedScene" uid="uid://b28f70xx3mnj4" path="res://shared/components/interaction_component.tscn" id="3_4ohuo"]
+[ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="4_8lk7a"]
+[ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_5s7vs"]
+[ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_gwbtg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plvsb"]
+radius = 5.0990195
+
+[sub_resource type="Animation" id="Animation_m0gj2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a3s12"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sybl7"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -5), Vector2(0, -4), Vector2(0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646, 0.0, 0.08726646]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mx21o"]
+_data = {
+&"RESET": SubResource("Animation_m0gj2"),
+&"idle": SubResource("Animation_a3s12"),
+&"walk": SubResource("Animation_sybl7")
+}
+
+[node name="WorldEnemy" type="CharacterBody2D" unique_id=1910956753]
+z_index = 2
+y_sort_enabled = true
+script = ExtResource("1_ecfun")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1443716769]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(0, -4)
+texture = ExtResource("2_kx8ri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1837240244]
+shape = SubResource("CircleShape2D_plvsb")
+
+[node name="InteractionComponent" parent="." unique_id=1193888606 instance=ExtResource("3_4ohuo")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2037232857]
+unique_name_in_owner = true
+target_desired_distance = 1.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 0.07500011, 0.75, 0.5568628)
+
+[node name="NavigationTimer" type="Timer" parent="." unique_id=1114254247]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2076816216]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_mx21o")
+autoplay = &"idle"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1024345283 node_paths=PackedStringArray("parent")]
+unique_name_in_owner = true
+script = ExtResource("4_8lk7a")
+parent = NodePath("..")
+movement_speed = 10.0
+metadata/_custom_type_script = "uid://cw7ul52kdf4k7"
+
+[node name="NavigationComponent" type="Node" parent="." unique_id=1117669275 node_paths=PackedStringArray("parent")]
+unique_name_in_owner = true
+script = ExtResource("5_5s7vs")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://blu5xbdwvxdg3"
+
+[node name="AnimationComponent" type="Node" parent="." unique_id=254155212]
+unique_name_in_owner = true
+script = ExtResource("6_gwbtg")
+metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
+
+[connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]

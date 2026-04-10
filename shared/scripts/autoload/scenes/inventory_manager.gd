@@ -3,7 +3,7 @@ extends Node
 
 const GRID_SIZE := Vector2i(9, 12)
 
-var grid := {} # Vector2i -> ItemInstance
+var grid: Dictionary[Vector2i, ItemInstance] = {}
 var inventory_ui: InventoryUI
 
 
@@ -19,12 +19,14 @@ func can_place(_item: ItemInstance, pos: Vector2i) -> bool:
 
 func place(item: ItemInstance, pos: Vector2i):
 	grid[pos] = item
+	update_player_data()
 
 
 func clear_item(item: ItemInstance):
 	for k in grid.keys():
 		if grid[k] == item:
 			grid.erase(k)
+			update_player_data()
 
 
 func add_item(item: ItemInstance) -> bool:
@@ -34,5 +36,12 @@ func add_item(item: ItemInstance) -> bool:
 			if can_place(item, pos):
 				place(item, pos)
 				inventory_ui.spawn_item_ui(item, pos)
+				update_player_data()
 				return true
 	return false
+
+
+# Helper function to keep GameState up to date. GameState holds a duplicate of grid but inventory manager is self contained and can function without it
+func update_player_data():
+	if GameState.player_data.inventory:
+		GameState.player_data.inventory = grid

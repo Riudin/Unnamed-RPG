@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="5_qg0xh"]
 [ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="5_u7vvt"]
 
-[sub_resource type="Resource" id="Resource_u7vvt"]
+[sub_resource type="Resource" id="Resource_gil4y"]
 script = ExtResource("1_go8wm")
-min_damage = 15.0
-max_damage = 25.0
+min_damage = 5.0
+max_damage = 7.0
 metadata/_custom_type_script = "uid://cqocpb582lhcq"
 
 [sub_resource type="Resource" id="Resource_tucqm"]
@@ -27,8 +27,8 @@ script = ExtResource("2_a6xdi")
 skill_name = "Heavy Blow"
 skill_icon = ExtResource("5_u7vvt")
 tags = Array[int]([0, 2])
-base_damage_sources = Array[ExtResource("1_go8wm")]([SubResource("Resource_u7vvt")])
+base_damage_sources = Array[ExtResource("1_go8wm")]([SubResource("Resource_gil4y")])
 stat_modifiers = SubResource("Resource_6d1ge")
 behaviors = Array[ExtResource("1_a6xdi")]([SubResource("Resource_tucqm")])
-base_speed = 0.4
+base_speed = 0.8
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

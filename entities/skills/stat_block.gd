@@ -11,7 +11,7 @@ extends Resource
 @export var increased_cold_damage: float = 0.0
 @export var increased_lightning_damage: float = 0.0
 
-@export var more_damage: float = 1.0
+@export var more_damage: float = 0.0
 
 @export var crit_chance: float = 0.05
 @export var crit_multiplier: float = 1.5

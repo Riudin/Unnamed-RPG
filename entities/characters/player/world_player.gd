@@ -1,0 +1,84 @@
+class_name Player
+extends CharacterBody2D
+
+
+@export var base_attribute_data: AttributeData
+@export var attribute_data: AttributeData # This is currently set in inspector because leveling component throws an error otherwise. fix later
+@export var base_stats: StatBlock
+
+@onready var animation_component: AnimationComponent = %AnimationComponent
+@onready var input_component: InputComponent = %InputComponent
+@onready var navigation_component: NavigationComponent = %NavigationComponent
+@onready var movement_component: MovementComponent = %MovementComponent
+@onready var leveling_component: LevelingComponent = %LevelingComponent
+@onready var equipment_component: EquipmentComponent = %EquipmentComponent
+
+@onready var sprite: Sprite2D = %Sprite2D
+
+
+func _ready() -> void:
+	input_component.connect("movement_input", _on_movement_input)
+	navigation_component.connect("navigating_to_target", _on_navigating_to_target)
+	navigation_component.connect("navigation_finished", _on_navigation_finished)
+
+	GameState.player_data.base_attributes = base_attribute_data
+	GameState.player_data.base_stats = base_stats
+	recalculate_stats()
+	recalculate_skills()
+
+
+func _on_movement_input(target):
+	navigation_component.navigate_to_target(target)
+
+
+func _on_navigating_to_target(direction):
+	movement_component.move_toward(direction)
+	animation_component.play_animation("walk")
+
+
+func _on_navigation_finished():
+	animation_component.play_animation("idle")
+
+
+### Equipment Stuff --- maybe put this in a stats_component or something later on
+func _has_stat(stat_name: String) -> bool:
+	for p in attribute_data.get_property_list():
+		if p.name == stat_name:
+			return true
+	return false
+
+
+func recalculate_stats():
+	attribute_data = base_attribute_data.duplicate(true)
+
+	if equipment_component:
+		for item in equipment_component.get_all_items():
+			if item == null:
+				continue
+			
+			for stat_name in item.rolled_stats.keys():
+				if _has_stat(stat_name):
+					attribute_data.set(
+						stat_name,
+						attribute_data.get(stat_name) + item.rolled_stats[stat_name]
+					)
+				else:
+					push_warning("Unknown stat: %s" % stat_name)
+
+
+func recalculate_skills():
+	GameState.player_data.equipped_skills = equipment_component.get_all_skills()
+
+
+func equip_item(item: ItemInstance, slot_index: int = 0):
+	if equipment_component:
+		equipment_component.equip(item, slot_index)
+		recalculate_stats()
+		recalculate_skills()
+
+
+func unequip_item(slot: LootEnums.ItemType, slot_index: int = 0):
+	if equipment_component:
+		equipment_component.unequip(slot, slot_index)
+		recalculate_stats()
+		recalculate_skills()

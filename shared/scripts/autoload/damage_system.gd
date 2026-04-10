@@ -23,7 +23,7 @@ func resolve(instance: DamageInstance, is_crit: bool) -> float:
 				increased += instance.stats.increased_lightning_damage
 
 		var scaled = base * (1.0 + increased)
-		scaled *= instance.stats.more_damage
+		scaled *= (1.0 + instance.stats.more_damage)
 
 		total_damage += scaled
 
