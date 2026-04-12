@@ -7,6 +7,9 @@ extends Node2D
 @onready var attack_component: AttackComponent = %AttackComponent
 @onready var health_component: HealthComponent = %HealthComponent
 
+@onready var health_bar: TextureProgressBar = %HealthBar
+@onready var mana_bar: TextureProgressBar = %ManaBar
+
 
 func _ready() -> void:
 	assert(player_data != null, "No PlayerData set")

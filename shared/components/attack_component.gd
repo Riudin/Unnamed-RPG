@@ -2,12 +2,19 @@ class_name AttackComponent
 extends Node
 
 
-signal progress_changed(progress: float)
+#signal progress_changed(progress: float)
 
 var attack_interval_ticks: int = 0
 var tick_counter: int = 0
 
+@export var skill_bar_highlight: PackedScene
+var active_highlight: Control = null
+
 @onready var parent = get_parent()
+@onready var attack_bar: ProgressBar = %AttackBar
+@onready var skill_bar: Control = %CombatSkillBar
+
+var skill_bar_icons: Array[TextureRect] = []
 
 var parent_data: Resource = null # player_data or enemy_data
 
@@ -31,6 +38,11 @@ func _ready() -> void:
 
 	assert(parent_data != null and parent_data.equipped_skills, "No Parent Data assigned, or parent has no Data with equipped_skills!")
 	set_skills(parent_data.equipped_skills)
+	setup_skill_bar()
+	set_skill_bar_highlight()
+
+	if attack_bar:
+		attack_bar.value = 0.0
 
 
 func set_skills(new_skills: Array[SkillData]):
@@ -41,13 +53,27 @@ func set_skills(new_skills: Array[SkillData]):
 	for i in skills.size():
 		if skills[skill_index] == null:
 			skill_index = (skill_index + 1) % skills.size()
-	
+		
 	# if no skill is equipped TODO: use default attack
 	if skills[skill_index] == null:
 		#print("no skill equipped")
 		_calculate_attack_interval(0.0) # TODO: replace with default attack
 	else:
 		_calculate_attack_interval(skills[skill_index].base_speed)
+
+
+func setup_skill_bar():
+	if skill_bar and skills[skill_index] != null:
+		for skill in skills.size():
+			if skills[skill] == null:
+				skill_bar_icons.append(null)
+				continue
+
+			var icon = TextureRect.new()
+			icon.texture = skills[skill].skill_icon
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			skill_bar_icons.append(icon)
+			skill_bar.add_child(icon)
 
 
 func _calculate_attack_interval(skill_speed: float) -> void:
@@ -60,7 +86,9 @@ func _calculate_attack_interval(skill_speed: float) -> void:
 		attack_interval_ticks = int(1e9) # effectively never
 	
 	tick_counter = 0
-	emit_signal("progress_changed", 0.0)
+
+	if attack_bar:
+		attack_bar.value = 0.0
 
 
 func _on_tick():
@@ -76,7 +104,8 @@ func _on_tick():
 	var progress: float = float(tick_counter) / float(attack_interval_ticks)
 	progress = clamp(progress, 0.0, 1.0)
 
-	emit_signal("progress_changed", progress)
+	if attack_bar:
+		attack_bar.value = progress
 
 	# Attack
 	if tick_counter >= attack_interval_ticks:
@@ -84,7 +113,8 @@ func _on_tick():
 		
 		trigger_attack()
 
-		emit_signal("progress_changed", 0.0)
+		if attack_bar:
+			attack_bar.value = 0.0
 
 
 func trigger_attack():
@@ -111,3 +141,15 @@ func trigger_attack():
 		skill_index = (skill_index + 1) % skills.size()
 
 	_calculate_attack_interval(skills[skill_index].base_speed)
+	set_skill_bar_highlight()
+
+
+func set_skill_bar_highlight():
+	if active_highlight != null:
+		active_highlight.queue_free()
+		#active_highlight = null
+
+	if skill_bar_highlight:
+		var highlight := skill_bar_highlight.instantiate()
+		skill_bar_icons[skill_index].add_child(highlight)
+		active_highlight = highlight

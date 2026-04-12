@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://bk6b3t38ulsst" path="res://scenes/battle_scene.gd" id="1_kinr6"]
 [ext_resource type="PackedScene" uid="uid://jc5l4rf047jn" path="res://entities/characters/player/combat_player.tscn" id="2_8qdv8"]
 [ext_resource type="PackedScene" uid="uid://udxrbudwfjc7" path="res://entities/enemies/basic_enemy/combat_enemy.tscn" id="3_pxwbd"]
+[ext_resource type="Script" uid="uid://cfojmjig3nuux" path="res://shared/ui/screens/victory_screen.gd" id="5_1i8jf"]
+[ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="6_svpld"]
+[ext_resource type="Script" uid="uid://by8oe3rhlfk0a" path="res://shared/ui/screens/defeat_screen.gd" id="7_svpld"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rum4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3oc74"]
 
 [node name="BattleScene" type="Node2D" unique_id=747615073]
 script = ExtResource("1_kinr6")
@@ -28,3 +35,156 @@ unique_name_in_owner = true
 position = Vector2(460, 260)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=153318736]
+
+[node name="VictoryScreen" type="PanelContainer" parent="UI" unique_id=1618341581]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -78.5
+offset_right = 68.0
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_1i8jf")
+slot_scene = ExtResource("6_svpld")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VictoryScreen" unique_id=118744912]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VictoryScreen/MarginContainer" unique_id=985388149]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1281558149]
+layout_mode = 2
+text = "Victory!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=786116865]
+layout_mode = 2
+
+[node name="XPDisplay" type="HBoxContainer" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1674773657]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="UI/VictoryScreen/MarginContainer/VBoxContainer/XPDisplay" unique_id=1288914392]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "XP gained:"
+
+[node name="XPAmount" type="Label" parent="UI/VictoryScreen/MarginContainer/VBoxContainer/XPDisplay" unique_id=537092083]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="GoldDisplay" type="HBoxContainer" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1221907574]
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="UI/VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay" unique_id=2048938129]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Gold gained:"
+
+[node name="GoldAmount" type="Label" parent="UI/VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay" unique_id=1663730966]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1691173027]
+layout_mode = 2
+
+[node name="LootLabel" type="Label" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1515847507]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Loot:"
+
+[node name="LootDisplay" type="GridContainer" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1889589800]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=1296215195]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rum4d")
+
+[node name="ContinueButton" type="Button" parent="UI/VictoryScreen/MarginContainer/VBoxContainer" unique_id=341702837]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Continue"
+
+[node name="DefeatScreen" type="PanelContainer" parent="UI" unique_id=1607235804]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_svpld")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DefeatScreen" unique_id=1707011923]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefeatScreen/MarginContainer" unique_id=726599870]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/DefeatScreen/MarginContainer/VBoxContainer" unique_id=490252934]
+layout_mode = 2
+text = "Defeat!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UI/DefeatScreen/MarginContainer/VBoxContainer" unique_id=1935242071]
+layout_mode = 2
+
+[node name="XPGained" type="HBoxContainer" parent="UI/DefeatScreen/MarginContainer/VBoxContainer" unique_id=703520471]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="UI/DefeatScreen/MarginContainer/VBoxContainer/XPGained" unique_id=1909489661]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "XP lost:"
+
+[node name="XPAmount" type="Label" parent="UI/DefeatScreen/MarginContainer/VBoxContainer/XPGained" unique_id=1347389840]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/DefeatScreen/MarginContainer/VBoxContainer" unique_id=2005057225]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="UI/DefeatScreen/MarginContainer/VBoxContainer" unique_id=371953238]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3oc74")
+
+[node name="ContinueButton" type="Button" parent="UI/DefeatScreen/MarginContainer/VBoxContainer" unique_id=510354373]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Continue"
+
+[connection signal="pressed" from="UI/VictoryScreen/MarginContainer/VBoxContainer/ContinueButton" to="UI/VictoryScreen" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="UI/DefeatScreen/MarginContainer/VBoxContainer/ContinueButton" to="UI/DefeatScreen" method="_on_continue_button_pressed"]

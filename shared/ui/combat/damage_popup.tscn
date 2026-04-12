@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbo3favm4c80p"]
 
-[ext_resource type="Script" uid="uid://c1vmj84g11kwh" path="res://shared/ui/damage_popup.gd" id="1_83271"]
+[ext_resource type="Script" uid="uid://c1vmj84g11kwh" path="res://shared/ui/combat/damage_popup.gd" id="1_83271"]
 
 [node name="DamagePopup" type="Node2D" unique_id=150374589]
 z_index = 100

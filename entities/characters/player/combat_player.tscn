@@ -4,11 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dix24437mr0vl" path="res://assets/characters/player/Soldier.png" id="1_ua2c7"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="2_3rqb7"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="3_0gl37"]
-[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="4_0gl37"]
-
-[sub_resource type="Resource" id="Resource_rp10v"]
-script = ExtResource("4_0gl37")
-metadata/_custom_type_script = "uid://c25esxltl1dpn"
+[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_0gl37"]
+[ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="6_wckln"]
+[ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="9_wckln"]
 
 [node name="CombatPlayer" type="Node2D" unique_id=1083086212]
 script = ExtResource("1_3rqb7")
@@ -22,10 +20,72 @@ texture = ExtResource("1_ua2c7")
 [node name="AttackComponent" type="Node" parent="." unique_id=1201801268]
 unique_name_in_owner = true
 script = ExtResource("2_3rqb7")
-base_stats = SubResource("Resource_rp10v")
+skill_bar_highlight = ExtResource("9_wckln")
 metadata/_custom_type_script = "uid://casjk8xyj6crd"
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1706804417]
+[node name="HealthComponent" type="Node" parent="." unique_id=1706804417 node_paths=PackedStringArray("health_bar")]
 unique_name_in_owner = true
 script = ExtResource("3_0gl37")
+health_bar = NodePath("../GUI/ResourceBars/HealthBar")
 metadata/_custom_type_script = "uid://urdreyx4totx"
+
+[node name="GUI" type="Control" parent="." unique_id=222456442]
+custom_minimum_size = Vector2(88, 96)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -44.0
+offset_top = -60.0
+offset_right = 44.0
+offset_bottom = 36.0
+
+[node name="ResourceBars" type="VBoxContainer" parent="GUI" unique_id=1128522792]
+custom_minimum_size = Vector2(88, 96)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=828146197]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_0gl37")
+texture_progress = ExtResource("5_0gl37")
+tint_under = Color(0.17, 0.17, 0.17, 0.6509804)
+tint_progress = Color(1, 0.19999999, 0.19999999, 1)
+
+[node name="ManaBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=1266045651]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_0gl37")
+texture_progress = ExtResource("5_0gl37")
+tint_under = Color(0.17, 0.17, 0.17, 0.6509804)
+tint_progress = Color(0.180367, 0.5693807, 0.9455568, 1)
+
+[node name="CombatSkillBar" type="HBoxContainer" parent="GUI/ResourceBars" unique_id=1825072010]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 20)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("6_wckln")
+
+[node name="AttackBar" type="ProgressBar" parent="GUI/ResourceBars" unique_id=1440605755]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+show_percentage = false

@@ -18,3 +18,7 @@ var loot_items: Array[ItemInstance] = []
 # 		var new_slot: InventorySlot = slot_scene.instantiate()
 # 		loot_display.add_child(new_slot)
 # 		new_slot.set_current_item(item)
+
+
+func _on_continue_button_pressed() -> void:
+	SceneManager.change_scene("main")
