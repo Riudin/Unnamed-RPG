@@ -23,7 +23,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_8yu4e"]
+offsets = PackedFloat32Array(0.1, 0.60714287)
+colors = PackedColorArray(0.27387273, 0.27387276, 0.27387264, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n5vhm"]
+gradient = SubResource("Gradient_8yu4e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gb7cc"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_min = -44.99999
+angle_max = 45.00001
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 70.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 40, 0)
+scale_max = 1.5
+color = Color(0.94, 0.7520001, 0, 0.7764706)
+color_ramp = SubResource("GradientTexture1D_n5vhm")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.059999976
+
 [node name="Projectile" type="Node2D" unique_id=1470014313]
+z_index = 1
 script = ExtResource("1_qdo8d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=185830629]
@@ -32,3 +58,13 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qdo8d")
 animation = &"Fireball"
 autoplay = "Idle"
+
+[node name="HitEffectParticles" type="GPUParticles2D" parent="." unique_id=1165508591]
+unique_name_in_owner = true
+emitting = false
+amount = 180
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.75
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_gb7cc")

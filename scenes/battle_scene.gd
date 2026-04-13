@@ -46,12 +46,12 @@ func setup_enemy():
 	return enemy
 
 
-func _on_player_died(_player):
-	defeat_screen.visible = true
+func _on_player_died(player):
+	player.queue_free()
+	defeat_screen.show()
 
 
 func _on_enemy_died(enemy):
 	#TODO: when multipla enemies possible, check if it was the last one
 	enemy.queue_free()
-
 	victory_screen.show()

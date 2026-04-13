@@ -97,7 +97,8 @@ unique_name_in_owner = true
 position = Vector2(0, -22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ccwht")
-animation = &"fire"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1201801268]
 unique_name_in_owner = true
