@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ce0b6wmvlgec2"]
+
+[ext_resource type="Texture2D" uid="uid://caw4idtkh0lnk" path="res://entities/skills/skill_icons/fireball.png" id="1_amja8"]
+[ext_resource type="Script" uid="uid://bsbltti1ys6e3" path="res://shared/ui/combat/projectile.gd" id="1_qdo8d"]
+[ext_resource type="Texture2D" uid="uid://ch3s4bbrrk1jq" path="res://assets/transparent.png" id="3_8yu4e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdo8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_amja8")
+}],
+"loop": true,
+"name": &"Fireball",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8yu4e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="Node2D" unique_id=1470014313]
+script = ExtResource("1_qdo8d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=185830629]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qdo8d")
+animation = &"Fireball"
+autoplay = "Idle"

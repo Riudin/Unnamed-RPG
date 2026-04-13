@@ -11,8 +11,9 @@ var tick_counter: int = 0
 var active_highlight: Control = null
 
 @onready var parent = get_parent()
-@onready var attack_bar: ProgressBar = %AttackBar
+@onready var attack_bar: TextureProgressBar = %AttackBar
 @onready var skill_bar: Control = %CombatSkillBar
+@onready var windup_anim_sprite: AnimatedSprite2D = %WindupAnimation
 
 var skill_bar_icons: Array[TextureRect] = []
 
@@ -39,10 +40,15 @@ func _ready() -> void:
 	assert(parent_data != null and parent_data.equipped_skills, "No Parent Data assigned, or parent has no Data with equipped_skills!")
 	set_skills(parent_data.equipped_skills)
 	setup_skill_bar()
+	
+	# Wait for layout engine to compute positions of newly added skill bar icons
+	await get_tree().process_frame
 	set_skill_bar_highlight()
+	play_windup_animation()
 
 	if attack_bar:
 		attack_bar.value = 0.0
+		attack_bar.visible = true # for visual clarity it's set to false in the editor
 
 
 func set_skills(new_skills: Array[SkillData]):
@@ -117,7 +123,7 @@ func _on_tick():
 			attack_bar.value = 0.0
 
 
-func trigger_attack():
+func trigger_attack() -> void:
 	var skill = skills[skill_index]
 
 	if skill == null:
@@ -141,7 +147,9 @@ func trigger_attack():
 		skill_index = (skill_index + 1) % skills.size()
 
 	_calculate_attack_interval(skills[skill_index].base_speed)
+	
 	set_skill_bar_highlight()
+	play_windup_animation()
 
 
 func set_skill_bar_highlight():
@@ -153,3 +161,24 @@ func set_skill_bar_highlight():
 		var highlight := skill_bar_highlight.instantiate()
 		skill_bar_icons[skill_index].add_child(highlight)
 		active_highlight = highlight
+
+	attack_bar.global_position = skill_bar_icons[skill_index].global_position
+	attack_bar.position.y += 2.0
+
+
+func play_windup_animation():
+	if windup_anim_sprite:
+		var cast_time = attack_interval_ticks / TickManager.TICK_RATE
+		var animation = skills[skill_index].windup_animation_name
+
+		var fps = windup_anim_sprite.sprite_frames.get_animation_speed(animation)
+		var frame_count = windup_anim_sprite.sprite_frames.get_frame_count(animation)
+		var base_duration = frame_count / fps
+
+		if cast_time <= 0:
+			return
+
+		windup_anim_sprite.speed_scale = base_duration / cast_time
+		
+		windup_anim_sprite.stop()
+		windup_anim_sprite.play(animation)

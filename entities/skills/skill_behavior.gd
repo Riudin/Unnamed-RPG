@@ -1,7 +1,7 @@
 class_name SkillBehavior
 extends Resource
 
-### Super class of different behaviors. They define how a skill behaves when triggered, e.g. single hit, multi hat, apply effect, etc.
+### Super class of different behaviors. They define how a skill behaves when triggered, e.g. single hit, multi hit, apply effect, etc.
 
 
 func execute(context: BattleContext, skill: SkillData):

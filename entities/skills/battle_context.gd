@@ -31,5 +31,5 @@ func deal_damage(instance: DamageInstance):
 	var dmg = DamageSystem.resolve(instance, is_crit)
 	print("------Total Damage: ", dmg)
 	
-	if instance.defender.health_component.has_method("take_damage"):
+	if instance.defender and instance.defender.health_component.has_method("take_damage"):
 		instance.defender.health_component.take_damage(dmg, is_crit)

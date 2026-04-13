@@ -4,9 +4,84 @@
 [ext_resource type="Texture2D" uid="uid://dix24437mr0vl" path="res://assets/characters/player/Soldier.png" id="1_ua2c7"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="2_3rqb7"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="3_0gl37"]
+[ext_resource type="Texture2D" uid="uid://b1k6bmacxotty" path="res://assets/animations/skill_windup/fire_windup.png" id="3_wckln"]
+[ext_resource type="Texture2D" uid="uid://ch3s4bbrrk1jq" path="res://assets/transparent.png" id="4_owo3w"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_0gl37"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="6_wckln"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="7_1rxe1"]
 [ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="9_wckln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owo3w"]
+atlas = ExtResource("3_wckln")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5vhm"]
+atlas = ExtResource("3_wckln")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwe0j"]
+atlas = ExtResource("3_wckln")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ebur"]
+atlas = ExtResource("3_wckln")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tq6m"]
+atlas = ExtResource("3_wckln")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixebq"]
+atlas = ExtResource("3_wckln")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djnq4"]
+atlas = ExtResource("3_wckln")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5n45"]
+atlas = ExtResource("3_wckln")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccwht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owo3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5vhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwe0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ebur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tq6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixebq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djnq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5n45")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_owo3w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="CombatPlayer" type="Node2D" unique_id=1083086212]
 script = ExtResource("1_3rqb7")
@@ -16,6 +91,13 @@ unique_name_in_owner = true
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
 texture = ExtResource("1_ua2c7")
+
+[node name="WindupAnimation" type="AnimatedSprite2D" parent="." unique_id=261625143]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ccwht")
+animation = &"fire"
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1201801268]
 unique_name_in_owner = true
@@ -83,9 +165,36 @@ theme_override_constants/separation = 2
 alignment = 1
 script = ExtResource("6_wckln")
 
-[node name="AttackBar" type="ProgressBar" parent="GUI/ResourceBars" unique_id=1440605755]
-unique_name_in_owner = true
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourceBars/CombatSkillBar" unique_id=549328835]
+visible = false
 layout_mode = 2
-size_flags_vertical = 8
+texture = ExtResource("7_1rxe1")
+stretch_mode = 3
+
+[node name="Highlight" parent="GUI/ResourceBars/CombatSkillBar/TextureRect" unique_id=930515164 instance=ExtResource("9_wckln")]
+layout_mode = 0
+offset_left = 0.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="AttackBar" type="TextureProgressBar" parent="GUI" unique_id=969732956]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 max_value = 1.0
-show_percentage = false
+step = 0.01
+fill_mode = 4
+texture_progress = ExtResource("5_0gl37")
+tint_progress = Color(1, 1, 1, 0.69803923)

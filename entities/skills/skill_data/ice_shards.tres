@@ -16,7 +16,8 @@ metadata/_custom_type_script = "uid://cqocpb582lhcq"
 
 [sub_resource type="Resource" id="Resource_r0xe6"]
 script = ExtResource("3_57r4x")
-hit_count = 3
+hit_count = 5
+delay_between_hits = 0.3
 metadata/_custom_type_script = "uid://b3ta7aty8xv1f"
 
 [sub_resource type="Resource" id="Resource_phedc"]

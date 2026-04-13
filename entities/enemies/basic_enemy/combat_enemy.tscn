@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://cqkgll07yq4oa" path="res://entities/enemies/basic_enemy/combat_enemy.gd" id="1_4jwpl"]
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_r7al3"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="3_hsq6x"]
+[ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="4_b07ak"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="4_lq8k6"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_r7al3"]
+[ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="7_bc1gv"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="8_30n0q"]
 
 [node name="CombatEnemy" type="Node2D" unique_id=1458892804]
 script = ExtResource("1_4jwpl")
@@ -19,23 +22,25 @@ flip_h = true
 [node name="AttackComponent" type="Node" parent="." unique_id=1852123726]
 unique_name_in_owner = true
 script = ExtResource("3_hsq6x")
+skill_bar_highlight = ExtResource("4_b07ak")
 metadata/_custom_type_script = "uid://casjk8xyj6crd"
 
-[node name="HealthComponent" type="Node" parent="." unique_id=939295579 node_paths=PackedStringArray("health_bar")]
+[node name="HealthComponent" type="Node" parent="." unique_id=939295579]
 unique_name_in_owner = true
 script = ExtResource("4_lq8k6")
-health_bar = NodePath("../GUI/ResourceBars/HealthBar")
 metadata/_custom_type_script = "uid://urdreyx4totx"
 
-[node name="GUI" type="Control" parent="." unique_id=1506314732]
+[node name="GUI" type="Control" parent="." unique_id=915349260]
+custom_minimum_size = Vector2(88, 96)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -32.0
-offset_top = -62.0
-offset_right = 32.0
-offset_bottom = 24.0
+offset_left = -44.0
+offset_top = -60.0
+offset_right = 44.0
+offset_bottom = 36.0
 
-[node name="ResourceBars" type="VBoxContainer" parent="GUI" unique_id=1571868670]
+[node name="ResourceBars" type="VBoxContainer" parent="GUI" unique_id=1401933948]
+custom_minimum_size = Vector2(88, 96)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,10 +49,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="HealthBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=2129808305]
+[node name="HealthBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=2054577106]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(60, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 value = 100.0
 nine_patch_stretch = true
@@ -56,10 +62,11 @@ texture_progress = ExtResource("5_r7al3")
 tint_under = Color(0.17, 0.17, 0.17, 0.6509804)
 tint_progress = Color(1, 0.19999999, 0.19999999, 1)
 
-[node name="ManaBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=233012702]
+[node name="ManaBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=230715041]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(60, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 value = 100.0
 nine_patch_stretch = true
@@ -68,9 +75,33 @@ texture_progress = ExtResource("5_r7al3")
 tint_under = Color(0.17, 0.17, 0.17, 0.6509804)
 tint_progress = Color(0.180367, 0.5693807, 0.9455568, 1)
 
-[node name="AttackBar" type="ProgressBar" parent="GUI/ResourceBars" unique_id=293338301]
+[node name="CombatSkillBar" type="HBoxContainer" parent="GUI/ResourceBars" unique_id=650950878]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 20)
 layout_mode = 2
 size_flags_vertical = 10
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("7_bc1gv")
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourceBars/CombatSkillBar" unique_id=2006525585]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_30n0q")
+stretch_mode = 3
+
+[node name="Highlight" parent="GUI/ResourceBars/CombatSkillBar/TextureRect" unique_id=930515164 instance=ExtResource("4_b07ak")]
+layout_mode = 0
+offset_left = 0.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="AttackBar" type="TextureProgressBar" parent="GUI/ResourceBars" unique_id=269217005]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
 max_value = 1.0
-show_percentage = false
+step = 0.01
+fill_mode = 4
+texture_progress = ExtResource("5_r7al3")
+tint_progress = Color(1, 1, 1, 0.69803923)

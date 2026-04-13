@@ -27,6 +27,7 @@ func _get_popup():
 		var popup = pool.pop_back()
 		popup.visible = true
 		popup.modulate.a = 1.0
+		popup.elapsed = 0.0 # Reset elapsed to prevent instant recycling
 		return popup
 	
 	return popup_scene.instantiate()
@@ -35,6 +36,9 @@ func _get_popup():
 func recycle_popup(popup):
 	if active.has(popup):
 		active.erase(popup)
+	if popup.get_parent():
+		popup.get_parent().remove_child(popup) # Remove from tree
+	popup.elapsed = 0.0 # Ensure elapsed is reset
 	pool.append(popup)
 	popup.visible = false
 
@@ -48,7 +52,7 @@ func spawn(value: int, world_position: Vector2, color: Color, is_crit := false):
 	add_child(popup)
 	#emit_signal("damage_popup_ready", popup)
 
-	popup.global_position = world_position + Vector2(randf_range(-4, 4), -16)
+	popup.global_position = world_position + Vector2(randf_range(-8, 8), -24)
 	popup.show_value(value, color, is_crit)
 
 	active.append(popup)
