@@ -7,6 +7,12 @@ var grid: Dictionary[Vector2i, ItemInstance] = {}
 var inventory_ui: InventoryUI
 
 
+func _ready() -> void:
+	# Load state from saved playerdata
+	if GameState.player_data.inventory_grid:
+		grid = GameState.player_data.inventory_grid
+
+
 func register_ui(ui: InventoryUI):
 	inventory_ui = ui
 
@@ -36,12 +42,12 @@ func add_item(item: ItemInstance) -> bool:
 			if can_place(item, pos):
 				place(item, pos)
 				inventory_ui.spawn_item_ui(item, pos)
-				update_player_data()
+				#update_player_data()
 				return true
 	return false
 
 
-# Helper function to keep GameState up to date. GameState holds a duplicate of grid but inventory manager is self contained and can function without it
+# Helper function to keep GameState up to date. GameState holds a duplicate of grid for saving purposes
 func update_player_data():
-	if GameState.player_data.inventory:
-		GameState.player_data.inventory = grid
+	if GameState.player_data:
+		GameState.player_data.inventory_grid = grid

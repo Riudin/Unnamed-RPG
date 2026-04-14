@@ -34,6 +34,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameState="*uid://xqvdmlebmu4k"
 SaveManager="*uid://bfkj1war3ekoq"
 SignalBus="*res://shared/scripts/autoload/signal_bus.gd"
 TickManager="*res://shared/scripts/autoload/tick_manager.gd"
@@ -42,7 +43,6 @@ DamagePopupManager="*res://shared/scripts/autoload/damage_popup_manager.gd"
 LootGenerator="*res://shared/scripts/autoload/scenes/loot_generator.tscn"
 LootDropManager="*res://shared/scripts/autoload/scenes/loot_drop_manager.tscn"
 InventoryManager="*res://shared/scripts/autoload/scenes/inventory_manager.tscn"
-GameState="*uid://xqvdmlebmu4k"
 SceneManager="*uid://mau2fmb7l1q1"
 
 [display]

@@ -38,8 +38,8 @@ metadata/_custom_type_script = "uid://c25esxltl1dpn"
 [sub_resource type="Resource" id="Resource_luk0u"]
 script = ExtResource("3_qq61c")
 skill_name = "Heavy Blow"
-skill_icon = ExtResource("7_ot5ov")
 tags = Array[int]([0, 2])
+skill_icon = ExtResource("7_ot5ov")
 base_damage_sources = Array[ExtResource("4_5iiq5")]([SubResource("Resource_gil4y")])
 stat_modifiers = SubResource("Resource_6d1ge")
 behaviors = Array[ExtResource("5_ubgyr")]([SubResource("Resource_tucqm")])

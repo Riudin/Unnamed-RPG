@@ -18,9 +18,21 @@ var attribute_data: AttributeData
 @export var flat_max_mana_per_level: float = 2.0
 @export var skill_points_per_level: int = 1
  
-@export var level: int = 1
-@export var current_xp: int = 0
-@export var skill_points: int = 0
+
+@export var level: int = 1:
+	set(value):
+		# level = value
+		GameState.player_data.level = value
+
+@export var current_xp: int = 0:
+	set(value):
+		# current_xp = value
+		GameState.player_data.current_xp = value
+
+@export var skill_points: int = 0:
+	set(value):
+		# skill_points = value
+		GameState.player_data.skill_points = value
 
  
 func _ready():
@@ -30,9 +42,13 @@ func _ready():
 	assert(attribute_data != null, "assign an AttributeData resource")
 	assert(level_table != null, "assign a LevelTable resource")
 
-	SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
+	#SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
 
-	SaveManager.game_loaded.connect(_on_game_loaded)
+	#SaveManager.game_loaded.connect(_on_game_loaded)
+	level = GameState.player_data.level
+	current_xp = GameState.player_data.current_xp
+	skill_points = GameState.player_data.skill_points
+	refresh_ui()
  
 
 func add_xp(amount: int) -> void:
@@ -76,5 +92,5 @@ func refresh_ui():
 	SignalBus.xp_changed.emit(current_xp, level_table.xp_to_next(level))
 
 
-func _on_game_loaded():
-	refresh_ui()
+# func _on_game_loaded():
+# 	refresh_ui()

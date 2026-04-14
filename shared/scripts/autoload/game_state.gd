@@ -9,15 +9,15 @@ var current_enemy: EnemyData = null
 
 
 func _ready() -> void:
-	load_save()
+	load_data()
 
 
-func save():
-	ResourceSaver.save(player_data, "user://player.tres")
+func save_data():
+	ResourceSaver.save(player_data, "user://save_data/player.tres")
 
 
-func load_save():
-	if ResourceLoader.exists("user://player.tres"):
-		player_data = ResourceLoader.load("user://player.tres")
+func load_data():
+	if ResourceLoader.exists("user://save_data/player.tres"):
+		player_data = ResourceLoader.load("user://save_data/player.tres")
 	else:
 		player_data = PlayerData.new()

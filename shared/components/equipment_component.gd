@@ -17,7 +17,7 @@ var slots: Dictionary[int, ItemInstance] = { # we need this here to match item t
 	LootEnums.ItemType.BELT: null,
 	LootEnums.ItemType.AMULET: null,
 	LootEnums.ItemType.WINGS: null,
-	LootEnums.ItemType.PET: null,
+	LootEnums.ItemType.PET: null
 }
 
 # Multi-slot items tracked by position
@@ -27,6 +27,8 @@ var slots: Dictionary[int, ItemInstance] = { # we need this here to match item t
 
 func _ready() -> void:
 	player_data = GameState.player_data # this is a dependency on GameState. We could instead set player_data via the player script or in the editor
+
+	load_from_player_data()
 
 
 func equip(item: ItemInstance, slot_index: int = 0) -> ItemInstance:
@@ -116,3 +118,19 @@ func get_all_skills() -> Array[SkillData]:
 
 func get_all_rings() -> Array[ItemInstance]:
 	return player_data.ring_slots
+
+
+func load_from_player_data():
+	slots = player_data.equipment_slots
+# 	slots = {
+# 	LootEnums.ItemType.WEAPON: player_data.equipment_slots[0],
+# 	LootEnums.ItemType.OFFHAND: player_data.equipment_slots[1],
+# 	LootEnums.ItemType.ARMOR: player_data.equipment_slots[2],
+# 	LootEnums.ItemType.HELMET: player_data.equipment_slots[3],
+# 	LootEnums.ItemType.GLOVES: player_data.equipment_slots[4],
+# 	LootEnums.ItemType.BOOTS: player_data.equipment_slots[5],
+# 	LootEnums.ItemType.BELT: player_data.equipment_slots[6],
+# 	LootEnums.ItemType.AMULET: player_data.equipment_slots[7],
+# 	LootEnums.ItemType.WINGS: player_data.equipment_slots[8],
+# 	LootEnums.ItemType.PET: player_data.equipment_slots[9]
+# }

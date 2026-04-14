@@ -27,8 +27,8 @@ metadata/_custom_type_script = "uid://c25esxltl1dpn"
 [resource]
 script = ExtResource("3_6amo4")
 skill_name = "Ice Shards"
-skill_icon = ExtResource("5_57r4x")
 tags = Array[int]([1, 2, 4])
+skill_icon = ExtResource("5_57r4x")
 base_damage_sources = Array[ExtResource("1_ovi47")]([SubResource("Resource_dcnwe")])
 stat_modifiers = SubResource("Resource_phedc")
 behaviors = Array[ExtResource("2_j2kc8")]([SubResource("Resource_r0xe6")])

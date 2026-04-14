@@ -17,11 +17,22 @@ extends Resource
 @export var equipped_skills: Array[SkillData]
 
 # Equipment - Single slot items
-@export var equipment_slots: Dictionary[int, ItemInstance] = {}
+@export var equipment_slots: Dictionary[int, ItemInstance] = {
+	LootEnums.ItemType.WEAPON: null,
+	LootEnums.ItemType.OFFHAND: null,
+	LootEnums.ItemType.ARMOR: null,
+	LootEnums.ItemType.HELMET: null,
+	LootEnums.ItemType.GLOVES: null,
+	LootEnums.ItemType.BOOTS: null,
+	LootEnums.ItemType.BELT: null,
+	LootEnums.ItemType.AMULET: null,
+	LootEnums.ItemType.WINGS: null,
+	LootEnums.ItemType.PET: null
+}
 
 # Equipment - Multi-slot items
 @export var skill_slots: Array[ItemInstance] = [null, null, null, null, null] # 5 skill slots
 @export var ring_slots: Array[ItemInstance] = [null, null] # 2 ring slots
 
 # Inventory
-@export var inventory: Dictionary[Vector2i, ItemInstance] = {}
+@export var inventory_grid: Dictionary[Vector2i, ItemInstance] = {}

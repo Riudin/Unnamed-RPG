@@ -13,6 +13,12 @@ func _ready() -> void:
 	InventoryManager.register_ui(self )
 	_create_slots()
 
+	if InventoryManager.grid:
+		for i in InventoryManager.grid:
+			var item = InventoryManager.grid[i]
+			var pos = InventoryManager.grid.find_key(item)
+			spawn_item_ui(item, pos)
+
 
 func _create_slots():
 	custom_minimum_size = InventoryManager.GRID_SIZE * CELL_SIZE

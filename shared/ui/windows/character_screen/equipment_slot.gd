@@ -22,8 +22,8 @@ var equipped_item: ItemInstance
 
 func _ready() -> void:
 	_update_icon()
-
-	SaveManager.game_loaded.connect(_on_game_loaded)
+	refresh_from_stats()
+	#SaveManager.game_loaded.connect(_on_game_loaded)
 
 
 func _update_icon():

@@ -10,10 +10,9 @@ extends PanelContainer
 
 func _ready() -> void:
 	# This idea doesn't work yet because the slots are not direct children. Maybe later.
-	for c in get_children():
-		if c is EquipmentSlot:
-			c.player = player
-
+	# for c in get_children():
+	# 	if c is EquipmentSlot:
+	# 		c.player = player
 	equipment_screen.visible = true
 	crafting_screen.visible = false
 
