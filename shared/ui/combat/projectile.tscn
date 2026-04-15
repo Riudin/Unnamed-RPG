@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://caw4idtkh0lnk" path="res://entities/skills/skill_icons/fireball.png" id="1_amja8"]
 [ext_resource type="Script" uid="uid://bsbltti1ys6e3" path="res://shared/ui/combat/projectile.gd" id="1_qdo8d"]
 [ext_resource type="Texture2D" uid="uid://ch3s4bbrrk1jq" path="res://assets/transparent.png" id="3_8yu4e"]
+[ext_resource type="Texture2D" uid="uid://0sraw2uxqjo8" path="res://entities/skills/skill_icons/ice_shard.png" id="3_gb7cc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdo8d"]
 animations = [{
@@ -12,6 +13,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Fireball",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gb7cc")
+}],
+"loop": true,
+"name": &"Ice Shards",
 "speed": 5.0
 }, {
 "frames": [{
@@ -56,7 +65,7 @@ script = ExtResource("1_qdo8d")
 unique_name_in_owner = true
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qdo8d")
-animation = &"Fireball"
+animation = &"Ice Shards"
 autoplay = "Idle"
 
 [node name="HitEffectParticles" type="GPUParticles2D" parent="." unique_id=1165508591]

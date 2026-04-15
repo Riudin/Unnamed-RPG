@@ -26,10 +26,18 @@ func build_damage_instance(extra_sources: Array[DamageSource], skill_stats: Stat
 	return instance
 
 
-func deal_damage(instance: DamageInstance):
-	var is_crit = DamageSystem.resolve_crit(instance)
-	var dmg = DamageSystem.resolve(instance, is_crit)
+func determine_crit(instance: DamageInstance) -> bool:
+	var is_crit: bool = DamageSystem.resolve_crit(instance)
+
+	return is_crit
+
+
+func deal_damage(instance: DamageInstance, is_crit: bool) -> float:
+	#var is_crit: bool = DamageSystem.resolve_crit(instance)
+	var dmg: float = DamageSystem.resolve(instance, is_crit)
 	print("------Total Damage: ", dmg)
 	
 	if instance.defender and instance.defender.health_component.has_method("take_damage"):
 		instance.defender.health_component.take_damage(dmg, is_crit)
+	
+	return dmg

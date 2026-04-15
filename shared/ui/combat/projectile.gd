@@ -10,22 +10,40 @@ extends Node2D
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var hit_effect_particles: GPUParticles2D = %HitEffectParticles
 
+var damage_dealt: float = 0.0
+var is_crit: bool = false
+
+var target_reached: bool = false # helper to stop processing once target is hit. needed because queue_free waits for particles to finish
+
 
 func _ready() -> void:
 	animated_sprite.play(animation)
 
 
 func _process(delta: float) -> void:
+	if target_reached:
+		return
+	
 	look_at(target)
 	var direction := (target - global_position).normalized()
 
 	global_position += direction * speed * delta
 
-	if global_position.distance_to(target) < 5.0:
+	if global_position.distance_to(target) < 10.0:
 		_on_hit()
 
 
 func _on_hit():
+	target_reached = true
+
+	DamagePopupManager.spawn(
+		int(damage_dealt),
+		global_position,
+		#DamagePopupManager.damage_colors[damage_source.damage_type],
+		Color.WHITE,
+		is_crit
+	)
+
 	if hit_effect_particles and has_particles:
 		animated_sprite.hide()
 		hit_effect_particles.one_shot = true

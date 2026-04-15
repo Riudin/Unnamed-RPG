@@ -26,7 +26,7 @@ func _ready() -> void:
 		health_bar.value = health
 
 
-func take_damage(damage, is_crit):
+func take_damage(damage, _is_crit):
 	health -= damage
 	health = clamp(health, 0.0, max_health)
 
@@ -34,13 +34,13 @@ func take_damage(damage, is_crit):
 	if health_bar:
 		health_bar.value = health
 
-	DamagePopupManager.spawn(
-		damage,
-		damage_popup_position,
-		#DamagePopupManager.damage_colors[damage_source.damage_type],
-		Color.WHITE,
-		is_crit
-	)
+	# DamagePopupManager.spawn(
+	# 	damage,
+	# 	damage_popup_position,
+	# 	#DamagePopupManager.damage_colors[damage_source.damage_type],
+	# 	Color.WHITE,
+	# 	is_crit
+	# )
 
 	if health <= 0.0:
 		died.emit(parent)
