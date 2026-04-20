@@ -56,10 +56,10 @@ signal stats_recalculated
 
 ### Base Stats
 # Primary Attributes
-@export var base_strength: int = 0
-@export var base_dexterity: int = 0
-@export var base_intelligence: int = 0
-@export var base_vitality: int = 0
+@export var base_strength: int = 10
+@export var base_dexterity: int = 10
+@export var base_intelligence: int = 10
+@export var base_vitality: int = 10
 
 # Resources
 @export var base_max_health: int = 100

@@ -6,22 +6,30 @@ extends PanelContainer
 
 @onready var equipment_screen: Control = %EquipmentScreen
 @onready var crafting_screen: Control = %CraftingScreen
+@onready var skill_screen: Control = %SkillScreen
+@onready var stat_screen: Control = %StatScreen
 
 
 func _ready() -> void:
-	# This idea doesn't work yet because the slots are not direct children. Maybe later.
-	# for c in get_children():
-	# 	if c is EquipmentSlot:
-	# 		c.player = player
-	equipment_screen.visible = true
-	crafting_screen.visible = false
+	_on_equipment_screen_button_pressed()
 
 
 func _on_equipment_screen_button_pressed() -> void:
-	equipment_screen.visible = true
-	crafting_screen.visible = false
+	equipment_screen.show()
+	skill_screen.show()
+	crafting_screen.hide()
+	stat_screen.hide()
 
 
 func _on_crafting_screen_button_pressed() -> void:
-	equipment_screen.visible = false
-	crafting_screen.visible = true
+	equipment_screen.hide()
+	skill_screen.hide()
+	crafting_screen.show()
+	stat_screen.hide()
+
+
+func _on_stat_screen_button_pressed() -> void:
+	equipment_screen.hide()
+	skill_screen.show()
+	crafting_screen.hide()
+	stat_screen.show()
