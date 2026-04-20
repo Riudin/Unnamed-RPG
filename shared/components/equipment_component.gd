@@ -122,15 +122,3 @@ func get_all_rings() -> Array[ItemInstance]:
 
 func load_from_player_data():
 	slots = player_data.equipment_slots
-# 	slots = {
-# 	LootEnums.ItemType.WEAPON: player_data.equipment_slots[0],
-# 	LootEnums.ItemType.OFFHAND: player_data.equipment_slots[1],
-# 	LootEnums.ItemType.ARMOR: player_data.equipment_slots[2],
-# 	LootEnums.ItemType.HELMET: player_data.equipment_slots[3],
-# 	LootEnums.ItemType.GLOVES: player_data.equipment_slots[4],
-# 	LootEnums.ItemType.BOOTS: player_data.equipment_slots[5],
-# 	LootEnums.ItemType.BELT: player_data.equipment_slots[6],
-# 	LootEnums.ItemType.AMULET: player_data.equipment_slots[7],
-# 	LootEnums.ItemType.WINGS: player_data.equipment_slots[8],
-# 	LootEnums.ItemType.PET: player_data.equipment_slots[9]
-# }

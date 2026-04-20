@@ -9,7 +9,7 @@ rarity_weights = Dictionary[int, int]({
 0: 10,
 1: 30,
 2: 30,
-3: 100
+3: 0
 })
 metadata/_custom_type_script = "uid://bld8qrtjx2gk0"
 

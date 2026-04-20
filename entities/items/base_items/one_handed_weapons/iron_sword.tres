@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://p5wny18hkmk6"]
 
 [ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_7vv2j"]
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="1_p6qg7"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://deprecated/damage_source.gd" id="1_p6qg7"]
 [ext_resource type="Texture2D" uid="uid://flr6a0md0n4f" path="res://assets/icons/weapons/sword_32p.png" id="2_gkcit"]
 
 [resource]

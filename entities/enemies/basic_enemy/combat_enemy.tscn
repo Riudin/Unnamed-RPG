@@ -2,12 +2,86 @@
 
 [ext_resource type="Script" uid="uid://cqkgll07yq4oa" path="res://entities/enemies/basic_enemy/combat_enemy.gd" id="1_4jwpl"]
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_r7al3"]
+[ext_resource type="Texture2D" uid="uid://b1k6bmacxotty" path="res://assets/animations/skill_windup/fire_windup.png" id="3_30n0q"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="3_hsq6x"]
 [ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="4_b07ak"]
+[ext_resource type="Texture2D" uid="uid://ch3s4bbrrk1jq" path="res://assets/transparent.png" id="4_bkybs"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="4_lq8k6"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_r7al3"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="7_bc1gv"]
 [ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="8_30n0q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owo3w"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5vhm"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwe0j"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ebur"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tq6m"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixebq"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djnq4"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5n45"]
+atlas = ExtResource("3_30n0q")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2ehu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owo3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5vhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwe0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ebur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tq6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixebq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djnq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5n45")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bkybs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="CombatEnemy" type="Node2D" unique_id=1458892804]
 script = ExtResource("1_4jwpl")
@@ -18,6 +92,14 @@ position = Vector2(0, -16)
 scale = Vector2(2, 2)
 texture = ExtResource("2_r7al3")
 flip_h = true
+
+[node name="WindupAnimation" type="AnimatedSprite2D" parent="." unique_id=704079330]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_d2ehu")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1852123726]
 unique_name_in_owner = true

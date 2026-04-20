@@ -2,16 +2,18 @@ class_name PlayerData
 extends Resource
 
 
+signal stats_changed
+
+
 # Identity & Progression
-@export var character_name: String = "Hero"
-@export var level: int = 1
-@export var current_xp: int = 0
+@export var character_name: String = "Player"
 @export var skill_points: int = 0
 @export var skill_points_spent: int = 0 # not yet possible
 
-# Attributes
-@export var base_attributes: AttributeData
-@export var base_stats: StatBlock
+@export var stats: Stats:
+	set(new_value):
+		stats = new_value
+		stats_changed.emit()
 
 # Skills
 @export var equipped_skills: Array[SkillData]

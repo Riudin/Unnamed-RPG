@@ -4,13 +4,10 @@ extends Resource
 
 @export var is_prefix: bool = true
 @export var name_format: String
-@export var stat_name: String # This must match the stat in AttributeData that will be affected
 
-@export var min_value: int = 1
-@export var max_value: int = 10
-
-@export var damage: DamageSource
+@export var mods: Array[StatModifier] = []
 
 
-func roll_value() -> float:
-	return randi_range(min_value, max_value)
+func roll_value(mod: StatModifier) -> float:
+	mod.amount = randf_range(mod.min_amount, mod.max_amount)
+	return mod.amount

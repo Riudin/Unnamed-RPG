@@ -62,12 +62,12 @@ func _unequip():
 		return
 	
 	if InventoryManager.add_item(equipped_item):
+		player.unequip_item(equipped_item, slot_type, slot_index)
 		equipped_item = null
 		
-		player.unequip_item(slot_type, slot_index)
-		player.recalculate_stats()
-
 		_update_icon()
+	else: # this happens if unequipped item can't go into the inventory. TODO: handle this case
+		print("unable to unequip item")
 
 
 func _on_mouse_entered() -> void:

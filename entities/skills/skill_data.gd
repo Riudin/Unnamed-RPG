@@ -47,6 +47,15 @@ func execute(context: BattleContext) -> void:
 func _on_behavior_executed(context: BattleContext, damage_dealt: float, is_crit: bool):
 	if tags.has(SkillTag.PROJECTILE):
 			spawn_projectile(context, damage_dealt, is_crit)
+	else:
+		# TODO: here an animation or a hit of some form should be triggered that then has the responsibility to spawn the damage popup instead
+		DamagePopupManager.spawn(
+		int(damage_dealt),
+		context.defender.global_position,
+		#DamagePopupManager.damage_colors[damage_source.damage_type],
+		Color.WHITE,
+		is_crit
+	)
 
 
 func spawn_projectile(context: BattleContext, damage: float, is_crit: bool):

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="AttributeData" load_steps=2 format=3 uid="uid://1elbkoi4wvga"]
+[gd_resource type="Resource" script_class="AttributeData" format=3 uid="uid://1elbkoi4wvga"]
 
-[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/attribute_data.gd" id="1_2m2ui"]
+[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://deprecated/depr_attribute_data.gd" id="1_2m2ui"]
 
 [resource]
 script = ExtResource("1_2m2ui")

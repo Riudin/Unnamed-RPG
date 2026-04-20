@@ -6,7 +6,6 @@ var health: float
 var max_health: float
 
 @onready var parent := get_parent()
-@onready var damage_popup_position: Vector2 = parent.global_position
 
 var parent_data: Resource = null # player_data or enemy_data
 
@@ -28,19 +27,10 @@ func _ready() -> void:
 
 func take_damage(damage, _is_crit):
 	health -= damage
-	health = clamp(health, 0.0, max_health)
+	health = clampf(health, 0.0, max_health)
 
-	# emit_signal("health_changed", health)
 	if health_bar:
 		health_bar.value = health
-
-	# DamagePopupManager.spawn(
-	# 	damage,
-	# 	damage_popup_position,
-	# 	#DamagePopupManager.damage_colors[damage_source.damage_type],
-	# 	Color.WHITE,
-	# 	is_crit
-	# )
 
 	if health <= 0.0:
 		died.emit(parent)

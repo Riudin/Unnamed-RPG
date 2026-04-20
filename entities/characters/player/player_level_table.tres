@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="LevelTable" load_steps=2 format=3 uid="uid://6f5fkkj5jj7r"]
-
-[ext_resource type="Script" uid="uid://dpnmkqbr013b5" path="res://entities/characters/player/level_table.gd" id="1_h44we"]
-
-[resource]
-script = ExtResource("1_h44we")
-metadata/_custom_type_script = "uid://dpnmkqbr013b5"

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
+[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="7_yq6so"]
 [ext_resource type="Script" uid="uid://dbmoyj38ooa3s" path="res://shared/ui/windows/character_screen/character_screen_ui.gd" id="8_trceg"]
 [ext_resource type="Script" uid="uid://ctgym2ebc4lj7" path="res://shared/ui/windows/inventory/inventory_ui.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
@@ -28,6 +29,12 @@
 [ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/ui/inventory/slot_bg_wings.png" id="17_yq6so"]
 [ext_resource type="PackedScene" uid="uid://ovmxuyq7rd0j" path="res://shared/ui/windows/character_screen/crafting_slot.tscn" id="21_2f3dj"]
 [ext_resource type="Script" uid="uid://br42kaxbnvlef" path="res://shared/ui/windows/character_screen/skill_bar.gd" id="22_qkpxi"]
+[ext_resource type="Script" uid="uid://whtf378swnbh" path="res://deprecated/stats_display.gd" id="28_fv21b"]
+
+[sub_resource type="Resource" id="Resource_fv21b"]
+resource_local_to_scene = true
+script = ExtResource("7_yq6so")
+metadata/_custom_type_script = "uid://n8wtim8qm2cq"
 
 [node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
@@ -57,6 +64,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
+stats = SubResource("Resource_fv21b")
 
 [node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true
@@ -457,6 +465,53 @@ patch_margin_right = 18
 patch_margin_bottom = 18
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+
+[node name="StatsDisplay" type="Panel" parent="UI/InterfaceContainer" unique_id=966680036]
+offset_left = 273.0
+offset_top = 23.0
+offset_right = 380.0
+offset_bottom = 99.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("28_fv21b")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/StatsDisplay" unique_id=1020554909]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/StatsDisplay/MarginContainer" unique_id=434903061]
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="UI/InterfaceContainer/StatsDisplay/MarginContainer/VBoxContainer" unique_id=1239237010]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Stats:"
+
+[node name="MaxHealthLabel" type="Label" parent="UI/InterfaceContainer/StatsDisplay/MarginContainer/VBoxContainer" unique_id=434253440]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Maximum Health: xxxx"
+
+[node name="AttackLabel" type="Label" parent="UI/InterfaceContainer/StatsDisplay/MarginContainer/VBoxContainer" unique_id=1855194295]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Attack: xxxx"
+
+[node name="DefenseLabel" type="Label" parent="UI/InterfaceContainer/StatsDisplay/MarginContainer/VBoxContainer" unique_id=196152396]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Defense: xxxx"
 
 [node name="PopupContainer" type="Node" parent="UI" unique_id=2028271384]
 unique_name_in_owner = true

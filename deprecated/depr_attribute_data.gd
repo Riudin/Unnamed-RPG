@@ -1,4 +1,4 @@
-class_name AttributeData
+class_name DeprAttributeData
 extends Resource
 
 

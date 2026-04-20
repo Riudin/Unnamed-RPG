@@ -1,21 +1,14 @@
 [gd_scene format=3 uid="uid://mu31biemy71"]
 
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/world_player.gd" id="1_qrd5i"]
-[ext_resource type="Resource" uid="uid://byykxl7u0k3a7" path="res://entities/characters/player/player_attributes.tres" id="2_mnavw"]
 [ext_resource type="Script" uid="uid://ttshiel80die" path="res://entities/characters/player/sprite_2d.gd" id="3_2jd2e"]
 [ext_resource type="Texture2D" uid="uid://dix24437mr0vl" path="res://assets/characters/player/Soldier.png" id="3_ou7en"]
-[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="3_uyani"]
+[ext_resource type="Resource" uid="uid://dfwl3e3nyxal2" path="res://entities/characters/player/player_stats.tres" id="4_mo6oo"]
 [ext_resource type="Script" uid="uid://bua6rtv8t5825" path="res://shared/components/input_component.gd" id="4_wqnow"]
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="6_a3s12"]
 [ext_resource type="Script" uid="uid://cmc20wtvb8qvx" path="res://shared/components/animation_component.gd" id="6_m0gj2"]
-[ext_resource type="Script" uid="uid://bqry6wrakykcp" path="res://shared/components/leveling_component.gd" id="7_m0gj2"]
 [ext_resource type="Script" uid="uid://i5puns5ayv24" path="res://shared/components/equipment_component.gd" id="10_sybl7"]
-[ext_resource type="Resource" uid="uid://6f5fkkj5jj7r" path="res://entities/characters/player/player_level_table.tres" id="12_mnavw"]
-
-[sub_resource type="Resource" id="Resource_mo6oo"]
-script = ExtResource("3_uyani")
-metadata/_custom_type_script = "uid://c25esxltl1dpn"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqnow"]
 radius = 3.0
@@ -114,9 +107,7 @@ _data = {
 z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_qrd5i")
-base_attribute_data = ExtResource("2_mnavw")
-attribute_data = ExtResource("2_mnavw")
-base_stats = SubResource("Resource_mo6oo")
+stats = ExtResource("4_mo6oo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643251234]
 unique_name_in_owner = true
@@ -170,12 +161,6 @@ metadata/_custom_type_script = "uid://cw7ul52kdf4k7"
 unique_name_in_owner = true
 script = ExtResource("6_m0gj2")
 metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
-
-[node name="LevelingComponent" type="Node" parent="." unique_id=1232427938]
-unique_name_in_owner = true
-script = ExtResource("7_m0gj2")
-level_table = ExtResource("12_mnavw")
-metadata/_custom_type_script = "uid://bqry6wrakykcp"
 
 [node name="EquipmentComponent" type="Node" parent="." unique_id=115356877]
 unique_name_in_owner = true

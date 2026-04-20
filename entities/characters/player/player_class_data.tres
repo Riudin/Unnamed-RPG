@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ClassData" format=3 uid="uid://c13ny8tub55jl"]
-
-[ext_resource type="Script" uid="uid://diqafws78rgdi" path="res://shared/scripts/data_models/depr_class_data.gd" id="1_4d730"]
-
-[resource]
-script = ExtResource("1_4d730")
-metadata/_custom_type_script = "uid://diqafws78rgdi"

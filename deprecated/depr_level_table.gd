@@ -1,4 +1,4 @@
-class_name LevelTable
+class_name DeprLevelTable
 extends Resource
 
 

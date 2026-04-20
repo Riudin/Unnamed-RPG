@@ -1,9 +1,18 @@
 [gd_resource type="Resource" script_class="AffixData" format=3 uid="uid://ck614is6yqmfc"]
 
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="1_g0lpw"]
 [ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_u2nlh"]
+
+[sub_resource type="Resource" id="Resource_g0lpw"]
+script = ExtResource("1_g0lpw")
+stat = 4
+min_amount = 5.0
+max_amount = 9.0
+description = "+%d to maximum Life"
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]
 script = ExtResource("1_u2nlh")
 name_format = "Healthy %s"
-stat_name = "max_health"
+mods = Array[ExtResource("1_g0lpw")]([SubResource("Resource_g0lpw")])
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

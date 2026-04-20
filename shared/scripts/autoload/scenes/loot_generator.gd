@@ -81,7 +81,7 @@ func _rand_prefix() -> AffixData:
 	var new_prefix = prefix_pool.pick_random()
 	prefix_pool.erase(new_prefix)
 
-	return new_prefix
+	return new_prefix.duplicate(true)
 	
 	#return prefixes.is_empty() if null else prefixes.pick_random()
 
@@ -94,27 +94,27 @@ func _rand_suffix() -> AffixData:
 	var new_suffix = suffix_pool.pick_random()
 	suffix_pool.erase(new_suffix)
 
-	return new_suffix
+	return new_suffix.duplicate(true)
 
 	#return suffixes.is_empty() if null else suffixes.pick_random()
 
 
 func _roll_affix_values(loot: ItemInstance):
-	loot.rolled_stats.clear()
-
+	#loot.rolled_stats.clear()
 	for a in loot.prefixes:
 		if a == null:
 			continue
 
-		var v := a.roll_value()
-		loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
+		for mod in a.mods:
+			a.roll_value(mod)
+			#loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
 	
-	for a in loot.suffixes:
-		if a == null:
-			continue
+	# for a in loot.suffixes:
+	# 	if a == null:
+	# 		continue
 		
-		var v := a.roll_value()
-		loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
+	# 	var v := a.roll_values()
+	# 	loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
 
 
 func _load_affixes_from_folder(folder_path: String) -> Array[AffixData]:

@@ -3,7 +3,6 @@ extends PanelContainer
 
 @onready var item_icon = %ItemIcon
 @onready var item_name_label = %ItemName
-@onready var item_rarity_label = %ItemRarity
 @onready var item_stats_box = %ItemStats
 
 
@@ -11,17 +10,19 @@ func set_item(item: ItemInstance):
 	item_icon.texture = item.base.icon
 	item_name_label.text = item.get_display_name()
 	item_name_label.modulate = item.get_color()
-	item_rarity_label.text = LootEnums.Rarity.keys()[item.rarity]
 
 	_clear_stats()
 
-	for stat_name in item.rolled_stats.keys():
-		var value = item.rolled_stats[stat_name]
+	# for stat_name in item.rolled_stats.keys():
+	# 	var value = item.rolled_stats[stat_name]
 
-		var l := Label.new()
-		l.text = _format_stat(stat_name, value)
-		l.add_theme_font_size_override("font_size", 8) # Workaround to set font size. Maybe in the future use a predefinded label scene
-		item_stats_box.add_child(l)
+	for p in item.prefixes:
+		for mod in p.mods:
+			var l := Label.new()
+			l.text = mod.get_display_text()
+			# l.text = _format_stat(stat_name, value)
+			l.add_theme_font_size_override("font_size", 8) # Workaround to set font size. Maybe in the future use a predefinded label scene
+			item_stats_box.add_child(l)
 
 
 func _clear_stats():

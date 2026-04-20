@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://csriyw7thspcs"]
 
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://shared/scripts/data_models/damage_source.gd" id="1_ovi47"]
+[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://deprecated/damage_source.gd" id="1_ovi47"]
 [ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="2_j2kc8"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="3_6amo4"]
 [ext_resource type="Script" uid="uid://b3ta7aty8xv1f" path="res://entities/skills/skill_behaviors/multi_hit_behavior.gd" id="3_57r4x"]
