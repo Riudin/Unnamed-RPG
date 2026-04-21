@@ -126,18 +126,31 @@ func _on_tick():
 func trigger_attack() -> void:
 	var skill = skills[skill_index]
 
+	# if there is no skill, we don't attack. this shouldn't happen normally
 	if skill == null:
 		return
+
+	# apply skill modifiers
+	if skill and not skill.inherent_mods.is_empty():
+		for mod in skill.inherent_mods:
+			parent_data.stats.add_modifier(mod)
+		# recalculate directly to ensure stats are ready
+		parent_data.stats.recalculate_stats()
 
 	print(parent, " triggering Skill: ", skill.skill_name)
 
 	var context = BattleContext.new()
 	context.attacker = parent
 	context.defender = target
-	context.base_sources = base_damage_sources
-	context.base_stats = parent_data.base_stats
+	context.attacker_stats = parent_data.stats
 
-	skill.execute(context)
+	await skill.execute(context)
+
+	# remove skill modifiers and recalculate stats again
+	if skill and not skill.inherent_mods.is_empty():
+		for mod in skill.inherent_mods:
+			parent_data.stats.remove_modifier(mod)
+		parent_data.stats.recalculate_stats()
 
 	# rotate to next skill and loop back to beginning
 	skill_index = (skill_index + 1) % skills.size()

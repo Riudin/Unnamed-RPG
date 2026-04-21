@@ -7,18 +7,13 @@ extends RefCounted
 
 var attacker
 var defender
-var base_sources: Array[DamageSource]
-var base_stats: StatBlock
+var attacker_stats: Stats = null
 
 
-func build_damage_instance(extra_sources: Array[DamageSource], skill_stats: StatBlock) -> DamageInstance:
+func build_damage_instance() -> DamageInstance:
 	var instance = DamageInstance.new()
 
-	#instance.sources = []
-	instance.sources.append_array(base_sources)
-	instance.sources.append_array(extra_sources)
-
-	instance.stats = base_stats.combine(skill_stats)
+	instance.stats = attacker_stats
 
 	instance.attacker = attacker
 	instance.defender = defender
@@ -32,9 +27,9 @@ func determine_crit(instance: DamageInstance) -> bool:
 	return is_crit
 
 
-func deal_damage(instance: DamageInstance, is_crit: bool) -> float:
+func deal_damage(instance: DamageInstance, is_crit: bool) -> int:
 	#var is_crit: bool = DamageSystem.resolve_crit(instance)
-	var dmg: float = DamageSystem.resolve(instance, is_crit)
+	var dmg: int = DamageSystem.resolve(instance, is_crit)
 	print("------Total Damage: ", dmg)
 	
 	if instance.defender and instance.defender.health_component.has_method("take_damage"):

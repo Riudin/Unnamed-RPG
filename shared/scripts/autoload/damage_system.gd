@@ -3,45 +3,54 @@ extends Node
 ### Responsible for calculation of damage based on DamageInstance
 
 
-func resolve(instance: DamageInstance, is_crit: bool) -> float:
-	var total_damage := 0.0
+func resolve(instance: DamageInstance, is_crit: bool) -> int:
+	# We could also use combined damage from the stats directly. this is done in case we want to apply burn or other things later depending on dmg type
+	var physical_damage := randi_range(instance.stats.current_physical_damage, instance.stats.current_physical_damage_range)
+	var fire_damage := randi_range(instance.stats.current_fire_damage, instance.stats.current_fire_damage_range)
+	var cold_damage := randi_range(instance.stats.current_cold_damage, instance.stats.current_cold_damage_range)
+	var lightning_damage := randi_range(instance.stats.current_lightning_damage, instance.stats.current_lightning_damage_range)
+	var chaos_damage := randi_range(instance.stats.current_chaos_damage, instance.stats.current_chaos_damage_range)
 
-	# Each instance can have multiple flat dmg sources but only one statblock
-	for source in instance.sources:
-		var base = randf_range(source.min_damage, source.max_damage)
+	var combined_damage: int = physical_damage + fire_damage + cold_damage + lightning_damage + chaos_damage
 
-		var increased := instance.stats.increased_damage
+	# var total_damage := 0.0
 
-		match source.type:
-			DamageSource.DamageType.PHYSICAL:
-				increased += instance.stats.increased_physical_damage
-			DamageSource.DamageType.FIRE:
-				increased += instance.stats.increased_fire_damage
-			DamageSource.DamageType.COLD:
-				increased += instance.stats.increased_cold_damage
-			DamageSource.DamageType.LIGHTNING:
-				increased += instance.stats.increased_lightning_damage
+	# # Each instance can have multiple flat dmg sources but only one statblock
+	# for source in instance.sources:
+	# 	var base = randf_range(source.min_damage, source.max_damage)
 
-		var scaled = base * (1.0 + increased)
-		scaled *= (1.0 + instance.stats.more_damage)
+	# 	var increased := instance.stats.increased_damage
 
-		total_damage += scaled
+	# 	match source.type:
+	# 		DamageSource.DamageType.PHYSICAL:
+	# 			increased += instance.stats.increased_physical_damage
+	# 		DamageSource.DamageType.FIRE:
+	# 			increased += instance.stats.increased_fire_damage
+	# 		DamageSource.DamageType.COLD:
+	# 			increased += instance.stats.increased_cold_damage
+	# 		DamageSource.DamageType.LIGHTNING:
+	# 			increased += instance.stats.increased_lightning_damage
+
+	# 	var scaled = base * (1.0 + increased)
+	# 	scaled *= (1.0 + instance.stats.more_damage)
+
+	# 	total_damage += scaled
 
 		#prints("----base dmg:", base, "(", source.min_damage, source.max_damage, ")")
 		#prints("----increased by:", increased, "new dmg:", scaled)
 
 	# Crit multiplies all damage from this instance
 	if is_crit:
-		total_damage *= instance.stats.crit_multiplier
+		var crit_multi: float = float(instance.stats.current_crit_multiplier) / 100.0
+		combined_damage = round(float(combined_damage) * (1.0 + crit_multi))
 		#prints("----critical hit! Damage increased by", instance.stats.crit_multiplier, "new dmg:", total_damage)
 
-	
-	return total_damage
+	return combined_damage
 
 
 func resolve_crit(instance: DamageInstance) -> bool:
 	# Crit multiplies all damage from this instance
-	if randf() < instance.stats.crit_chance:
+	if randf() < float(instance.stats.current_crit_chance) / 100:
 		return true
 	
 	return false

@@ -17,7 +17,7 @@ signal died(body)
 
 func _ready() -> void:
 	await get_parent().ready
-	max_health = parent_data.base_attributes.get_total_health()
+	max_health = parent_data.stats.current_max_health
 	health = max_health
 
 	if health_bar:

@@ -6,13 +6,10 @@ extends SkillBehavior
 @export var delay_between_hits: float = 0.2 # seconds between each hit
 
 
-func execute(context: BattleContext, skill: SkillData, on_hit: Callable) -> void:
+func execute(context: BattleContext, _skill: SkillData, on_hit: Callable) -> void:
 	for i in hit_count:
 		# Deal damage for this hit
-		var instance = context.build_damage_instance(
-			skill.base_damage_sources,
-			skill.stat_modifiers
-		)
+		var instance = context.build_damage_instance()
 
 		var is_crit: bool = context.determine_crit(instance)
 		var damage_dealt: float = context.deal_damage(instance, is_crit)

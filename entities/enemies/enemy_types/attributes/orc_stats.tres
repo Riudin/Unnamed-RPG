@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="StatBlock" format=3 uid="uid://b6cx6dkblgem4"]
-
-[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="1_4704r"]
-
-[resource]
-script = ExtResource("1_4704r")
-metadata/_custom_type_script = "uid://c25esxltl1dpn"
