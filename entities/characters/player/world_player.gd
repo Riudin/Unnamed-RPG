@@ -26,19 +26,8 @@ func _ready() -> void:
 # just for debugging
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
-		# Iterate over a copy to avoid modifying the array while iterating
-		for m in GameState.player_data.stats.stat_modifiers.duplicate():
-			GameState.player_data.stats.remove_modifier(m)
-	
-	if event.is_action_pressed("debug2"):
-		var mod = StatModifier.new()
-		mod.type = StatModifier.ModifierType.ADD
-		mod.stat = Stats.ModifiableStats.MAX_HEALTH
-		mod.min_amount = 10.0
-		mod.max_amount = 20.0
-		mod.amount = randf_range(mod.min_amount, mod.max_amount)
-		GameState.player_data.stats.add_modifier(mod)
-
+		print("Current fire damage: ", GameState.player_data.stats.current_fire_damage)
+		print("Current fire damage range: ", GameState.player_data.stats.current_fire_damage_range)
 
 func _on_movement_input(target):
 	navigation_component.navigate_to_target(target)

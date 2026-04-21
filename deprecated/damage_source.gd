@@ -8,7 +8,8 @@ enum DamageType {
 	PHYSICAL,
 	FIRE,
 	COLD,
-	LIGHTNING
+	LIGHTNING,
+	CHAOS
 }
 
 @export var type: DamageType

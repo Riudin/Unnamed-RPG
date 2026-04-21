@@ -8,6 +8,5 @@ extends Resource
 @export var mods: Array[StatModifier] = []
 
 
-func roll_value(mod: StatModifier) -> float:
-	mod.amount = randf_range(mod.min_amount, mod.max_amount)
-	return mod.amount
+func roll_value(mod: StatModifier) -> void:
+	mod.roll_amount()

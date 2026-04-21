@@ -1,18 +1,10 @@
 [gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://csriyw7thspcs"]
 
-[ext_resource type="Script" uid="uid://cqocpb582lhcq" path="res://deprecated/damage_source.gd" id="1_ovi47"]
 [ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="2_j2kc8"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="3_6amo4"]
 [ext_resource type="Script" uid="uid://b3ta7aty8xv1f" path="res://entities/skills/skill_behaviors/multi_hit_behavior.gd" id="3_57r4x"]
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="3_pkndr"]
 [ext_resource type="Texture2D" uid="uid://0sraw2uxqjo8" path="res://entities/skills/skill_icons/ice_shard.png" id="5_57r4x"]
-[ext_resource type="Script" uid="uid://c25esxltl1dpn" path="res://entities/skills/stat_block.gd" id="5_w0lgw"]
-
-[sub_resource type="Resource" id="Resource_dcnwe"]
-script = ExtResource("1_ovi47")
-type = 2
-min_damage = 3.0
-max_damage = 4.0
-metadata/_custom_type_script = "uid://cqocpb582lhcq"
 
 [sub_resource type="Resource" id="Resource_r0xe6"]
 script = ExtResource("3_57r4x")
@@ -20,18 +12,12 @@ hit_count = 5
 delay_between_hits = 0.3
 metadata/_custom_type_script = "uid://b3ta7aty8xv1f"
 
-[sub_resource type="Resource" id="Resource_phedc"]
-script = ExtResource("5_w0lgw")
-metadata/_custom_type_script = "uid://c25esxltl1dpn"
-
 [resource]
 script = ExtResource("3_6amo4")
 skill_name = "Ice Shards"
 tags = Array[int]([1, 3, 4])
 skill_icon = ExtResource("5_57r4x")
 emit_particles = true
-base_damage_sources = Array[ExtResource("1_ovi47")]([SubResource("Resource_dcnwe")])
-stat_modifiers = SubResource("Resource_phedc")
 behaviors = Array[ExtResource("2_j2kc8")]([SubResource("Resource_r0xe6")])
 base_speed = 1.0
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

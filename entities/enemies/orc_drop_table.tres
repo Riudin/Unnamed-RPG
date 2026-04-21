@@ -12,11 +12,11 @@
 [resource]
 script = ExtResource("4_1bquh")
 item_weights = Dictionary[ExtResource("1_c88yf"), int]({
-ExtResource("2_i8k0r"): 12,
-ExtResource("3_o2txx"): 12,
-ExtResource("4_i8k0r"): 12,
-ExtResource("5_o2txx"): 1,
-ExtResource("6_nx4m1"): 1,
-ExtResource("7_ibsyu"): 1
+ExtResource("2_i8k0r"): 0,
+ExtResource("3_o2txx"): 0,
+ExtResource("4_i8k0r"): 0,
+ExtResource("5_o2txx"): 100,
+ExtResource("6_nx4m1"): 0,
+ExtResource("7_ibsyu"): 0
 })
 metadata/_custom_type_script = "uid://do1qvhnlso3h6"

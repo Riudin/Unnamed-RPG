@@ -17,11 +17,17 @@ enum ModifiableStats {
 	MANA_LEECH,
 	ENERY_SHIELD_LEECH,
 	PHYSICAL_DAMAGE,
+	# PHYSICAL_DAMAGE_RANGE,
 	ELEMENTAL_DAMAGE,
+	# ELEMENTAL_DAMAGE_RANGE,
 	FIRE_DAMAGE,
+	# FIRE_DAMAGE_RANGE,
 	COLD_DAMAGE,
+	# COLD_DAMAGE_RANGE,
 	LIGHTNING_DAMAGE,
+	# LIGHTNING_DAMAGE_RANGE,
 	CHAOS_DAMAGE,
+	# CHAOS_DAMAGE_RANGE,
 	ATTACK_SPEED,
 	CAST_SPEED,
 	CRIT_CHANCE,
@@ -76,11 +82,17 @@ signal stats_recalculated
 
 # Damage stats
 @export var base_physical_damage: int = 0
+@export var base_physical_damage_range: int = 0
 @export var base_elemental_damage: int = 0
+@export var base_elemental_damage_range: int = 0
 @export var base_fire_damage: int = 0
+@export var base_fire_damage_range: int = 0
 @export var base_cold_damage: int = 0
+@export var base_cold_damage_range: int = 0
 @export var base_lightning_damage: int = 0
+@export var base_lightning_damage_range: int = 0
 @export var base_chaos_damage: int = 0
+@export var base_chaos_damage_range: int = 0
 
 # Speed
 @export var base_attack_speed: float = 1.0
@@ -143,11 +155,17 @@ signal stats_recalculated
 
 # Damage stats
 @export var current_physical_damage: int = 0
+@export var current_physical_damage_range: int = 0
 @export var current_elemental_damage: int = 0
+@export var current_elemental_damage_range: int = 0
 @export var current_fire_damage: int = 0
+@export var current_fire_damage_range: int = 0
 @export var current_cold_damage: int = 0
+@export var current_cold_damage_range: int = 0
 @export var current_lightning_damage: int = 0
+@export var current_lightning_damage_range: int = 0
 @export var current_chaos_damage: int = 0
+@export var current_chaos_damage_range: int = 0
 
 # Speed
 @export var current_attack_speed: float = 1.0
@@ -193,7 +211,14 @@ signal stats_recalculated
 
 var level: int:
 	get(): return floor(max(1.0, sqrt(experience / 100.0) + 0.5))
-	
+
+var combined_damage: int = 0:
+	get():
+		return current_physical_damage + current_fire_damage + current_cold_damage + current_lightning_damage + current_chaos_damage
+var combined_damage_range: int = 0:
+	get():
+		return current_physical_damage_range + current_fire_damage_range + current_cold_damage_range + current_lightning_damage_range + current_chaos_damage_range
+
 var stat_modifiers: Array[StatModifier] = []
 
 
@@ -245,6 +270,15 @@ func recalculate_stats() -> void:
 				if not stat_addends.has(stat_name):
 					stat_addends[stat_name] = 0.0
 				stat_addends[stat_name] += mod.amount
+
+			StatModifier.ModifierType.ADD_RANGE:
+				if not stat_addends.has(stat_name):
+					stat_addends[stat_name] = 0.0
+				stat_addends[stat_name] += mod.amount
+
+				if not stat_addends.has(stat_name + "_range"):
+					stat_addends[stat_name + "_range"] = 0.0
+				stat_addends[stat_name + "_range"] += mod.range_amount
 			
 			StatModifier.ModifierType.MULTIPLY:
 				if not stat_multipliers.has(stat_name):

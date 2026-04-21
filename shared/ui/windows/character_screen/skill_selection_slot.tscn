@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://uvexmmqcgs6t"]
+
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/ui/inventory/inventory_slot.png" id="1_4lcr8"]
+[ext_resource type="Script" uid="uid://bfk28ku8ahwm6" path="res://shared/ui/windows/character_screen/skill_selection_slot.gd" id="1_ghikq"]
+[ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="3_4gcop"]
+
+[node name="SkillSelectionSlot" type="Control" unique_id=424529371]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ghikq")
+
+[node name="Background" type="TextureRect" parent="." unique_id=413090886]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 1
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("1_4lcr8")
+
+[node name="SkillIcon" type="TextureRect" parent="." unique_id=1531075028]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 19.0
+expand_mode = 3
+
+[node name="Highlight" parent="." unique_id=930515164 instance=ExtResource("3_4gcop")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

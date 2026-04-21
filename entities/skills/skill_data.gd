@@ -1,7 +1,7 @@
 class_name SkillData
 extends Resource
 
-### Basic Information about a skill. Further information like flat damage, scaling and behaviour are fround in corresponding classes
+### Base Information about a skill. Further information like flat damage, scaling and behaviour are fround in corresponding classes
 
 
 # Skill Tags
@@ -15,23 +15,23 @@ enum SkillTag {
 	}
 
 @export_group("Basic Info")
-@export var skill_name: String
-@export var tags: Array[SkillTag]
+@export var skill_name: String = "Skill name not set!"
+@export var tags: Array[SkillTag] = []
 
 @export_group("Visuals")
 @export var skill_icon: Texture2D
 @export var windup_animation_name: String = "idle"
-@export var projectile_speed: float = 400.0
+@export var projectile_speed: float = 500.0
 @export var emit_particles: bool = false
 
-@export_group("Damage Data")
-@export var base_damage_sources: Array[DamageSource]
-@export var stat_modifiers: StatBlock
+@export_group("Stats Data")
+#@export var damage_sources: Array[DamageSource] = []
+@export var inherent_mods: Array[StatModifier] = []
 
 @export_group("Behavior")
-@export var behaviors: Array[SkillBehavior]
-@export var base_speed: float
-@export var mana_cost: float
+@export var behaviors: Array[SkillBehavior] = []
+@export var base_speed: float # TODO: this should be influenced by stats
+@export var mana_cost: float # TODO: implement mana cost for skills
 
 var projectile: PackedScene = preload("uid://ce0b6wmvlgec2")
 

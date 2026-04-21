@@ -29,10 +29,12 @@
 [ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/ui/inventory/slot_bg_wings.png" id="17_yq6so"]
 [ext_resource type="PackedScene" uid="uid://ovmxuyq7rd0j" path="res://shared/ui/windows/character_screen/crafting_slot.tscn" id="21_2f3dj"]
 [ext_resource type="Script" uid="uid://br42kaxbnvlef" path="res://shared/ui/windows/character_screen/skill_bar.gd" id="22_qkpxi"]
-[ext_resource type="PackedScene" uid="uid://bqxaqoxqjenbx" path="res://scenes/stat_screen.tscn" id="24_tel4y"]
+[ext_resource type="Script" uid="uid://rj6msmdm33cs" path="res://shared/ui/windows/character_screen/stat_screen.gd" id="24_tel4y"]
+[ext_resource type="Script" uid="uid://qa31udwrx1ut" path="res://shared/ui/windows/character_screen/skill_selection_bar.gd" id="25_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://uvexmmqcgs6t" path="res://shared/ui/windows/character_screen/skill_selection_slot.tscn" id="25_qkpxi"]
 [ext_resource type="Script" uid="uid://whtf378swnbh" path="res://deprecated/stats_display.gd" id="28_fv21b"]
 
-[sub_resource type="Resource" id="Resource_tel4y"]
+[sub_resource type="Resource" id="Resource_5q0nq"]
 resource_local_to_scene = true
 script = ExtResource("7_yq6so")
 metadata/_custom_type_script = "uid://n8wtim8qm2cq"
@@ -65,7 +67,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
-stats = SubResource("Resource_tel4y")
+stats = SubResource("Resource_5q0nq")
 
 [node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true
@@ -192,184 +194,189 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen" unique_id=645696435]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen" unique_id=1372472146]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer" unique_id=645696435]
+layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer" unique_id=1551640689]
+[node name="CenterContainer" type="CenterContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer" unique_id=1551640689]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer" unique_id=846947485]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer" unique_id=846947485]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer" unique_id=1898982199]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=1898982199]
 layout_mode = 2
 
-[node name="Placeholder" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1678423500]
+[node name="Placeholder" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1678423500]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Placeholder2" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=354989371]
+[node name="Placeholder2" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=354989371]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="WeaponSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=690335858 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="WeaponSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=690335858 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("10_yc10j")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer" unique_id=726978423]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=726978423]
 layout_mode = 2
 
-[node name="PetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1240349119 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="PetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1240349119 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 10
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_vxglm")
 
-[node name="Placeholder3" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=909449694]
+[node name="Placeholder3" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=909449694]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Ring1Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1771888230 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="Ring1Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1771888230 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 7
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_y6deb")
 
-[node name="GlovesSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1395101949 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="GlovesSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer2" unique_id=1395101949 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 4
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("12_og1vs")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer" unique_id=366096315]
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=366096315]
 layout_mode = 2
 
-[node name="Placeholder4" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=292631679]
+[node name="Placeholder4" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=292631679]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HelmetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1943579368 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="HelmetSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1943579368 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 3
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_jscy8")
 
-[node name="ArmorSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=517960564 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="ArmorSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=517960564 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 2
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("10_muem4")
 
-[node name="BeltSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1393569912 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="BeltSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer3" unique_id=1393569912 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 6
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("16_2f3dj")
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer" unique_id=2107453448]
+[node name="VBoxContainer4" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=2107453448]
 layout_mode = 2
 
-[node name="WingsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1187576450 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="WingsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1187576450 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 9
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("17_yq6so")
 
-[node name="AmuletSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1218695085 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="AmuletSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1218695085 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 8
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("15_2wyq8")
 
-[node name="Ring2Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=925026479 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="Ring2Slot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=925026479 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 7
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("11_y6deb")
 slot_index = 1
 
-[node name="BootsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1236920918 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="BootsSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer4" unique_id=1236920918 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 5
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("14_y6deb")
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer" unique_id=1532423031]
+[node name="VBoxContainer5" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=1532423031]
 layout_mode = 2
 
-[node name="Placeholder5" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=824732362]
+[node name="Placeholder5" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=824732362]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Placeholder6" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=668400509]
+[node name="Placeholder6" type="Control" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=668400509]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="OffhandSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=1543856037 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="OffhandSlot" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer5" unique_id=1543856037 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 1
-player = NodePath("../../../../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../../../World/Player")
 slot_type_background_texture = ExtResource("13_pm3ni")
 
-[node name="SkillScreen" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1116281239]
+[node name="SkillScreen" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer" unique_id=1116281239]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="SkillBar" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/SkillScreen" unique_id=1580626685]
+[node name="SkillBar" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen" unique_id=1580626685]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 script = ExtResource("22_qkpxi")
 slot_scene = ExtResource("10_a8y0u")
 
-[node name="SkillSlot1" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/SkillScreen/SkillBar" unique_id=1854342854 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="SkillSlot1" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen/SkillBar" unique_id=1854342854 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 11
-player = NodePath("../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../World/Player")
 
-[node name="SkillSlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/SkillScreen/SkillBar" unique_id=193908012 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="SkillSlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen/SkillBar" unique_id=193908012 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 11
-player = NodePath("../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../World/Player")
 slot_index = 1
 
-[node name="SkillSlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/SkillScreen/SkillBar" unique_id=969830001 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="SkillSlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen/SkillBar" unique_id=969830001 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 11
-player = NodePath("../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../World/Player")
 slot_index = 2
 
-[node name="SkillSlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/SkillScreen/SkillBar" unique_id=1513153986 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="SkillSlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen/SkillBar" unique_id=1513153986 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 11
-player = NodePath("../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../World/Player")
 slot_index = 3
 
-[node name="SkillSlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/SkillScreen/SkillBar" unique_id=46264734 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
+[node name="SkillSlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen/SkillBar" unique_id=46264734 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2
 slot_type = 11
-player = NodePath("../../../../../../../../World/Player")
+player = NodePath("../../../../../../../../../../World/Player")
 slot_index = 4
 
 [node name="CraftingScreen" type="Panel" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=596668221]
@@ -423,9 +430,605 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 6
 text = "Reset Item"
 
-[node name="StatScreen" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1423856874 instance=ExtResource("24_tel4y")]
+[node name="StatScreen" type="Panel" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1423856874]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("24_tel4y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen" unique_id=939566861]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillSelection" type="PanelContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer" unique_id=663119875]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection" unique_id=1789079567]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="SkillSelectionBar" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer" unique_id=474633063]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("25_5q0nq")
+
+[node name="SkillSelectionSlot1" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" unique_id=424529371 instance=ExtResource("25_qkpxi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkillSelectionSlot2" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" unique_id=1092270320 instance=ExtResource("25_qkpxi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkillSelectionSlot3" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" unique_id=394125242 instance=ExtResource("25_qkpxi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkillSelectionSlot4" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" unique_id=744536700 instance=ExtResource("25_qkpxi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkillSelectionSlot5" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" unique_id=1363426832 instance=ExtResource("25_qkpxi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatsSection" type="MarginContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer" unique_id=647372468]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection" unique_id=1467087585]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer" unique_id=1784285213]
+layout_mode = 2
+
+[node name="OffenceStatsButton" type="Button" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons" unique_id=1722821474]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "Offence"
+
+[node name="DefenceStatsButton" type="Button" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons" unique_id=241437508]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "Defence"
+
+[node name="MiscStatsButton" type="Button" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons" unique_id=275868302]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "Misc"
+
+[node name="OffenceStats" type="ScrollContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer" unique_id=866837847]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/scrollbar_h_separation = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats" unique_id=817876873]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=207212427]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="DPS" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=1248739895]
+layout_mode = 2
+
+[node name="DPSText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/DPS" unique_id=1312448296]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Damage per Second"
+
+[node name="DPSLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/DPS" unique_id=1668134307]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="AttacksPerSecond" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=592480987]
+layout_mode = 2
+
+[node name="AttacksPerSecondText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/AttacksPerSecond" unique_id=169971386]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Attacks per Second"
+
+[node name="AttacksPerSecondLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/AttacksPerSecond" unique_id=455030297]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHAttackSpeedMod" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=962099788]
+layout_mode = 2
+
+[node name="MHAttackSpeedModText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHAttackSpeedMod" unique_id=1412147533]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Attack Speed modifier"
+
+[node name="MHAttackSpeedModLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHAttackSpeedMod" unique_id=813012599]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHCombinedDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=909687147]
+layout_mode = 2
+
+[node name="MHCombinedDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHCombinedDamage" unique_id=713537313]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Combined Damage"
+
+[node name="MHCombinedDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHCombinedDamage" unique_id=1614731771]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHPhysicalDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=80690824]
+layout_mode = 2
+
+[node name="MHPhysicalDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHPhysicalDamage" unique_id=1199188113]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Physical Damage"
+
+[node name="MHPhysicalDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHPhysicalDamage" unique_id=94322968]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHFireDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=616678117]
+layout_mode = 2
+
+[node name="MHFireDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHFireDamage" unique_id=1397393869]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Fire Damage"
+
+[node name="MHFireDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHFireDamage" unique_id=546520947]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHColdDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=446016035]
+layout_mode = 2
+
+[node name="MHColdDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHColdDamage" unique_id=804637242]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Cold Damage"
+
+[node name="MHColdDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHColdDamage" unique_id=1694019121]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHLightningDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=1211339017]
+layout_mode = 2
+
+[node name="MHLightningDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHLightningDamage" unique_id=907335578]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Lightning Damage"
+
+[node name="MHLightningDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHLightningDamage" unique_id=63765990]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHChaosDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer" unique_id=1077003052]
+layout_mode = 2
+
+[node name="MHChaosDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHChaosDamage" unique_id=1674874778]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Chaos Damage"
+
+[node name="MHChaosDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/OffenceStats/VBoxContainer/MHChaosDamage" unique_id=515836347]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="DefenceStats" type="ScrollContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer" unique_id=1853961744]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/scrollbar_h_separation = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats" unique_id=889493593]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=2053338174]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Armor" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=686995560]
+layout_mode = 2
+
+[node name="ArmorText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/Armor" unique_id=1593378873]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Armor"
+
+[node name="ArmorLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/Armor" unique_id=447065673]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="PhysicalDamageReduction" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=813251326]
+layout_mode = 2
+
+[node name="PhysicalDamageReductionText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/PhysicalDamageReduction" unique_id=1593018556]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Physical Damage Reduction"
+
+[node name="PhysicalDamageReductionLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/PhysicalDamageReduction" unique_id=544167285]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="Evasion" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=2009411206]
+layout_mode = 2
+
+[node name="EvasionText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/Evasion" unique_id=2080703539]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Evasion"
+
+[node name="EvasionLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/Evasion" unique_id=1271690071]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="ChanceToEvade" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=1334066585]
+layout_mode = 2
+
+[node name="ChanceToEvadeText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ChanceToEvade" unique_id=479833581]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Chance to Evade"
+
+[node name="ChanceToEvadeLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ChanceToEvade" unique_id=1459431786]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="LifeRegen" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=1287668799]
+layout_mode = 2
+
+[node name="LifeRegenText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/LifeRegen" unique_id=1069257822]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Life Regeneration"
+
+[node name="LifeRegenLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/LifeRegen" unique_id=1744647746]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="LifeLeech" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=2144718465]
+layout_mode = 2
+
+[node name="LifeLeechText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/LifeLeech" unique_id=1348436752]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Damage Leeched as Life"
+
+[node name="LifeLeechLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/LifeLeech" unique_id=800403039]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="EnergyShieldRegen" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=1467115390]
+layout_mode = 2
+
+[node name="EnergyShieldRegenText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/EnergyShieldRegen" unique_id=1330205958]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Energy Shield Regeneration"
+
+[node name="EnergyShieldRegenLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/EnergyShieldRegen" unique_id=1050971634]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="EnergyShieldLeech" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=803634627]
+layout_mode = 2
+
+[node name="EnergyShieldLeechText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/EnergyShieldLeech" unique_id=2059049090]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Damage Leeched as Energy Shield"
+
+[node name="EnergyShieldLeechLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/EnergyShieldLeech" unique_id=621234716]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="ManaRegen" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=979959650]
+layout_mode = 2
+
+[node name="ManaRegenText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ManaRegen" unique_id=1782735974]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Mana Regeneration"
+
+[node name="ManaRegenLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ManaRegen" unique_id=1191025599]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="ManaLeech" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=610599681]
+layout_mode = 2
+
+[node name="ManaLeechText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ManaLeech" unique_id=195409212]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Damage Leeched as Mana"
+
+[node name="ManaLeechLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ManaLeech" unique_id=1049182095]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="FireRes" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=1913995319]
+layout_mode = 2
+
+[node name="FireResText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/FireRes" unique_id=1859010092]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Fire Resistance"
+
+[node name="FireResLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/FireRes" unique_id=304394744]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="ColdRes" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=1943580784]
+layout_mode = 2
+
+[node name="ColdResText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ColdRes" unique_id=1627510778]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Cold Resistance"
+
+[node name="ColdResLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ColdRes" unique_id=45609077]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="LightningRes" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=75372432]
+layout_mode = 2
+
+[node name="LightningResText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/LightningRes" unique_id=718324252]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Lightning Resistance"
+
+[node name="LightningResLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/LightningRes" unique_id=1623455973]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="ChaosRes" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer" unique_id=16777389]
+layout_mode = 2
+
+[node name="ChaosResText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ChaosRes" unique_id=322662871]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Chaos Resistance"
+
+[node name="ChaosResLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/DefenceStats/VBoxContainer/ChaosRes" unique_id=672966916]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MiscStats" type="ScrollContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer" unique_id=229941614]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/scrollbar_h_separation = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats" unique_id=121802772]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1687276947]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="DPS" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1001118817]
+layout_mode = 2
+
+[node name="DPSText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/DPS" unique_id=698140190]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Damage per Second"
+
+[node name="DPSLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/DPS" unique_id=494245158]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="AttacksPerSecond" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1861587917]
+layout_mode = 2
+
+[node name="AttacksPerSecondText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/AttacksPerSecond" unique_id=107020582]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Attacks per Second"
+
+[node name="AttacksPerSecondLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/AttacksPerSecond" unique_id=78636736]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHAttackSpeedMod" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1367210415]
+layout_mode = 2
+
+[node name="MHAttackSpeedModText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHAttackSpeedMod" unique_id=2106510157]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Attack Speed modifier"
+
+[node name="MHAttackSpeedModLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHAttackSpeedMod" unique_id=467824103]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHCombinedDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=2143996031]
+layout_mode = 2
+
+[node name="MHCombinedDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHCombinedDamage" unique_id=1873729797]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Combined Damage"
+
+[node name="MHCombinedDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHCombinedDamage" unique_id=821935348]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHPhysicalDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=885261012]
+layout_mode = 2
+
+[node name="MHPhysicalDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHPhysicalDamage" unique_id=100807413]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Physical Damage"
+
+[node name="MHPhysicalDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHPhysicalDamage" unique_id=1376259757]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHFireDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1793237822]
+layout_mode = 2
+
+[node name="MHFireDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHFireDamage" unique_id=345138765]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Fire Damage"
+
+[node name="MHFireDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHFireDamage" unique_id=933853977]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHColdDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1933449151]
+layout_mode = 2
+
+[node name="MHColdDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHColdDamage" unique_id=1360932968]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Cold Damage"
+
+[node name="MHColdDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHColdDamage" unique_id=716154344]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHLightningDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1694153350]
+layout_mode = 2
+
+[node name="MHLightningDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHLightningDamage" unique_id=484245509]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Lightning Damage"
+
+[node name="MHLightningDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHLightningDamage" unique_id=786791055]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
+
+[node name="MHChaosDamage" type="HBoxContainer" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer" unique_id=1404950707]
+layout_mode = 2
+
+[node name="MHChaosDamageText" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHChaosDamage" unique_id=496588354]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Main Hand Chaos Damage"
+
+[node name="MHChaosDamageLabel" type="Label" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/MiscStats/VBoxContainer/MHChaosDamage" unique_id=2001489383]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "xxxxx"
 
 [node name="InventoryScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1120944326]
 unique_name_in_owner = true
@@ -546,4 +1149,8 @@ drop_table = ExtResource("17_muem4")
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/RerollAffixesButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/CraftingSlot" method="_on_reroll_affixes_button_pressed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/IncreaseRarityButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/CraftingSlot" method="_on_increase_rarity_button_pressed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/ResetItemButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/CraftingSlot" method="_on_reset_item_button_pressed"]
+[connection signal="visibility_changed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" method="_on_visibility_changed"]
+[connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons/OffenceStatsButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen" method="_on_offence_stats_button_pressed"]
+[connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons/DefenceStatsButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen" method="_on_defence_stats_button_pressed"]
+[connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons/MiscStatsButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen" method="_on_misc_stats_button_pressed"]
 [connection signal="pressed" from="UI/Debug/GenerateLootButton" to="UI/Debug/GenerateLootButton" method="_on_pressed"]
