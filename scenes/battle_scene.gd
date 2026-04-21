@@ -15,6 +15,8 @@ var current_enemy: CombatEnemy = null
 
 
 func _ready() -> void:
+	GameState.player_data.active_skill = null # we have this variable atm for the skillscreen display. if we don't set it to null, the skills values get applied to combat twice
+
 	victory_screen.visible = false
 	defeat_screen.visible = false
 

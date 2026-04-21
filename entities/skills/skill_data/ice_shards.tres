@@ -8,9 +8,18 @@
 
 [sub_resource type="Resource" id="Resource_r0xe6"]
 script = ExtResource("3_57r4x")
-hit_count = 5
-delay_between_hits = 0.3
+hit_count = 3
+delay_between_hits = 0.1
 metadata/_custom_type_script = "uid://b3ta7aty8xv1f"
+
+[sub_resource type="Resource" id="Resource_pkndr"]
+resource_local_to_scene = true
+script = ExtResource("3_pkndr")
+stat = 16
+type = 1
+amount = 2.0
+range_amount = 4.0
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]
 script = ExtResource("3_6amo4")
@@ -18,6 +27,7 @@ skill_name = "Ice Shards"
 tags = Array[int]([1, 3, 4])
 skill_icon = ExtResource("5_57r4x")
 emit_particles = true
+inherent_mods = Array[ExtResource("3_pkndr")]([SubResource("Resource_pkndr")])
 behaviors = Array[ExtResource("2_j2kc8")]([SubResource("Resource_r0xe6")])
 base_speed = 1.0
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

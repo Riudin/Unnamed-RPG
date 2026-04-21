@@ -26,6 +26,7 @@ signal stats_changed
 		if active_skill and not active_skill.inherent_mods.is_empty():
 			for mod in active_skill.inherent_mods:
 				stats.add_modifier(mod)
+		
 		stats_changed.emit()
 
 # Equipment - Single slot items

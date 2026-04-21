@@ -7,7 +7,7 @@
 resource_local_to_scene = true
 script = ExtResource("1_t5eou")
 stat = 13
-type = 1
+type = 2
 min_amount = 5.0
 max_amount = 9.0
 description = "%d%% increased Physical Damage"

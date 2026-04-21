@@ -51,13 +51,14 @@ func _get_range_amount() -> float:
 
 
 func get_display_text() -> String:
-	var display_amount: float
 	match type:
 			ModifierType.ADD:
-				display_amount = amount
+				return description % amount
+			ModifierType.ADD_RANGE:
+				return description % [amount, range_amount]
 			ModifierType.MULTIPLY:
-				display_amount = amount * 100.0
+				return description % (amount * 100.0)
 			ModifierType.MORE:
-				display_amount = (amount - 1.0) * 100.0
-
-	return description % display_amount
+				return description % ((amount - 1.0) * 100.0)
+			_:
+				return "ERROR: ModifierType unknown"

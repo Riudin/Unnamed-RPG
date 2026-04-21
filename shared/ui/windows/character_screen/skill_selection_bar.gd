@@ -13,11 +13,11 @@ var selected_slot: SkillSelectionSlot = null
 
 
 func _ready() -> void:
-	skill_selection_slot_1.slot_selected.connect(_on_sot_selected)
-	skill_selection_slot_2.slot_selected.connect(_on_sot_selected)
-	skill_selection_slot_3.slot_selected.connect(_on_sot_selected)
-	skill_selection_slot_4.slot_selected.connect(_on_sot_selected)
-	skill_selection_slot_5.slot_selected.connect(_on_sot_selected)
+	skill_selection_slot_1.slot_selected.connect(_on_slot_selected)
+	skill_selection_slot_2.slot_selected.connect(_on_slot_selected)
+	skill_selection_slot_3.slot_selected.connect(_on_slot_selected)
+	skill_selection_slot_4.slot_selected.connect(_on_slot_selected)
+	skill_selection_slot_5.slot_selected.connect(_on_slot_selected)
 
 	slots.append(skill_selection_slot_1)
 	slots.append(skill_selection_slot_2)
@@ -25,13 +25,12 @@ func _ready() -> void:
 	slots.append(skill_selection_slot_4)
 	slots.append(skill_selection_slot_5)
 
-	selected_slot = skill_selection_slot_1
-	skill_selection_slot_1.highlight.show()
+	_on_slot_selected(skill_selection_slot_1)
 
 	update_slots()
 
 
-func _on_sot_selected(slot: SkillSelectionSlot) -> void:
+func _on_slot_selected(slot: SkillSelectionSlot) -> void:
 	for s in slots:
 		s.highlight.hide()
 
@@ -48,5 +47,10 @@ func update_slots() -> void:
 			slots[i].skill = null
 
 
-func _on_visibility_changed() -> void:
+func _on_draw() -> void:
 	update_slots()
+	GameState.player_data.active_skill = selected_slot.skill
+
+
+func _on_hidden() -> void:
+	GameState.player_data.active_skill = null

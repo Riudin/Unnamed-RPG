@@ -107,9 +107,10 @@ script = ExtResource("3_hsq6x")
 skill_bar_highlight = ExtResource("4_b07ak")
 metadata/_custom_type_script = "uid://casjk8xyj6crd"
 
-[node name="HealthComponent" type="Node" parent="." unique_id=939295579]
+[node name="HealthComponent" type="Node" parent="." unique_id=939295579 node_paths=PackedStringArray("health_bar")]
 unique_name_in_owner = true
 script = ExtResource("4_lq8k6")
+health_bar = NodePath("../GUI/ResourceBars/HealthBar")
 metadata/_custom_type_script = "uid://urdreyx4totx"
 
 [node name="GUI" type="Control" parent="." unique_id=915349260]

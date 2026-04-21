@@ -10,11 +10,21 @@
 script = ExtResource("2_d5j1j")
 metadata/_custom_type_script = "uid://cafjthvgkr7t3"
 
+[sub_resource type="Resource" id="Resource_rusbe"]
+resource_local_to_scene = true
+script = ExtResource("3_rusbe")
+stat = 13
+type = 1
+amount = 15.0
+range_amount = 15.0
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
+
 [resource]
 script = ExtResource("2_a6xdi")
 skill_name = "Heavy Blow"
 tags = Array[int]([0, 2])
 skill_icon = ExtResource("5_u7vvt")
+inherent_mods = Array[ExtResource("3_rusbe")]([SubResource("Resource_rusbe")])
 behaviors = Array[ExtResource("1_a6xdi")]([SubResource("Resource_tucqm")])
 base_speed = 0.8
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

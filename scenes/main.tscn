@@ -148,6 +148,7 @@ tint_progress = Color(0.16940002, 0.33957, 0.77, 1)
 
 [node name="CharacterScreenUI" type="PanelContainer" parent="UI/InterfaceContainer" unique_id=1274726946 node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
+visible = false
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 250.0
@@ -1100,6 +1101,8 @@ drop_table = ExtResource("17_muem4")
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/RerollAffixesButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/CraftingSlot" method="_on_reroll_affixes_button_pressed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/IncreaseRarityButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/CraftingSlot" method="_on_increase_rarity_button_pressed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/ResetItemButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/CraftingScreen/MarginContainer/CenterContainer/VBoxContainer/CraftingSlot" method="_on_reset_item_button_pressed"]
+[connection signal="draw" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" method="_on_draw"]
+[connection signal="hidden" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" method="_on_hidden"]
 [connection signal="visibility_changed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/SkillSelection/MarginContainer/SkillSelectionBar" method="_on_visibility_changed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons/OffenceStatsButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen" method="_on_offence_stats_button_pressed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen/VBoxContainer/StatsSection/VBoxContainer/Buttons/DefenceStatsButton" to="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/StatScreen" method="_on_defence_stats_button_pressed"]
