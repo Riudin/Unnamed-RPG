@@ -23,6 +23,14 @@ func set_item(item: ItemInstance):
 			# l.text = _format_stat(stat_name, value)
 			l.add_theme_font_size_override("font_size", 8) # Workaround to set font size. Maybe in the future use a predefinded label scene
 			item_stats_box.add_child(l)
+	
+	for s in item.suffixes:
+		for mod in s.mods:
+			var l := Label.new()
+			l.text = mod.get_display_text()
+			# l.text = _format_stat(stat_name, value)
+			l.add_theme_font_size_override("font_size", 8) # Workaround to set font size. Maybe in the future use a predefinded label scene
+			item_stats_box.add_child(l)
 
 
 func _clear_stats():

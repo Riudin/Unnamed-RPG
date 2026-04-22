@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AffixData" format=3 uid="uid://deivjv7sfdcaf"]
+
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="1_d2prs"]
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="2_o6b8o"]
+
+[sub_resource type="Resource" id="Resource_g0lpw"]
+resource_local_to_scene = true
+script = ExtResource("1_d2prs")
+stat = 4
+type = 2
+min_amount = 6.0
+max_amount = 8.0
+description = "%d increased maximum Life"
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
+
+[resource]
+script = ExtResource("2_o6b8o")
+name_format = "Healthy %s"
+mods = Array[ExtResource("1_d2prs")]([SubResource("Resource_g0lpw")])
+metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

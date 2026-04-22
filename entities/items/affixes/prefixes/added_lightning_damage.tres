@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AffixData" format=3 uid="uid://c55jmeqnljgpy"]
+
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="1_vgd1u"]
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="2_kvg7i"]
+
+[sub_resource type="Resource" id="Resource_86cyw"]
+resource_local_to_scene = true
+script = ExtResource("1_vgd1u")
+stat = 17
+type = 1
+min_amount = 2.0
+max_amount = 4.0
+range_min_amount = 7.0
+range_max_amount = 10.0
+description = "Adds %d to %d Lightning Damage"
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
+
+[resource]
+script = ExtResource("2_kvg7i")
+name_format = "Brutal %s"
+mods = Array[ExtResource("1_vgd1u")]([SubResource("Resource_86cyw")])
+metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

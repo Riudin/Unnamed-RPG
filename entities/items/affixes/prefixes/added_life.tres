@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_u2nlh"]
 
 [sub_resource type="Resource" id="Resource_g0lpw"]
+resource_local_to_scene = true
 script = ExtResource("1_g0lpw")
 stat = 4
 min_amount = 5.0

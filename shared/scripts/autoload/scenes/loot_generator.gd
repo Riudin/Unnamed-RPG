@@ -100,21 +100,19 @@ func _rand_suffix() -> AffixData:
 
 
 func _roll_affix_values(loot: ItemInstance):
-	#loot.rolled_stats.clear()
 	for a in loot.prefixes:
 		if a == null:
 			continue
 
 		for mod in a.mods:
 			a.roll_value(mod)
-			#loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
-	
-	# for a in loot.suffixes:
-	# 	if a == null:
-	# 		continue
-		
-	# 	var v := a.roll_values()
-	# 	loot.rolled_stats[a.stat_name] = loot.rolled_stats.get(a.stat_name, 0.0) + v
+
+	for a in loot.suffixes:
+		if a == null:
+			continue
+
+		for mod in a.mods:
+			a.roll_value(mod)
 
 
 func _load_affixes_from_folder(folder_path: String) -> Array[AffixData]:

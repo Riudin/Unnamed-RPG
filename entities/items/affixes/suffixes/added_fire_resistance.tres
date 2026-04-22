@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AffixData" format=3 uid="uid://cbwotl23msl2r"]
+
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="1_jb2sm"]
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="2_74mda"]
+
+[sub_resource type="Resource" id="Resource_kgo1m"]
+resource_local_to_scene = true
+script = ExtResource("1_jb2sm")
+stat = 30
+min_amount = 3.0
+max_amount = 8.0
+description = "+%d%% to Fire Resistance"
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
+
+[resource]
+script = ExtResource("2_74mda")
+is_prefix = false
+mods = Array[ExtResource("1_jb2sm")]([SubResource("Resource_kgo1m")])
+metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"
