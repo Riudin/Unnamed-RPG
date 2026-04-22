@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ddfs2supyi2fu"]
+
+[ext_resource type="Script" uid="uid://cmjw1uiwsfppr" path="res://shared/ui/combat/stat_bar.gd" id="1_o0bg8"]
+[ext_resource type="Texture2D" uid="uid://c0rofyeb47vvc" path="res://assets/ui/combat/health_bar_bg.png" id="2_hv4ei"]
+[ext_resource type="Texture2D" uid="uid://beu58k1spb4td" path="res://assets/ui/combat/health_bar_border.png" id="3_ad7ca"]
+[ext_resource type="Texture2D" uid="uid://dehkbwb6b44cx" path="res://assets/ui/combat/health_bar_progress_back.png" id="4_4jbci"]
+[ext_resource type="Texture2D" uid="uid://kyucmwhgke3o" path="res://assets/ui/combat/health_bar_progress_front.png" id="5_v3rf7"]
+
+[node name="StatBar" type="Control" unique_id=526058230]
+custom_minimum_size = Vector2(10, 5)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -580.0
+offset_bottom = -355.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_o0bg8")
+
+[node name="BackBar" type="TextureProgressBar" parent="." unique_id=551646451]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 5)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.1
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 1
+stretch_margin_right = 4
+stretch_margin_bottom = 1
+texture_under = ExtResource("2_hv4ei")
+texture_over = ExtResource("3_ad7ca")
+texture_progress = ExtResource("4_4jbci")
+
+[node name="FrontBar" type="TextureProgressBar" parent="." unique_id=1977534986]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 5)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.1
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 1
+stretch_margin_right = 4
+stretch_margin_bottom = 1
+texture_progress = ExtResource("5_v3rf7")

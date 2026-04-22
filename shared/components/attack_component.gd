@@ -137,7 +137,7 @@ func trigger_attack() -> void:
 		# recalculate directly to ensure stats are ready
 		parent_data.stats.recalculate_stats()
 
-	print(parent, " triggering Skill: ", skill.skill_name)
+	#print(parent, " triggering Skill: ", skill.skill_name)
 
 	var context = BattleContext.new()
 	context.attacker = parent
