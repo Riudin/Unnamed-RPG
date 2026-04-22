@@ -17,7 +17,7 @@ signal stats_changed
 
 # Skills
 @export var equipped_skills: Array[SkillData]
-@export var active_skill: SkillData = null:
+@export var active_skill: SkillData = null: # this is currently only used for the statscreen. there we want to show stats with a skill selected
 	set(new_value):
 		if active_skill and not active_skill.inherent_mods.is_empty():
 			for mod in active_skill.inherent_mods:

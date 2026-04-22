@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="4_lq8k6"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_r7al3"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="7_bc1gv"]
-[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="8_30n0q"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="8_30n0q"]
 [ext_resource type="PackedScene" uid="uid://ddfs2supyi2fu" path="res://shared/ui/combat/stat_bar.tscn" id="8_bkybs"]
 [ext_resource type="Texture2D" uid="uid://dtb8fqxdspxjt" path="res://assets/ui/combat/mana_bar_progress_front.png" id="9_d2ehu"]
 
@@ -168,11 +168,17 @@ theme_override_constants/margin_left = 2
 [node name="CombatSkillBar" type="HBoxContainer" parent="GUI" unique_id=650950878]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(92, 20)
-layout_mode = 0
-offset_left = -2.0
-offset_top = 58.0
-offset_right = 90.0
-offset_bottom = 78.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -20.0
+offset_right = 46.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 10
 theme_override_constants/separation = 2
 alignment = 1

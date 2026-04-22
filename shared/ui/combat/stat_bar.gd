@@ -66,8 +66,8 @@ func update_bar(current: float, max_value: float):
 func _shake():
 	var original_pos = position
 	var tw = create_tween()
-	tw.tween_property(self , "position", original_pos + Vector2(2, 0), 0.05)
-	tw.tween_property(self , "position", original_pos - Vector2(2, 0), 0.05)
+	tw.tween_property(self , "position", original_pos + Vector2(1, 0), 0.05)
+	tw.tween_property(self , "position", original_pos - Vector2(1, 0), 0.05)
 	tw.tween_property(self , "position", original_pos, 0.05)
  
 

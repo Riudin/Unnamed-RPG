@@ -315,6 +315,6 @@ func recalculate_stats() -> void:
 func _on_experience_set(new_value: int) -> void:
 	var old_level: int = level
 	experience = new_value
-
+	
 	if old_level != level:
 		recalculate_stats()

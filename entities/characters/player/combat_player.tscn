@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ch3s4bbrrk1jq" path="res://assets/transparent.png" id="4_owo3w"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_0gl37"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="6_wckln"]
-[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="7_1rxe1"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="7_1rxe1"]
 [ext_resource type="PackedScene" uid="uid://ddfs2supyi2fu" path="res://shared/ui/combat/stat_bar.tscn" id="8_n5vhm"]
 [ext_resource type="Texture2D" uid="uid://dtb8fqxdspxjt" path="res://assets/ui/combat/mana_bar_progress_front.png" id="9_dwe0j"]
 [ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="9_wckln"]

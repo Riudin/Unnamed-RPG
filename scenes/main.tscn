@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
 [ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="7_yq6so"]
+[ext_resource type="Resource" uid="uid://b0hc4byhh8tuk" path="res://entities/skills/skill_data/default_attack.tres" id="8_5q0nq"]
 [ext_resource type="Script" uid="uid://dbmoyj38ooa3s" path="res://shared/ui/windows/character_screen/character_screen_ui.gd" id="8_trceg"]
 [ext_resource type="Script" uid="uid://ctgym2ebc4lj7" path="res://shared/ui/windows/inventory/inventory_ui.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
@@ -67,6 +68,7 @@ y_sort_enabled = true
 [node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
 stats = SubResource("Resource_qkpxi")
+default_attack = ExtResource("8_5q0nq")
 
 [node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true
@@ -348,7 +350,6 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 script = ExtResource("22_qkpxi")
-slot_scene = ExtResource("10_a8y0u")
 
 [node name="SkillSlot1" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/EquipmentScreen/VBoxContainer/SkillScreen/SkillBar" unique_id=1854342854 node_paths=PackedStringArray("player") instance=ExtResource("10_a8y0u")]
 layout_mode = 2

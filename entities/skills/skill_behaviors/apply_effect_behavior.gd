@@ -2,5 +2,5 @@ class_name ApplyEffectBehavior
 extends SkillBehavior
 
 
-func execute(_source, _target):
+func execute(context: BattleContext, _skill: SkillData, on_hit: Callable):
 	pass

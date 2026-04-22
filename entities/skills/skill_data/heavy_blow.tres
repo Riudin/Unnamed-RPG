@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="2_a6xdi"]
 [ext_resource type="Script" uid="uid://cafjthvgkr7t3" path="res://entities/skills/skill_behaviors/single_hit_behavior.gd" id="2_d5j1j"]
 [ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="3_rusbe"]
-[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://entities/skills/skill_icons/heavy_blow.png" id="5_u7vvt"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="5_u7vvt"]
 
 [sub_resource type="Resource" id="Resource_tucqm"]
 script = ExtResource("2_d5j1j")

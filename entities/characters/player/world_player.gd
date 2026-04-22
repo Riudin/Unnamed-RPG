@@ -12,6 +12,8 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = %Sprite2D
 
+@export var default_attack: SkillData
+
 
 func _ready() -> void:
 	input_component.connect("movement_input", _on_movement_input)
@@ -44,7 +46,17 @@ func _on_navigation_finished():
 
 ### Equipment Stuff --- maybe put this in a stats_component or something later on
 func recalculate_skills():
-	GameState.player_data.equipped_skills = equipment_component.get_all_skills()
+	var equipped_skills: Array[SkillData] = equipment_component.get_all_skills()
+	var no_skill_equipped: bool = true
+
+	for skill in equipped_skills:
+		if skill is SkillData:
+			no_skill_equipped = false
+	
+	if no_skill_equipped:
+		equipped_skills[0] = default_attack
+
+	GameState.player_data.equipped_skills = equipped_skills
 
 
 func equip_item(item: ItemInstance, slot_index: int = 0):

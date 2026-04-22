@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0sraw2uxqjo8"
-path="res://.godot/imported/ice_shard.png-5bf6a657adeb814120a2f34a3b377e86.ctex"
+path="res://.godot/imported/ice_shard.png-9242f77412ee571c4d20c63d14daa3b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/skills/skill_icons/ice_shard.png"
-dest_files=["res://.godot/imported/ice_shard.png-5bf6a657adeb814120a2f34a3b377e86.ctex"]
+source_file="res://assets/icons/skill_icons/ice_shard.png"
+dest_files=["res://.godot/imported/ice_shard.png-9242f77412ee571c4d20c63d14daa3b8.ctex"]
 
 [params]
 

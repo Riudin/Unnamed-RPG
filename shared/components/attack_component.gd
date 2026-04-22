@@ -35,7 +35,6 @@ var skills: Array[SkillData]: set = set_skills
 func _ready() -> void:
 	await get_parent().ready
 	TickManager.connect("tick", _on_tick)
-	#SignalBus.skills_changed.connect(set_skills)
 
 	assert(parent_data != null and parent_data.equipped_skills, "No Parent Data assigned, or parent has no Data with equipped_skills!")
 	set_skills(parent_data.equipped_skills)
