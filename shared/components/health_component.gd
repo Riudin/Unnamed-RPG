@@ -23,7 +23,7 @@ func _ready() -> void:
 	health_bar.setup_bar(health, max_health)
 
 
-func take_damage(damage, _is_crit):
+func take_damage(damage):
 	health -= damage
 	health = clampf(health, 0.0, max_health)
 
@@ -32,3 +32,8 @@ func take_damage(damage, _is_crit):
 
 	if health <= 0.0:
 		died.emit(parent)
+
+
+# func on_visual_hit():
+# 	if health_bar:
+# 		health_bar.update_bar(float(health), float(max_health))

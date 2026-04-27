@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://ccsn7qcjcvh8p"]
 
+[ext_resource type="Script" uid="uid://b3ta7aty8xv1f" path="res://entities/skills/skill_behaviors/hit_behavior.gd" id="2_6hgn2"]
 [ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="2_7dwag"]
-[ext_resource type="Script" uid="uid://cafjthvgkr7t3" path="res://entities/skills/skill_behaviors/single_hit_behavior.gd" id="3_4imm1"]
 [ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="3_6hgn2"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="3_rhpjj"]
 [ext_resource type="Texture2D" uid="uid://caw4idtkh0lnk" path="res://assets/icons/skill_icons/fireball.png" id="5_i1js0"]
 
-[sub_resource type="Resource" id="Resource_6qc5d"]
-script = ExtResource("3_4imm1")
-metadata/_custom_type_script = "uid://cafjthvgkr7t3"
+[sub_resource type="Resource" id="Resource_4imm1"]
+resource_local_to_scene = true
+script = ExtResource("2_6hgn2")
+metadata/_custom_type_script = "uid://b3ta7aty8xv1f"
 
 [sub_resource type="Resource" id="Resource_bhl8x"]
 resource_local_to_scene = true
@@ -27,6 +28,6 @@ skill_icon = ExtResource("5_i1js0")
 windup_animation_name = "fire"
 emit_particles = true
 inherent_mods = Array[ExtResource("3_6hgn2")]([SubResource("Resource_bhl8x")])
-behaviors = Array[ExtResource("2_7dwag")]([SubResource("Resource_6qc5d")])
+behaviors = Array[ExtResource("2_7dwag")]([SubResource("Resource_4imm1")])
 base_speed = 1.0
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="1_a6xdi"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="2_a6xdi"]
-[ext_resource type="Script" uid="uid://cafjthvgkr7t3" path="res://entities/skills/skill_behaviors/single_hit_behavior.gd" id="2_d5j1j"]
+[ext_resource type="Script" uid="uid://b3ta7aty8xv1f" path="res://entities/skills/skill_behaviors/hit_behavior.gd" id="2_rusbe"]
 [ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="3_rusbe"]
 [ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="5_u7vvt"]
 
-[sub_resource type="Resource" id="Resource_tucqm"]
-script = ExtResource("2_d5j1j")
-metadata/_custom_type_script = "uid://cafjthvgkr7t3"
+[sub_resource type="Resource" id="Resource_gil4y"]
+resource_local_to_scene = true
+script = ExtResource("2_rusbe")
+metadata/_custom_type_script = "uid://b3ta7aty8xv1f"
 
 [sub_resource type="Resource" id="Resource_rusbe"]
 resource_local_to_scene = true
@@ -25,6 +26,6 @@ skill_name = "Heavy Blow"
 tags = Array[int]([0, 2])
 skill_icon = ExtResource("5_u7vvt")
 inherent_mods = Array[ExtResource("3_rusbe")]([SubResource("Resource_rusbe")])
-behaviors = Array[ExtResource("1_a6xdi")]([SubResource("Resource_tucqm")])
+behaviors = Array[ExtResource("1_a6xdi")]([SubResource("Resource_gil4y")])
 base_speed = 0.8
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

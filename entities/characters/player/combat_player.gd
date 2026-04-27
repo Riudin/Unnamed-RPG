@@ -15,3 +15,7 @@ func _ready() -> void:
 
 	attack_component.parent_data = player_data
 	health_component.parent_data = player_data
+
+
+func on_visual_hit():
+	health_component.on_visual_hit()

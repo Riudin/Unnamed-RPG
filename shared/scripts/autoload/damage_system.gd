@@ -7,7 +7,9 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 	# We could also use combined damage from the stats directly. this is done in case we want to apply burn or other things later depending on dmg type
 	var physical_damage := randi_range(instance.stats.current_physical_damage, instance.stats.current_physical_damage_range)
 	var fire_damage := randi_range(instance.stats.current_fire_damage, instance.stats.current_fire_damage_range)
+	# print("current_fire_dmg is between %d and %d. calculated. %d damage." % [instance.stats.current_fire_damage, instance.stats.current_fire_damage_range, fire_damage])
 	var cold_damage := randi_range(instance.stats.current_cold_damage, instance.stats.current_cold_damage_range)
+	#print("current_cold_dmg is between %d and %d. calculated. %d damage." % [instance.stats.current_cold_damage, instance.stats.current_cold_damage_range, cold_damage])
 	var lightning_damage := randi_range(instance.stats.current_lightning_damage, instance.stats.current_lightning_damage_range)
 	var chaos_damage := randi_range(instance.stats.current_chaos_damage, instance.stats.current_chaos_damage_range)
 

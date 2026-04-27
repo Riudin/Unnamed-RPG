@@ -16,3 +16,7 @@ func _ready() -> void:
 	health_component.parent_data = enemy_data
 
 	sprite.texture = enemy_data.texture
+
+
+func on_visual_hit():
+	health_component.on_visual_hit()
