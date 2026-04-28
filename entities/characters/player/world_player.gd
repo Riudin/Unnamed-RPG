@@ -22,14 +22,16 @@ func _ready() -> void:
 
 	if not GameState.player_data.stats:
 		GameState.player_data.stats = stats
+	else:
+		stats = GameState.player_data.stats
 
 	recalculate_skills()
+
 
 # just for debugging
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
-		print("Current fire damage: ", GameState.player_data.stats.current_fire_damage)
-		print("Current fire damage range: ", GameState.player_data.stats.current_fire_damage_range)
+		stats.experience += 5
 
 func _on_movement_input(target):
 	navigation_component.navigate_to_target(target)

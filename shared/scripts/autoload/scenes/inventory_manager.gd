@@ -41,7 +41,8 @@ func add_item(item: ItemInstance) -> bool:
 			var pos := Vector2i(x, y)
 			if can_place(item, pos):
 				place(item, pos)
-				inventory_ui.spawn_item_ui(item, pos)
+				if inventory_ui:
+					inventory_ui.spawn_item_ui(item, pos)
 				#update_player_data()
 				return true
 	return false

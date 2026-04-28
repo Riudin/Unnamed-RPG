@@ -17,17 +17,11 @@ enum ModifiableStats {
 	MANA_LEECH,
 	ENERY_SHIELD_LEECH,
 	PHYSICAL_DAMAGE,
-	# PHYSICAL_DAMAGE_RANGE,
 	ELEMENTAL_DAMAGE,
-	# ELEMENTAL_DAMAGE_RANGE,
 	FIRE_DAMAGE,
-	# FIRE_DAMAGE_RANGE,
 	COLD_DAMAGE,
-	# COLD_DAMAGE_RANGE,
 	LIGHTNING_DAMAGE,
-	# LIGHTNING_DAMAGE_RANGE,
 	CHAOS_DAMAGE,
-	# CHAOS_DAMAGE_RANGE,
 	ATTACK_SPEED,
 	CAST_SPEED,
 	CRIT_CHANCE,
@@ -59,6 +53,8 @@ signal stats_recalculated
 
 # signal health_depleted
 # signal health_changed(cur_health: int, max_health: int)
+signal xp_changed(new_xp, xp_to_next)
+signal level_up(new_level)
 
 ### Base Stats
 # Primary Attributes
@@ -207,10 +203,12 @@ signal stats_recalculated
 
 ### Variable Stats
 # var health: int = 0 : set = _on_health_set
-@export var experience: int = 0: set = _on_experience_set
+@export var experience: int: set = _on_experience_set
 
 var level: int:
-	get(): return floor(max(1.0, sqrt(experience / 100.0) + 0.5))
+	get(): return int(floor(sqrt(experience / 100.0))) + 1
+	
+	# old formula: floor(max(1.0, sqrt(experience / 100.0) + 0.5))
 
 var combined_damage: int = 0:
 	get():
@@ -315,6 +313,15 @@ func recalculate_stats() -> void:
 func _on_experience_set(new_value: int) -> void:
 	var old_level: int = level
 	experience = new_value
+
+	var xp_to_next: int = int(100 * pow(level, 2)) # inverse to the level formula. needs to change if level formula changes
+	var current_xp_floor: int = int(100 * pow(level - 1, 2))
+	xp_changed.emit(experience, xp_to_next, current_xp_floor)
 	
 	if old_level != level:
-		recalculate_stats()
+		_on_level_up()
+
+
+func _on_level_up() -> void:
+	level_up.emit(level)
+	recalculate_stats()

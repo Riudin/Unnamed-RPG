@@ -55,5 +55,15 @@ func _on_player_died(player):
 
 func _on_enemy_died(enemy):
 	#TODO: when multipla enemies possible, check if it was the last one
+	var loot: ItemInstance = LootGenerator.generate_loot(enemy.enemy_data.drop_table)
+
+	if loot:
+		InventoryManager.add_item(loot)
+	
+	# Grant player XP reward
+	if GameState.player_data.stats:
+		GameState.player_data.stats.experience += enemy.enemy_data.drop_table.xp_reward
+
 	enemy.queue_free()
+
 	victory_screen.show()

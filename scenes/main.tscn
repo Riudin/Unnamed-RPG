@@ -88,13 +88,12 @@ grow_vertical = 2
 
 [node name="HUD" type="Control" parent="UI" unique_id=2082857132]
 layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="LevelUI" type="Control" parent="UI/HUD" unique_id=1578442086]
 custom_minimum_size = Vector2(0, 20)
@@ -107,6 +106,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LevelUI" unique_id=1371403082]
 layout_mode = 1
@@ -118,8 +118,8 @@ offset_top = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/LevelUI/MarginContainer" unique_id=1778996306]
 layout_mode = 2
@@ -130,7 +130,9 @@ alignment = 1
 [node name="LevelLabel" type="Label" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer" unique_id=2121458588]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "1"
+horizontal_alignment = 2
 
 [node name="XPBar" type="TextureProgressBar" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer" unique_id=436897452]
 unique_name_in_owner = true
@@ -139,12 +141,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
-value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("7_tipki")
 texture_progress = ExtResource("7_tipki")
 tint_under = Color(0.26, 0.26, 0.26, 0.45490196)
 tint_progress = Color(0.16940002, 0.33957, 0.77, 1)
+
+[node name="XPLabel" type="Label" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer" unique_id=1897399646]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
 
 [node name="InterfaceContainer" type="Node" parent="UI" unique_id=1991207263]
 

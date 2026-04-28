@@ -10,6 +10,7 @@ extends Node
 # LevelUI
 @onready var xp_bar: TextureProgressBar = %XPBar
 @onready var level_text: Label = %LevelLabel
+@onready var xp_label: Label = %XPLabel
 
 @onready var battle_confirmation_popup: PackedScene = preload("uid://clibstgxaah3l")
 
@@ -20,8 +21,14 @@ func _ready() -> void:
 	# DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
 
 	# XP and Level Signals
-	SignalBus.leveled_up.connect(update_level_text)
-	SignalBus.xp_changed.connect(xp_bar_update)
+	# SignalBus.leveled_up.connect(update_level_text)
+	# SignalBus.xp_changed.connect(xp_bar_update)
+
+	GameState.player_stats_changed.connect(_on_player_stats_changed)
+	
+	# if GameState.player_data.stats:
+	# 	GameState.player_data.stats.xp_changed.connect(xp_bar_update)
+	# 	GameState.player_data.stats.level_up.connect(update_level_text)
 
 
 # Handling Inputs
@@ -57,15 +64,29 @@ func show_battle_confirmation_popup(enemy):
 
 ### Handling XP and Level
 
-func update_level_text(new_level, _levels_gained, _skill_points_awarded):
-	level_text.text = str(new_level)
- 
 
-func xp_bar_update(new_xp, xp_to_next):
+func _on_player_stats_changed():
+	if GameState.player_data.stats:
+		if not GameState.player_data.stats.xp_changed.is_connected(xp_bar_update):
+			GameState.player_data.stats.xp_changed.connect(xp_bar_update)
+		if not GameState.player_data.stats.level_up.is_connected(update_level_text):
+			GameState.player_data.stats.level_up.connect(update_level_text)
+
+		GameState.player_data.stats.experience = GameState.player_data.stats.experience # This just calls the setter functions in stats to fire the signals and update xp ui
+		update_level_text(GameState.player_data.stats.level)
+
+func xp_bar_update(new_xp, xp_to_next, xp_floor):
+	xp_bar.min_value = xp_floor
 	xp_bar.max_value = xp_to_next
 	xp_bar.value = new_xp
 
+	xp_label.text = str(new_xp) + " / " + str(xp_to_next)
+	print("xp: ", new_xp, " to next: ", xp_to_next)
 
+
+func update_level_text(new_level):
+	level_text.text = str(new_level)
+	print("new level: ", new_level)
 ### Handling Inventory UI
 
 # Here we can add slot highlights back in later
