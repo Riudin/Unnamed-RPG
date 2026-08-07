@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drjf1n58fw8n0"]
+
+[ext_resource type="Script" uid="uid://bym4vs7m0ecnr" path="res://systems/dungeon_running/dungeon_run/dungeon_run.gd" id="1_wiadv"]
+
+[node name="DungeonRun" type="Node" unique_id=1102008789]
+script = ExtResource("1_wiadv")

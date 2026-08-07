@@ -6,6 +6,7 @@ extends Node
 # @onready var battle_screen: Control = %BattleScreen
 @onready var inventory_ui: Control = %InventoryScreenUI
 @onready var character_screen_ui: Control = %CharacterScreenUI
+@onready var forest_area_screen: Control = %ForestAreaScreen
 
 # LevelUI
 @onready var xp_bar: TextureProgressBar = %XPBar
@@ -17,6 +18,8 @@ extends Node
 func _ready() -> void:
 	# Battle Signals
 	SignalBus.connect("enemy_clicked", _on_enemy_clicked)
+	SignalBus.connect("dungeon_clicked", _on_dungeon_clicked)
+	SignalBus.forest_area_entry_requested.connect(on_forest_area_entry_requested)
 	# SignalBus.connect("battle_started", _on_battle_started)
 	# DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
 
@@ -40,10 +43,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		character_screen_ui.visible = !character_screen_ui.visible
 
 
+# Handling Area Window
+func on_forest_area_entry_requested():
+	forest_area_screen.visible = true
+
+
 ### Handling Combat
 
 func _on_enemy_clicked(enemy):
 	show_battle_confirmation_popup(enemy)
+
+
+func _on_dungeon_clicked(dungeon_data):
+	show_battle_confirmation_popup(dungeon_data)
 
 
 func show_battle_confirmation_popup(enemy):

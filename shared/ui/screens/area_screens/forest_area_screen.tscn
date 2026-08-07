@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dx7w044rsadf3"]
+
+[ext_resource type="Texture2D" uid="uid://b7qt3le1da7ud" path="res://assets/area_one_bg.png" id="1_ynq0i"]
+[ext_resource type="PackedScene" uid="uid://cun3lks1dwfdh" path="res://shared/ui/screens/area_screens/dungeon.tscn" id="2_42r4n"]
+[ext_resource type="Script" uid="uid://dfloxxcb163jb" path="res://shared/ui/screens/area_screens/forest_area_screen.gd" id="2_ko8ql"]
+
+[node name="ForestAreaScreen" type="TextureRect" unique_id=1359804726]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ynq0i")
+expand_mode = 2
+script = ExtResource("2_ko8ql")
+
+[node name="ExitButton" type="Button" parent="." unique_id=888915919]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -29.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+
+[node name="Dungeon" parent="." unique_id=2022731024 instance=ExtResource("2_42r4n")]
+position = Vector2(253, 147)
+
+[node name="Dungeon2" parent="." unique_id=1067743161 instance=ExtResource("2_42r4n")]
+position = Vector2(421, 110)
+
+[node name="Dungeon3" parent="." unique_id=2030041512 instance=ExtResource("2_42r4n")]
+position = Vector2(421, 237)
+
+[node name="Dungeon4" parent="." unique_id=826609145 instance=ExtResource("2_42r4n")]
+position = Vector2(61, 228)
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

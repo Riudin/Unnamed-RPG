@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bcnputd5fu37f"]
+
+[ext_resource type="Script" uid="uid://cbx1k4x5lm4hy" path="res://systems/dungeon_running/dungeon_rooms/campfire_room.gd" id="1_lr62m"]
+
+[node name="CampfireRoom" type="Control" unique_id=1361495722]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_lr62m")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1110059529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.32544068, 0.32544094, 0.32544088, 0.49411765)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=12835202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -28.5
+offset_right = 38.5
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=855456781]
+layout_mode = 2
+text = "Campfire"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=792903265]
+layout_mode = 2
+text = "continue"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

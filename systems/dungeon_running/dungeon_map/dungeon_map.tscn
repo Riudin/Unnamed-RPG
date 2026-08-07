@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bi7wgyruic004"]
+
+[ext_resource type="Script" uid="uid://po1ron3g5hus" path="res://systems/dungeon_running/dungeon_map/dungeon_map.gd" id="1_hkwto"]
+[ext_resource type="Script" uid="uid://cpp1f51k5g1si" path="res://systems/dungeon_running/dungeon_map/map_generator.gd" id="2_2ojrf"]
+
+[sub_resource type="Gradient" id="Gradient_0g7dh"]
+offsets = PackedFloat32Array(0.15555556, 1)
+colors = PackedColorArray(0.12, 0.12, 0.12, 1, 0.34, 0.23981334, 0.22439998, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1dqgk"]
+gradient = SubResource("Gradient_0g7dh")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="DungeonMap" type="Node2D" unique_id=642040655]
+script = ExtResource("1_hkwto")
+
+[node name="MapGenerator" type="Node" parent="." unique_id=1969329545]
+script = ExtResource("2_2ojrf")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1570948412]
+
+[node name="Lines" type="Node2D" parent="Visuals" unique_id=401880240]
+unique_name_in_owner = true
+
+[node name="Rooms" type="Node2D" parent="Visuals" unique_id=542974320]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1183250378]
+offset = Vector2(320, 180)
+
+[node name="DungeonBackground" type="CanvasLayer" parent="." unique_id=289669331]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="DungeonBackground" unique_id=708417847]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1dqgk")

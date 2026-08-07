@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jc4l6en1q3bw"]
+
+[ext_resource type="Texture2D" uid="uid://dyg36pu8fldsw" path="res://assets/portal.png" id="1_ahdr4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3a3s"]
+radius = 13.0
+height = 36.0
+
+[node name="ForestAreaEntrance" type="Node2D" unique_id=438420928]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=732455343]
+modulate = Color(0.20999998, 1, 0.24949992, 1)
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("1_ahdr4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1999039546]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1956763442]
+shape = SubResource("CapsuleShape2D_x3a3s")

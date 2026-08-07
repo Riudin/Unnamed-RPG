@@ -4,14 +4,21 @@ extends PopupPanel
 @onready var name_label: Label = %NameLabel
 @onready var enemy_icon: TextureRect = %EnemyIcon
 
+@onready var orc_enemy_data: Resource = preload("uid://b2juo74fyf2wm") # TODO: this is a placeholder until different enemies are stored somewhere
+
 var enemy: WorldEnemy = null
 
 
 func display_popup(clicked_enemy):
-	enemy = clicked_enemy
-	GameState.current_enemy = enemy.enemy_data
-	name_label.text = enemy.enemy_data.name
-	enemy_icon.texture = enemy.enemy_data.texture
+	var data: EnemyData = null
+	if clicked_enemy is WorldEnemy:
+		data = clicked_enemy.enemy_data
+	else:
+		data = orc_enemy_data
+
+	GameState.current_enemy = data
+	name_label.text = data.name
+	enemy_icon.texture = data.texture
 	popup_centered()
 
 

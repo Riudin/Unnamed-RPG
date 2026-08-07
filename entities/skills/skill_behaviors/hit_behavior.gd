@@ -33,6 +33,7 @@ func execute(context: BattleContext, skill: SkillData) -> void:
 		else:
 		# Deal damage for this hit
 			_deal_damage(context)
+			# _apply_status_effects(context, skill) #TODO: implement status effects
 
 
 func _spawn_projectile(context: BattleContext, skill: SkillData, damage: int, is_crit: bool) -> Node:
@@ -75,6 +76,14 @@ func _deal_damage(context: BattleContext):
 			is_crit
 			)
 
+
+func _apply_status_effects(context: BattleContext, skill: SkillData):
+	if skill.status_effects.is_empty():
+		return
+
+	for effect in skill.status_effects:
+		pass
+		
 
 # func _deal_damage_with_value(damage_dealt: float, is_crit: bool, target_pos: Vector2) -> void:
 # 	# Use pre-calculated damage value (for projectiles)

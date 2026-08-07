@@ -33,12 +33,17 @@ func check_spawn_count():
 
 
 func spawn_entities(area, amount):
+	pass
+
+	'''
+	#TODO: currentlywedontspawnenemies, becauseweswitchedtothedungeonsystem.aftertheswitch is complete, thisscriptcanbedeleted
 	for i in range(amount):
 		var new_enemy = enemy_scene.instantiate()
 		new_enemy.enemy_data = orc_resource # TODO: this is a placeholder until different enemies are stored somewhere. At that point this needs to be randomized.
 		new_enemy.global_position = calculate_spawn_position(area)
 		enemy_container.add_child(new_enemy)
-
+	'''
+	
 
 func calculate_spawn_position(area):
 	var spawn_pos_x := randf_range(area.area_start.x, area.area_end.x)
