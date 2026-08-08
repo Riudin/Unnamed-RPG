@@ -1082,10 +1082,10 @@ layout_mode = 2
 texture = ExtResource("11_eb6dy")
 draw_center = false
 region_rect = Rect2(0, 0, 20, 20)
-patch_margin_left = 18
-patch_margin_top = 18
-patch_margin_right = 18
-patch_margin_bottom = 18
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
@@ -1096,6 +1096,7 @@ unique_name_in_owner = true
 
 [node name="ForestAreaScreen" parent="UI/ScreenContainer" unique_id=1359804726 instance=ExtResource("32_dgi5k")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Debug" type="Node" parent="UI" unique_id=1025480202]
 

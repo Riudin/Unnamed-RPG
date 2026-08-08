@@ -3,8 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
 [ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="2_arlx4"]
-[ext_resource type="Script" uid="uid://cfojmjig3nuux" path="res://shared/ui/screens/victory_screen.gd" id="4_iq00i"]
-[ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="5_3qkq6"]
+[ext_resource type="PackedScene" uid="uid://dalbjuohh32cd" path="res://shared/ui/screens/battle_rewards_screen.tscn" id="4_iq00i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc1s1"]
 
@@ -109,93 +108,10 @@ size_flags_vertical = 4
 max_value = 1.0
 show_percentage = false
 
-[node name="VictoryScreen" type="PanelContainer" parent="." unique_id=1906515979]
+[node name="VictoryScreen" parent="." unique_id=160357828 instance=ExtResource("4_iq00i")]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_iq00i")
-slot_scene = ExtResource("5_3qkq6")
-
-[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen" unique_id=1605250987]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/MarginContainer" unique_id=1936579264]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="Title" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=850799505]
-layout_mode = 2
-text = "Victory!"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1347975763]
-layout_mode = 2
-
-[node name="XPDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=706474205]
-layout_mode = 2
-
-[node name="XPLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay" unique_id=510524605]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "XP gained:"
-
-[node name="XPAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/XPDisplay" unique_id=811325565]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 8
-text = "99999"
-
-[node name="GoldDisplay" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1237102151]
-layout_mode = 2
-
-[node name="GoldLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay" unique_id=842922975]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Gold gained:"
-
-[node name="GoldAmount" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer/GoldDisplay" unique_id=230931603]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 8
-text = "99999"
-
-[node name="HSeparator2" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=233167324]
-layout_mode = 2
-
-[node name="LootLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1339350001]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Loot:"
-
-[node name="LootDisplay" type="GridContainer" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=144070697]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HSeparator3" type="HSeparator" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=845089525]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_arlx4")
-
-[node name="ContinueButton" type="Button" parent="VictoryScreen/MarginContainer/VBoxContainer" unique_id=1463007760]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Continue"
+layout_mode = 0
+anchors_preset = 0
 
 [node name="DefeatScreen" type="PanelContainer" parent="." unique_id=1787204336]
 unique_name_in_owner = true
@@ -267,5 +183,4 @@ position = Vector2(179, 182)
 unique_name_in_owner = true
 position = Vector2(461, 182)
 
-[connection signal="pressed" from="VictoryScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_victory_screen_continue_button_pressed"]
 [connection signal="pressed" from="DefeatScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_defeat_screen_continue_button_pressed"]

@@ -44,7 +44,7 @@ func _on_entity_died(entity):
 			player.leveling_component.add_xp(entity.drop_table.xp_reward)
 
 		# Inform battle_screen that victory happened and what was looted
-		# battle_screen.show_victory_screen(loot)
+		SignalBus.battle_won.emit(loot)
 
 		# Reset player health
 		player.health_component.health = player.health_component.max_health

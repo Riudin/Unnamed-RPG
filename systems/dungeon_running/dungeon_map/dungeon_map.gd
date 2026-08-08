@@ -106,4 +106,4 @@ func _on_map_room_selected(room: Room) -> void:
 
 	last_room = room
 	floors_cleared += 1
-	SignalBus.dungeon_room_exited.emit(room)
+	SignalBus.dungeon_map_exited.emit(room)

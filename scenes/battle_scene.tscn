@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bk6b3t38ulsst" path="res://scenes/battle_scene.gd" id="1_kinr6"]
 [ext_resource type="PackedScene" uid="uid://jc5l4rf047jn" path="res://entities/characters/player/combat_player.tscn" id="2_8qdv8"]
 [ext_resource type="PackedScene" uid="uid://udxrbudwfjc7" path="res://entities/enemies/basic_enemy/combat_enemy.tscn" id="3_pxwbd"]
-[ext_resource type="Script" uid="uid://cfojmjig3nuux" path="res://shared/ui/screens/victory_screen.gd" id="5_1i8jf"]
+[ext_resource type="Script" uid="uid://cfojmjig3nuux" path="res://shared/ui/screens/battle_rewards_screen.gd" id="5_1i8jf"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="6_svpld"]
 [ext_resource type="Script" uid="uid://by8oe3rhlfk0a" path="res://shared/ui/screens/defeat_screen.gd" id="7_svpld"]
 

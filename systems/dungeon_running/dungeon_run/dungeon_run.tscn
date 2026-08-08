@@ -1,6 +1,48 @@
 [gd_scene format=3 uid="uid://drjf1n58fw8n0"]
 
 [ext_resource type="Script" uid="uid://bym4vs7m0ecnr" path="res://systems/dungeon_running/dungeon_run/dungeon_run.gd" id="1_wiadv"]
+[ext_resource type="PackedScene" uid="uid://bi7wgyruic004" path="res://systems/dungeon_running/dungeon_map/dungeon_map.tscn" id="2_7t0s8"]
 
 [node name="DungeonRun" type="Node" unique_id=1102008789]
 script = ExtResource("1_wiadv")
+
+[node name="DungeonMap" parent="." unique_id=642040655 instance=ExtResource("2_7t0s8")]
+
+[node name="CurrentView" type="Node" parent="." unique_id=220949833]
+unique_name_in_owner = true
+
+[node name="DebugButtons" type="VBoxContainer" parent="." unique_id=2011275168]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 68.0
+grow_vertical = 2
+
+[node name="MapButton" type="Button" parent="DebugButtons" unique_id=381512417]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Map"
+
+[node name="BattleButton" type="Button" parent="DebugButtons" unique_id=681178661]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Battle"
+
+[node name="WinscreenButton" type="Button" parent="DebugButtons" unique_id=922247815]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Winscreen"
+
+[node name="LosescreenButton" type="Button" parent="DebugButtons" unique_id=1568642842]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Losescreen"
+
+[node name="CampfireButton" type="Button" parent="DebugButtons" unique_id=186052634]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Campfire"
+
+[node name="ShrineButton" type="Button" parent="DebugButtons" unique_id=1950923473]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shrine"

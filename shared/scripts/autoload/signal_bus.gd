@@ -17,9 +17,15 @@ extends Node
 @warning_ignore("unused_signal") signal leveled_up(new_level, levels_gained, skill_points_awarded)
 # Sent by  | Received by 
 @warning_ignore("unused_signal") signal xp_changed(current_xp, xp_to_next)
+# Sent by battle_manager | Received by dungeon_run
+@warning_ignore("unused_signal") signal battle_won(loot)
 
 ### Dungeon Run Signals
-# Sent by dungeon | Received by none yet
-@warning_ignore("unused_signal") signal dungeon_room_exited(room: Room)
-# Sent by campfire_room| Received by none yet
+# Sent by dungeon_map | Received by dungeon_run
+@warning_ignore("unused_signal") signal dungeon_map_exited(room: Room)
+# Sent by campfire_room | Received by dungeon_run
 @warning_ignore("unused_signal") signal campfire_room_exited()
+# Sent by shrine_room | Received by dungeon_run
+@warning_ignore("unused_signal") signal shrine_room_exited()
+# Sent by battle_reward_screen | Received by dungeon_run
+@warning_ignore("unused_signal") signal battle_reward_exited()

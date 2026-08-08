@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://cun3lks1dwfdh"]
 
-[ext_resource type="Script" uid="uid://bkaasuhrrjjt6" path="res://shared/ui/screens/area_screens/dungeon.gd" id="1_dojhn"]
-[ext_resource type="Texture2D" uid="uid://bw1gagw7t6pa2" path="res://assets/forest_dungeon.png" id="1_nvygw"]
+[ext_resource type="Script" uid="uid://bkaasuhrrjjt6" path="res://shared/ui/screens/area_screens/dungeon_portal.gd" id="1_okonv"]
+[ext_resource type="Texture2D" uid="uid://bw1gagw7t6pa2" path="res://assets/forest_dungeon.png" id="2_8l7h8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lusam"]
 radius = 11.0
 
-[node name="Dungeon" type="Node2D" unique_id=2022731024 groups=["dungeons"]]
-script = ExtResource("1_dojhn")
+[node name="DungeonPortal" type="Node2D" unique_id=2022731024 groups=["dungeons"]]
+script = ExtResource("1_okonv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1581996426]
 position = Vector2(-1, -12)
-texture = ExtResource("1_nvygw")
+texture = ExtResource("2_8l7h8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2115629094]
 

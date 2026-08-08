@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx7w044rsadf3"]
 
 [ext_resource type="Texture2D" uid="uid://b7qt3le1da7ud" path="res://assets/area_one_bg.png" id="1_ynq0i"]
-[ext_resource type="PackedScene" uid="uid://cun3lks1dwfdh" path="res://shared/ui/screens/area_screens/dungeon.tscn" id="2_42r4n"]
+[ext_resource type="PackedScene" uid="uid://cun3lks1dwfdh" path="res://shared/ui/screens/area_screens/dungeon_portal.tscn" id="2_42r4n"]
 [ext_resource type="Script" uid="uid://dfloxxcb163jb" path="res://shared/ui/screens/area_screens/forest_area_screen.gd" id="2_ko8ql"]
 
 [node name="ForestAreaScreen" type="TextureRect" unique_id=1359804726]
