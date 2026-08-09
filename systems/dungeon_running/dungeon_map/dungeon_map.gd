@@ -20,14 +20,11 @@ var camera_edge_x: float
 func _ready() -> void:
 	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.FLOORS - 1)
 
-	generate_new_map()
-	unlock_floor(0)
-
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("scroll_right"):
+	if event.is_action_pressed("scroll_right") and camera_2d.enabled:
 		camera_2d.position.x += SCROLL_SPEED
-	elif event.is_action_pressed("scroll_left"):
+	elif event.is_action_pressed("scroll_left") and camera_2d.enabled:
 		camera_2d.position.x -= SCROLL_SPEED
 
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)

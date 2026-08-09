@@ -7,7 +7,9 @@ const BATTLE_REWARD_SCENE := preload("uid://dalbjuohh32cd")
 #const LOSE_SCENE := preload("")
 const CAMPFIRE_SCENE := preload("uid://bcnputd5fu37f")
 const SHRINE_SCENE := preload("uid://i1ttba237eme")
-const MAP_SCENE := preload("uid://bi7wgyruic004")
+
+
+@onready var dungeon_map: DungeonMap = $DungeonMap
 
 @onready var current_view: Node = %CurrentView
 @onready var map_button: Button = %MapButton
@@ -24,17 +26,18 @@ func _ready() -> void:
 
 func _start_run() -> void:
 	_setup_event_connections()
-	print("TODO: Generate new map")
+	dungeon_map.generate_new_map()
+	dungeon_map.unlock_floor(0)
 
 
 func _setup_event_connections() -> void:
 	SignalBus.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
-	SignalBus.battle_reward_exited.connect(_change_view.bind(MAP_SCENE))
-	SignalBus.campfire_room_exited.connect(_change_view.bind(MAP_SCENE))
-	SignalBus.shrine_room_exited.connect(_change_view.bind(MAP_SCENE))
-	#SignalBus.dungeon_map_exited.connect(_on_dungeon_map_exited)
+	SignalBus.battle_reward_exited.connect(_show_map)
+	SignalBus.campfire_room_exited.connect(_show_map)
+	SignalBus.shrine_room_exited.connect(_show_map)
+	SignalBus.dungeon_map_exited.connect(_on_dungeon_map_exited)
 
-	map_button.pressed.connect(_change_view.bind(MAP_SCENE))
+	map_button.pressed.connect(_show_map)
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
 	winscreen_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	campfire_button.pressed.connect(_change_view.bind(CAMPFIRE_SCENE))
@@ -49,7 +52,28 @@ func _change_view(scene: PackedScene) -> void:
 	get_tree().paused = false #TODO: we later want to pause the tree on battle over and such. here we make sure, it's unpaused again
 	var new_view = scene.instantiate()
 	current_view.add_child(new_view)
+	
+	dungeon_map.hide_map()
 
 
-func _on_dungeon_map_exited() -> void:
-	print("dungeon map exited")
+func _show_map() -> void: # called whenever we exit a room and go back to the map
+	if current_view.get_child_count() > 0:
+		for child in current_view.get_children():
+			child.queue_free()
+	
+	dungeon_map.show_map()
+	dungeon_map.unlock_next_rooms()
+
+
+func _on_dungeon_map_exited(room: Room) -> void:
+	match room.type:
+		Room.Type.MONSTER:
+			_change_view(BATTLE_SCENE)
+		Room.Type.ELITE:
+			_change_view(BATTLE_SCENE)
+		Room.Type.CAMPFIRE:
+			_change_view(CAMPFIRE_SCENE)
+		Room.Type.SHRINE:
+			_change_view(SHRINE_SCENE)
+		Room.Type.BOSS:
+			_change_view(BATTLE_SCENE)

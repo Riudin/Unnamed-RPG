@@ -34,6 +34,7 @@ text = "Winscreen"
 
 [node name="LosescreenButton" type="Button" parent="DebugButtons" unique_id=1568642842]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Losescreen"
 

@@ -12,6 +12,9 @@ extends Node2D
 
 func _ready() -> void:
 	assert(player_data != null, "No PlayerData set")
+	if not player_data.stats:
+		print("PlayerData has no stats. Using default stats")
+		player_data.stats = Stats.new()
 
 	attack_component.parent_data = player_data
 	health_component.parent_data = player_data
