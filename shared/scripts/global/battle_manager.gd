@@ -44,6 +44,7 @@ func _on_entity_died(entity):
 			player.leveling_component.add_xp(entity.drop_table.xp_reward)
 
 		# Inform battle_screen that victory happened and what was looted
+		# TODO: figure out if the fight was a boss and if so emit dungeon_boss_defeated instead.
 		SignalBus.battle_won.emit(loot)
 
 		# Reset player health

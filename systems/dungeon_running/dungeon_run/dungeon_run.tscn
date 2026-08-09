@@ -47,3 +47,8 @@ text = "Campfire"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Shrine"
+
+[node name="ExitButton" type="Button" parent="DebugButtons" unique_id=993193899]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit"

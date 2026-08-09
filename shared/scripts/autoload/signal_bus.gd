@@ -29,3 +29,5 @@ extends Node
 @warning_ignore("unused_signal") signal shrine_room_exited()
 # Sent by battle_reward_screen | Received by dungeon_run
 @warning_ignore("unused_signal") signal battle_reward_exited()
+# Sent by dungeon_reward_screen | Received by dungeon_run
+@warning_ignore("unused_signal") signal dungeon_reward_exited()

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bboqsfbfhiua4"]
+
+[ext_resource type="Script" uid="uid://cirlxoyx0isgn" path="res://shared/ui/screens/dungeon_rewards_screen.gd" id="1_qx86r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arlx4"]
+
+[node name="DungeonRewardsScreen" type="PanelContainer" unique_id=160357828]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qx86r")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=650686590]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2004676895]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1411205401]
+layout_mode = 2
+text = "Dungeon cleared!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=168998674]
+layout_mode = 2
+
+[node name="XPDisplay" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1279989517]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="MarginContainer/VBoxContainer/XPDisplay" unique_id=994291214]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "XP gained:"
+
+[node name="XPAmount" type="Label" parent="MarginContainer/VBoxContainer/XPDisplay" unique_id=1222920717]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="GoldDisplay" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1730818592]
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="MarginContainer/VBoxContainer/GoldDisplay" unique_id=623003557]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Gold gained:"
+
+[node name="GoldAmount" type="Label" parent="MarginContainer/VBoxContainer/GoldDisplay" unique_id=1354034102]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 8
+text = "99999"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1715890622]
+layout_mode = 2
+
+[node name="LootLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1458382361]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Loot:"
+
+[node name="LootDisplay" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=622418707]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1151723537]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_arlx4")
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1409385788]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Continue"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

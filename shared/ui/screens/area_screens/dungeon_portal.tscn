@@ -3,20 +3,16 @@
 [ext_resource type="Script" uid="uid://bkaasuhrrjjt6" path="res://shared/ui/screens/area_screens/dungeon_portal.gd" id="1_okonv"]
 [ext_resource type="Texture2D" uid="uid://bw1gagw7t6pa2" path="res://assets/forest_dungeon.png" id="2_8l7h8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lusam"]
-radius = 11.0
-
-[node name="DungeonPortal" type="Node2D" unique_id=2022731024 groups=["dungeons"]]
+[node name="DungeonPortal" type="Control" unique_id=875518084 groups=["dungeons"]]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_okonv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1581996426]
-position = Vector2(-1, -12)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1958681447]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
 texture = ExtResource("2_8l7h8")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2115629094]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=206567900]
-position = Vector2(0, -9)
-shape = SubResource("CapsuleShape2D_lusam")
-
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]

@@ -4,6 +4,7 @@ extends Node
 
 const BATTLE_SCENE := preload("uid://d3quc2ajwin7n")
 const BATTLE_REWARD_SCENE := preload("uid://dalbjuohh32cd")
+const DUNGEON_REWARD_SCENE := preload("uid://bboqsfbfhiua4")
 #const LOSE_SCENE := preload("")
 const CAMPFIRE_SCENE := preload("uid://bcnputd5fu37f")
 const SHRINE_SCENE := preload("uid://i1ttba237eme")
@@ -18,6 +19,7 @@ const SHRINE_SCENE := preload("uid://i1ttba237eme")
 @onready var losescreen_button: Button = %LosescreenButton
 @onready var campfire_button: Button = %CampfireButton
 @onready var shrine_button: Button = %ShrineButton
+@onready var exit_button: Button = %ExitButton
 
 
 func _ready() -> void:
@@ -35,13 +37,16 @@ func _setup_event_connections() -> void:
 	SignalBus.battle_reward_exited.connect(_show_map)
 	SignalBus.campfire_room_exited.connect(_show_map)
 	SignalBus.shrine_room_exited.connect(_show_map)
+	#SignalBus.dungeon_boss_defeated.connect(_change_view.bind(DUNGEON_REWARD_SCENE))
 	SignalBus.dungeon_map_exited.connect(_on_dungeon_map_exited)
+	SignalBus.dungeon_reward_exited.connect(_on_dungeon_run_exited)
 
 	map_button.pressed.connect(_show_map)
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
 	winscreen_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	campfire_button.pressed.connect(_change_view.bind(CAMPFIRE_SCENE))
 	shrine_button.pressed.connect(_change_view.bind(SHRINE_SCENE))
+	exit_button.pressed.connect(_on_dungeon_run_exited)
 
 
 func _change_view(scene: PackedScene) -> void:
@@ -77,3 +82,7 @@ func _on_dungeon_map_exited(room: Room) -> void:
 			_change_view(SHRINE_SCENE)
 		Room.Type.BOSS:
 			_change_view(BATTLE_SCENE)
+
+
+func _on_dungeon_run_exited() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")
