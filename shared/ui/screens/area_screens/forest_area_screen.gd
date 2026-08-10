@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_dungeon_clicked(dungeon_data):
 	#SignalBus.dungeon_clicked.emit(dungeon_data)
+	GameState.active_dungeon = dungeon_data
 	get_tree().call_deferred("change_scene_to_file", DUNGEON_RUN_SCENE_PATH)
 
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://udxrbudwfjc7"]
 
-[ext_resource type="Script" uid="uid://cqkgll07yq4oa" path="res://entities/enemies/basic_enemy/combat_enemy.gd" id="1_4jwpl"]
+[ext_resource type="Script" uid="uid://cqkgll07yq4oa" path="res://entities/enemies/shared/combat_enemy.gd" id="1_4jwpl"]
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_r7al3"]
 [ext_resource type="Texture2D" uid="uid://b1k6bmacxotty" path="res://assets/animations/skill_windup/fire_windup.png" id="3_30n0q"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="3_hsq6x"]

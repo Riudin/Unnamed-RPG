@@ -1,5 +1,7 @@
 class_name BattleManager
 extends Node
+### DEPRECATED
+'''
 
 
 # UI references
@@ -12,22 +14,14 @@ extends Node
 
 func _ready() -> void:
 	await player.ready
-	#player.health_component.connect("died", _on_entity_died)
 
 
 func start_battle(enemy):
-	#current_opponent = enemy
-	# player.health_component.damage_popup_position = battle_screen.player_damage_popup_marker.global_position
-	# enemy.health_component.damage_popup_position = battle_screen.enemy_damage_popup_marker.global_position
 	enemy.health_component.connect("died", _on_entity_died)
 
 	# TODO: This should be set based on a system in an own method, when there's more possible targets
 	player.attack_component.target = enemy
 	enemy.attack_component.target = player
-
-	
-	# Notify the UI that battle started and pass the entities
-	# battle_screen._on_battle_started(player, enemy)
 
 
 func _on_entity_died(entity):
@@ -55,3 +49,4 @@ func _on_entity_died(entity):
 	
 	else: # entity is the player
 		entity.health_component.health = entity.health_component.max_health
+'''

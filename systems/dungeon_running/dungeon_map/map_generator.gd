@@ -6,7 +6,7 @@ extends Node
 const X_DIST := 60
 const Y_DIST := 40
 const PLACEMENT_RANDOMNESS := 15
-const FLOORS := 15
+const FLOORS := 7
 const MAP_WIDTH := 7
 const PATHS := 6
 const MINIMUM_UNIQUE_STARTING_POINTS := 2

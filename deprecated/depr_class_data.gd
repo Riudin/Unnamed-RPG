@@ -1,5 +1,8 @@
 class_name ClassData
 extends Resource
+### DEPRECATED
+'''
+
 
 
 enum PlayerClass {
@@ -55,3 +58,4 @@ func apply_level_up(attribute_data: AttributeData, levels: int = 1) -> Dictionar
 		"skill_points_awarded": skill_points_per_level * levels,
 		"levels_applied": levels
 	}
+'''

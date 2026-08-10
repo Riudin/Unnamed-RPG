@@ -22,7 +22,7 @@ var parent_data: Resource = null # player_data or enemy_data
 
 var target: Node
 
-@export var base_damage_sources: Array[DamageSource]
+#@export var base_damage_sources: Array[DamageSource]
 #@export var base_stats: StatBlock = null
 
 var skill_index := 0

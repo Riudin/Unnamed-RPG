@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://c801th8spbpe2"]
+
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_eyipf"]
+[ext_resource type="Resource" uid="uid://p5wny18hkmk6" path="res://entities/items/base_items/one_handed_weapons/iron_sword.tres" id="2_db14c"]
+[ext_resource type="Resource" uid="uid://cla5lbp1rus06" path="res://entities/items/base_items/armor/leather_armor.tres" id="3_ehbj1"]
+[ext_resource type="Resource" uid="uid://da8gr86yg5u2c" path="res://entities/items/base_items/helmets/leather_helmet.tres" id="4_22q4l"]
+[ext_resource type="Resource" uid="uid://13oakuylsa27" path="res://entities/items/base_items/skill_items/fireball_item.tres" id="5_g8rgr"]
+[ext_resource type="Resource" uid="uid://d4nhjkh1mi4xa" path="res://entities/items/base_items/skill_items/ice_shards_item.tres" id="6_qs8jh"]
+[ext_resource type="Resource" uid="uid://7w1iq5rtswq8" path="res://entities/items/base_items/skill_items/heavy_blow_item.tres" id="7_7hr4v"]
+[ext_resource type="Script" uid="uid://do1qvhnlso3h6" path="res://entities/items/item_drop_table.gd" id="8_ioy1r"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="9_4jojc"]
+[ext_resource type="Resource" uid="uid://cyp3bjll45wav" path="res://entities/skills/skill_data/heavy_blow.tres" id="10_uxu64"]
+[ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="11_fl16h"]
+[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="12_7ht1w"]
+[ext_resource type="Texture2D" uid="uid://cmkfsgs5de5tx" path="res://entities/enemies/shared/assets/Orc.png" id="13_sl842"]
+
+[sub_resource type="Resource" id="Resource_alm4f"]
+script = ExtResource("8_ioy1r")
+item_weights = Dictionary[ExtResource("1_eyipf"), int]({
+ExtResource("2_db14c"): 3,
+ExtResource("3_ehbj1"): 3,
+ExtResource("4_22q4l"): 3,
+ExtResource("5_g8rgr"): 1,
+ExtResource("6_qs8jh"): 1,
+ExtResource("7_7hr4v"): 1
+})
+metadata/_custom_type_script = "uid://do1qvhnlso3h6"
+
+[sub_resource type="Resource" id="Resource_3orwb"]
+script = ExtResource("12_7ht1w")
+base_max_health = 300
+metadata/_custom_type_script = "uid://n8wtim8qm2cq"
+
+[resource]
+script = ExtResource("11_fl16h")
+type = 2
+name = "Green Orc"
+texture = ExtResource("13_sl842")
+stats = SubResource("Resource_3orwb")
+equipped_skills = Array[ExtResource("9_4jojc")]([ExtResource("10_uxu64")])
+drop_table = SubResource("Resource_alm4f")
+metadata/_custom_type_script = "uid://eut4fcsnf5nn"

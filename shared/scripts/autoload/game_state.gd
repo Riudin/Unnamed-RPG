@@ -17,7 +17,9 @@ var player_data: PlayerData = null:
 # var world_state: WorldStateData = null
 # var settings: SettingsData = null
 
-var current_enemy: EnemyData = null
+#var current_enemy: EnemyData = null
+var active_dungeon: DungeonData = null
+var active_battle_type: BattleScene.BattleType # spaghetti workaround. this introduces too much dependency
 
 
 func _ready() -> void:

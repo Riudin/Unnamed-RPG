@@ -1,4 +1,6 @@
 extends PopupPanel
+###DEPRECATED
+'''
 
 
 @onready var name_label: Label = %NameLabel
@@ -35,3 +37,4 @@ func _on_cancel_button_pressed() -> void:
 
 func _on_popup_hide() -> void:
 	queue_free()
+'''

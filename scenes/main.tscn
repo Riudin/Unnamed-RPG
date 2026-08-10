@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://shared/scripts/global/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/world_player.tscn" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://shared/scripts/global/battle_manager.gd" id="2_85g3d"]
+[ext_resource type="Script" uid="uid://b6kuyg6t88oy6" path="res://deprecated/battle_manager.gd" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bs5suuc5hp2cb" path="res://assets/ui/inventory/slot_bg_amulet.png" id="15_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://beiqj8ko03k1q" path="res://assets/ui/inventory/slot_bg_belt.png" id="16_2f3dj"]
 [ext_resource type="Script" uid="uid://csvrl7v1kaipr" path="res://systems/debug/debug_button_generate_loot.gd" id="16_jbj1t"]
-[ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/orc_drop_table.tres" id="17_muem4"]
+[ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/normal_enemies/orc/orc_drop_table.tres" id="17_muem4"]
 [ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/ui/inventory/slot_bg_wings.png" id="17_yq6so"]
 [ext_resource type="PackedScene" uid="uid://ovmxuyq7rd0j" path="res://shared/ui/windows/character_screen/crafting_slot.tscn" id="21_2f3dj"]
 [ext_resource type="Script" uid="uid://br42kaxbnvlef" path="res://shared/ui/windows/character_screen/skill_bar.gd" id="22_qkpxi"]
@@ -199,7 +199,6 @@ text = "Stats"
 
 [node name="EquipmentScreen" type="Panel" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1977931002]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
@@ -441,6 +440,7 @@ text = "Reset Item"
 
 [node name="StatScreen" type="Panel" parent="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer" unique_id=1423856874]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("24_tel4y")

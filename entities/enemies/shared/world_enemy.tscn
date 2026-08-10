@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfqknvi0je5a8"]
 
-[ext_resource type="Script" uid="uid://dpx12o0hh73et" path="res://entities/enemies/basic_enemy/world_enemy.gd" id="1_ecfun"]
+[ext_resource type="Script" uid="uid://dpx12o0hh73et" path="res://entities/enemies/shared/world_enemy.gd" id="1_ecfun"]
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="2_kx8ri"]
 [ext_resource type="PackedScene" uid="uid://b28f70xx3mnj4" path="res://shared/components/interaction_component.tscn" id="3_4ohuo"]
 [ext_resource type="Script" uid="uid://cw7ul52kdf4k7" path="res://shared/components/movement_component.gd" id="4_8lk7a"]

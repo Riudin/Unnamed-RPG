@@ -1,4 +1,6 @@
 extends Control
+### DEPRECATED 
+'''
 
 
 # Assets to display
@@ -105,3 +107,5 @@ func _on_victory_screen_continue_button_pressed() -> void:
 func _on_defeat_screen_continue_button_pressed() -> void:
 	defeat_screen.visible = false
 	visible = false
+
+'''

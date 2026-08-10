@@ -1,6 +1,7 @@
 class_name GameManager
 extends Node
-
+### DEPRECATED
+'''
 
 @onready var battle_manager: Node = %BattleManager
 #@onready var ui_manager: Node = %UIManager
@@ -13,3 +14,4 @@ func _ready() -> void:
 
 func _on_battle_started(enemy):
 	battle_manager.start_battle(enemy)
+'''

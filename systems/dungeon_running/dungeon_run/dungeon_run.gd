@@ -11,6 +11,7 @@ const SHRINE_SCENE := preload("uid://i1ttba237eme")
 
 
 @onready var dungeon_map: DungeonMap = $DungeonMap
+#@onready var dungeon_data: DungeonData = GameState.active_dungeon
 
 @onready var current_view: Node = %CurrentView
 @onready var map_button: Button = %MapButton
@@ -23,6 +24,7 @@ const SHRINE_SCENE := preload("uid://i1ttba237eme")
 
 
 func _ready() -> void:
+	assert(GameState.active_dungeon, "No DungeonData set in GameState for dungeon")
 	_start_run()
 
 
@@ -37,7 +39,7 @@ func _setup_event_connections() -> void:
 	SignalBus.battle_reward_exited.connect(_show_map)
 	SignalBus.campfire_room_exited.connect(_show_map)
 	SignalBus.shrine_room_exited.connect(_show_map)
-	#SignalBus.dungeon_boss_defeated.connect(_change_view.bind(DUNGEON_REWARD_SCENE))
+	SignalBus.dungeon_boss_defeated.connect(_change_view.bind(DUNGEON_REWARD_SCENE))
 	SignalBus.dungeon_map_exited.connect(_on_dungeon_map_exited)
 	SignalBus.dungeon_reward_exited.connect(_on_dungeon_run_exited)
 
@@ -49,7 +51,7 @@ func _setup_event_connections() -> void:
 	exit_button.pressed.connect(_on_dungeon_run_exited)
 
 
-func _change_view(scene: PackedScene) -> void:
+func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		for child in current_view.get_children():
 			child.queue_free()
@@ -59,6 +61,8 @@ func _change_view(scene: PackedScene) -> void:
 	current_view.add_child(new_view)
 	
 	dungeon_map.hide_map()
+	
+	return new_view
 
 
 func _show_map() -> void: # called whenever we exit a room and go back to the map
@@ -73,15 +77,18 @@ func _show_map() -> void: # called whenever we exit a room and go back to the ma
 func _on_dungeon_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
+			GameState.active_battle_type = BattleScene.BattleType.NORMAL
 			_change_view(BATTLE_SCENE)
 		Room.Type.ELITE:
+			GameState.active_battle_type = BattleScene.BattleType.ELITE
+			_change_view(BATTLE_SCENE)
+		Room.Type.BOSS:
+			GameState.active_battle_type = BattleScene.BattleType.BOSS
 			_change_view(BATTLE_SCENE)
 		Room.Type.CAMPFIRE:
 			_change_view(CAMPFIRE_SCENE)
 		Room.Type.SHRINE:
 			_change_view(SHRINE_SCENE)
-		Room.Type.BOSS:
-			_change_view(BATTLE_SCENE)
 
 
 func _on_dungeon_run_exited() -> void:

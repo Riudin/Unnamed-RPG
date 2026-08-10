@@ -17,8 +17,8 @@ extends Node
 
 func _ready() -> void:
 	# Battle Signals
-	SignalBus.connect("enemy_clicked", _on_enemy_clicked)
-	SignalBus.connect("dungeon_clicked", _on_dungeon_clicked)
+	#SignalBus.connect("enemy_clicked", _on_enemy_clicked)
+	#SignalBus.connect("dungeon_clicked", _on_dungeon_clicked)
 	SignalBus.forest_area_entry_requested.connect(on_forest_area_entry_requested)
 	# SignalBus.connect("battle_started", _on_battle_started)
 	# DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
@@ -50,18 +50,18 @@ func on_forest_area_entry_requested():
 
 ### Handling Combat
 
-func _on_enemy_clicked(enemy):
-	show_battle_confirmation_popup(enemy)
+#func _on_enemy_clicked(enemy):
+	#show_battle_confirmation_popup(enemy)
 
 
-func _on_dungeon_clicked(dungeon_data):
-	show_battle_confirmation_popup(dungeon_data)
-
-
-func show_battle_confirmation_popup(enemy):
-	var popup = battle_confirmation_popup.instantiate()
-	popup_container.add_child(popup)
-	popup.display_popup(enemy)
+#func _on_dungeon_clicked(dungeon_data):
+	#show_battle_confirmation_popup(dungeon_data)
+#
+#
+#func show_battle_confirmation_popup(enemy):
+	#var popup = battle_confirmation_popup.instantiate()
+	#popup_container.add_child(popup)
+	#popup.display_popup(enemy)
 
 
 # func _on_battle_started(enemy):

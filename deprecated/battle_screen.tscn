@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pbulugqfsgep"]
 
 [ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
-[ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://shared/ui/screens/battle_screen.gd" id="1_dc1s1"]
+[ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://deprecated/battle_screen.gd" id="1_dc1s1"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="2_arlx4"]
 [ext_resource type="PackedScene" uid="uid://dalbjuohh32cd" path="res://shared/ui/screens/battle_rewards_screen.tscn" id="4_iq00i"]
 
@@ -112,6 +112,16 @@ show_percentage = false
 unique_name_in_owner = true
 layout_mode = 0
 anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="DefeatScreen" type="PanelContainer" parent="." unique_id=1787204336]
 unique_name_in_owner = true

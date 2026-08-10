@@ -2,6 +2,9 @@ class_name EnemyData
 extends Resource
 
 
+enum EnemyType {NORMAL, ELITE, BOSS}
+
+@export var type: EnemyType = EnemyType.NORMAL
 @export var name: String = "Name Missing"
 @export var texture: Texture2D
 

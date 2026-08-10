@@ -3,6 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://b7qt3le1da7ud" path="res://assets/area_one_bg.png" id="1_ynq0i"]
 [ext_resource type="PackedScene" uid="uid://cun3lks1dwfdh" path="res://shared/ui/screens/area_screens/dungeon_portal.tscn" id="2_42r4n"]
 [ext_resource type="Script" uid="uid://dfloxxcb163jb" path="res://shared/ui/screens/area_screens/forest_area_screen.gd" id="2_ko8ql"]
+[ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="4_yqsht"]
+[ext_resource type="Resource" uid="uid://c801th8spbpe2" path="res://entities/enemies/boss_enemies/orc_boss/orc_boss_enemy_data.tres" id="5_3g6v7"]
+[ext_resource type="Resource" uid="uid://cyj088ns0xwnm" path="res://entities/enemies/elite_enemies/elite_orc/elite_orc_enemy_data.tres" id="6_1pb04"]
+[ext_resource type="Resource" uid="uid://b2juo74fyf2wm" path="res://entities/enemies/normal_enemies/orc/orc_enemy_data.tres" id="7_1wnsn"]
+[ext_resource type="Script" uid="uid://c3a78j3j723ql" path="res://shared/scripts/data_models/dungeon_data.gd" id="8_j8r8n"]
+
+[sub_resource type="Resource" id="Resource_ko8ql"]
+script = ExtResource("8_j8r8n")
+normal_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("7_1wnsn")])
+elite_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("6_1pb04")])
+boss_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("5_3g6v7")])
+metadata/_custom_type_script = "uid://c3a78j3j723ql"
 
 [node name="ForestAreaScreen" type="Control" unique_id=1947503191]
 z_index = -1
@@ -36,18 +48,35 @@ text = "X"
 
 [node name="Dungeon" parent="." unique_id=2022731024 instance=ExtResource("2_42r4n")]
 z_index = 1
-position = Vector2(253, 147)
+layout_mode = 0
+offset_left = 253.0
+offset_top = 147.0
+offset_right = 253.0
+offset_bottom = 147.0
+dungeon_data = SubResource("Resource_ko8ql")
 
 [node name="Dungeon2" parent="." unique_id=1067743161 instance=ExtResource("2_42r4n")]
 z_index = 1
-position = Vector2(421, 110)
+layout_mode = 0
+offset_left = 421.0
+offset_top = 110.0
+offset_right = 421.0
+offset_bottom = 110.0
 
 [node name="Dungeon3" parent="." unique_id=2030041512 instance=ExtResource("2_42r4n")]
 z_index = 1
-position = Vector2(421, 237)
+layout_mode = 0
+offset_left = 421.0
+offset_top = 237.0
+offset_right = 421.0
+offset_bottom = 237.0
 
 [node name="Dungeon4" parent="." unique_id=826609145 instance=ExtResource("2_42r4n")]
 z_index = 1
-position = Vector2(61, 228)
+layout_mode = 0
+offset_left = 61.0
+offset_top = 228.0
+offset_right = 61.0
+offset_bottom = 228.0
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
