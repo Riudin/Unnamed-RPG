@@ -8,3 +8,6 @@ extends Resource
 
 @export var min_enemies: int = 1
 @export var max_enemies: int = 4
+
+@export var min_enemy_level: int = 1
+@export var max_enemy_level: int = 100

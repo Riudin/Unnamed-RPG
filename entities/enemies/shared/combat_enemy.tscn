@@ -72,7 +72,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b5n45")
 }],
-"loop": false,
+"loop": 0,
 "name": &"fire",
 "speed": 8.0
 }, {
@@ -80,7 +80,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_bkybs")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }]
@@ -112,19 +112,20 @@ metadata/_custom_type_script = "uid://casjk8xyj6crd"
 [node name="HealthComponent" type="Node" parent="." unique_id=939295579 node_paths=PackedStringArray("health_bar")]
 unique_name_in_owner = true
 script = ExtResource("4_lq8k6")
-health_bar = NodePath("../GUI/ResourceBars/HBoxContainer/HealthBar")
+health_bar = NodePath("../GUI/ResourceBars/HealthBar")
 metadata/_custom_type_script = "uid://urdreyx4totx"
 
 [node name="GUI" type="Control" parent="." unique_id=915349260]
-custom_minimum_size = Vector2(88, 96)
+custom_minimum_size = Vector2(88, 126)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -44.0
-offset_top = -60.0
+offset_top = -90.0
 offset_right = 44.0
 offset_bottom = 36.0
 
 [node name="ResourceBars" type="VBoxContainer" parent="GUI" unique_id=1401933948]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -135,35 +136,43 @@ offset_bottom = 12.0
 grow_horizontal = 2
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourceBars" unique_id=447456881]
+[node name="NameDisplay" type="VBoxContainer" parent="GUI/ResourceBars" unique_id=984322235]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 23)
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourceBars/HBoxContainer" unique_id=1642166201]
+[node name="Name" type="Label" parent="GUI/ResourceBars/NameDisplay" unique_id=479161727]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+text = "Regular Orc"
 
-[node name="HealthBar" parent="GUI/ResourceBars/HBoxContainer" unique_id=526058230 instance=ExtResource("8_bkybs")]
+[node name="Level" type="Label" parent="GUI/ResourceBars/NameDisplay" unique_id=178983303]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 8
+text = "lvl 100"
+
+[node name="HealthBar" parent="GUI/ResourceBars" unique_id=526058230 instance=ExtResource("8_bkybs")]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 6
 low_hp_pulse = false
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/ResourceBars" unique_id=1449871435]
+[node name="ManaBar" parent="GUI/ResourceBars" unique_id=727470986 instance=ExtResource("8_bkybs")]
+custom_minimum_size = Vector2(60, 5)
 layout_mode = 2
-
-[node name="ManaBar" parent="GUI/ResourceBars/HBoxContainer2" unique_id=727470986 instance=ExtResource("8_bkybs")]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 low_hp_pulse = false
 damage_shake = false
 damage_flash = false
 heal_flash = false
 
-[node name="FrontBar" parent="GUI/ResourceBars/HBoxContainer2/ManaBar" index="1" unique_id=1977534986]
+[node name="FrontBar" parent="GUI/ResourceBars/ManaBar" index="1" unique_id=1977534986]
 texture_progress = ExtResource("9_d2ehu")
-
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/ResourceBars/HBoxContainer2" unique_id=907474180]
-layout_mode = 2
-theme_override_constants/margin_left = 2
 
 [node name="CombatSkillBar" type="HBoxContainer" parent="GUI" unique_id=650950878]
 unique_name_in_owner = true
@@ -198,6 +207,7 @@ offset_bottom = 20.0
 
 [node name="AttackBar" type="TextureProgressBar" parent="GUI" unique_id=269217005]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 offset_left = 36.0
@@ -210,4 +220,4 @@ fill_mode = 4
 texture_progress = ExtResource("5_r7al3")
 tint_progress = Color(1, 1, 1, 0.69803923)
 
-[editable path="GUI/ResourceBars/HBoxContainer2/ManaBar"]
+[editable path="GUI/ResourceBars/ManaBar"]

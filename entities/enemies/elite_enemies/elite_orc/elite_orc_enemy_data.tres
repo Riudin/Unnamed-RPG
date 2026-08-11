@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://cyp3bjll45wav" path="res://entities/skills/skill_data/heavy_blow.tres" id="10_d56bn"]
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="11_o4bef"]
 [ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="12_f8i1d"]
+[ext_resource type="Texture2D" uid="uid://ds18ci2a1ds6j" path="res://assets/characters/enemies/red_orc.png" id="13_i4l3j"]
 
 [sub_resource type="Resource" id="Resource_alm4f"]
 script = ExtResource("8_46l0u")
@@ -30,14 +31,11 @@ script = ExtResource("12_f8i1d")
 base_max_health = 150
 metadata/_custom_type_script = "uid://n8wtim8qm2cq"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i4l3j"]
-load_path = "res://.godot/imported/Orc.png-d73d5e4990e6b532801cd36f8f59fbfa.ctex"
-
 [resource]
 script = ExtResource("11_o4bef")
 type = 1
-name = "Green Orc"
-texture = SubResource("CompressedTexture2D_i4l3j")
+name = "Red Orc"
+texture = ExtResource("13_i4l3j")
 stats = SubResource("Resource_fkt56")
 equipped_skills = Array[ExtResource("9_ar1c2")]([ExtResource("10_d56bn")])
 drop_table = SubResource("Resource_alm4f")

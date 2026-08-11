@@ -12,6 +12,7 @@ script = ExtResource("1_wiadv")
 unique_name_in_owner = true
 
 [node name="DebugButtons" type="VBoxContainer" parent="." unique_id=2011275168]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 68.0

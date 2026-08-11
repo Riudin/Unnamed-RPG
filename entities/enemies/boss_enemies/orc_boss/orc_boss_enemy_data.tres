@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://cyp3bjll45wav" path="res://entities/skills/skill_data/heavy_blow.tres" id="10_uxu64"]
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="11_fl16h"]
 [ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="12_7ht1w"]
-[ext_resource type="Texture2D" uid="uid://cmkfsgs5de5tx" path="res://entities/enemies/shared/assets/Orc.png" id="13_sl842"]
+[ext_resource type="Texture2D" uid="uid://chaqsromws5aw" path="res://assets/characters/enemies/red_orc_boss_small.png" id="13_3orwb"]
 
 [sub_resource type="Resource" id="Resource_alm4f"]
 script = ExtResource("8_ioy1r")
@@ -34,8 +34,8 @@ metadata/_custom_type_script = "uid://n8wtim8qm2cq"
 [resource]
 script = ExtResource("11_fl16h")
 type = 2
-name = "Green Orc"
-texture = ExtResource("13_sl842")
+name = "Kazarr the Furious"
+texture = ExtResource("13_3orwb")
 stats = SubResource("Resource_3orwb")
 equipped_skills = Array[ExtResource("9_4jojc")]([ExtResource("10_uxu64")])
 drop_table = SubResource("Resource_alm4f")
