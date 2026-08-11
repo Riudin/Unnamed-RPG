@@ -5,7 +5,7 @@ extends Node
 const BATTLE_SCENE := preload("uid://d3quc2ajwin7n")
 const BATTLE_REWARD_SCENE := preload("uid://dalbjuohh32cd")
 const DUNGEON_REWARD_SCENE := preload("uid://bboqsfbfhiua4")
-#const LOSE_SCENE := preload("")
+const DEFEAT_SCENE := preload("uid://bvacef8063haw")
 const CAMPFIRE_SCENE := preload("uid://bcnputd5fu37f")
 const SHRINE_SCENE := preload("uid://i1ttba237eme")
 
@@ -42,6 +42,7 @@ func _setup_event_connections() -> void:
 	SignalBus.dungeon_boss_defeated.connect(_change_view.bind(DUNGEON_REWARD_SCENE))
 	SignalBus.dungeon_map_exited.connect(_on_dungeon_map_exited)
 	SignalBus.dungeon_reward_exited.connect(_on_dungeon_run_exited)
+	SignalBus.dungeon_failed.connect(_change_view.bind(DEFEAT_SCENE))
 
 	map_button.pressed.connect(_show_map)
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))

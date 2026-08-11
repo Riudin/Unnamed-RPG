@@ -21,6 +21,8 @@ extends Node
 @warning_ignore("unused_signal") signal battle_won()
 # Sent by battle_manager | Received by dungeon_run
 @warning_ignore("unused_signal") signal dungeon_boss_defeated()
+# Sent by battle_manager | Received by dungeon_run
+@warning_ignore("unused_signal") signal dungeon_failed()
 
 ### Dungeon Run Signals
 # Sent by dungeon_map | Received by dungeon_run

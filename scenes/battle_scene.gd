@@ -59,6 +59,7 @@ func _setup_enemies() -> void:
 
 
 func _on_player_died(player):
+	SignalBus.dungeon_failed.emit()
 	player.queue_free()
 
 
