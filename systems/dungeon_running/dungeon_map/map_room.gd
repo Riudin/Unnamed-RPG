@@ -16,6 +16,8 @@ const ICONS := { # Keys: Type: [icon, scale]
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
 @onready var line_2d: Line2D = $Visuals/Line2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var level_indicator: Panel = $Visuals/LevelIndicator
+@onready var level_label: Label = %LevelLabel
 
 var available := false: set = set_available
 var room: Room: set = set_room
@@ -35,6 +37,14 @@ func set_room(new_data: Room) -> void:
 	position = room.position
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
+	
+	if room.type == Room.Type.MONSTER or \
+		room.type == Room.Type.ELITE or \
+		room.type == Room.Type.BOSS:
+		level_indicator.visible = true
+	level_label.text = str(room.enemy_level)
+	level_indicator.scale = ICONS[room.type][1]
+	level_indicator.position *= ICONS[room.type][1]
 
 
 func show_selected() -> void:

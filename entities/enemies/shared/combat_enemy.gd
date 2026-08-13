@@ -8,7 +8,7 @@ extends Node2D
 @onready var resource_bars: VBoxContainer = %ResourceBars
 @onready var enemy_name: Label = %Name
 @onready var enemy_level: Label = %Level
-@onready var name_display: VBoxContainer = %NameDisplay
+@onready var name_display: HBoxContainer = %NameDisplay
 
 
 var enemy_data: EnemyData = null
@@ -19,13 +19,14 @@ func _ready() -> void:
 	if not enemy_data.stats:
 		print("EnemyData has no stats. Using default stats")
 		enemy_data.stats = Stats.new()
+	enemy_data._apply_level_scaling()
 	
 	attack_component.parent_data = enemy_data
 	health_component.parent_data = enemy_data
 
 	sprite.texture = enemy_data.texture
 	enemy_name.text = str(enemy_data.name)
-	enemy_level.text = "lvl: " + str(enemy_data.stats.monster_level)
+	enemy_level.text = str(enemy_data.level)
 	if enemy_data.type == EnemyData.EnemyType.BOSS:
 		_scale_boss_visuals()
 

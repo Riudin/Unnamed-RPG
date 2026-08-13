@@ -14,7 +14,9 @@ script = ExtResource("8_j8r8n")
 normal_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("7_1wnsn")])
 elite_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("6_1pb04")])
 boss_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("5_3g6v7")])
-max_enemy_level = 10
+max_enemies = 5
+min_enemy_level = 5
+max_enemy_level = 15
 metadata/_custom_type_script = "uid://c3a78j3j723ql"
 
 [node name="ForestAreaScreen" type="Control" unique_id=1947503191]

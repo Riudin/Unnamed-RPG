@@ -52,13 +52,15 @@ func _setup_event_connections() -> void:
 	exit_button.pressed.connect(_on_dungeon_run_exited)
 
 
-func _change_view(scene: PackedScene) -> Node:
+func _change_view(scene: PackedScene, room: Room = null) -> Node:
 	if current_view.get_child_count() > 0:
 		for child in current_view.get_children():
 			child.queue_free()
 
 	get_tree().paused = false #TODO: we later want to pause the tree on battle over and such. here we make sure, it's unpaused again
 	var new_view = scene.instantiate()
+	if new_view is BattleScene:
+		new_view.enemy_level = room.enemy_level
 	current_view.add_child(new_view)
 	
 	dungeon_map.hide_map()
@@ -79,13 +81,13 @@ func _on_dungeon_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
 			GameState.active_battle_type = BattleScene.BattleType.NORMAL
-			_change_view(BATTLE_SCENE)
+			_change_view(BATTLE_SCENE, room)
 		Room.Type.ELITE:
 			GameState.active_battle_type = BattleScene.BattleType.ELITE
-			_change_view(BATTLE_SCENE)
+			_change_view(BATTLE_SCENE, room)
 		Room.Type.BOSS:
 			GameState.active_battle_type = BattleScene.BattleType.BOSS
-			_change_view(BATTLE_SCENE)
+			_change_view(BATTLE_SCENE, room)
 		Room.Type.CAMPFIRE:
 			_change_view(CAMPFIRE_SCENE)
 		Room.Type.SHRINE:

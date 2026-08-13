@@ -93,12 +93,10 @@ func xp_bar_update(new_xp, xp_to_next, xp_floor):
 	xp_bar.value = new_xp
 
 	xp_label.text = str(new_xp) + " / " + str(xp_to_next)
-	print("xp: ", new_xp, " to next: ", xp_to_next)
 
 
 func update_level_text(new_level):
 	level_text.text = str(new_level)
-	print("new level: ", new_level)
 ### Handling Inventory UI
 
 # Here we can add slot highlights back in later

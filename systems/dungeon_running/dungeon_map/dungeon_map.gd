@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 
 func generate_new_map() -> void:
 	floors_cleared = 0
-	map_data = map_generator.generate_map()
+	map_data = map_generator.generate_map(GameState.active_dungeon)
 	create_map()
 
 

@@ -56,15 +56,13 @@ signal stats_recalculated
 signal xp_changed(new_xp, xp_to_next)
 signal level_up(new_level)
 
-### Enenmy Specific
-@export var monster_level: int = 1
 
 ### Base Stats
 # Primary Attributes
 @export var base_strength: int = 10
 @export var base_dexterity: int = 10
 @export var base_intelligence: int = 10
-@export var base_vitality: int = 10
+#@export var base_vitality: int = 10
 
 # Resources
 @export var base_max_health: int = 100

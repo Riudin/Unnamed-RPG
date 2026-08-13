@@ -22,6 +22,7 @@ extends Node2D
 var current_player: CombatPlayer = null
 var current_enemy: CombatEnemy = null
 var active_enemies: Array[CombatEnemy] = []
+var enemy_level: int = 0
 
 @onready var dungeon_data: DungeonData = GameState.active_dungeon
 enum BattleType {NORMAL, ELITE, BOSS}
@@ -56,9 +57,7 @@ func _setup_enemy(data: EnemyData) -> void:
 	enemy_positions.erase(new_enemy.global_position)
 	
 	new_enemy.enemy_data = data
-	new_enemy.enemy_data.stats.monster_level = randi_range(dungeon_data.min_enemy_level, dungeon_data.max_enemy_level)
-	if new_enemy.enemy_data.type == EnemyData.EnemyType.BOSS:
-		new_enemy.enemy_data.stats.monster_level = dungeon_data.max_enemy_level
+	new_enemy.enemy_data.level = enemy_level
 		
 	add_child(new_enemy)
 	active_enemies.append(new_enemy)

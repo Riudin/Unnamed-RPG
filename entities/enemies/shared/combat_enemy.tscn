@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_r7al3"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="7_bc1gv"]
 [ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="8_30n0q"]
+[ext_resource type="Texture2D" uid="uid://bps4elixetcrr" path="res://assets/ui/combat/level_display.png" id="8_634ms"]
 [ext_resource type="PackedScene" uid="uid://ddfs2supyi2fu" path="res://shared/ui/combat/stat_bar.tscn" id="8_bkybs"]
 [ext_resource type="Texture2D" uid="uid://dtb8fqxdspxjt" path="res://assets/ui/combat/mana_bar_progress_front.png" id="9_d2ehu"]
 
@@ -85,6 +86,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrivr"]
+
 [node name="CombatEnemy" type="Node2D" unique_id=1458892804]
 script = ExtResource("1_4jwpl")
 
@@ -136,31 +139,64 @@ offset_bottom = 12.0
 grow_horizontal = 2
 theme_override_constants/separation = 2
 
-[node name="NameDisplay" type="VBoxContainer" parent="GUI/ResourceBars" unique_id=984322235]
+[node name="NameDisplay" type="HBoxContainer" parent="GUI/ResourceBars" unique_id=1314464403]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(88, 23)
 layout_mode = 2
 theme_override_constants/separation = 0
 
+[node name="VSeparator" type="VSeparator" parent="GUI/ResourceBars/NameDisplay" unique_id=1807927417]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xrivr")
+
 [node name="Name" type="Label" parent="GUI/ResourceBars/NameDisplay" unique_id=479161727]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 10
-text = "Regular Orc"
-
-[node name="Level" type="Label" parent="GUI/ResourceBars/NameDisplay" unique_id=178983303]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 8
-text = "lvl 100"
+theme_override_font_sizes/font_size = 10
+text = "Regular Orc"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourceBars/NameDisplay" unique_id=648018213]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("8_634ms")
+expand_mode = 3
+
+[node name="Level" type="Label" parent="GUI/ResourceBars/NameDisplay/TextureRect" unique_id=178983303]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 7
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HealthBar" parent="GUI/ResourceBars" unique_id=526058230 instance=ExtResource("8_bkybs")]
 custom_minimum_size = Vector2(60, 5)
 layout_mode = 2
 size_flags_horizontal = 6
 low_hp_pulse = false
+
+[node name="HealthBarLabel" type="Label" parent="GUI/ResourceBars/HealthBar" unique_id=1235723189]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 62.0
+offset_top = -2.0
+offset_right = 97.0
+offset_bottom = 6.375
+theme_override_font_sizes/font_size = 6
+text = "100/100"
 
 [node name="ManaBar" parent="GUI/ResourceBars" unique_id=727470986 instance=ExtResource("8_bkybs")]
 custom_minimum_size = Vector2(60, 5)
@@ -173,6 +209,20 @@ heal_flash = false
 
 [node name="FrontBar" parent="GUI/ResourceBars/ManaBar" index="1" unique_id=1977534986]
 texture_progress = ExtResource("9_d2ehu")
+
+[node name="ManaBarLabel" type="Label" parent="GUI/ResourceBars/ManaBar" unique_id=1706790099]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = -4.5
+offset_right = 97.0
+offset_bottom = 3.875
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "100/100"
 
 [node name="CombatSkillBar" type="HBoxContainer" parent="GUI" unique_id=650950878]
 unique_name_in_owner = true

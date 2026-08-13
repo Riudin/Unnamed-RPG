@@ -104,9 +104,34 @@ width = 2.0
 default_color = Color(0.5609549, 0.5609549, 0.5609549, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=2093808727]
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_wuheo")
 
+[node name="LevelIndicator" type="Panel" parent="Visuals" unique_id=889221953]
+visible = false
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 19.0
+offset_bottom = -8.0
+scale = Vector2(2.5, 2.5)
+
+[node name="LevelLabel" type="Label" parent="Visuals/LevelIndicator" unique_id=678295346]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.1875
+offset_bottom = 0.1875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1305961751]
+visible = false
 shape = SubResource("CircleShape2D_eomd7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=535432513]

@@ -6,9 +6,9 @@ extends Node
 const X_DIST := 60
 const Y_DIST := 40
 const PLACEMENT_RANDOMNESS := 15
-const FLOORS := 7
-const MAP_WIDTH := 7
-const PATHS := 6
+const FLOORS := 8
+const MAP_WIDTH := 5
+const PATHS := 4
 const MINIMUM_UNIQUE_STARTING_POINTS := 2
 const MONSTER_ROOM_WEIGHT := 10.0
 const ELITE_ROOM_WEIGHT := 2.5
@@ -25,7 +25,7 @@ var random_room_type_total_weight := 0
 var map_data: Array[Array]
 
 
-func generate_map() -> Array[Array]:
+func generate_map(dungeon_data: DungeonData) -> Array[Array]:
 	map_data = _generate_initial_grid()
 	var starting_points := _get_random_starting_points()
 
@@ -37,6 +37,7 @@ func generate_map() -> Array[Array]:
 	_setup_boss_room()
 	_setup_random_room_weights()
 	_setup_room_types()
+	_assign_enemy_levels(dungeon_data)
 
 	# Debugging
 	'''
@@ -76,6 +77,24 @@ func _generate_initial_grid() -> Array[Array]:
 		result.append(adjacent_rooms)
 	
 	return result
+
+
+func _assign_enemy_levels(dungeon_data: DungeonData) -> void:
+	for column in map_data:
+		for room: Room in column:
+			var floor_enemy_level: int = dungeon_data.min_enemy_level + \
+				roundi((dungeon_data.max_enemy_level - dungeon_data.min_enemy_level) \
+				* float(room.column) / (FLOORS - 2))
+			var level_variance: int = clamp(roundi(float(dungeon_data.max_enemy_level - dungeon_data.min_enemy_level) \
+				/ FLOORS), 1, 5)
+			match room.type:
+				Room.Type.MONSTER:
+					room.enemy_level = floor_enemy_level + randi_range(- level_variance, level_variance)
+				Room.Type.ELITE:
+					room.enemy_level = floor_enemy_level + randi_range(1, 4)
+				Room.Type.BOSS:
+					room.enemy_level = dungeon_data.max_enemy_level
+			room.enemy_level = clamp(room.enemy_level, dungeon_data.min_enemy_level, dungeon_data.max_enemy_level)
 
 
 func _get_random_starting_points() -> Array[int]:

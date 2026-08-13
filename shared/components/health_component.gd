@@ -2,17 +2,18 @@ class_name HealthComponent
 extends Node
 
 
+# signal health_changed(new_health)
+signal died(body)
+
 var health: float
 var max_health: float
-
-@onready var parent := get_parent()
-
 var parent_data: Resource = null # player_data or enemy_data
 
 @export var health_bar: StatBar = null
 
-# signal health_changed(new_health)
-signal died(body)
+@onready var parent := get_parent()
+@onready var health_bar_label: Label = %HealthBarLabel
+#@onready var mana_bar_label: Label = %ManaBarLabel
 
 
 func _ready() -> void:
@@ -21,6 +22,8 @@ func _ready() -> void:
 	health = max_health
 
 	health_bar.setup_bar(health, max_health)
+	if health_bar_label:
+		health_bar_label.text = str(int(health)) + " / " + str(int(max_health))
 
 
 func take_damage(damage):
@@ -29,6 +32,9 @@ func take_damage(damage):
 
 	if health_bar:
 		health_bar.update_bar(float(health), float(max_health))
+	
+	if health_bar_label:
+		health_bar_label.text = str(int(health)) + " / " + str(int(max_health))
 
 	if health <= 0.0:
 		died.emit(parent)
