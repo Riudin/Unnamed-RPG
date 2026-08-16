@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_0gl37"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="6_wckln"]
 [ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="7_1rxe1"]
+[ext_resource type="Script" uid="uid://csbxj52367kyv" path="res://shared/components/status_effect_component.gd" id="8_8ebur"]
 [ext_resource type="PackedScene" uid="uid://ddfs2supyi2fu" path="res://shared/ui/combat/stat_bar.tscn" id="8_n5vhm"]
 [ext_resource type="Texture2D" uid="uid://dtb8fqxdspxjt" path="res://assets/ui/combat/mana_bar_progress_front.png" id="9_dwe0j"]
 [ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="9_wckln"]
@@ -113,6 +114,11 @@ unique_name_in_owner = true
 script = ExtResource("3_0gl37")
 health_bar = NodePath("../GUI/ResourceBars/HealthBar")
 metadata/_custom_type_script = "uid://urdreyx4totx"
+
+[node name="StatusEffectComponent" type="Node" parent="." unique_id=454858064]
+unique_name_in_owner = true
+script = ExtResource("8_8ebur")
+metadata/_custom_type_script = "uid://csbxj52367kyv"
 
 [node name="GUI" type="Control" parent="." unique_id=222456442]
 custom_minimum_size = Vector2(88, 96)

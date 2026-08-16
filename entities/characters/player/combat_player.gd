@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var attack_component: AttackComponent = %AttackComponent
 @onready var health_component: HealthComponent = %HealthComponent
+@onready var status_effect_component: StatusEffectComponent = %StatusEffectComponent
 
 #@onready var mana_bar: TextureProgressBar = %ManaBar
 

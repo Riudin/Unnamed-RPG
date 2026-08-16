@@ -4,16 +4,13 @@ extends Node
 
 
 func resolve(instance: DamageInstance, is_crit: bool) -> int:
-	# We could also use combined damage from the stats directly. this is done in case we want to apply burn or other things later depending on dmg type
+	# get flat dmg from skill
+	# TODO: attacks need to calculate flat damage before this
 	var physical_damage := randi_range(instance.stats.current_physical_damage, instance.stats.current_physical_damage_range)
 	var fire_damage := randi_range(instance.stats.current_fire_damage, instance.stats.current_fire_damage_range)
-	# print("current_fire_dmg is between %d and %d. calculated. %d damage." % [instance.stats.current_fire_damage, instance.stats.current_fire_damage_range, fire_damage])
 	var cold_damage := randi_range(instance.stats.current_cold_damage, instance.stats.current_cold_damage_range)
-	#print("current_cold_dmg is between %d and %d. calculated. %d damage." % [instance.stats.current_cold_damage, instance.stats.current_cold_damage_range, cold_damage])
 	var lightning_damage := randi_range(instance.stats.current_lightning_damage, instance.stats.current_lightning_damage_range)
 	var chaos_damage := randi_range(instance.stats.current_chaos_damage, instance.stats.current_chaos_damage_range)
-
-	var combined_damage: int = physical_damage + fire_damage + cold_damage + lightning_damage + chaos_damage
 
 	# var total_damage := 0.0
 
@@ -41,10 +38,41 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 		#prints("----base dmg:", base, "(", source.min_damage, source.max_damage, ")")
 		#prints("----increased by:", increased, "new dmg:", scaled)
 
+	var combined_damage: int = physical_damage + fire_damage + cold_damage + lightning_damage + chaos_damage
+	
+	# we declare these variables so we don't have to change values in stats directly from here
+	var bleed_chance: int = instance.stats.current_bleed_chance
+	var burn_chance: int = instance.stats.current_burn_chance
+	var chill_chance: int = instance.stats.current_chill_chance
+	var freeze_chance: int = instance.stats.current_freeze_chance
+	var shock_chance: int = instance.stats.current_shock_chance
+	var poison_chance: int = instance.stats.current_poison_chance
+
 	# Crit multiplies all damage from this instance
 	if is_crit:
 		var crit_multi: float = float(instance.stats.current_crit_multiplier) / 100.0
 		combined_damage = round(float(combined_damage) * (1.0 + crit_multi))
+		
+		bleed_chance = 100
+		burn_chance = 100
+		chill_chance = 100
+		freeze_chance = 100
+		shock_chance = 100
+		
+	if physical_damage > 0 and randi_range(1, 100) <= bleed_chance:
+		_apply_effect("bleed")
+	if fire_damage > 0 and randi_range(1, 100) <= burn_chance:
+		_apply_effect("burn")
+	if cold_damage > 0 and randi_range(1, 100) <= chill_chance:
+		_apply_effect("chill")
+	if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:
+		_apply_effect("freeze")
+	if lightning_damage > 0 and randi_range(1, 100) <= shock_chance:
+		_apply_effect("shock")
+	if randi_range(1, 100) <= poison_chance:
+		_apply_effect("poison")
+		
+		
 		#prints("----critical hit! Damage increased by", instance.stats.crit_multiplier, "new dmg:", total_damage)
 
 	return combined_damage
@@ -56,6 +84,10 @@ func resolve_crit(instance: DamageInstance) -> bool:
 		return true
 	
 	return false
+
+
+func _apply_effect(effect_name: String) -> void:
+	print("applying effect: ", effect_name)
 
 
 '''

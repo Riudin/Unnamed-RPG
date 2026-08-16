@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BurnEffect" format=3 uid="uid://c801vdpuov2gx"]
+
+[ext_resource type="Script" uid="uid://td82367mdui" path="res://shared/scripts/data_models/burn_effect.gd" id="1_u3ywm"]
+
+[resource]
+script = ExtResource("1_u3ywm")
+id = "burning"
+duration = 3.0
+max_stacks = 20
+metadata/_custom_type_script = "uid://td82367mdui"

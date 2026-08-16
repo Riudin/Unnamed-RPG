@@ -16,8 +16,8 @@ resource_local_to_scene = true
 script = ExtResource("3_rusbe")
 stat = 13
 type = 1
-amount = 15.0
-range_amount = 15.0
+amount = 5.0
+range_amount = 10.0
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

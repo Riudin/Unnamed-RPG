@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bcnputd5fu37f"]
 
 [ext_resource type="Script" uid="uid://cbx1k4x5lm4hy" path="res://systems/dungeon_running/dungeon_rooms/campfire_room.gd" id="1_lr62m"]
+[ext_resource type="Texture2D" uid="uid://cgu8b2v6gr3j5" path="res://assets/ui/campfire.png" id="2_1r3ef"]
 
 [node name="CampfireRoom" type="Control" unique_id=1361495722]
 layout_mode = 3
@@ -36,12 +37,24 @@ offset_bottom = 28.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=855456781]
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1168718319]
 layout_mode = 2
-text = "Campfire"
+text = "Your Health and mana have been restored!"
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=792903265]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1728031734]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "continue"
+texture = ExtResource("2_1r3ef")
+expand_mode = 3
+stretch_mode = 5
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="ChangeSkillsButton" type="Button" parent="VBoxContainer" unique_id=1852255744]
+layout_mode = 2
+text = "Change Skills [WIP]"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=792903265]
+layout_mode = 2
+text = "Continue"
+
+[connection signal="pressed" from="VBoxContainer/ChangeSkillsButton" to="." method="_on_change_skills_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -1,6 +1,8 @@
 class_name Stats
 extends Resource
 
+### Holds information about all base and current stats a player or enemy has.
+### 
 
 enum ModifiableStats {
 	STRENGTH,
@@ -91,6 +93,26 @@ signal level_up(new_level)
 @export var base_chaos_damage: int = 0
 @export var base_chaos_damage_range: int = 0
 
+# Status Effect chance
+@export var base_burn_chance: int = 0:
+	set(new_value):
+		base_burn_chance = clampi(new_value, 0, 100)
+@export var base_shock_chance: int = 0:
+	set(new_value):
+		base_shock_chance = clampi(new_value, 0, 100)
+@export var base_chill_chance: int = 100:
+	set(new_value):
+		base_chill_chance = clampi(new_value, 0, 100)
+@export var base_freeze_chance: int = 0:
+	set(new_value):
+		base_freeze_chance = clampi(new_value, 0, 100)
+@export var base_poison_chance: int = 0:
+	set(new_value):
+		base_poison_chance = clampi(new_value, 0, 100)
+@export var base_bleed_chance: int = 0:
+	set(new_value):
+		base_bleed_chance = clampi(new_value, 0, 100)
+
 # Speed
 @export var base_attack_speed: float = 1.0
 @export var base_cast_speed: float = 1.0
@@ -121,7 +143,9 @@ signal level_up(new_level)
 @export var base_bleed_resist: int = 0
 @export var base_poison_resist: int = 0
 @export var base_burn_resist: int = 0
+@export var base_chill_resist: int = 0
 @export var base_freeze_resist: int = 0
+@export var base_shock_resist: int = 0
 
 # Miscellaneous Attributes
 @export var base_move_speed: int = 0
@@ -135,7 +159,7 @@ signal level_up(new_level)
 @export var current_strength: int = 0
 @export var current_dexterity: int = 0
 @export var current_intelligence: int = 0
-@export var current_vitality: int = 0
+#@export var current_vitality: int = 0
 
 # Resources
 @export var current_max_health: int = 100
@@ -163,6 +187,26 @@ signal level_up(new_level)
 @export var current_lightning_damage_range: int = 0
 @export var current_chaos_damage: int = 0
 @export var current_chaos_damage_range: int = 0
+
+# Status Effect chance
+@export var current_burn_chance: int = 0:
+	set(new_value):
+		current_burn_chance = clampi(new_value, 0, 100)
+@export var current_shock_chance: int = 0:
+	set(new_value):
+		current_shock_chance = clampi(new_value, 0, 100)
+@export var current_chill_chance: int = 100:
+	set(new_value):
+		current_chill_chance = clampi(new_value, 0, 100)
+@export var current_freeze_chance: int = 0:
+	set(new_value):
+		current_freeze_chance = clampi(new_value, 0, 100)
+@export var current_poison_chance: int = 0:
+	set(new_value):
+		current_poison_chance = clampi(new_value, 0, 100)
+@export var current_bleed_chance: int = 0:
+	set(new_value):
+		current_bleed_chance = clampi(new_value, 0, 100)
 
 # Speed
 @export var current_attack_speed: float = 1.0
@@ -193,7 +237,9 @@ signal level_up(new_level)
 @export var current_bleed_resist: int = 0
 @export var current_poison_resist: int = 0
 @export var current_burn_resist: int = 0
+@export var current_chill_resist: int = 0
 @export var current_freeze_resist: int = 0
+@export var current_shock_resist: int = 0
 
 # Miscellaneous Attributes
 @export var current_move_speed: int = 0
@@ -250,6 +296,7 @@ func remove_modifier(mod: StatModifier) -> void:
 
 
 func recalculate_stats() -> void:
+	# TODO: stats get recalculated way too often on every action. check what triggers recalculation and if multiple stat resources might recalculate at the same time
 	# Reset all current values to their respective base values
 	for stat in get_property_list():
 		if stat["name"].begins_with("current_"):
@@ -259,6 +306,7 @@ func recalculate_stats() -> void:
 			else:
 				print("No base_ version found for ", stat["name"])
 
+	# get all modifiers from gear and skills and apply them to the base stats to get current stats
 	var stat_addends: Dictionary[String, float] = {}
 	var stat_multipliers: Dictionary[String, float] = {}
 	var stat_more_multipliers: Dictionary[String, float] = {}
@@ -293,13 +341,18 @@ func recalculate_stats() -> void:
 		var cur_property_name: String = str("current_" + stat_name)
 		set(cur_property_name, get(cur_property_name) + stat_addends[stat_name])
 
-	for stat_name in stat_multipliers:
+	for stat_name in stat_multipliers: # TODO: this multiplies only the first part of a range
 		var cur_property_name: String = str("current_" + stat_name)
-		set(cur_property_name, get(cur_property_name) * stat_multipliers[stat_name])
+		set(cur_property_name, roundi(get(cur_property_name) * stat_multipliers[stat_name])) # seems to omit decimals instead of rounding properly
+		
+		var cur_property_range_name: String = str("current_" + stat_name + "_range")
+		if cur_property_range_name in self:
+			set(cur_property_range_name, roundi(get(cur_property_range_name) * stat_multipliers[stat_name]))
+
 
 	for stat_name in stat_more_multipliers:
 		var cur_property_name: String = str("current_" + stat_name)
-		set(cur_property_name, get(cur_property_name) * stat_more_multipliers[stat_name])
+		set(cur_property_name, roundi(get(cur_property_name) * stat_more_multipliers[stat_name]))
 	
 	stats_recalculated.emit()
 

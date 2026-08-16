@@ -31,17 +31,17 @@ enum EnemyType {NORMAL, ELITE, BOSS}
 
 func _apply_level_scaling() -> void:
 	@warning_ignore_start("narrowing_conversion")
-	stats.base_physical_damage = damage_curve.sample(level)
-	stats.base_fire_damage = damage_curve.sample(level)
-	stats.base_cold_damage = damage_curve.sample(level)
-	stats.base_lightning_damage = damage_curve.sample(level)
-	stats.base_chaos_damage = damage_curve.sample(level)
+	stats.base_physical_damage *= damage_curve.sample(level)
+	stats.base_fire_damage *= damage_curve.sample(level)
+	stats.base_cold_damage *= damage_curve.sample(level)
+	stats.base_lightning_damage *= damage_curve.sample(level)
+	stats.base_chaos_damage *= damage_curve.sample(level)
 	
-	stats.base_physical_damage_range = damage_range_curve.sample(level)
-	stats.base_fire_damage_range = damage_range_curve.sample(level)
-	stats.base_cold_damage_range = damage_range_curve.sample(level)
-	stats.base_lightning_damage_range = damage_range_curve.sample(level)
-	stats.base_chaos_damage = damage_range_curve.sample(level)
+	stats.base_physical_damage_range *= damage_range_curve.sample(level)
+	stats.base_fire_damage_range *= damage_range_curve.sample(level)
+	stats.base_cold_damage_range *= damage_range_curve.sample(level)
+	stats.base_lightning_damage_range *= damage_range_curve.sample(level)
+	stats.base_chaos_damage *= damage_range_curve.sample(level)
 	
 	stats.base_max_health = health_curve.sample(level)
 	

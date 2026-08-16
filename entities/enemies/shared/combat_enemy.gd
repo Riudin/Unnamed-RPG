@@ -5,6 +5,7 @@ extends Node2D
 @onready var sprite: Sprite2D = %Sprite2D
 @onready var attack_component: AttackComponent = %AttackComponent
 @onready var health_component: HealthComponent = %HealthComponent
+@onready var status_effect_component: StatusEffectComponent = %StatusEffectComponent
 @onready var resource_bars: VBoxContainer = %ResourceBars
 @onready var enemy_name: Label = %Name
 @onready var enemy_level: Label = %Level
@@ -20,6 +21,10 @@ func _ready() -> void:
 		print("EnemyData has no stats. Using default stats")
 		enemy_data.stats = Stats.new()
 	enemy_data._apply_level_scaling()
+	
+	# Giving the attacks a bit variety so they dont all land at the same time
+	for skill in enemy_data.equipped_skills.size():
+		enemy_data.equipped_skills[skill].base_speed *= randf_range(0.8, 1.2)
 	
 	attack_component.parent_data = enemy_data
 	health_component.parent_data = enemy_data

@@ -147,7 +147,7 @@ func trigger_attack() -> void:
 	context.defender = target
 	context.attacker_stats = parent_data.stats
 
-	await skill.execute(context)
+	skill.execute(context)
 
 	# remove skill modifiers and recalculate stats again
 	if skill and not skill.inherent_mods.is_empty():
