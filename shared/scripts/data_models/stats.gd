@@ -61,9 +61,9 @@ signal level_up(new_level)
 
 ### Base Stats
 # Primary Attributes
-@export var base_strength: int = 10
-@export var base_dexterity: int = 10
-@export var base_intelligence: int = 10
+@export var base_strength: int = 0
+@export var base_dexterity: int = 0
+@export var base_intelligence: int = 0
 #@export var base_vitality: int = 10
 
 # Resources
@@ -156,96 +156,96 @@ signal level_up(new_level)
 
 ### Derived Stats
 # Primary Attributes
-@export var current_strength: int = 0
-@export var current_dexterity: int = 0
-@export var current_intelligence: int = 0
-#@export var current_vitality: int = 0
+var current_strength: int = 0
+var current_dexterity: int = 0
+var current_intelligence: int = 0
+#var current_vitality: int = 0
 
 # Resources
-@export var current_max_health: int = 100
-@export var current_max_mana: int = 50
-@export var current_max_energy_shield: int = 0
+var current_max_health: int = 0
+var current_max_mana: int = 0
+var current_max_energy_shield: int = 0
 
-@export var current_life_regen: int = 0
-@export var current_mana_regen: int = 0
-@export var current_enery_shield_regen: int = 0
+var current_life_regen: int = 0
+var current_mana_regen: int = 0
+var current_enery_shield_regen: int = 0
 
-@export var current_life_leech: int = 0
-@export var current_mana_leech: int = 0
-@export var current_enery_shield_leech: int = 0
+var current_life_leech: int = 0
+var current_mana_leech: int = 0
+var current_enery_shield_leech: int = 0
 
 # Damage stats
-@export var current_physical_damage: int = 0
-@export var current_physical_damage_range: int = 0
-@export var current_elemental_damage: int = 0
-@export var current_elemental_damage_range: int = 0
-@export var current_fire_damage: int = 0
-@export var current_fire_damage_range: int = 0
-@export var current_cold_damage: int = 0
-@export var current_cold_damage_range: int = 0
-@export var current_lightning_damage: int = 0
-@export var current_lightning_damage_range: int = 0
-@export var current_chaos_damage: int = 0
-@export var current_chaos_damage_range: int = 0
+var current_physical_damage: int = 0
+var current_physical_damage_range: int = 0
+var current_elemental_damage: int = 0
+var current_elemental_damage_range: int = 0
+var current_fire_damage: int = 0
+var current_fire_damage_range: int = 0
+var current_cold_damage: int = 0
+var current_cold_damage_range: int = 0
+var current_lightning_damage: int = 0
+var current_lightning_damage_range: int = 0
+var current_chaos_damage: int = 0
+var current_chaos_damage_range: int = 0
 
 # Status Effect chance
-@export var current_burn_chance: int = 0:
+var current_burn_chance: int = 0:
 	set(new_value):
 		current_burn_chance = clampi(new_value, 0, 100)
-@export var current_shock_chance: int = 0:
+var current_shock_chance: int = 0:
 	set(new_value):
 		current_shock_chance = clampi(new_value, 0, 100)
-@export var current_chill_chance: int = 100:
+var current_chill_chance: int = 100:
 	set(new_value):
 		current_chill_chance = clampi(new_value, 0, 100)
-@export var current_freeze_chance: int = 0:
+var current_freeze_chance: int = 0:
 	set(new_value):
 		current_freeze_chance = clampi(new_value, 0, 100)
-@export var current_poison_chance: int = 0:
+var current_poison_chance: int = 0:
 	set(new_value):
 		current_poison_chance = clampi(new_value, 0, 100)
-@export var current_bleed_chance: int = 0:
+var current_bleed_chance: int = 0:
 	set(new_value):
 		current_bleed_chance = clampi(new_value, 0, 100)
 
 # Speed
-@export var current_attack_speed: float = 1.0
-@export var current_cast_speed: float = 1.0
+var current_attack_speed: float = 1.0
+var current_cast_speed: float = 1.0
 
 # Critical Hilts
-@export var current_crit_chance: int = 0
-@export var current_crit_multiplier: int = 100
+var current_crit_chance: int = 0
+var current_crit_multiplier: int = 100
 
 # Accuracy and Penetration
-@export var current_accuracy_rating: int = 0
-@export var current_physical_penetration: int = 0
-@export var current_elemental_penetration: int = 0
+var current_accuracy_rating: int = 0
+var current_physical_penetration: int = 0
+var current_elemental_penetration: int = 0
 
 # Defensive Stats
-@export var current_armor: int = 0
-@export var current_evasion: int = 0
-@export var current_block_chance: int = 0
-@export var current_dodge_chance: int = 0
-@export var current_physical_damage_reduction: int = 0
+var current_armor: int = 0
+var current_evasion: int = 0
+var current_block_chance: int = 0
+var current_dodge_chance: int = 0
+var current_physical_damage_reduction: int = 0
 
-@export var current_fire_resist: int = 0
-@export var current_cold_resist: int = 0
-@export var current_lightning_resist: int = 0
-@export var current_chaos_resist: int = 0
-@export var current_all_resist: int = 0
+var current_fire_resist: int = 0
+var current_cold_resist: int = 0
+var current_lightning_resist: int = 0
+var current_chaos_resist: int = 0
+var current_all_resist: int = 0
 
-@export var current_bleed_resist: int = 0
-@export var current_poison_resist: int = 0
-@export var current_burn_resist: int = 0
-@export var current_chill_resist: int = 0
-@export var current_freeze_resist: int = 0
-@export var current_shock_resist: int = 0
+var current_bleed_resist: int = 0
+var current_poison_resist: int = 0
+var current_burn_resist: int = 0
+var current_chill_resist: int = 0
+var current_freeze_resist: int = 0
+var current_shock_resist: int = 0
 
 # Miscellaneous Attributes
-@export var current_move_speed: int = 0
-@export var current_mana_cost_reduction: int = 0
-@export var current_item_find: int = 0
-@export var current_gold_find: int = 0
+var current_move_speed: int = 0
+var current_mana_cost_reduction: int = 0
+var current_item_find: int = 0
+var current_gold_find: int = 0
 
 
 ### Variable Stats

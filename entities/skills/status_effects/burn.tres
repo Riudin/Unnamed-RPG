@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_u3ywm")
-id = "burning"
+id = "burn"
 duration = 3.0
 max_stacks = 20
 metadata/_custom_type_script = "uid://td82367mdui"

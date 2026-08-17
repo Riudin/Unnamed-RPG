@@ -43,7 +43,7 @@ func recycle_popup(popup):
 	popup.visible = false
 
 
-func spawn(value: int, world_position: Vector2, color: Color, is_crit := false):
+func spawn(value: int, world_position: Vector2, color: Color, is_crit := false, scale_mod: float = 1.0):
 	var popup = _get_popup()
 
 	if popup.get_parent():
@@ -53,6 +53,6 @@ func spawn(value: int, world_position: Vector2, color: Color, is_crit := false):
 	#emit_signal("damage_popup_ready", popup)
 
 	popup.global_position = world_position + Vector2(randf_range(-8, 8), -24)
-	popup.show_value(value, color, is_crit)
+	popup.show_value(value, color, is_crit, scale_mod)
 
 	active.append(popup)

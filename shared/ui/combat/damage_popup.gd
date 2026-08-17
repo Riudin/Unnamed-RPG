@@ -14,20 +14,22 @@ var target_x: float
 var rise_duration: float
 
 
-func show_value(value: int, color: Color, is_crit: bool = false):
+func show_value(value: int, color: Color, is_crit: bool = false, scale_mod: float = 1.0):
 	label.text = str(value)
 	label.modulate = color
 	if is_crit:
 		label.scale = Vector2(1.3, 1.3)
 		label.modulate = DamagePopupManager.damage_colors["Crit"]
 	else:
-		label.scale = Vector2(1, 1)
+		label.scale = Vector2(scale_mod, scale_mod)
 	elapsed = 0.0
 	start_y = position.y
-	target_y = position.y - rise_distance + randf_range(-15.0, 15.0)
-	start_x = position.x
+	target_y = position.y - rise_distance + randf_range(-30.0, 30.0)
+	start_x = position.x + randf_range(-15.0, 15.0)
 	target_x = position.x + randf_range(-15.0, 15.0)
 	rise_duration = lifetime - hold_time
+	
+	position = Vector2(start_x, start_y) # set starting position before appearing
 
 
 func _process(delta: float) -> void:

@@ -2,19 +2,19 @@ class_name DamageSource
 extends Resource
 
 ### Basic information about damage. Everything that adds a flat amount of damage to a DamageInstance has this, e.g. item affix, skill, etc.
-
-
-enum DamageType {
-	PHYSICAL,
-	FIRE,
-	COLD,
-	LIGHTNING,
-	CHAOS
-}
-
-@export var type: DamageType
-@export var min_damage: float
-@export var max_damage: float
+### DEPRECATED
+#
+#enum DamageType {
+	#PHYSICAL,
+	#FIRE,
+	#COLD,
+	#LIGHTNING,
+	#CHAOS
+#}
+#
+#@export var type: DamageType
+#@export var min_damage: float
+#@export var max_damage: float
 
 
 '''

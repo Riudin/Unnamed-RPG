@@ -14,7 +14,7 @@ var active_highlight: Control = null
 @onready var attack_bar: TextureProgressBar = %AttackBar
 @onready var skill_bar: Control = %CombatSkillBar
 @onready var windup_anim_sprite: AnimatedSprite2D = %WindupAnimation
-@onready var default_attack: SkillData = preload("uid://b0hc4byhh8tuk")
+#@onready var default_attack = preload("uid://b0hc4byhh8tuk") as SkillData
 
 var skill_bar_icons: Array[TextureRect] = []
 
@@ -38,8 +38,8 @@ func _ready() -> void:
 	TickManager.connect("tick", _on_tick)
 
 	assert(parent_data != null , "No Parent Data assigned!")
-	if parent_data.equipped_skills.size() < 1:
-		parent_data.equipped_skills.append(default_attack)
+	#if parent_data.equipped_skills.size() < 1:
+		#parent_data.equipped_skills.append(default_attack)
 	assert(parent_data.equipped_skills, "Parent has no equipped_skills!")
 	set_skills(parent_data.equipped_skills)
 	setup_skill_bar()

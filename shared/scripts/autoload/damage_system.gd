@@ -2,6 +2,8 @@ extends Node
 
 ### Responsible for calculation of damage based on DamageInstance
 
+const BURN_EFFECT: BurnEffect = preload("uid://c801vdpuov2gx")
+
 
 func resolve(instance: DamageInstance, is_crit: bool) -> int:
 	# get flat dmg from skill
@@ -62,7 +64,13 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 	if physical_damage > 0 and randi_range(1, 100) <= bleed_chance:
 		_apply_effect("bleed")
 	if fire_damage > 0 and randi_range(1, 100) <= burn_chance:
-		_apply_effect("burn")
+		if not instance.defender.has_node("StatusEffectComponent"):
+			push_error(instance.defender, ": has no status effect component")
+		else:
+			var status_effect_component: StatusEffectComponent = instance.defender.get_node("StatusEffectComponent")
+			var effect := BURN_EFFECT.duplicate(true)
+			status_effect_component.apply_effect(effect, instance.attacker)
+			#print("applied burn with ", effect.damage_per_tick, " damage per tick")
 	if cold_damage > 0 and randi_range(1, 100) <= chill_chance:
 		_apply_effect("chill")
 	if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:

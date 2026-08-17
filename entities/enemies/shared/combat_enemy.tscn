@@ -209,7 +209,6 @@ custom_minimum_size = Vector2(60, 5)
 layout_mode = 2
 size_flags_horizontal = 6
 low_hp_pulse = false
-damage_shake = false
 damage_flash = false
 heal_flash = false
 

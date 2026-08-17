@@ -14,6 +14,7 @@ var current_pct := 1.0
 var front_tween: Tween
 var back_tween: Tween
 var pulse_tween: Tween = null
+var shake_tween: Tween
 
 
 func setup_bar(current: float, max_value: float) -> void:
@@ -64,11 +65,16 @@ func update_bar(current: float, max_value: float):
  
 
 func _shake():
+	if shake_tween and shake_tween.is_running():
+		return
+	
 	var original_pos = position
-	var tw = create_tween()
-	tw.tween_property(self , "position", original_pos + Vector2(1, 0), 0.05)
-	tw.tween_property(self , "position", original_pos - Vector2(1, 0), 0.05)
-	tw.tween_property(self , "position", original_pos, 0.05)
+	shake_tween = create_tween()
+	shake_tween.tween_property(self , "position", original_pos + Vector2(1, 0), 0.05)
+	shake_tween.tween_property(self , "position", original_pos - Vector2(1, 0), 0.05)
+	shake_tween.tween_property(self , "position", original_pos, 0.05)
+	await shake_tween.finished
+	shake_tween.kill()
  
 
 func _flash(flash_color: Color):

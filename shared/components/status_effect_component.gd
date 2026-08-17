@@ -19,7 +19,12 @@ func apply_effect(effect: StatusEffect, source) -> void:
 		instance.effect = effect
 		instance.remaining_ticks = int(effect.duration * TickManager.TICK_RATE)
 		instance.source = source
-		instance.stats_snapshot = source.stats.duplicate()
+		if source is CombatEnemy:
+			instance.stats_snapshot = source.enemy_data.stats.duplicate()
+		elif source is CombatPlayer:
+			instance.stats_snapshot = source.player_data.stats.duplicate()
+		else:
+			push_error("StatusEffectComponent: No enemy_data or player_data on ", source)
 		active_effects[effect.id] = instance
 		effect.on_apply(get_parent(), instance)
 

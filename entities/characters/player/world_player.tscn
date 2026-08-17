@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6p3mqlxkcvhg" path="res://entities/characters/player/world_player.gd" id="1_qrd5i"]
 [ext_resource type="Script" uid="uid://ttshiel80die" path="res://entities/characters/player/sprite_2d.gd" id="3_2jd2e"]
 [ext_resource type="Texture2D" uid="uid://dix24437mr0vl" path="res://assets/characters/player/Soldier.png" id="3_ou7en"]
+[ext_resource type="Resource" uid="uid://b0hc4byhh8tuk" path="res://entities/skills/skill_data/default_attack.tres" id="3_qnhgh"]
 [ext_resource type="Resource" uid="uid://dfwl3e3nyxal2" path="res://entities/characters/player/player_stats.tres" id="4_mo6oo"]
 [ext_resource type="Script" uid="uid://bua6rtv8t5825" path="res://shared/components/input_component.gd" id="4_wqnow"]
 [ext_resource type="Script" uid="uid://blu5xbdwvxdg3" path="res://shared/components/navigation_component.gd" id="5_lbevp"]
@@ -108,6 +109,7 @@ z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_qrd5i")
 stats = ExtResource("4_mo6oo")
+default_attack = ExtResource("3_qnhgh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643251234]
 unique_name_in_owner = true
