@@ -2,6 +2,10 @@ class_name StatusEffectComponent
 extends Node
 
 
+signal effect_applied(effect: StatusEffectInstance)
+signal effect_updated(effect: StatusEffectInstance)
+signal effect_removed(effect: StatusEffectInstance)
+
 var active_effects: Dictionary[String, StatusEffectInstance] = {} # {id: instance}
 
 
@@ -14,6 +18,8 @@ func apply_effect(effect: StatusEffect, source) -> void:
 		var existing: StatusEffectInstance = active_effects[effect.id]
 		existing.remaining_ticks = int(effect.duration * TickManager.TICK_RATE)
 		existing.stacks = min(existing.stacks + 1, effect.max_stacks)
+		
+		effect_updated.emit(existing)
 	else:
 		var instance = StatusEffectInstance.new()
 		instance.effect = effect
@@ -27,6 +33,8 @@ func apply_effect(effect: StatusEffect, source) -> void:
 			push_error("StatusEffectComponent: No enemy_data or player_data on ", source)
 		active_effects[effect.id] = instance
 		effect.on_apply(get_parent(), instance)
+		
+		effect_applied.emit(instance)
 
 
 func has_effect(id: String) -> bool:
@@ -36,6 +44,7 @@ func has_effect(id: String) -> bool:
 func remove_effect(id: String) -> void:
 	if active_effects.has(id):
 		active_effects[id].effect.on_expire(get_parent())
+		effect_removed.emit(active_effects[id])
 		active_effects.erase(id)
 
 
@@ -49,6 +58,8 @@ func _on_tick() -> void:
 		if instance.tick_accumulator >= interval_ticks:
 			instance.tick_accumulator = 0
 			instance.effect.on_tick(get_parent(), instance)
+		
+		effect_updated.emit(instance)
 
 		if instance.remaining_ticks <= 0:
 			remove_effect(id)

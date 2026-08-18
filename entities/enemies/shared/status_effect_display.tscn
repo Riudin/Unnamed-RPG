@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cdxb1hjh6bd7s"]
+
+[ext_resource type="Script" uid="uid://cssrgj2liy2dc" path="res://entities/enemies/shared/status_effect_display.gd" id="1_6br25"]
+
+[node name="StatusEffectIcons" type="VBoxContainer" unique_id=1186463465]
+custom_minimum_size = Vector2(14, 14)
+offset_right = 8.0
+offset_bottom = 47.0
+script = ExtResource("1_6br25")

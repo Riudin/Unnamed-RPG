@@ -10,6 +10,7 @@ extends Node2D
 @onready var enemy_name: Label = %Name
 @onready var enemy_level: Label = %Level
 @onready var name_display: HBoxContainer = %NameDisplay
+@onready var status_effect_display: VBoxContainer = %StatusEffectDisplay
 
 
 var enemy_data: EnemyData = null
@@ -34,6 +35,11 @@ func _ready() -> void:
 	enemy_level.text = str(enemy_data.level)
 	if enemy_data.type == EnemyData.EnemyType.BOSS:
 		_scale_boss_visuals()
+	
+	# these signal are currently only for updating the ui icons
+	status_effect_component.effect_applied.connect(status_effect_display.on_effect_applied)
+	status_effect_component.effect_updated.connect(status_effect_display.on_effect_updated)
+	status_effect_component.effect_removed.connect(status_effect_display.on_effect_removed)
 
 
 func _scale_boss_visuals() -> void:

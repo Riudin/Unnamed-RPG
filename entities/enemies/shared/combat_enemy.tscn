@@ -10,10 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="5_r7al3"]
 [ext_resource type="Script" uid="uid://dimsxtvvxg5ce" path="res://entities/characters/player/combat_skill_bar.gd" id="7_bc1gv"]
 [ext_resource type="Script" uid="uid://csbxj52367kyv" path="res://shared/components/status_effect_component.gd" id="8_7en03"]
-[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="8_30n0q"]
 [ext_resource type="Texture2D" uid="uid://bps4elixetcrr" path="res://assets/ui/combat/level_display.png" id="8_634ms"]
 [ext_resource type="PackedScene" uid="uid://ddfs2supyi2fu" path="res://shared/ui/combat/stat_bar.tscn" id="8_bkybs"]
 [ext_resource type="Texture2D" uid="uid://dtb8fqxdspxjt" path="res://assets/ui/combat/mana_bar_progress_front.png" id="9_d2ehu"]
+[ext_resource type="Texture2D" uid="uid://c0k5xc6gk7o8u" path="res://assets/ui/combat/pointer.png" id="13_xq36f"]
+[ext_resource type="PackedScene" uid="uid://cdxb1hjh6bd7s" path="res://entities/enemies/shared/status_effect_display.tscn" id="15_xq36f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owo3w"]
 atlas = ExtResource("3_30n0q")
@@ -87,8 +88,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrivr"]
-
 [node name="CombatEnemy" type="Node2D" unique_id=1458892804]
 script = ExtResource("1_4jwpl")
 
@@ -116,7 +115,7 @@ metadata/_custom_type_script = "uid://casjk8xyj6crd"
 [node name="HealthComponent" type="Node" parent="." unique_id=939295579 node_paths=PackedStringArray("health_bar")]
 unique_name_in_owner = true
 script = ExtResource("4_lq8k6")
-health_bar = NodePath("../GUI/ResourceBars/HealthBar")
+health_bar = NodePath("../GUI/VBoxContainer/ResourceBars/HealthBar")
 metadata/_custom_type_script = "uid://urdreyx4totx"
 
 [node name="StatusEffectComponent" type="Node" parent="." unique_id=873279542]
@@ -125,56 +124,63 @@ script = ExtResource("8_7en03")
 metadata/_custom_type_script = "uid://csbxj52367kyv"
 
 [node name="GUI" type="Control" parent="." unique_id=915349260]
-custom_minimum_size = Vector2(88, 126)
+custom_minimum_size = Vector2(94, 108)
 layout_mode = 3
-anchors_preset = 0
-offset_left = -44.0
-offset_top = -90.0
-offset_right = 44.0
-offset_bottom = 36.0
-
-[node name="ResourceBars" type="VBoxContainer" parent="GUI" unique_id=1401933948]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -30.0
-offset_right = 30.0
-offset_bottom = 12.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -100.0
+offset_right = 45.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+
+[node name="Panel" type="Panel" parent="GUI" unique_id=48061124]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.495
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI" unique_id=841877966]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 62.0
 grow_horizontal = 2
 theme_override_constants/separation = 2
 
-[node name="NameDisplay" type="HBoxContainer" parent="GUI/ResourceBars" unique_id=1314464403]
+[node name="NameDisplay" type="HBoxContainer" parent="GUI/VBoxContainer" unique_id=1314464403]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(88, 23)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="GUI/ResourceBars/NameDisplay" unique_id=1807927417]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xrivr")
-
-[node name="Name" type="Label" parent="GUI/ResourceBars/NameDisplay" unique_id=479161727]
+[node name="Name" type="Label" parent="GUI/VBoxContainer/NameDisplay" unique_id=479161727]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 10
+size_flags_horizontal = 2
+size_flags_vertical = 8
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 9
 text = "Regular Orc"
-horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourceBars/NameDisplay" unique_id=648018213]
+[node name="TextureRect" type="TextureRect" parent="GUI/VBoxContainer/NameDisplay" unique_id=648018213]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_vertical = 8
 texture = ExtResource("8_634ms")
 expand_mode = 3
 
-[node name="Level" type="Label" parent="GUI/ResourceBars/NameDisplay/TextureRect" unique_id=178983303]
+[node name="Level" type="Label" parent="GUI/VBoxContainer/NameDisplay/TextureRect" unique_id=178983303]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -188,77 +194,80 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthBar" parent="GUI/ResourceBars" unique_id=526058230 instance=ExtResource("8_bkybs")]
-custom_minimum_size = Vector2(60, 5)
+[node name="ResourceBars" type="VBoxContainer" parent="GUI/VBoxContainer" unique_id=1401933948]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-size_flags_horizontal = 6
+theme_override_constants/separation = 2
+
+[node name="HealthBar" parent="GUI/VBoxContainer/ResourceBars" unique_id=526058230 instance=ExtResource("8_bkybs")]
+custom_minimum_size = Vector2(90, 8)
+layout_mode = 2
+size_flags_horizontal = 3
 low_hp_pulse = false
 
-[node name="HealthBarLabel" type="Label" parent="GUI/ResourceBars/HealthBar" unique_id=1235723189]
+[node name="HealthBarLabel" type="Label" parent="GUI/VBoxContainer/ResourceBars/HealthBar" unique_id=1235723189]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 62.0
-offset_top = -2.0
-offset_right = 97.0
-offset_bottom = 6.375
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -4.1875
+offset_right = 17.5
+offset_bottom = 4.1875
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 6
 text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ManaBar" parent="GUI/ResourceBars" unique_id=727470986 instance=ExtResource("8_bkybs")]
-custom_minimum_size = Vector2(60, 5)
+[node name="ManaBar" parent="GUI/VBoxContainer/ResourceBars" unique_id=727470986 instance=ExtResource("8_bkybs")]
+custom_minimum_size = Vector2(90, 8)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 low_hp_pulse = false
 damage_flash = false
 heal_flash = false
 
-[node name="FrontBar" parent="GUI/ResourceBars/ManaBar" index="1" unique_id=1977534986]
+[node name="FrontBar" parent="GUI/VBoxContainer/ResourceBars/ManaBar" index="1" unique_id=1977534986]
 texture_progress = ExtResource("9_d2ehu")
 
-[node name="ManaBarLabel" type="Label" parent="GUI/ResourceBars/ManaBar" unique_id=1706790099]
+[node name="ManaBarLabel" type="Label" parent="GUI/VBoxContainer/ResourceBars/ManaBar" unique_id=1706790099]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 62.0
-offset_top = -4.5
-offset_right = 97.0
-offset_bottom = 3.875
+offset_left = -17.5
+offset_top = -4.1875
+offset_right = 17.5
+offset_bottom = 4.1875
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 6
 text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CombatSkillBar" type="HBoxContainer" parent="GUI" unique_id=650950878]
+[node name="CombatSkillBar" type="HBoxContainer" parent="GUI/VBoxContainer/ResourceBars" unique_id=650950878]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(92, 20)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -46.0
-offset_top = -20.0
-offset_right = 46.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 10
+custom_minimum_size = Vector2(90, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 2
-alignment = 1
 script = ExtResource("7_bc1gv")
 
-[node name="TextureRect" type="TextureRect" parent="GUI/CombatSkillBar" unique_id=2006525585]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="GUI/VBoxContainer" unique_id=1040284239]
 layout_mode = 2
-texture = ExtResource("8_30n0q")
+texture = ExtResource("13_xq36f")
 stretch_mode = 3
-
-[node name="Highlight" parent="GUI/CombatSkillBar/TextureRect" unique_id=930515164 instance=ExtResource("4_b07ak")]
-layout_mode = 0
-offset_left = 0.0
-offset_right = 20.0
-offset_bottom = 20.0
 
 [node name="AttackBar" type="TextureProgressBar" parent="GUI" unique_id=269217005]
 unique_name_in_owner = true
@@ -275,4 +284,16 @@ fill_mode = 4
 texture_progress = ExtResource("5_r7al3")
 tint_progress = Color(1, 1, 1, 0.69803923)
 
-[editable path="GUI/ResourceBars/ManaBar"]
+[node name="StatusEffectDisplay" parent="GUI" unique_id=1186463465 instance=ExtResource("15_xq36f")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 8.0
+offset_right = 16.0
+offset_bottom = 8.000008
+grow_horizontal = 0
+theme_override_constants/separation = 2
+
+[editable path="GUI/VBoxContainer/ResourceBars/ManaBar"]

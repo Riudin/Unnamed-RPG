@@ -40,6 +40,6 @@ script = ExtResource("11_t0qtf")
 name = "Green Orc"
 texture = ExtResource("13_j62ag")
 stats = SubResource("Resource_7k8nc")
-equipped_skills = Array[ExtResource("9_s3iqy")]([ExtResource("10_2u4wg")])
+equipped_skills = Array[ExtResource("9_s3iqy")]([ExtResource("10_2u4wg"), ExtResource("10_2u4wg"), ExtResource("10_2u4wg"), ExtResource("10_2u4wg"), ExtResource("10_2u4wg")])
 drop_table = SubResource("Resource_alm4f")
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

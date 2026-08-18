@@ -3,6 +3,11 @@ extends Node
 ### Responsible for calculation of damage based on DamageInstance
 
 const BURN_EFFECT: BurnEffect = preload("uid://c801vdpuov2gx")
+const BLEED_EFFECT: BleedEffect = preload("uid://c1etiwqjqapa5")
+#const CHILL_EFFECT: ChillEffect = preload("")
+#const FREEZE_EFFECT: FreezeEffect = preload("")
+#const SHOCK_EFFECT: ShockEffect = preload("")
+#const POISON_EFFECT: PoisonEffect = preload("")
 
 
 func resolve(instance: DamageInstance, is_crit: bool) -> int:
@@ -62,23 +67,19 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 		shock_chance = 100
 		
 	if physical_damage > 0 and randi_range(1, 100) <= bleed_chance:
-		_apply_effect("bleed")
+		var effect := BLEED_EFFECT.duplicate(true)
+		_apply_effect(effect, instance)
 	if fire_damage > 0 and randi_range(1, 100) <= burn_chance:
-		if not instance.defender.has_node("StatusEffectComponent"):
-			push_error(instance.defender, ": has no status effect component")
-		else:
-			var status_effect_component: StatusEffectComponent = instance.defender.get_node("StatusEffectComponent")
-			var effect := BURN_EFFECT.duplicate(true)
-			status_effect_component.apply_effect(effect, instance.attacker)
-			#print("applied burn with ", effect.damage_per_tick, " damage per tick")
-	if cold_damage > 0 and randi_range(1, 100) <= chill_chance:
-		_apply_effect("chill")
-	if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:
-		_apply_effect("freeze")
-	if lightning_damage > 0 and randi_range(1, 100) <= shock_chance:
-		_apply_effect("shock")
-	if randi_range(1, 100) <= poison_chance:
-		_apply_effect("poison")
+		var effect := BURN_EFFECT.duplicate(true)
+		_apply_effect(effect, instance)
+	#if cold_damage > 0 and randi_range(1, 100) <= chill_chance:
+		#_apply_effect("chill")
+	#if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:
+		#_apply_effect("freeze")
+	#if lightning_damage > 0 and randi_range(1, 100) <= shock_chance:
+		#_apply_effect("shock")
+	#if randi_range(1, 100) <= poison_chance:
+		#_apply_effect("poison")
 		
 		
 		#prints("----critical hit! Damage increased by", instance.stats.crit_multiplier, "new dmg:", total_damage)
@@ -94,8 +95,12 @@ func resolve_crit(instance: DamageInstance) -> bool:
 	return false
 
 
-func _apply_effect(effect_name: String) -> void:
-	print("applying effect: ", effect_name)
+func _apply_effect(effect: StatusEffect, dmg_instance: DamageInstance) -> void:
+	if not dmg_instance.defender.has_node("StatusEffectComponent"):
+			push_error(dmg_instance.defender, ": has no status effect component")
+	else:
+		var status_effect_component: StatusEffectComponent = dmg_instance.defender.get_node("StatusEffectComponent")
+		status_effect_component.apply_effect(effect, dmg_instance.attacker)
 
 
 '''

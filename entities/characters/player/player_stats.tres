@@ -6,7 +6,10 @@
 resource_local_to_scene = true
 script = ExtResource("1_p56jd")
 base_max_health = 1000
+base_physical_damage = 5
+base_physical_damage_range = 7
 base_fire_damage = 10
-base_fire_damage_range = 10
+base_fire_damage_range = 12
 base_burn_chance = 100
+base_bleed_chance = 100
 metadata/_custom_type_script = "uid://n8wtim8qm2cq"

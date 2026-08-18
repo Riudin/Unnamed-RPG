@@ -25,20 +25,20 @@ position = Vector2(180, 260)
 
 [node name="EnemyPos1" type="Marker2D" parent="." unique_id=1941750832]
 unique_name_in_owner = true
-position = Vector2(383, 221)
+position = Vector2(369, 203)
 
 [node name="EnemyPos2" type="Marker2D" parent="." unique_id=912992208]
 unique_name_in_owner = true
-position = Vector2(414, 323)
+position = Vector2(363, 355)
 
 [node name="EnemyPos3" type="Marker2D" parent="." unique_id=721595459]
 unique_name_in_owner = true
-position = Vector2(480, 224)
+position = Vector2(459, 286)
 
 [node name="EnemyPos4" type="Marker2D" parent="." unique_id=782933528]
 unique_name_in_owner = true
-position = Vector2(523, 326)
+position = Vector2(571, 236)
 
 [node name="EnemyPos5" type="Marker2D" parent="." unique_id=2006956370]
 unique_name_in_owner = true
-position = Vector2(582, 229)
+position = Vector2(565, 352)
