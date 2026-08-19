@@ -27,6 +27,9 @@ func _deal_damage(target, effect_instance: StatusEffectInstance) -> void:
 	var is_crit: bool = false # status effects can't crit
 	var damage_dealt: int = DamageSystem.resolve(dmg_instance, is_crit)
 
+	if damage_dealt <= 0:
+		return
+
 	if dmg_instance.defender and dmg_instance.defender.health_component.has_method("take_damage"):
 		dmg_instance.defender.health_component.take_damage(damage_dealt)
 
