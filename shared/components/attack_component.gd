@@ -29,6 +29,15 @@ var skill_index := 0
 #var skills: Dictionary[int, SkillData] = {}
 var skills: Array[SkillData]: set = set_skills
 
+var action_speed: float = 1.0: # for now we keep this here. Should other systems also rely on it, we should move it to super
+	set(new_value):
+		action_speed = new_value
+		var curr_attack_progress_pct: float = float(tick_counter) / attack_interval_ticks
+		_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
+		tick_counter = roundi(curr_attack_progress_pct * attack_interval_ticks)
+		
+		play_windup_animation(true)
+
 # @export var damages: Array[DamageSource] = []
 # @export var default_damage: DamageSource
 
@@ -65,10 +74,10 @@ func set_skills(new_skills: Array[SkillData]):
 		
 	# if no skill is equipped TODO: use default attack
 	if skills[skill_index] == null:
-		#print("no skill equipped")
-		_calculate_attack_interval(0.0) # TODO: replace with default attack
+		push_error("AttackComponent: No skill equipped")
 	else:
-		_calculate_attack_interval(skills[skill_index].base_speed)
+		tick_counter = 0
+		_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
 
 
 func setup_skill_bar():
@@ -94,22 +103,22 @@ func _calculate_attack_interval(skill_speed: float) -> void:
 	else:
 		attack_interval_ticks = int(1e9) # effectively never
 	
-	tick_counter = 0
+	#tick_counter = 0
 
 	if attack_bar:
 		attack_bar.value = 0.0
 
 
 func _on_tick():
+	# attack_interval_ticks should never go below 1
 	if attack_interval_ticks <= 0: return
 
 	# this check also makes sure we execute nothing on tick, when there is no battle happening
-	if target == null:
-		return
+	if target == null: return
 
 	tick_counter += 1
 
-	# Calculate Progress
+	# Calculate Progress for attack bar
 	var progress: float = float(tick_counter) / float(attack_interval_ticks)
 	progress = clamp(progress, 0.0, 1.0)
 
@@ -162,7 +171,7 @@ func trigger_attack() -> void:
 	while skills[skill_index] == null:
 		skill_index = (skill_index + 1) % skills.size()
 
-	_calculate_attack_interval(skills[skill_index].base_speed)
+	_calculate_attack_interval(skills[skill_index].base_speed* action_speed)
 	
 	set_skill_bar_highlight()
 	play_windup_animation()
@@ -182,8 +191,12 @@ func set_skill_bar_highlight():
 	attack_bar.position.y += 2.0
 
 
-func play_windup_animation():
+func play_windup_animation(interrupting_running_animation: bool = false):
 	if windup_anim_sprite:
+		var start_frame = 0
+		if interrupting_running_animation:
+			start_frame = windup_anim_sprite.frame
+
 		var cast_time = attack_interval_ticks / TickManager.TICK_RATE
 		var animation = skills[skill_index].windup_animation_name
 
@@ -197,4 +210,5 @@ func play_windup_animation():
 		windup_anim_sprite.speed_scale = base_duration / cast_time
 		
 		windup_anim_sprite.stop()
+		windup_anim_sprite.frame = start_frame
 		windup_anim_sprite.play(animation)

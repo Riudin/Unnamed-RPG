@@ -4,8 +4,8 @@ extends Node
 
 const BURN_EFFECT: BurnEffect = preload("uid://c801vdpuov2gx")
 const BLEED_EFFECT: BleedEffect = preload("uid://c1etiwqjqapa5")
-#const CHILL_EFFECT: ChillEffect = preload("")
-#const FREEZE_EFFECT: FreezeEffect = preload("")
+const CHILL_EFFECT: ChillEffect = preload("uid://cjmxp4bd35ptp")
+const FREEZE_EFFECT: FreezeEffect = preload("uid://1y6xsexchsaa")
 #const SHOCK_EFFECT: ShockEffect = preload("")
 #const POISON_EFFECT: PoisonEffect = preload("")
 
@@ -68,14 +68,18 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 		
 	if physical_damage > 0 and randi_range(1, 100) <= bleed_chance:
 		var effect := BLEED_EFFECT.duplicate(true)
-		_apply_effect(effect, instance)
+		if instance.stats.current_physical_damage_range * effect.damage_per_tick_modifier >= 1:
+			_apply_effect(effect, instance)
 	if fire_damage > 0 and randi_range(1, 100) <= burn_chance:
 		var effect := BURN_EFFECT.duplicate(true)
+		if instance.stats.current_fire_damage_range * effect.damage_per_tick_modifier >= 1:
+			_apply_effect(effect, instance)
+	if cold_damage > 0 and randi_range(1, 100) <= chill_chance:
+		var effect := CHILL_EFFECT.duplicate(true)
 		_apply_effect(effect, instance)
-	#if cold_damage > 0 and randi_range(1, 100) <= chill_chance:
-		#_apply_effect("chill")
-	#if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:
-		#_apply_effect("freeze")
+	if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:
+		var effect := FREEZE_EFFECT.duplicate(true)
+		_apply_effect(effect, instance)
 	#if lightning_damage > 0 and randi_range(1, 100) <= shock_chance:
 		#_apply_effect("shock")
 	#if randi_range(1, 100) <= poison_chance:
