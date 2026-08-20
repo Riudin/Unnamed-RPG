@@ -17,8 +17,6 @@ func build_damage_instance() -> DamageInstance:
 
 	instance.attacker = attacker
 	instance.defender = defender
-	instance.include_poison_damage = false
-
 	return instance
 
 

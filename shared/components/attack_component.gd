@@ -46,7 +46,7 @@ func _ready() -> void:
 	await get_parent().ready
 	TickManager.connect("tick", _on_tick)
 
-	assert(parent_data != null , "No Parent Data assigned!")
+	assert(parent_data != null, "No Parent Data assigned!")
 	#if parent_data.equipped_skills.size() < 1:
 		#parent_data.equipped_skills.append(default_attack)
 	assert(parent_data.equipped_skills, "Parent has no equipped_skills!")
@@ -151,6 +151,8 @@ func trigger_attack() -> void:
 
 	#print(parent, " triggering Skill: ", skill.skill_name)
 
+	if target == null: print("no target")
+
 	var context = BattleContext.new()
 	context.attacker = parent
 	context.defender = target
@@ -171,7 +173,7 @@ func trigger_attack() -> void:
 	while skills[skill_index] == null:
 		skill_index = (skill_index + 1) % skills.size()
 
-	_calculate_attack_interval(skills[skill_index].base_speed* action_speed)
+	_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
 	
 	set_skill_bar_highlight()
 	play_windup_animation()

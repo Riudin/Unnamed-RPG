@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ChillEffect" format=3 uid="uid://cjmxp4bd35ptp"]
 
-[ext_resource type="Script" uid="uid://bulayfdjxm61x" path="res://shared/scripts/data_models/status_effects/chill_effect.gd" id="1_mw6gk"]
+[ext_resource type="Script" uid="uid://bbrs3q78gh0nb" path="res://shared/scripts/data_models/status_effects/chill_effect.gd" id="1_mw6gk"]
 
 [resource]
 script = ExtResource("1_mw6gk")

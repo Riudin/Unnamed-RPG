@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://ctqyp2lirv34g"]
+
+[ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="1_p3b56"]
+[ext_resource type="Script" uid="uid://cnasyywtgdxd6" path="res://entities/skills/skill_behaviors/summon_behavior.gd" id="2_f7wf3"]
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="2_rjepo"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="3_cstf2"]
+[ext_resource type="Texture2D" uid="uid://b2k3yg6fxvgrm" path="res://assets/icons/skill_icons/summon_skeleton.png" id="4_rjepo"]
+[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="5_bn72s"]
+[ext_resource type="Texture2D" uid="uid://but0myinldn87" path="res://assets/characters/enemies/sceleton.png" id="5_cstf2"]
+[ext_resource type="Resource" uid="uid://b0hc4byhh8tuk" path="res://entities/skills/skill_data/default_attack.tres" id="5_un2yy"]
+
+[sub_resource type="Resource" id="Resource_qnhgh"]
+script = ExtResource("2_f7wf3")
+metadata/_custom_type_script = "uid://cnasyywtgdxd6"
+
+[sub_resource type="Resource" id="Resource_un2yy"]
+script = ExtResource("5_bn72s")
+base_physical_damage = 3
+base_physical_damage_range = 6
+metadata/_custom_type_script = "uid://n8wtim8qm2cq"
+
+[resource]
+script = ExtResource("3_cstf2")
+skill_name = "Summon Skeleton"
+tags = Array[int]([1, 5, 6])
+skill_icon = ExtResource("4_rjepo")
+behaviors = Array[ExtResource("1_p3b56")]([SubResource("Resource_qnhgh")])
+base_speed = 0.5
+summon_texture = ExtResource("5_cstf2")
+summon_stats = SubResource("Resource_un2yy")
+summon_skills = Array[ExtResource("3_cstf2")]([ExtResource("5_un2yy")])
+metadata/_custom_type_script = "uid://diqj52rxjhysk"

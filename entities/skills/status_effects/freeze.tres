@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FreezeEffect" format=3 uid="uid://1y6xsexchsaa"]
 
-[ext_resource type="Script" uid="uid://imclyyd6q5ay" path="res://shared/scripts/data_models/status_effects/freeze_effect.gd" id="1_iciuw"]
+[ext_resource type="Script" uid="uid://dwhkqkhbw33bl" path="res://shared/scripts/data_models/status_effects/freeze_effect.gd" id="1_iciuw"]
 
 [resource]
 script = ExtResource("1_iciuw")

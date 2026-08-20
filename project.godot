@@ -76,6 +76,8 @@ dungeons=""
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
+theme/custom="uid://c4ulphto5f27s"
+theme/custom_font="uid://3mf2xtnd6uul"
 
 [input]
 

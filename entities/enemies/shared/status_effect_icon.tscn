@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dctc1qv3atp8y" path="res://assets/ui/combat/status_effects/burn.png" id="2_6wcim"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1lj4"]
-bg_color = Color(0.4745098, 0.4745098, 0.4745098, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+bg_color = Color(0.1767, 0.19, 0.1634, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.48, 0.03839999, 0.03839999, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njqwk"]

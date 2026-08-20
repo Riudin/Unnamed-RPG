@@ -11,7 +11,8 @@ enum SkillTag {
 	MELEE,
 	PROJECTILE,
 	AOE,
-	DURATION
+	DURATION,
+	SUMMON
 	}
 
 @export_group("Basic Info")
@@ -33,13 +34,19 @@ enum SkillTag {
 @export var base_speed: float # TODO: this should be influenced by stats
 @export var mana_cost: float # TODO: implement mana cost for skills
 
+@export_group("Summoning")
+@export var summon_texture: Texture2D
+@export var summon_stats: Stats
+@export var summon_skills: Array[SkillData]
+
+
 var projectile: PackedScene = preload("uid://ce0b6wmvlgec2")
 
 
 func execute(context: BattleContext) -> void:
 	# Execute each behavior sequentially, waiting for completion
 	for behavior in behaviors:
-		behavior.execute(context, self )
+		behavior.execute(context, self)
 
 
 # this function fires instantly when dmg is dealt. 

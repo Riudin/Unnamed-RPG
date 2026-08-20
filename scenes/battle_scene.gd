@@ -4,6 +4,7 @@ extends Node2D
 
 @export var combat_player: PackedScene
 @export var combat_enemy: PackedScene
+@export var combat_summon: PackedScene
 
 @onready var player_pos: Marker2D = %PlayerPos
 @onready var enemy_pos_1: Marker2D = %EnemyPos1
@@ -18,10 +19,19 @@ extends Node2D
 	enemy_pos_4.global_position,
 	enemy_pos_5.global_position
 ]
+@onready var ally_pos_1: Marker2D = %AllyPos1
+@onready var ally_pos_2: Marker2D = %AllyPos2
+@onready var ally_pos_3: Marker2D = %AllyPos3
+@onready var ally_positions: Array[Vector2] = [
+	ally_pos_1.global_position,
+	ally_pos_2.global_position,
+	ally_pos_3.global_position
+]
 
 var current_player: CombatPlayer = null
 var current_enemy: CombatEnemy = null
 var active_enemies: Array[CombatEnemy] = []
+var active_summons: Array[CombatSummon] = []
 var enemy_level: int = 0
 
 @onready var dungeon_data: DungeonData = GameState.active_dungeon
@@ -37,6 +47,8 @@ func _ready() -> void:
 
 	current_player.attack_component.target = current_enemy
 	current_enemy.attack_component.target = current_player
+
+	SignalBus.summon_requested.connect(_setup_summon)
 
 
 func _setup_player():
@@ -76,13 +88,31 @@ func _setup_enemies() -> void:
 				_setup_enemy(dungeon_data.normal_enemy_pool.pick_random())
 		BattleType.ELITE:
 			var total_amount := randi_range(dungeon_data.min_enemies, dungeon_data.max_enemies)
-			var elite_amount :=randi_range(dungeon_data.min_enemies, total_amount)
+			var elite_amount := randi_range(dungeon_data.min_enemies, total_amount)
 			for elite in elite_amount:
 				_setup_enemy(dungeon_data.elite_enemy_pool.pick_random())
 			for normal in total_amount - elite_amount:
 				_setup_enemy(dungeon_data.normal_enemy_pool.pick_random())
 		BattleType.BOSS:
 			_setup_enemy(dungeon_data.boss_enemy_pool.pick_random())
+
+
+func _setup_summon(summon: EnemyData) -> void:
+	var new_summon = combat_summon.instantiate()
+
+	if ally_positions.size() <= 0:
+		printerr("Trying to summon more summons than spaces are available")
+		return
+	new_summon.global_position = ally_positions.pick_random()
+	ally_positions.erase(new_summon.global_position)
+	
+	new_summon.enemy_data = summon
+
+	add_child(new_summon)
+	active_summons.append(new_summon)
+
+	new_summon.health_component.died.connect(_on_summon_died)
+	new_summon.attack_component.target = active_enemies.pick_random()
 
 
 func _on_player_died(player):
@@ -101,6 +131,7 @@ func _on_enemy_died(enemy: CombatEnemy):
 	if GameState.player_data.stats:
 		GameState.player_data.stats.experience += enemy.enemy_data.drop_table.xp_reward
 	
+
 	active_enemies.erase(enemy)
 	if active_enemies.is_empty():
 		match enemy.enemy_data.type:
@@ -111,6 +142,15 @@ func _on_enemy_died(enemy: CombatEnemy):
 			EnemyData.EnemyType.BOSS:
 				SignalBus.dungeon_boss_defeated.emit()
 	else:
+		# Give Player new target - temporary
 		current_player.attack_component.target = active_enemies.pick_random()
+		# Give Summons new target - temporary
+		for summon in active_summons:
+			if summon.attack_component.target == enemy:
+				summon.attack_component.target = active_enemies.pick_random()
 			
 	enemy.queue_free()
+
+
+func _on_summon_died(summon: CombatSummon) -> void:
+	summon.queue_free()
