@@ -92,6 +92,8 @@ signal level_up(new_level)
 @export var base_lightning_damage_range: int = 0
 @export var base_chaos_damage: int = 0
 @export var base_chaos_damage_range: int = 0
+@export var base_poison_damage: int = 0
+@export var base_poison_damage_range: int = 0
 
 # Status Effect chance
 @export var base_burn_chance: int = 0:
@@ -106,9 +108,9 @@ signal level_up(new_level)
 @export var base_freeze_chance: int = 0:
 	set(new_value):
 		base_freeze_chance = clampi(new_value, 0, 100)
-@export var base_poison_chance: int = 0:
-	set(new_value):
-		base_poison_chance = clampi(new_value, 0, 100)
+#@export var base_poison_chance: int = 0:
+	#set(new_value):
+		#base_poison_chance = clampi(new_value, 0, 100)
 @export var base_bleed_chance: int = 0:
 	set(new_value):
 		base_bleed_chance = clampi(new_value, 0, 100)
@@ -187,6 +189,8 @@ var current_lightning_damage: int = 0
 var current_lightning_damage_range: int = 0
 var current_chaos_damage: int = 0
 var current_chaos_damage_range: int = 0
+var current_poison_damage: int = 0
+var current_poison_damage_range: int = 0
 
 # Status Effect chance
 var current_burn_chance: int = 0:
@@ -201,9 +205,9 @@ var current_chill_chance: int = 100:
 var current_freeze_chance: int = 0:
 	set(new_value):
 		current_freeze_chance = clampi(new_value, 0, 100)
-var current_poison_chance: int = 0:
-	set(new_value):
-		current_poison_chance = clampi(new_value, 0, 100)
+#var current_poison_chance: int = 0:
+	#set(new_value):
+		#current_poison_chance = clampi(new_value, 0, 100)
 var current_bleed_chance: int = 0:
 	set(new_value):
 		current_bleed_chance = clampi(new_value, 0, 100)

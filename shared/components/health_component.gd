@@ -11,6 +11,8 @@ var parent_data: Resource = null # player_data or enemy_data
 
 @export var health_bar: StatBar = null
 
+var damage_taken_modifier: float = 1.0
+
 @onready var parent := get_parent()
 @onready var health_bar_label: Label = %HealthBarLabel
 #@onready var mana_bar_label: Label = %ManaBarLabel
@@ -26,8 +28,8 @@ func _ready() -> void:
 		health_bar_label.text = str(int(health)) + " / " + str(int(max_health))
 
 
-func take_damage(damage):
-	health -= damage
+func take_damage(damage: int):
+	health -= int(damage * damage_taken_modifier)
 	health = clampf(health, 0.0, max_health)
 
 	if health_bar:

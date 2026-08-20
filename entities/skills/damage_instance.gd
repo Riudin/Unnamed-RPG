@@ -9,3 +9,5 @@ extends RefCounted
 var stats: Stats
 var attacker
 var defender
+var include_poison_damage: bool = false
+var apply_status_effects: bool = true
