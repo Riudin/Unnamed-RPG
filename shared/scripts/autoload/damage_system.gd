@@ -6,8 +6,8 @@ const BURN_EFFECT: BurnEffect = preload("uid://c801vdpuov2gx")
 const BLEED_EFFECT: BleedEffect = preload("uid://c1etiwqjqapa5")
 const CHILL_EFFECT: ChillEffect = preload("uid://cjmxp4bd35ptp")
 const FREEZE_EFFECT: FreezeEffect = preload("uid://1y6xsexchsaa")
-#const SHOCK_EFFECT: ShockEffect = preload("")
-#const POISON_EFFECT: PoisonEffect = preload("")
+const SHOCK_EFFECT: ShockEffect = preload("uid://3g41354bplg6")
+const POISON_EFFECT: PoisonEffect = preload("uid://jp6xdo36n55m")
 
 
 func resolve(instance: DamageInstance, is_crit: bool) -> int:
@@ -18,6 +18,9 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 	var cold_damage := randi_range(instance.stats.current_cold_damage, instance.stats.current_cold_damage_range)
 	var lightning_damage := randi_range(instance.stats.current_lightning_damage, instance.stats.current_lightning_damage_range)
 	var chaos_damage := randi_range(instance.stats.current_chaos_damage, instance.stats.current_chaos_damage_range)
+	var poison_damage := 0
+	if instance.include_poison_damage:
+		poison_damage = randi_range(instance.stats.current_poison_damage, instance.stats.current_poison_damage_range)
 
 	# var total_damage := 0.0
 
@@ -45,7 +48,7 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 		#prints("----base dmg:", base, "(", source.min_damage, source.max_damage, ")")
 		#prints("----increased by:", increased, "new dmg:", scaled)
 
-	var combined_damage: int = physical_damage + fire_damage + cold_damage + lightning_damage + chaos_damage
+	var combined_damage: int = physical_damage + fire_damage + cold_damage + lightning_damage + chaos_damage + poison_damage
 	
 	# we declare these variables so we don't have to change values in stats directly from here
 	var bleed_chance: int = instance.stats.current_bleed_chance
@@ -53,7 +56,7 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 	var chill_chance: int = instance.stats.current_chill_chance
 	var freeze_chance: int = instance.stats.current_freeze_chance
 	var shock_chance: int = instance.stats.current_shock_chance
-	var poison_chance: int = instance.stats.current_poison_chance
+	#var poison_chance: int = instance.stats.current_poison_chance
 
 	# Crit multiplies all damage from this instance
 	if is_crit:
@@ -80,10 +83,12 @@ func resolve(instance: DamageInstance, is_crit: bool) -> int:
 	if cold_damage > 0 and randi_range(1, 100) <= freeze_chance:
 		var effect := FREEZE_EFFECT.duplicate(true)
 		_apply_effect(effect, instance)
-	#if lightning_damage > 0 and randi_range(1, 100) <= shock_chance:
-		#_apply_effect("shock")
-	#if randi_range(1, 100) <= poison_chance:
-		#_apply_effect("poison")
+	if lightning_damage > 0 and randi_range(1, 100) <= shock_chance:
+		var effect := SHOCK_EFFECT.duplicate(true)
+		_apply_effect(effect, instance)
+	if instance.apply_status_effects and instance.stats.current_poison_damage > 0:
+		var effect := POISON_EFFECT.duplicate(true)
+		_apply_effect(effect, instance)
 		
 		
 		#prints("----critical hit! Damage increased by", instance.stats.crit_multiplier, "new dmg:", total_damage)

@@ -21,7 +21,7 @@ func _deal_damage(target, effect_instance: StatusEffectInstance) -> void:
 	dmg_instance.stats = Stats.new()
 	dmg_instance.stats.current_physical_damage = effect_instance.stats_snapshot.current_physical_damage * damage_per_tick_modifier
 	dmg_instance.stats.current_physical_damage_range = effect_instance.stats_snapshot.current_physical_damage_range * damage_per_tick_modifier
-	dmg_instance.stats.current_chill_chance = 0 # needed (?) to avoid status effects applying chill
+	dmg_instance.apply_status_effects = false
 	dmg_instance.defender = target
 	
 	var is_crit: bool = false # status effects can't crit
@@ -35,7 +35,7 @@ func _deal_damage(target, effect_instance: StatusEffectInstance) -> void:
 
 	if target:
 		DamagePopupManager.spawn(
-			int(damage_dealt),
+			int(damage_dealt * dmg_instance.defender.health_component.damage_taken_modifier),
 			target.global_position,
 			#DamagePopupManager.damage_colors[damage_source.damage_type],
 			Color.INDIAN_RED,

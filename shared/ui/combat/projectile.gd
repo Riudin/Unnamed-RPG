@@ -43,7 +43,7 @@ func _on_hit():
 
 	if context.defender:
 		DamagePopupManager.spawn(
-			int(damage_dealt),
+			int(damage_dealt * context.defender.health_component.damage_taken_modifier),
 			context.defender.global_position,
 			#DamagePopupManager.damage_colors[damage_source.damage_type],
 			Color.WHITE,

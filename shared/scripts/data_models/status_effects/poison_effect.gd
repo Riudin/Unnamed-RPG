@@ -1,11 +1,11 @@
-class_name BurnEffect
+class_name PoisonEffect
 extends StatusEffect
 
 
-@export var damage_per_tick_modifier: float = 0.45
+@export var additional_chaos_dmg_pct: float = 0.5
 @export var tick_interval: float = 0.5 # how many seconds between damage ticks
 
-const ICON: Texture2D = preload("uid://dctc1qv3atp8y")
+const ICON: Texture2D = preload("uid://ed5s7x655g1u")
 
 
 func on_tick(target, effect_instance: StatusEffectInstance) -> void:
@@ -14,13 +14,16 @@ func on_tick(target, effect_instance: StatusEffectInstance) -> void:
 
 func _deal_damage(target, effect_instance: StatusEffectInstance) -> void:
 	if target == null:
-		print("BurnEffect: target is null!")
+		print("PoisonEffect: target is null!")
 		return
 		
 	var dmg_instance = DamageInstance.new()
 	dmg_instance.stats = Stats.new()
-	dmg_instance.stats.current_fire_damage = effect_instance.stats_snapshot.current_fire_damage * damage_per_tick_modifier
-	dmg_instance.stats.current_fire_damage_range = effect_instance.stats_snapshot.current_fire_damage_range * damage_per_tick_modifier
+	dmg_instance.stats.current_poison_damage = effect_instance.stats_snapshot.current_poison_damage
+	dmg_instance.stats.current_poison_damage_range = effect_instance.stats_snapshot.current_poison_damage_range
+	dmg_instance.stats.current_chaos_damage = int(effect_instance.stats_snapshot.current_chaos_damage * additional_chaos_dmg_pct)
+	dmg_instance.stats.current_chaos_damage_range = int(effect_instance.stats_snapshot.current_chaos_damage_range * additional_chaos_dmg_pct)
+	dmg_instance.include_poison_damage = true
 	dmg_instance.apply_status_effects = false
 	dmg_instance.defender = target
 	
@@ -38,7 +41,7 @@ func _deal_damage(target, effect_instance: StatusEffectInstance) -> void:
 			int(damage_dealt * dmg_instance.defender.health_component.damage_taken_modifier),
 			target.global_position,
 			#DamagePopupManager.damage_colors[damage_source.damage_type],
-			Color.DARK_ORANGE,
+			Color.WEB_GREEN,
 			is_crit,
 			0.8
 			)
