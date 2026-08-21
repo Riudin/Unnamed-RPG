@@ -279,14 +279,25 @@ var stat_modifiers: Array[StatModifier] = []
 @export var vitality_health_scaling: float = 1.0
 
 
-func _init() -> void:
-	setup_stats.call_deferred()
+func _init(initialize_stats: bool = true) -> void:
+	if initialize_stats:
+		setup_stats.call_deferred()
 
 
 func setup_stats() -> void:
 	stat_modifiers.clear()
 	recalculate_stats()
 	# health = current_max_health
+
+
+# we do this so we can generate a snapshot of the stats whenever we need an instance that doesn't get changed anymore. For example in multiple casts. duplicate resets all non @export vars
+func snapshot() -> Stats:
+	var stats_snapshot: Stats = Stats.new(false)
+	for property in get_property_list():
+		var property_name: String = property["name"]
+		if property_name.begins_with("base_") or property_name.begins_with("current_"):
+			stats_snapshot.set(property_name, get(property_name))
+	return stats_snapshot
 
 
 func add_modifier(mod: StatModifier) -> void:

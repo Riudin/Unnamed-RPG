@@ -18,7 +18,7 @@ script = ExtResource("3_pkndr")
 stat = 16
 type = 1
 amount = 2.0
-range_amount = 4.0
+range_amount = 2.0
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

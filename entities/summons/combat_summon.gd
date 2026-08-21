@@ -18,10 +18,7 @@ var enemy_data: EnemyData = null
 
 func _ready() -> void:
 	assert(enemy_data != null, "No EnemyData set for " + str(self))
-	if not enemy_data.stats:
-		print("EnemyData has no stats. Using default stats")
-		enemy_data.stats = Stats.new()
-	enemy_data._apply_level_scaling()
+	assert(enemy_data.stats != null, "Summon has no stats: " + str(self))
 	
 	# Giving the attacks a bit variety so they dont all land at the same time
 	for skill in enemy_data.equipped_skills.size():

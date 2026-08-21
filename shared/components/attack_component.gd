@@ -142,13 +142,6 @@ func trigger_attack() -> void:
 	if skill == null:
 		return
 
-	# apply skill modifiers
-	if skill and not skill.inherent_mods.is_empty():
-		for mod in skill.inherent_mods:
-			parent_data.stats.add_modifier(mod)
-		# recalculate directly to ensure stats are ready
-		parent_data.stats.recalculate_stats()
-
 	#print(parent, " triggering Skill: ", skill.skill_name)
 
 	if target == null: print("no target")
@@ -156,15 +149,14 @@ func trigger_attack() -> void:
 	var context = BattleContext.new()
 	context.attacker = parent
 	context.defender = target
-	context.attacker_stats = parent_data.stats
+	context.attacker_stats = parent_data.stats.snapshot()
+
+	# Skill modifiers belong to this cast and must not mutate the attacker's shared stats.
+	for mod in skill.inherent_mods:
+		context.attacker_stats.add_modifier(mod)
+	context.attacker_stats.recalculate_stats()
 
 	skill.execute(context)
-
-	# remove skill modifiers and recalculate stats again
-	if skill and not skill.inherent_mods.is_empty():
-		for mod in skill.inherent_mods:
-			parent_data.stats.remove_modifier(mod)
-		parent_data.stats.recalculate_stats()
 
 	# rotate to next skill and loop back to beginning
 	skill_index = (skill_index + 1) % skills.size()

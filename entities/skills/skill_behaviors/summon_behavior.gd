@@ -10,7 +10,8 @@ func execute(context: BattleContext, skill: SkillData) -> void:
 		var data := EnemyData.new()
 		data.name = "Skeleton"
 		data.texture = skill.summon_texture
-		data.stats = skill.summon_stats
+		data.stats = skill.summon_stats.snapshot()
+		data.stats.recalculate_stats()
 		data.level = 1
 		data.equipped_skills = skill.summon_skills
 

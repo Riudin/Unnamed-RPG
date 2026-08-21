@@ -168,3 +168,5 @@ metadata/_custom_type_script = "uid://cmc20wtvb8qvx"
 unique_name_in_owner = true
 script = ExtResource("10_sybl7")
 metadata/_custom_type_script = "uid://i5puns5ayv24"
+
+[node name="Timer" type="Timer" parent="." unique_id=805325234]

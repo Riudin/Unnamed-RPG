@@ -105,6 +105,8 @@ func resolve_crit(instance: DamageInstance) -> bool:
 
 
 func _apply_effect(effect: StatusEffect, dmg_instance: DamageInstance) -> void:
+	if not dmg_instance.defender: return
+
 	if not dmg_instance.defender.has_node("StatusEffectComponent"):
 			push_error(dmg_instance.defender, ": has no status effect component")
 	else:

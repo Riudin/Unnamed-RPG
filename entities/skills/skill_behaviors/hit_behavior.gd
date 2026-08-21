@@ -7,33 +7,47 @@ extends SkillBehavior
 
 
 func execute(context: BattleContext, skill: SkillData) -> void:
-	for i in hit_count:
-		# Delay before this hit (except on first hit)
-		if not context.attacker:
-			return
+	if not context.attacker: return
 
-		if i > 0:
-			await context.attacker.get_tree().create_timer(delay_between_hits).timeout
-		
-		if skill.tags.has(SkillData.SkillTag.PROJECTILE):
-			# Calculate damage when creating the projectile
-			#var instance = context.build_damage_instance()
-			#var is_crit: bool = context.determine_crit(instance)
-			#var damage_dealt: float = context.deal_damage(instance, is_crit)
-			# var projectile_context = BattleContext.new()
-			# projectile_context.attacker = context.attacker
-			# projectile_context.defender = context.defender
-			# projectile_context.attacker_stats = context.attacker_stats
-			var instance = context.build_damage_instance()
-			var is_crit: bool = DamageSystem.resolve_crit(instance)
-			var damage_dealt: int = DamageSystem.resolve(instance, is_crit)
+	# take snapshot of stats so the same stats are applied to every attack even if they change in the meantime
+	var stats_snapshot: Stats = context.attacker_stats.snapshot()
 
-			_spawn_projectile(context, skill, damage_dealt, is_crit)
-			#projectile.connect("target_hit", Callable(self , "_deal_damage").bindv([context])) # damage_dealt, is_crit, context.defender.global_position]))
-		else:
+	if not context.attacker: return
+
+	if hit_count > 1:
+		var skill_caster = RepeatedSkillCaster.new()
+		skill_caster.remaining_casts = hit_count - 1
+		skill_caster.delay_between_hits = delay_between_hits
+		skill_caster.attacker = context.attacker
+		skill_caster.cast_callback = Callable(self, "_execute_hit").bind(context, skill, stats_snapshot)
+		context.attacker.add_child(skill_caster)
+		skill_caster.start()
+
+	_execute_hit(context, skill, stats_snapshot)
+
+
+func _execute_hit(context: BattleContext, skill: SkillData, stats_snapshot: Stats) -> void:
+	if skill.tags.has(SkillData.SkillTag.PROJECTILE):
+		# Calculate damage when creating the projectile
+		#var instance = context.build_damage_instance()
+		#var is_crit: bool = context.determine_crit(instance)
+		#var damage_dealt: float = context.deal_damage(instance, is_crit)
+		# var projectile_context = BattleContext.new()
+		# projectile_context.attacker = context.attacker
+		# projectile_context.defender = context.defender
+		# projectile_context.attacker_stats = context.attacker_stats
+		context.attacker_stats = stats_snapshot
+		var instance = context.build_damage_instance()
+		var is_crit: bool = DamageSystem.resolve_crit(instance)
+		var damage_dealt: int = DamageSystem.resolve(instance, is_crit)
+
+		_spawn_projectile(context, skill, damage_dealt, is_crit)
+		#projectile.connect("target_hit", Callable(self , "_deal_damage").bindv([context])) # damage_dealt, is_crit, context.defender.global_position]))
+	else:
 		# Deal damage for this hit
-			_deal_damage(context)
-			# _apply_status_effects(context, skill) #TODO: implement status effects
+		context.attacker_stats = stats_snapshot
+		_deal_damage(context)
+		# _apply_status_effects(context, skill) #TODO: implement status effects
 
 
 func _spawn_projectile(context: BattleContext, skill: SkillData, damage: int, is_crit: bool) -> Node:
