@@ -29,5 +29,5 @@ windup_animation_name = "fire"
 emit_particles = true
 inherent_mods = Array[ExtResource("3_6hgn2")]([SubResource("Resource_bhl8x")])
 behaviors = Array[ExtResource("2_7dwag")]([SubResource("Resource_4imm1")])
-base_speed = 1.0
+base_speed = 0.6
 metadata/_custom_type_script = "uid://diqj52rxjhysk"

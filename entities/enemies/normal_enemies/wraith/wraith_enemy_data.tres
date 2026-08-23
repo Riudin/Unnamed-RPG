@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bfw33rjxnj244"]
+
+[ext_resource type="Curve" uid="uid://cqaljfl16eh4d" path="res://entities/enemies/shared/balancing/enemy_damage.tres" id="1_mmc51"]
+[ext_resource type="Curve" uid="uid://bonbeehw3fa7s" path="res://entities/enemies/shared/balancing/enemy_damage_range.tres" id="2_q1qle"]
+[ext_resource type="Curve" uid="uid://j28agwrmkxbx" path="res://entities/enemies/shared/balancing/enemy_defenses.tres" id="3_gvj8i"]
+[ext_resource type="Resource" uid="uid://dooqic3ts4bvg" path="res://entities/enemies/normal_enemies/wraith/wraith_drop_table.tres" id="4_3vp72"]
+[ext_resource type="Resource" uid="uid://csriyw7thspcs" path="res://entities/skills/skill_data/ice_shards.tres" id="6_tleim"]
+[ext_resource type="Resource" uid="uid://duo2h64igsgu4" path="res://entities/enemies/normal_enemies/wraith/wraith_stats.tres" id="9_krelg"]
+[ext_resource type="Texture2D" uid="uid://yw0vw2lowv6k" path="res://assets/characters/enemies/wraith.png" id="10_77a1x"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="12_k1nqo"]
+[ext_resource type="Curve" uid="uid://dyo345vjfo34m" path="res://entities/enemies/shared/balancing/enemy_health.tres" id="14_vaba0"]
+[ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="15_hxkg2"]
+
+[resource]
+script = ExtResource("15_hxkg2")
+name = "Wraith"
+texture = ExtResource("10_77a1x")
+stats = ExtResource("9_krelg")
+equipped_skills = Array[ExtResource("12_k1nqo")]([ExtResource("6_tleim")])
+drop_table = ExtResource("4_3vp72")
+metadata/_custom_type_script = "uid://eut4fcsnf5nn"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://capk0rl7lwpwl"]
+
+[ext_resource type="Curve" uid="uid://cqaljfl16eh4d" path="res://entities/enemies/shared/balancing/enemy_damage.tres" id="1_1epbi"]
+[ext_resource type="Curve" uid="uid://bonbeehw3fa7s" path="res://entities/enemies/shared/balancing/enemy_damage_range.tres" id="2_3fjwo"]
+[ext_resource type="Curve" uid="uid://j28agwrmkxbx" path="res://entities/enemies/shared/balancing/enemy_defenses.tres" id="3_b0mhl"]
+[ext_resource type="Resource" uid="uid://vtywmibo8q40" path="res://entities/enemies/normal_enemies/bat/bat_drop_table.tres" id="4_gsv46"]
+[ext_resource type="Resource" uid="uid://b0hc4byhh8tuk" path="res://entities/skills/skill_data/default_attack.tres" id="6_8wbcu"]
+[ext_resource type="Resource" uid="uid://c2tkgkfgca3bj" path="res://entities/enemies/normal_enemies/bat/bat_stats.tres" id="9_15hvf"]
+[ext_resource type="Texture2D" uid="uid://dt1s80d82xv1y" path="res://assets/characters/enemies/bat.png" id="10_wib0o"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="12_sqtvm"]
+[ext_resource type="Curve" uid="uid://dyo345vjfo34m" path="res://entities/enemies/shared/balancing/enemy_health.tres" id="14_qi7cj"]
+[ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="15_0qmau"]
+
+[resource]
+script = ExtResource("15_0qmau")
+name = "Bat"
+texture = ExtResource("10_wib0o")
+stats = ExtResource("9_15hvf")
+equipped_skills = Array[ExtResource("12_sqtvm")]([ExtResource("6_8wbcu")])
+drop_table = ExtResource("4_gsv46")
+metadata/_custom_type_script = "uid://eut4fcsnf5nn"

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d3quc2ajwin7n"]
 
-[ext_resource type="Texture2D" uid="uid://wqsixjewhydq" path="res://assets/ui/backgrounds/battle_backgrounds/forrest.png" id="1_idkgt"]
 [ext_resource type="Script" uid="uid://bk6b3t38ulsst" path="res://scenes/battle_scene.gd" id="1_kinr6"]
 [ext_resource type="PackedScene" uid="uid://jc5l4rf047jn" path="res://entities/characters/player/combat_player.tscn" id="2_8qdv8"]
 [ext_resource type="PackedScene" uid="uid://udxrbudwfjc7" path="res://entities/enemies/shared/combat_enemy.tscn" id="3_pxwbd"]
 [ext_resource type="PackedScene" uid="uid://db3bmmpvnwg2q" path="res://entities/summons/combat_summon.tscn" id="4_pxwbd"]
+[ext_resource type="Texture2D" uid="uid://xru2t0c77uo5" path="res://assets/ui/backgrounds/CG/misty_forest.png" id="5_pxwbd"]
 
 [node name="BattleScene" type="Node2D" unique_id=747615073]
 script = ExtResource("1_kinr6")
@@ -18,41 +18,45 @@ offset_right = 638.2222
 offset_bottom = 360.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_idkgt")
+texture = ExtResource("5_pxwbd")
 expand_mode = 3
 
 [node name="PlayerPos" type="Marker2D" parent="." unique_id=325225166]
 unique_name_in_owner = true
-position = Vector2(202, 259)
+position = Vector2(242, 220)
 
 [node name="EnemyPos1" type="Marker2D" parent="." unique_id=1941750832]
 unique_name_in_owner = true
-position = Vector2(369, 203)
+position = Vector2(407, 189)
 
 [node name="EnemyPos2" type="Marker2D" parent="." unique_id=912992208]
 unique_name_in_owner = true
-position = Vector2(363, 355)
+position = Vector2(407, 273)
 
 [node name="EnemyPos3" type="Marker2D" parent="." unique_id=721595459]
 unique_name_in_owner = true
-position = Vector2(459, 286)
+position = Vector2(477, 295)
 
 [node name="EnemyPos4" type="Marker2D" parent="." unique_id=782933528]
 unique_name_in_owner = true
-position = Vector2(571, 236)
+position = Vector2(477, 148)
 
 [node name="EnemyPos5" type="Marker2D" parent="." unique_id=2006956370]
 unique_name_in_owner = true
-position = Vector2(565, 352)
+position = Vector2(530, 236)
 
 [node name="AllyPos1" type="Marker2D" parent="." unique_id=1447329677]
 unique_name_in_owner = true
-position = Vector2(140, 351)
+position = Vector2(201, 148)
 
 [node name="AllyPos2" type="Marker2D" parent="." unique_id=1091368494]
 unique_name_in_owner = true
-position = Vector2(63, 285)
+position = Vector2(149, 263)
 
 [node name="AllyPos3" type="Marker2D" parent="." unique_id=2108139904]
 unique_name_in_owner = true
-position = Vector2(129, 202)
+position = Vector2(126, 180)
+
+[node name="AllyPos4" type="Marker2D" parent="." unique_id=1332762622]
+unique_name_in_owner = true
+position = Vector2(217, 282)

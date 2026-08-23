@@ -7,11 +7,15 @@
 [ext_resource type="Resource" uid="uid://c801th8spbpe2" path="res://entities/enemies/boss_enemies/orc_boss/orc_boss_enemy_data.tres" id="5_3g6v7"]
 [ext_resource type="Resource" uid="uid://cyj088ns0xwnm" path="res://entities/enemies/elite_enemies/elite_orc/elite_orc_enemy_data.tres" id="6_1pb04"]
 [ext_resource type="Resource" uid="uid://b2juo74fyf2wm" path="res://entities/enemies/normal_enemies/orc/orc_enemy_data.tres" id="7_1wnsn"]
+[ext_resource type="Resource" uid="uid://dyoectg7vmbkj" path="res://entities/enemies/normal_enemies/slime/slime_enemy_data.tres" id="8_3g6v7"]
 [ext_resource type="Script" uid="uid://c3a78j3j723ql" path="res://shared/scripts/data_models/dungeon_data.gd" id="8_j8r8n"]
+[ext_resource type="Resource" uid="uid://capk0rl7lwpwl" path="res://entities/enemies/normal_enemies/bat/bat_enemy_data.tres" id="9_j8r8n"]
+[ext_resource type="Resource" uid="uid://msiqc1ustm2q" path="res://entities/enemies/normal_enemies/shadow_mage/shadow_mage_enemy_data.tres" id="10_uvus1"]
+[ext_resource type="Resource" uid="uid://bfw33rjxnj244" path="res://entities/enemies/normal_enemies/wraith/wraith_enemy_data.tres" id="11_mi4np"]
 
 [sub_resource type="Resource" id="Resource_ko8ql"]
 script = ExtResource("8_j8r8n")
-normal_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("7_1wnsn")])
+normal_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("7_1wnsn"), ExtResource("8_3g6v7"), ExtResource("9_j8r8n"), ExtResource("10_uvus1"), ExtResource("11_mi4np")])
 elite_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("6_1pb04")])
 boss_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("5_3g6v7")])
 max_enemies = 5

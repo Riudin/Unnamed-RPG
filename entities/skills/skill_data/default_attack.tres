@@ -17,8 +17,8 @@ script = ExtResource("2_2pfub")
 stat = 13
 type = 1
 description = "default attack"
-amount = 1.0
-range_amount = 2.0
+amount = 3.0
+range_amount = 4.0
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

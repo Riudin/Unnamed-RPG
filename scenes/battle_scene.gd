@@ -22,10 +22,12 @@ extends Node2D
 @onready var ally_pos_1: Marker2D = %AllyPos1
 @onready var ally_pos_2: Marker2D = %AllyPos2
 @onready var ally_pos_3: Marker2D = %AllyPos3
+@onready var ally_pos_4: Marker2D = %AllyPos4
 @onready var ally_positions: Array[Vector2] = [
 	ally_pos_1.global_position,
 	ally_pos_2.global_position,
-	ally_pos_3.global_position
+	ally_pos_3.global_position,
+	ally_pos_4.global_position
 ]
 
 var current_player: CombatPlayer = null
@@ -100,9 +102,8 @@ func _setup_enemies() -> void:
 func _setup_summon(summon: EnemyData) -> void:
 	var new_summon = combat_summon.instantiate()
 
-	if ally_positions.size() <= 0:
-		printerr("Trying to summon more summons than spaces are available")
-		return
+	if ally_positions.size() <= 0: return
+	
 	new_summon.global_position = ally_positions.pick_random()
 	ally_positions.erase(new_summon.global_position)
 	
