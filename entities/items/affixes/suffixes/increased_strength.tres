@@ -9,7 +9,7 @@ script = ExtResource("1_x07cv")
 type = 2
 min_amount = 9.0
 max_amount = 12.0
-description = "%d%% increased Strength"
+description = "%s%% increased Strength"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

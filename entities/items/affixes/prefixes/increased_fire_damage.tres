@@ -10,7 +10,7 @@ stat = 15
 type = 2
 min_amount = 5.0
 max_amount = 9.0
-description = "%d%% increased Fire Damage"
+description = "%s%% increased Fire Damage"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

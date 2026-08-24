@@ -10,7 +10,7 @@ stat = 4
 type = 2
 min_amount = 6.0
 max_amount = 8.0
-description = "%d increased maximum Life"
+description = "%s increased maximum Life"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

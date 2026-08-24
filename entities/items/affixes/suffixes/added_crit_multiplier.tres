@@ -9,7 +9,7 @@ script = ExtResource("1_1livk")
 stat = 22
 min_amount = 13.0
 max_amount = 18.0
-description = "+%d%% to Critical Strike Multiplier"
+description = "+%s%% to Critical Strike Multiplier"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

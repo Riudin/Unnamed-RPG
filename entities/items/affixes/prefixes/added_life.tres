@@ -7,9 +7,9 @@
 resource_local_to_scene = true
 script = ExtResource("1_g0lpw")
 stat = 4
-min_amount = 5.0
+min_amount = 4.0
 max_amount = 9.0
-description = "+%d to maximum Life"
+description = "+%s to maximum Life"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

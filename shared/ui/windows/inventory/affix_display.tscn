@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bg1poyp2sb4j3"]
+
+[ext_resource type="Script" uid="uid://dkset61d4eml3" path="res://shared/ui/windows/inventory/affix_display.gd" id="1_j5h31"]
+
+[node name="AffixDisplay" type="VBoxContainer" unique_id=1813184478]
+theme_override_constants/separation = 0
+script = ExtResource("1_j5h31")
+
+[node name="Description" type="Label" parent="." unique_id=1893840342]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66245234, 0.66245234, 0.6624523, 1)
+theme_override_font_sizes/font_size = 6
+text = "Prefix Tier 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="." unique_id=432164918]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 8
+text = "Adds 4 to 6 Lightning Damage to Attacks"
+horizontal_alignment = 1
+vertical_alignment = 1

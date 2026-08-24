@@ -12,7 +12,7 @@ min_amount = 2.0
 max_amount = 4.0
 range_min_amount = 7.0
 range_max_amount = 10.0
-description = "Adds %d to %d Lightning Damage"
+description = "Adds %s to %s Lightning Damage"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

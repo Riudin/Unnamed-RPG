@@ -9,7 +9,7 @@ script = ExtResource("1_l5834")
 stat = 33
 min_amount = 5.0
 max_amount = 7.0
-description = "+%d%% to Chaos Resistance"
+description = "+%s%% to Chaos Resistance"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

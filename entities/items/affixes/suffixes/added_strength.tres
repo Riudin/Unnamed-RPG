@@ -8,7 +8,7 @@ resource_local_to_scene = true
 script = ExtResource("1_kgo1m")
 min_amount = 9.0
 max_amount = 12.0
-description = "+%d to Strength"
+description = "+%s to Strength"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

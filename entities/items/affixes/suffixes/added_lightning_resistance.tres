@@ -9,7 +9,7 @@ script = ExtResource("1_d202h")
 stat = 32
 min_amount = 3.0
 max_amount = 8.0
-description = "+%d%% to Lightning Resistance"
+description = "+%s%% to Lightning Resistance"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

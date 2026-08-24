@@ -9,7 +9,7 @@ script = ExtResource("1_jb2sm")
 stat = 30
 min_amount = 3.0
 max_amount = 8.0
-description = "+%d%% to Fire Resistance"
+description = "+%s%% to Fire Resistance"
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]

@@ -4,6 +4,7 @@ extends Resource
 
 @export var base: ItemData
 @export var rarity: LootEnums.Rarity
+@export var item_level: int = 100
 
 @export var skill_data: SkillData = null
 
@@ -59,4 +60,4 @@ func get_damages() -> Array[DamageSource]:
 
 # Crafting methods
 func reroll_affixes():
-	LootGenerator.reroll_affixes(self )
+	LootGenerator.reroll_affixes(self)

@@ -6,7 +6,7 @@ enum ModifierType {
 	ADD,
 	ADD_RANGE,
 	MULTIPLY,
-	MORE # for the future. no more multipliers in the game yet
+	MORE # for the future. no "more" multipliers in the game yet
 }
 
 @export var stat: Stats.ModifiableStats
@@ -53,12 +53,27 @@ func _get_range_amount() -> float:
 func get_display_text() -> String:
 	match type:
 			ModifierType.ADD:
-				return description % amount
+				return description % int(amount)
 			ModifierType.ADD_RANGE:
-				return description % [amount, range_amount]
+				return description % [int(amount), int(range_amount)]
 			ModifierType.MULTIPLY:
-				return description % (amount * 100.0)
+				return description % int(amount * 100.0)
 			ModifierType.MORE:
-				return description % ((amount - 1.0) * 100.0)
+				return description % int((amount - 1.0) * 100.0) # TODO: Placeholder
+			_:
+				return "ERROR: ModifierType unknown"
+
+
+func get_display_text_comprehensive() -> String:
+	match type:
+			ModifierType.ADD:
+				return description % (str(int(amount)) + str("(%s-%s)") % [int(min_amount), int(max_amount)])
+			ModifierType.ADD_RANGE:
+				return description % [(str(int(amount)) + str("(%s-%s)") % [int(min_amount), int(max_amount)]), \
+										(str(int(range_amount)) + str("(%s-%s)") % [int(range_min_amount), int(range_max_amount)])]
+			ModifierType.MULTIPLY:
+				return description % (str(int(amount * 100.0)) + str("(%s-%s)") % [int(min_amount), int(max_amount)])
+			ModifierType.MORE:
+				return description % ((amount - 1.0) * 100.0) # TODO: Placeholder
 			_:
 				return "ERROR: ModifierType unknown"

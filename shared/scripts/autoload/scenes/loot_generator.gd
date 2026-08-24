@@ -39,8 +39,12 @@ func generate_loot(drop_table: ItemDropTable) -> ItemInstance:
 		loot.skill_data = base_item.skill_data
 		loot.rarity = LootEnums.Rarity.COMMON # for now only common skills
 
+	# Roll fixed affixes
+	_roll_implicit_values(loot)
+
 	# Generate Affixes based on Rarity
 	_generate_affixes(loot, loot.rarity)
+	_roll_affix_tiers(loot) # TODO: we need to get the monster level here to determine which tiers are possible
 	_roll_affix_values(loot)
 
 	return loot
@@ -99,6 +103,22 @@ func _rand_suffix() -> AffixData:
 	#return suffixes.is_empty() if null else suffixes.pick_random()
 
 
+func _roll_affix_tiers(item: ItemInstance) -> void:
+	for a in item.prefixes:
+		if a == null:
+			continue
+
+		a.tier = randi_range(a.min_tier, a.max_tier) # this means all tiers are equally as likely
+		a.assign_values_to_mods()
+
+	for a in item.suffixes:
+		if a == null:
+			continue
+
+		a.tier = randi_range(a.min_tier, a.max_tier) # this means all tiers are equally as likely
+		a.assign_values_to_mods()
+
+
 func _roll_affix_values(loot: ItemInstance):
 	for a in loot.prefixes:
 		if a == null:
@@ -111,6 +131,15 @@ func _roll_affix_values(loot: ItemInstance):
 		if a == null:
 			continue
 
+		for mod in a.mods:
+			a.roll_value(mod)
+
+
+func _roll_implicit_values(loot: ItemInstance) -> void:
+	for a in loot.base.implicit_modifiers:
+		if a == null:
+			continue
+		
 		for mod in a.mods:
 			a.roll_value(mod)
 
@@ -148,4 +177,5 @@ func reroll_affixes(item: ItemInstance):
 	item.suffixes.clear()
 
 	_generate_affixes(item, item.rarity)
+	_roll_affix_tiers(item) # TODO: we need to get the monster level here to determine which tiers are possible
 	_roll_affix_values(item)
