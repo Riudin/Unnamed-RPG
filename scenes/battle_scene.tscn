@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://udxrbudwfjc7" path="res://entities/enemies/shared/combat_enemy.tscn" id="3_pxwbd"]
 [ext_resource type="PackedScene" uid="uid://db3bmmpvnwg2q" path="res://entities/summons/combat_summon.tscn" id="4_pxwbd"]
 [ext_resource type="Texture2D" uid="uid://xru2t0c77uo5" path="res://assets/ui/backgrounds/CG/misty_forest.png" id="5_pxwbd"]
+[ext_resource type="Script" uid="uid://dk6sswbhn3jhp" path="res://scenes/battle_scene_ui.gd" id="6_1i8jf"]
 
 [node name="BattleScene" type="Node2D" unique_id=747615073]
 script = ExtResource("1_kinr6")
@@ -60,3 +61,52 @@ position = Vector2(126, 180)
 [node name="AllyPos4" type="Marker2D" parent="." unique_id=1332762622]
 unique_name_in_owner = true
 position = Vector2(217, 282)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=277637005]
+script = ExtResource("6_1i8jf")
+
+[node name="SpeedButtons" type="PanelContainer" parent="UI" unique_id=513198843]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -41.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SpeedButtons" unique_id=2081112799]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/SpeedButtons/MarginContainer" unique_id=78417571]
+layout_mode = 2
+
+[node name="HalfSpeedButton" type="Button" parent="UI/SpeedButtons/MarginContainer/HBoxContainer" unique_id=1462884800]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0.5x"
+
+[node name="NormalSpeedButton" type="Button" parent="UI/SpeedButtons/MarginContainer/HBoxContainer" unique_id=1071159629]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "1x"
+
+[node name="DoubleSpeedButton" type="Button" parent="UI/SpeedButtons/MarginContainer/HBoxContainer" unique_id=1938049721]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "2x"
+
+[node name="5SpeedButton" type="Button" parent="UI/SpeedButtons/MarginContainer/HBoxContainer" unique_id=1046463120]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "5x"
+
+[connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/HalfSpeedButton" to="UI" method="_on_half_speed_button_pressed"]
+[connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/NormalSpeedButton" to="UI" method="_on_normal_speed_button_pressed"]
+[connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/DoubleSpeedButton" to="UI" method="_on_double_speed_button_pressed"]
+[connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/5SpeedButton" to="UI" method="_on_5speed_button_pressed"]

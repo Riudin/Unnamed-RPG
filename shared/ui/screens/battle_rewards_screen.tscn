@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dalbjuohh32cd"]
 
 [ext_resource type="Script" uid="uid://cfojmjig3nuux" path="res://shared/ui/screens/battle_rewards_screen.gd" id="1_sk74y"]
+[ext_resource type="PackedScene" uid="uid://4t8yg3frui80" path="res://shared/ui/item_ui.tscn" id="2_sk74y"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="2_xivhd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arlx4"]
 
 [node name="BattleRewardsScreen" type="PanelContainer" unique_id=160357828]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -19,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sk74y")
 slot_scene = ExtResource("2_xivhd")
+item_ui_scene = ExtResource("2_sk74y")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=650686590]
 layout_mode = 2
@@ -55,6 +58,7 @@ theme_override_font_sizes/font_size = 8
 text = "99999"
 
 [node name="GoldDisplay" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1730818592]
+visible = false
 layout_mode = 2
 
 [node name="GoldLabel" type="Label" parent="MarginContainer/VBoxContainer/GoldDisplay" unique_id=623003557]
@@ -79,6 +83,25 @@ text = "Loot:"
 
 [node name="LootDisplay" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=622418707]
 unique_name_in_owner = true
+layout_mode = 2
+columns = 8
+
+[node name="ItemUI" parent="MarginContainer/VBoxContainer/LootDisplay" unique_id=381047854 instance=ExtResource("2_sk74y")]
+layout_mode = 2
+
+[node name="ItemUI2" parent="MarginContainer/VBoxContainer/LootDisplay" unique_id=574819845 instance=ExtResource("2_sk74y")]
+layout_mode = 2
+
+[node name="ItemUI3" parent="MarginContainer/VBoxContainer/LootDisplay" unique_id=639024165 instance=ExtResource("2_sk74y")]
+layout_mode = 2
+
+[node name="ItemUI4" parent="MarginContainer/VBoxContainer/LootDisplay" unique_id=1211753264 instance=ExtResource("2_sk74y")]
+layout_mode = 2
+
+[node name="ItemUI5" parent="MarginContainer/VBoxContainer/LootDisplay" unique_id=276503370 instance=ExtResource("2_sk74y")]
+layout_mode = 2
+
+[node name="ItemUI6" parent="MarginContainer/VBoxContainer/LootDisplay" unique_id=2058909955 instance=ExtResource("2_sk74y")]
 layout_mode = 2
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1151723537]

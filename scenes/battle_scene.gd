@@ -36,6 +36,9 @@ var active_enemies: Array[CombatEnemy] = []
 var active_summons: Array[CombatSummon] = []
 var enemy_level: int = 0
 
+var accumulated_loot: Array[ItemInstance] = []
+var accumulated_xp: int = 0
+
 @onready var dungeon_data: DungeonData = GameState.active_dungeon
 enum BattleType {NORMAL, ELITE, BOSS}
 @onready var battle_type: BattleType = GameState.active_battle_type
@@ -117,30 +120,37 @@ func _setup_summon(summon: EnemyData) -> void:
 
 
 func _on_player_died(player):
+	Engine.time_scale = 1.0
 	SignalBus.dungeon_failed.emit()
 	player.queue_free()
 
 
 func _on_enemy_died(enemy: CombatEnemy):
-	#TODO: when multiple enemies possible, check if it was the last one
+	# Generate loot
 	var loot: ItemInstance = LootGenerator.generate_loot(enemy.enemy_data.drop_table)
 
 	if loot:
 		InventoryManager.add_item(loot)
+		accumulated_loot.append(loot)
 	
 	# Grant player XP reward
 	if GameState.player_data.stats:
 		GameState.player_data.stats.experience += enemy.enemy_data.drop_table.xp_reward
 	
-
+	accumulated_xp += enemy.enemy_data.drop_table.xp_reward
+	
+	# End Battle if it was the last enemy
 	active_enemies.erase(enemy)
 	if active_enemies.is_empty():
 		match enemy.enemy_data.type:
 			EnemyData.EnemyType.NORMAL:
-				SignalBus.battle_won.emit()
+				Engine.time_scale = 1.0
+				SignalBus.battle_won.emit(accumulated_loot, accumulated_xp)
 			EnemyData.EnemyType.ELITE:
-				SignalBus.battle_won.emit()
+				Engine.time_scale = 1.0
+				SignalBus.battle_won.emit(accumulated_loot, accumulated_xp)
 			EnemyData.EnemyType.BOSS:
+				Engine.time_scale = 1.0
 				SignalBus.dungeon_boss_defeated.emit()
 	else:
 		# Give Player new target - temporary
@@ -149,7 +159,8 @@ func _on_enemy_died(enemy: CombatEnemy):
 		for summon in active_summons:
 			if summon.attack_component.target == enemy:
 				summon.attack_component.target = active_enemies.pick_random()
-			
+
+	# Delete killed enemy		
 	enemy.queue_free()
 
 

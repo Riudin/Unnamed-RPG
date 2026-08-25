@@ -18,8 +18,6 @@ func _schedule_next_cast() -> void:
 
 
 func _on_skill_timer_timeout() -> void:
-	print("firing skill ", remaining_casts)
-
 	cast_callback.call()
 	remaining_casts -= 1
 	if remaining_casts <= 0:

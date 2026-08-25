@@ -18,7 +18,7 @@ extends Node
 # Sent by  | Received by 
 @warning_ignore("unused_signal") signal xp_changed(current_xp, xp_to_next)
 # Sent by battle_manager | Received by dungeon_run
-@warning_ignore("unused_signal") signal battle_won()
+@warning_ignore("unused_signal") signal battle_won(gained_loot, gained_xp)
 # Sent by battle_manager | Received by dungeon_run
 @warning_ignore("unused_signal") signal dungeon_boss_defeated()
 # Sent by battle_manager | Received by dungeon_run

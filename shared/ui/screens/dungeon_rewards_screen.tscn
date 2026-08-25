@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://bboqsfbfhiua4"]
 
 [ext_resource type="Script" uid="uid://cirlxoyx0isgn" path="res://shared/ui/screens/dungeon_rewards_screen.gd" id="1_qx86r"]
+[ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="2_8eeo3"]
+[ext_resource type="PackedScene" uid="uid://4t8yg3frui80" path="res://shared/ui/item_ui.tscn" id="3_pbxgx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arlx4"]
 
 [node name="DungeonRewardsScreen" type="PanelContainer" unique_id=160357828]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -17,6 +20,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qx86r")
+slot_scene = ExtResource("2_8eeo3")
+item_ui_scene = ExtResource("3_pbxgx")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=650686590]
 layout_mode = 2
@@ -53,6 +58,7 @@ theme_override_font_sizes/font_size = 8
 text = "99999"
 
 [node name="GoldDisplay" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1730818592]
+visible = false
 layout_mode = 2
 
 [node name="GoldLabel" type="Label" parent="MarginContainer/VBoxContainer/GoldDisplay" unique_id=623003557]
@@ -78,6 +84,7 @@ text = "Loot:"
 [node name="LootDisplay" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=622418707]
 unique_name_in_owner = true
 layout_mode = 2
+columns = 8
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1151723537]
 custom_minimum_size = Vector2(0, 16)

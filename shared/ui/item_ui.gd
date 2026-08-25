@@ -25,6 +25,9 @@ func setup(i: ItemInstance):
 	if icon:
 		icon.texture = item.base.icon
 	
+	print(icon)
+	print(item)
+
 	rarity_background.modulate = item.get_color()
 	rarity_background.modulate.a = 0.5
 
@@ -147,7 +150,8 @@ func _on_mouse_entered() -> void:
 		return
 	
 	tooltip = tooltip_scene.instantiate()
-	get_tree().current_scene.find_child("UI").add_child(tooltip)
+	add_child(tooltip)
+	#get_tree().current_scene.find_child("UI").add_child(tooltip)
 	tooltip.set_item(item)
 	call_deferred("_update_tooltip_position")
 
