@@ -37,5 +37,5 @@ func assign_values_to_mods() -> void:
 		mod.range_max_amount = tier_values[tier]["max_range"]
 
 
-func roll_value(mod: StatModifier) -> void:
-	mod.roll_amount()
+func roll_value(mod: StatModifier, rng: RandomNumberGenerator = null) -> void:
+	mod.roll_amount(rng)

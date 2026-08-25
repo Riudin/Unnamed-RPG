@@ -33,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
 		stats.experience += 5
 
+
 func _on_movement_input(target):
 	navigation_component.navigate_to_target(target)
 
@@ -65,6 +66,22 @@ func equip_item(item: ItemInstance, slot_index: int = 0):
 	if equipment_component:
 		# Update equipped items data
 		equipment_component.equip(item, slot_index)
+
+		# Add new base stats to stats
+		if not item.base.base_stats.is_empty():
+			for b in item.base.base_stats:
+				if b == null or b.mods.is_empty():
+					continue
+				for m in b.mods:
+					GameState.player_data.stats.add_modifier(m)
+
+		# Add new implicits to stats
+		if not item.base.implicit_modifiers.is_empty():
+			for i in item.base.implicit_modifiers:
+				if i == null or i.mods.is_empty():
+					continue
+				for m in i.mods:
+					GameState.player_data.stats.add_modifier(m)
 
 		# Add new affixes to stats
 		if not item.prefixes.is_empty(): # this should never happen atm because loot_generator is supposed to add a null value if htere is no other affix left. so this is double checking.

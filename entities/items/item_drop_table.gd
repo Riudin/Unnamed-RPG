@@ -7,7 +7,11 @@ extends Resource
 @export var item_weights: Dictionary[ItemData, int] = {}
 
 
-func roll_item() -> ItemData:
+func roll_item(rng: RandomNumberGenerator = null) -> ItemData:
+	if rng == null:
+		rng = RandomNumberGenerator.new()
+		rng.randomize()
+	
 	if item_weights.is_empty():
 		return null
 	
@@ -15,7 +19,7 @@ func roll_item() -> ItemData:
 	for w in item_weights.values():
 		total += w
 	
-	var roll := randi_range(1, total)
+	var roll := rng.randi_range(1, total)
 	var sum := 0
 
 	for item in item_weights.keys():

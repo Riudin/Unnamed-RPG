@@ -75,31 +75,32 @@ layout_mode = 2
 theme_override_constants/separation = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_w5ybq")
 
-[node name="ItemSpecificStats" type="MarginContainer" parent="Content" unique_id=548405320]
+[node name="ItemBaseStats" type="MarginContainer" parent="Content" unique_id=548405320]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="ItemSpecifics" type="VBoxContainer" parent="Content/ItemSpecificStats" unique_id=285965884]
+[node name="BaseStats" type="VBoxContainer" parent="Content/ItemBaseStats" unique_id=285965884]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label3" type="Label" parent="Content/ItemSpecificStats/ItemSpecifics" unique_id=1134295949]
+[node name="Label3" type="Label" parent="Content/ItemBaseStats/BaseStats" unique_id=1134295949]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Deals some Damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="Content/ItemSpecificStats/ItemSpecifics" unique_id=1828923536]
+[node name="Label4" type="Label" parent="Content/ItemBaseStats/BaseStats" unique_id=1828923536]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Has Some Speed"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="Content/ItemSpecificStats/ItemSpecifics" unique_id=1317323778]
+[node name="Label5" type="Label" parent="Content/ItemBaseStats/BaseStats" unique_id=1317323778]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Has Some Crit Chance"
@@ -116,21 +117,24 @@ theme_override_constants/margin_right = 8
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="RequirementsSeparator" type="HSeparator" parent="Content/Requirements/ItemRequirements" unique_id=359952313]
+[node name="RequirementsSeperator" type="HSeparator" parent="Content/Requirements/ItemRequirements" unique_id=359952313]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="Content/Requirements/ItemRequirements" unique_id=1007123683]
+[node name="ItemLevelLabel" type="Label" parent="Content/Requirements/ItemRequirements" unique_id=1007123683]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Item Level: 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Content/Requirements/ItemRequirements" unique_id=796376315]
+[node name="LevelRequirementLabel" type="Label" parent="Content/Requirements/ItemRequirements" unique_id=796376315]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Requirel Level xy"
+text = "Required Level xy"
 horizontal_alignment = 1
 vertical_alignment = 1
 

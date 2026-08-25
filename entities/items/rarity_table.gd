@@ -10,12 +10,16 @@ extends Resource
 }
 
 
-func roll_rarity() -> LootEnums.Rarity:
+func roll_rarity(rng: RandomNumberGenerator = null) -> LootEnums.Rarity:
+	if rng == null:
+		rng = RandomNumberGenerator.new()
+		rng.randomize()
+	
 	var total := 0
 	for w in rarity_weights.values():
 		total += w
 	
-	var roll := randi_range(1, total)
+	var roll := rng.randi_range(1, total)
 	var sum := 0
 
 	for r in rarity_weights.keys():

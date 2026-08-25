@@ -1,6 +1,8 @@
 extends Node
 
 
+var rng := RandomNumberGenerator.new()
+
 @export var rarity_table: RarityTable
 var prefixes: Array[AffixData]
 var suffixes: Array[AffixData]
@@ -15,6 +17,7 @@ var suffix_pool: Array[AffixData]
 
 
 func _ready() -> void:
+	rng.randomize()
 	# Auto-load affixes from folders if not manually set
 	if prefixes.is_empty():
 		prefixes = _load_affixes_from_folder(prefix_folder_path)
@@ -24,14 +27,14 @@ func _ready() -> void:
 
 func generate_loot(drop_table: ItemDropTable) -> ItemInstance:
 	# Generate Item Base
-	var base_item := drop_table.roll_item()
+	var base_item := drop_table.roll_item(rng)
 	if base_item == null:
 		return null
 
 	# Generate Item Rarity
-	var rarity := rarity_table.roll_rarity()
+	var rarity := rarity_table.roll_rarity(rng)
 	var loot := ItemInstance.new()
-	loot.base = base_item
+	loot.base = _clone_item_data(base_item)
 	loot.rarity = rarity
 
 	# If its a skill, pass skill data to item instance
@@ -40,17 +43,48 @@ func generate_loot(drop_table: ItemDropTable) -> ItemInstance:
 		loot.rarity = LootEnums.Rarity.COMMON # for now only common skills
 
 	# Roll fixed affixes
-	_roll_implicit_values(loot)
+	_roll_base_values(loot, rng)
+	_roll_implicit_values(loot, rng)
 
 	# Generate Affixes based on Rarity
-	_generate_affixes(loot, loot.rarity)
-	_roll_affix_tiers(loot) # TODO: we need to get the monster level here to determine which tiers are possible
-	_roll_affix_values(loot)
+	_generate_affixes(loot, loot.rarity, rng)
+	_roll_affix_tiers(loot, rng) # TODO: we need to get the monster level here to determine which tiers are possible
+	_roll_affix_values(loot, rng)
 
 	return loot
 
 
-func _generate_affixes(item: ItemInstance, rarity):
+# Item Data cloning is a fix because otherwise we would modify resources in the items that are shared and get similar values for different items
+func _clone_item_data(item: ItemData) -> ItemData:
+	if item == null:
+		return null
+
+	var cloned := item.duplicate(true)
+	cloned.base_stats = _clone_affix_array(cloned.base_stats)
+	cloned.implicit_modifiers = _clone_affix_array(cloned.implicit_modifiers)
+	return cloned
+
+
+func _clone_affix_array(affixes: Array[AffixData]) -> Array[AffixData]:
+	var cloned: Array[AffixData] = []
+
+	for affix in affixes:
+		if affix == null:
+			cloned.append(null)
+			continue
+
+		var affix_copy := affix.duplicate(true)
+		for i in range(affix_copy.mods.size()):
+			if affix_copy.mods[i] == null:
+				continue
+			affix_copy.mods[i] = affix_copy.mods[i].duplicate(true)
+
+		cloned.append(affix_copy)
+
+	return cloned
+
+
+func _generate_affixes(item: ItemInstance, rarity, rng: RandomNumberGenerator):
 	prefix_pool = prefixes.duplicate(true)
 	suffix_pool = suffixes.duplicate(true)
 
@@ -59,30 +93,31 @@ func _generate_affixes(item: ItemInstance, rarity):
 			pass
 		
 		LootEnums.Rarity.UNCOMMON:
-			item.prefixes.append(_rand_prefix())
-			item.suffixes.append(_rand_suffix())
+			item.prefixes.append(_rand_prefix(rng))
+			item.suffixes.append(_rand_suffix(rng))
 
 		LootEnums.Rarity.RARE:
-			item.prefixes.append(_rand_prefix())
-			item.prefixes.append(_rand_prefix())
-			item.suffixes.append(_rand_suffix())
-			item.suffixes.append(_rand_suffix())
+			item.prefixes.append(_rand_prefix(rng))
+			item.prefixes.append(_rand_prefix(rng))
+			item.suffixes.append(_rand_suffix(rng))
+			item.suffixes.append(_rand_suffix(rng))
 		
 		LootEnums.Rarity.UNIQUE:
-			item.prefixes.append(_rand_prefix())
-			item.prefixes.append(_rand_prefix())
-			item.prefixes.append(_rand_prefix())
-			item.suffixes.append(_rand_suffix())
-			item.suffixes.append(_rand_suffix())
-			item.suffixes.append(_rand_suffix())
+			item.prefixes.append(_rand_prefix(rng))
+			item.prefixes.append(_rand_prefix(rng))
+			item.prefixes.append(_rand_prefix(rng))
+			item.suffixes.append(_rand_suffix(rng))
+			item.suffixes.append(_rand_suffix(rng))
+			item.suffixes.append(_rand_suffix(rng))
 
 
-func _rand_prefix() -> AffixData:
+func _rand_prefix(rng: RandomNumberGenerator) -> AffixData:
 	# Check if there are any prefixes left to assign
 	if prefix_pool.is_empty():
 		return null
 	
-	var new_prefix = prefix_pool.pick_random()
+	var index := rng.randi_range(0, prefix_pool.size() - 1)
+	var new_prefix = prefix_pool[index]
 	prefix_pool.erase(new_prefix)
 
 	return new_prefix.duplicate(true)
@@ -90,12 +125,13 @@ func _rand_prefix() -> AffixData:
 	#return prefixes.is_empty() if null else prefixes.pick_random()
 
 
-func _rand_suffix() -> AffixData:
+func _rand_suffix(rng: RandomNumberGenerator) -> AffixData:
 	# Check if there are any prefixes left to assign
 	if suffix_pool.is_empty():
 		return null
 	
-	var new_suffix = suffix_pool.pick_random()
+	var index := rng.randi_range(0, suffix_pool.size() - 1)
+	var new_suffix = suffix_pool[index]
 	suffix_pool.erase(new_suffix)
 
 	return new_suffix.duplicate(true)
@@ -103,45 +139,54 @@ func _rand_suffix() -> AffixData:
 	#return suffixes.is_empty() if null else suffixes.pick_random()
 
 
-func _roll_affix_tiers(item: ItemInstance) -> void:
+func _roll_affix_tiers(item: ItemInstance, rng: RandomNumberGenerator) -> void:
 	for a in item.prefixes:
 		if a == null:
 			continue
 
-		a.tier = randi_range(a.min_tier, a.max_tier) # this means all tiers are equally as likely
+		a.tier = rng.randi_range(a.min_tier, a.max_tier) # this means all tiers are equally as likely
 		a.assign_values_to_mods()
 
 	for a in item.suffixes:
 		if a == null:
 			continue
 
-		a.tier = randi_range(a.min_tier, a.max_tier) # this means all tiers are equally as likely
+		a.tier = rng.randi_range(a.min_tier, a.max_tier) # this means all tiers are equally as likely
 		a.assign_values_to_mods()
 
 
-func _roll_affix_values(loot: ItemInstance):
+func _roll_affix_values(loot: ItemInstance, rng: RandomNumberGenerator):
 	for a in loot.prefixes:
 		if a == null:
 			continue
 
 		for mod in a.mods:
-			a.roll_value(mod)
+			a.roll_value(mod, rng)
 
 	for a in loot.suffixes:
 		if a == null:
 			continue
 
 		for mod in a.mods:
-			a.roll_value(mod)
+			a.roll_value(mod, rng)
 
 
-func _roll_implicit_values(loot: ItemInstance) -> void:
+func _roll_base_values(loot: ItemInstance, rng: RandomNumberGenerator) -> void:
+	for a in loot.base.base_stats:
+			if a == null:
+				continue
+			
+			for mod in a.mods:
+				a.roll_value(mod, rng)
+
+
+func _roll_implicit_values(loot: ItemInstance, rng: RandomNumberGenerator) -> void:
 	for a in loot.base.implicit_modifiers:
 		if a == null:
 			continue
 		
 		for mod in a.mods:
-			a.roll_value(mod)
+			a.roll_value(mod, rng)
 
 
 func _load_affixes_from_folder(folder_path: String) -> Array[AffixData]:
@@ -176,6 +221,6 @@ func reroll_affixes(item: ItemInstance):
 	item.prefixes.clear()
 	item.suffixes.clear()
 
-	_generate_affixes(item, item.rarity)
-	_roll_affix_tiers(item) # TODO: we need to get the monster level here to determine which tiers are possible
-	_roll_affix_values(item)
+	_generate_affixes(item, item.rarity, rng)
+	_roll_affix_tiers(item, rng) # TODO: we need to get the monster level here to determine which tiers are possible
+	_roll_affix_values(item, rng)

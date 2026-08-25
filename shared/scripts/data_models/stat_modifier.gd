@@ -21,11 +21,15 @@ enum ModifierType {
 @export var range_amount: float = 0.0: get = _get_range_amount
 
 
-func roll_amount() -> void:
-	amount = randf_range(min_amount, max_amount)
+func roll_amount(rng: RandomNumberGenerator = null) -> void:
+	if rng == null:
+		rng = RandomNumberGenerator.new()
+		rng.randomize()
+
+	amount = rng.randf_range(min_amount, max_amount)
 
 	if type == ModifierType.ADD_RANGE:
-		range_amount = randf_range(range_min_amount, range_max_amount)
+		range_amount = rng.randf_range(range_min_amount, range_max_amount)
 
 
 func _get_amount() -> float:
