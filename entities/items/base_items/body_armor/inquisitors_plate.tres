@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dyyrw5qi75dxg"]
+
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_v4ciu"]
+[ext_resource type="Texture2D" uid="uid://b3vkcfoixlnqe" path="res://assets/items/equipment/body_armor/inquisitors_plate.png" id="2_ochmg"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="3_d5v7m"]
+
+[resource]
+script = ExtResource("3_d5v7m")
+name = "Inquisitor's Plate"
+type = 2
+icon = ExtResource("2_ochmg")
+tags = 13
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

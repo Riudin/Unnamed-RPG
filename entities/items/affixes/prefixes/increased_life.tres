@@ -15,6 +15,6 @@ metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]
 script = ExtResource("2_o6b8o")
-name_format = "Healthy %s"
+tags = 4
 mods = Array[ExtResource("1_d2prs")]([SubResource("Resource_g0lpw")])
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

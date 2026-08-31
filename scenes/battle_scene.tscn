@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://db3bmmpvnwg2q" path="res://entities/summons/combat_summon.tscn" id="4_pxwbd"]
 [ext_resource type="Texture2D" uid="uid://xru2t0c77uo5" path="res://assets/ui/backgrounds/CG/misty_forest.png" id="5_pxwbd"]
 [ext_resource type="Script" uid="uid://dk6sswbhn3jhp" path="res://scenes/battle_scene_ui.gd" id="6_1i8jf"]
+[ext_resource type="PackedScene" uid="uid://hsv323wup8qh" path="res://shared/ui/combat/InfoPanel.tscn" id="7_svpld"]
 
 [node name="BattleScene" type="Node2D" unique_id=747615073]
 script = ExtResource("1_kinr6")
@@ -15,7 +16,7 @@ combat_summon = ExtResource("4_pxwbd")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1593467192]
 custom_minimum_size = Vector2(640, 360)
-offset_right = 638.2222
+offset_right = 640.0
 offset_bottom = 360.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -24,48 +25,107 @@ expand_mode = 3
 
 [node name="PlayerPos" type="Marker2D" parent="." unique_id=325225166]
 unique_name_in_owner = true
-position = Vector2(242, 220)
+position = Vector2(224, 202)
 
 [node name="EnemyPos1" type="Marker2D" parent="." unique_id=1941750832]
 unique_name_in_owner = true
-position = Vector2(407, 189)
+position = Vector2(400, 170)
 
 [node name="EnemyPos2" type="Marker2D" parent="." unique_id=912992208]
 unique_name_in_owner = true
-position = Vector2(407, 273)
+position = Vector2(400, 258)
 
 [node name="EnemyPos3" type="Marker2D" parent="." unique_id=721595459]
 unique_name_in_owner = true
-position = Vector2(477, 295)
+position = Vector2(461, 290)
 
 [node name="EnemyPos4" type="Marker2D" parent="." unique_id=782933528]
 unique_name_in_owner = true
-position = Vector2(477, 148)
+position = Vector2(468, 132)
 
 [node name="EnemyPos5" type="Marker2D" parent="." unique_id=2006956370]
 unique_name_in_owner = true
-position = Vector2(530, 236)
+position = Vector2(482, 215)
 
 [node name="AllyPos1" type="Marker2D" parent="." unique_id=1447329677]
 unique_name_in_owner = true
-position = Vector2(201, 148)
+position = Vector2(224, 138)
 
 [node name="AllyPos2" type="Marker2D" parent="." unique_id=1091368494]
 unique_name_in_owner = true
-position = Vector2(149, 263)
+position = Vector2(160, 258)
 
 [node name="AllyPos3" type="Marker2D" parent="." unique_id=2108139904]
 unique_name_in_owner = true
-position = Vector2(126, 180)
+position = Vector2(149, 179)
 
 [node name="AllyPos4" type="Marker2D" parent="." unique_id=1332762622]
 unique_name_in_owner = true
-position = Vector2(217, 282)
+position = Vector2(234, 266)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=277637005]
 script = ExtResource("6_1i8jf")
 
+[node name="EnemyInfo" type="MarginContainer" parent="UI" unique_id=887610483]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -68.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EnemyInfo" unique_id=1005172402]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="InfoPanel" parent="UI/EnemyInfo/VBoxContainer" unique_id=1008327727 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel2" parent="UI/EnemyInfo/VBoxContainer" unique_id=1985136664 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel3" parent="UI/EnemyInfo/VBoxContainer" unique_id=587850304 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel4" parent="UI/EnemyInfo/VBoxContainer" unique_id=655198187 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel5" parent="UI/EnemyInfo/VBoxContainer" unique_id=345964919 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="SummonsInfo" type="MarginContainer" parent="UI" unique_id=954176622]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 70.0
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SummonsInfo" unique_id=452465735]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="InfoPanel" parent="UI/SummonsInfo/VBoxContainer" unique_id=1504618575 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel2" parent="UI/SummonsInfo/VBoxContainer" unique_id=264098004 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel3" parent="UI/SummonsInfo/VBoxContainer" unique_id=980880811 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
+[node name="InfoPanel4" parent="UI/SummonsInfo/VBoxContainer" unique_id=1875656125 instance=ExtResource("7_svpld")]
+layout_mode = 2
+
 [node name="SpeedButtons" type="PanelContainer" parent="UI" unique_id=513198843]
+process_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -85,6 +145,11 @@ theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/SpeedButtons/MarginContainer" unique_id=78417571]
 layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="UI/SpeedButtons/MarginContainer/HBoxContainer" unique_id=113207354]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "II"
 
 [node name="HalfSpeedButton" type="Button" parent="UI/SpeedButtons/MarginContainer/HBoxContainer" unique_id=1462884800]
 layout_mode = 2
@@ -106,6 +171,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "5x"
 
+[connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/PauseButton" to="UI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/HalfSpeedButton" to="UI" method="_on_half_speed_button_pressed"]
 [connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/NormalSpeedButton" to="UI" method="_on_normal_speed_button_pressed"]
 [connection signal="pressed" from="UI/SpeedButtons/MarginContainer/HBoxContainer/DoubleSpeedButton" to="UI" method="_on_double_speed_button_pressed"]

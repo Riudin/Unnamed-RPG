@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cla5lbp1rus06"]
+
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_n4bgt"]
+[ext_resource type="Resource" uid="uid://b7hxwxr08fgyv" path="res://entities/items/base_stats/evasion.tres" id="2_h2a3f"]
+[ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="2_i23v1"]
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="2_p62t8"]
+[ext_resource type="Texture2D" uid="uid://c0meob2gpfghr" path="res://assets/icons/equipment_old/leather_jacket.png" id="3_p62t8"]
+
+[sub_resource type="Resource" id="Resource_g0lpw"]
+resource_local_to_scene = true
+script = ExtResource("2_i23v1")
+stat = 4
+min_amount = 4.0
+max_amount = 9.0
+description = "+%s to maximum Life"
+metadata/_custom_type_script = "uid://cdr82mudv2t0w"
+
+[sub_resource type="Resource" id="Resource_o56yh"]
+script = ExtResource("2_p62t8")
+mods = Array[ExtResource("2_i23v1")]([SubResource("Resource_g0lpw")])
+metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"
+
+[resource]
+script = ExtResource("1_n4bgt")
+name = "Leather Armor"
+type = 2
+icon = ExtResource("3_p62t8")
+tags = 10
+min_ilvl = 8
+level_requirement = 8
+base_stats = Array[ExtResource("2_p62t8")]([ExtResource("2_h2a3f")])
+implicit_modifiers = Array[ExtResource("2_p62t8")]([SubResource("Resource_o56yh")])
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

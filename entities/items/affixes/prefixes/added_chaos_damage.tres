@@ -17,6 +17,6 @@ metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]
 script = ExtResource("2_6bqso")
-name_format = "Brutal %s"
+tags = 264
 mods = Array[ExtResource("1_bjkcc")]([SubResource("Resource_86cyw")])
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

@@ -14,5 +14,6 @@ metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]
 script = ExtResource("2_gw2af")
+tags = 2
 mods = Array[ExtResource("1_ycg34")]([SubResource("Resource_i23v1")])
 metadata/_custom_type_script = "uid://cwd4pb5qhi6v0"

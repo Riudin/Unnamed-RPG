@@ -127,17 +127,21 @@ func _on_player_died(player):
 
 func _on_enemy_died(enemy: CombatEnemy):
 	# Generate loot
-	var loot: ItemInstance = LootGenerator.generate_loot(enemy.enemy_data.drop_table)
+	var loot_items: Array[ItemInstance] = LootGenerator.generate_loot(enemy.enemy_data)
 
-	if loot:
-		InventoryManager.add_item(loot)
-		accumulated_loot.append(loot)
+	if loot_items.size() > 0:
+		for item in loot_items:
+			print(enemy.enemy_data.name, " dropped: ", item.get_display_name())
+			InventoryManager.add_item(item)
+			accumulated_loot.append(item)
 	
 	# Grant player XP reward
 	if GameState.player_data.stats:
-		GameState.player_data.stats.experience += enemy.enemy_data.drop_table.xp_reward
+		GameState.player_data.stats.experience += 10 # TODO: just for debugging!
+		#enemy.enemy_data.drop_table.xp_reward
 	
-	accumulated_xp += enemy.enemy_data.drop_table.xp_reward
+	accumulated_xp += 10 # TODO: just for debugging!
+	#enemy.enemy_data.drop_table.xp_reward
 	
 	# End Battle if it was the last enemy
 	active_enemies.erase(enemy)

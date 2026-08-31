@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5016bn074vxg"]
 
-[ext_resource type="Texture2D" uid="uid://h87etld0oajm" path="res://assets/highlight.png" id="1_df7mp"]
+[ext_resource type="Texture2D" uid="uid://h87etld0oajm" path="res://assets/misc/highlight.png" id="1_df7mp"]
 
 [node name="Highlight" type="TextureRect" unique_id=930515164]
 custom_minimum_size = Vector2(20, 20)

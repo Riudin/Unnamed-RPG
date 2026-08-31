@@ -4,7 +4,6 @@
 [ext_resource type="Curve" uid="uid://bonbeehw3fa7s" path="res://entities/enemies/shared/balancing/enemy_damage_range.tres" id="2_r7ohl"]
 [ext_resource type="Curve" uid="uid://j28agwrmkxbx" path="res://entities/enemies/shared/balancing/enemy_defenses.tres" id="3_flu5t"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="4_3brb8"]
-[ext_resource type="Resource" uid="uid://d2pfjyyq75nq0" path="res://entities/enemies/normal_enemies/slime/slime_drop_table.tres" id="4_kh1j7"]
 [ext_resource type="Curve" uid="uid://dyo345vjfo34m" path="res://entities/enemies/shared/balancing/enemy_health.tres" id="5_8or4t"]
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="6_4eue1"]
 [ext_resource type="Script" uid="uid://dp7d7g5crfx01" path="res://entities/skills/skill_behavior.gd" id="6_j8nra"]
@@ -46,5 +45,4 @@ name = "Slime"
 texture = ExtResource("14_obnvs")
 stats = ExtResource("13_tmasu")
 equipped_skills = Array[ExtResource("4_3brb8")]([SubResource("Resource_iyxxw"), ExtResource("10_pllif")])
-drop_table = ExtResource("4_kh1j7")
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

@@ -44,12 +44,12 @@ LootGenerator="*res://shared/scripts/autoload/scenes/loot_generator.tscn"
 LootDropManager="*res://shared/scripts/autoload/scenes/loot_drop_manager.tscn"
 InventoryManager="*res://shared/scripts/autoload/scenes/inventory_manager.tscn"
 SceneManager="*uid://mau2fmb7l1q1"
+AffixManager="*uid://uv728ia8j8b0"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

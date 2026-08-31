@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bkfgts611uvfn"]
+
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_2vpjr"]
+[ext_resource type="Texture2D" uid="uid://ds3xiqpwdc6gv" path="res://assets/items/equipment/body_armor/soldiers_greatplate.png" id="2_dppvh"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="3_7f4pi"]
+[ext_resource type="Resource" uid="uid://s8mxx8u1hpdb" path="res://entities/items/affixes/suffixes/increased_strength.tres" id="3_x3jsl"]
+
+[resource]
+script = ExtResource("3_7f4pi")
+name = "Soldier's Greatplate"
+type = 2
+icon = ExtResource("2_dppvh")
+tags = 9
+implicit_modifiers = Array[ExtResource("1_2vpjr")]([ExtResource("3_x3jsl")])
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

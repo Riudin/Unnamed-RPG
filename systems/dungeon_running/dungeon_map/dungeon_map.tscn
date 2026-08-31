@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://po1ron3g5hus" path="res://systems/dungeon_running/dungeon_map/dungeon_map.gd" id="1_hkwto"]
 [ext_resource type="Script" uid="uid://cpp1f51k5g1si" path="res://systems/dungeon_running/dungeon_map/map_generator.gd" id="2_2ojrf"]
+[ext_resource type="Script" uid="uid://kxsjsr0itrlb" path="res://systems/dungeon_running/dungeon_map/exit_button.gd" id="3_6enqh"]
 
 [sub_resource type="Gradient" id="Gradient_0g7dh"]
 offsets = PackedFloat32Array(0.15555556, 1)
@@ -39,3 +40,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_1dqgk")
+
+[node name="ExitButton" type="Button" parent="DungeonBackground" unique_id=1419613010]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 28.0
+grow_horizontal = 0
+text = "X"
+script = ExtResource("3_6enqh")
+
+[connection signal="pressed" from="DungeonBackground/ExitButton" to="DungeonBackground/ExitButton" method="_on_pressed"]

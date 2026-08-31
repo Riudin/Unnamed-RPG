@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDropTable" format=3 uid="uid://bfrxh62gmemdp"]
+
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_lbt20"]
+[ext_resource type="Script" uid="uid://do1qvhnlso3h6" path="res://entities/items/item_drop_table.gd" id="2_bj056"]
+[ext_resource type="Resource" uid="uid://beq6pv7aifvu1" path="res://entities/items/base_items/body_armor/arcane_shroud.tres" id="2_lunab"]
+[ext_resource type="Resource" uid="uid://dyyrw5qi75dxg" path="res://entities/items/base_items/body_armor/inquisitors_plate.tres" id="3_24ceo"]
+[ext_resource type="Resource" uid="uid://cla5lbp1rus06" path="res://entities/items/base_items/body_armor/leather_armor.tres" id="4_dh1bg"]
+[ext_resource type="Resource" uid="uid://dx8rqlt6nbt3p" path="res://entities/items/base_items/body_armor/reinforced_garb.tres" id="5_2j52f"]
+[ext_resource type="Resource" uid="uid://ch8dvlm3d0s7m" path="res://entities/items/base_items/body_armor/shrouded_vestment.tres" id="6_uko2f"]
+[ext_resource type="Resource" uid="uid://bkfgts611uvfn" path="res://entities/items/base_items/body_armor/soldiers_greatplate.tres" id="7_nukgt"]
+[ext_resource type="Resource" uid="uid://ctp1pdhtqgrk6" path="res://entities/items/base_items/body_armor/stalker_garb.tres" id="8_he6uv"]
+[ext_resource type="Resource" uid="uid://da8gr86yg5u2c" path="res://entities/items/base_items/helmets/leather_helmet.tres" id="9_poeip"]
+[ext_resource type="Resource" uid="uid://p5wny18hkmk6" path="res://entities/items/base_items/one_handed_weapons/iron_sword.tres" id="10_hgeeg"]
+[ext_resource type="Resource" uid="uid://13oakuylsa27" path="res://entities/items/base_items/skill_items/fireball_item.tres" id="11_rhtd6"]
+[ext_resource type="Resource" uid="uid://7w1iq5rtswq8" path="res://entities/items/base_items/skill_items/heavy_blow_item.tres" id="12_npec3"]
+[ext_resource type="Resource" uid="uid://d4nhjkh1mi4xa" path="res://entities/items/base_items/skill_items/ice_shards_item.tres" id="13_6is3g"]
+
+[resource]
+script = ExtResource("2_bj056")
+item_weights = Dictionary[ExtResource("1_lbt20"), int]({
+ExtResource("2_lunab"): 1,
+ExtResource("3_24ceo"): 1,
+ExtResource("4_dh1bg"): 1,
+ExtResource("5_2j52f"): 1,
+ExtResource("6_uko2f"): 1,
+ExtResource("7_nukgt"): 1,
+ExtResource("8_he6uv"): 1,
+ExtResource("9_poeip"): 1,
+ExtResource("10_hgeeg"): 1,
+ExtResource("11_rhtd6"): 1,
+ExtResource("12_npec3"): 1,
+ExtResource("13_6is3g"): 1
+})
+metadata/_custom_type_script = "uid://do1qvhnlso3h6"

@@ -1,6 +1,10 @@
 extends CanvasLayer
 
 
+func _on_pause_button_pressed() -> void:
+	get_tree().paused = !get_tree().paused
+
+
 func _on_half_speed_button_pressed() -> void:
 	Engine.time_scale = 0.5
 

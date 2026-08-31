@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dx6r0n3vg21py"]
 
-[ext_resource type="Texture2D" uid="uid://cesqpug13emi0" path="res://assets/battle_mockup_1.png" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://cesqpug13emi0" path="res://assets/misc/battle_mockup_1.png" id="1_0fbet"]
 
 [node name="Control" type="TextureRect" unique_id=1385131243]
 anchors_preset = 15

@@ -28,29 +28,14 @@ func execute(context: BattleContext, skill: SkillData) -> void:
 
 func _execute_hit(context: BattleContext, skill: SkillData, stats_snapshot: Stats) -> void:
 	if skill.tags.has(SkillData.SkillTag.PROJECTILE):
-		# Calculate damage when creating the projectile
-		#var instance = context.build_damage_instance()
-		#var is_crit: bool = context.determine_crit(instance)
-		#var damage_dealt: float = context.deal_damage(instance, is_crit)
-		# var projectile_context = BattleContext.new()
-		# projectile_context.attacker = context.attacker
-		# projectile_context.defender = context.defender
-		# projectile_context.attacker_stats = context.attacker_stats
-		context.attacker_stats = stats_snapshot
-		var instance = context.build_damage_instance()
-		var is_crit: bool = DamageSystem.resolve_crit(instance)
-		var damage_dealt: int = DamageSystem.resolve(instance, is_crit)
-
-		_spawn_projectile(context, skill, damage_dealt, is_crit)
-		#projectile.connect("target_hit", Callable(self , "_deal_damage").bindv([context])) # damage_dealt, is_crit, context.defender.global_position]))
+		_spawn_projectile(context, skill)
 	else:
 		# Deal damage for this hit
 		context.attacker_stats = stats_snapshot
 		_deal_damage(context)
-		# _apply_status_effects(context, skill) #TODO: implement status effects
 
 
-func _spawn_projectile(context: BattleContext, skill: SkillData, damage: int, is_crit: bool) -> Node:
+func _spawn_projectile(context: BattleContext, skill: SkillData) -> Node:
 	if context.defender == null or context.attacker == null:
 		return null
 
@@ -61,11 +46,8 @@ func _spawn_projectile(context: BattleContext, skill: SkillData, damage: int, is
 	proj.speed = skill.projectile_speed
 	proj.animation = skill.skill_name
 	proj.has_particles = skill.emit_particles
-	proj.damage_dealt = damage
-	proj.is_crit = is_crit
 	proj.context = context
 	context.attacker.add_child(proj)
-	#if proj: proj.connect("target_hit", Callable(self , "_deal_damage").bindv([context])) # damage_dealt, is_crit, context.defender.global_position]))
 	return proj
 
 
@@ -89,22 +71,3 @@ func _deal_damage(context: BattleContext):
 			Color.WHITE,
 			is_crit
 			)
-
-
-func _apply_status_effects(context: BattleContext, skill: SkillData):
-	if skill.status_effects.is_empty():
-		return
-
-	for effect in skill.status_effects:
-		pass
-		
-
-# func _deal_damage_with_value(damage_dealt: float, is_crit: bool, target_pos: Vector2) -> void:
-# 	# Use pre-calculated damage value (for projectiles)
-	
-# 	DamagePopupManager.spawn(
-# 		int(damage_dealt),
-# 		target_pos,
-# 		Color.WHITE,
-# 		is_crit
-# 	)

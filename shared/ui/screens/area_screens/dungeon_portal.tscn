@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cun3lks1dwfdh"]
 
 [ext_resource type="Script" uid="uid://bkaasuhrrjjt6" path="res://shared/ui/screens/area_screens/dungeon_portal.gd" id="1_okonv"]
-[ext_resource type="Texture2D" uid="uid://bw1gagw7t6pa2" path="res://assets/forest_dungeon.png" id="2_8l7h8"]
+[ext_resource type="Texture2D" uid="uid://bw1gagw7t6pa2" path="res://assets/misc/forest_dungeon.png" id="2_8l7h8"]
 
 [node name="DungeonPortal" type="Control" unique_id=875518084 groups=["dungeons"]]
 layout_mode = 3

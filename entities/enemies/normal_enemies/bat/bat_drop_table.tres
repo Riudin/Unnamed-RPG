@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_pe0ac"]
 [ext_resource type="Resource" uid="uid://p5wny18hkmk6" path="res://entities/items/base_items/one_handed_weapons/iron_sword.tres" id="2_xbpob"]
-[ext_resource type="Resource" uid="uid://cla5lbp1rus06" path="res://entities/items/base_items/armor/leather_armor.tres" id="3_e4llv"]
+[ext_resource type="Resource" uid="uid://cla5lbp1rus06" path="res://entities/items/base_items/body_armor/leather_armor.tres" id="3_e4llv"]
 [ext_resource type="Resource" uid="uid://da8gr86yg5u2c" path="res://entities/items/base_items/helmets/leather_helmet.tres" id="4_qk70h"]
 [ext_resource type="Resource" uid="uid://13oakuylsa27" path="res://entities/items/base_items/skill_items/fireball_item.tres" id="5_wjtv6"]
 [ext_resource type="Resource" uid="uid://d4nhjkh1mi4xa" path="res://entities/items/base_items/skill_items/ice_shards_item.tres" id="6_0r7t3"]

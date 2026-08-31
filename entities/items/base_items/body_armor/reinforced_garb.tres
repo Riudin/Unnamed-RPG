@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dx8rqlt6nbt3p"]
+
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_vj5go"]
+[ext_resource type="Texture2D" uid="uid://bcy20ycts0eju" path="res://assets/items/equipment/body_armor/reinforced_garb.png" id="2_vj5go"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="3_ttwni"]
+
+[resource]
+script = ExtResource("3_ttwni")
+name = "Reinforced Garb"
+type = 2
+icon = ExtResource("2_vj5go")
+tags = 11
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

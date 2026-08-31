@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ctp1pdhtqgrk6"]
+
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_jf0up"]
+[ext_resource type="Texture2D" uid="uid://dkekksuww4r75" path="res://assets/items/equipment/body_armor/stalker_garb.png" id="2_jf0up"]
+[ext_resource type="Resource" uid="uid://cil3bs546a55r" path="res://entities/items/affixes/suffixes/increased_dexterity.tres" id="3_chut6"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="4_474xu"]
+
+[resource]
+script = ExtResource("4_474xu")
+name = "Stalker Garb"
+type = 2
+icon = ExtResource("2_jf0up")
+tags = 10
+implicit_modifiers = Array[ExtResource("1_jf0up")]([ExtResource("3_chut6")])
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

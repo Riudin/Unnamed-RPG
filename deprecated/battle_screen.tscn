@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://pbulugqfsgep"]
 
-[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/error.png" id="1_awsep"]
+[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/misc/error.png" id="1_awsep"]
 [ext_resource type="Script" uid="uid://crw1p2yqegblh" path="res://deprecated/battle_screen.gd" id="1_dc1s1"]
-[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="2_arlx4"]
+[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/misc/white.png" id="2_arlx4"]
 [ext_resource type="PackedScene" uid="uid://dalbjuohh32cd" path="res://shared/ui/screens/battle_rewards_screen.tscn" id="4_iq00i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc1s1"]

@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
-[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="7_5q0nq"]
-[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/misc/white.png" id="7_tipki"]
 [ext_resource type="Script" uid="uid://dbmoyj38ooa3s" path="res://shared/ui/windows/character_screen/character_screen_ui.gd" id="8_trceg"]
 [ext_resource type="Script" uid="uid://ctgym2ebc4lj7" path="res://shared/ui/windows/inventory/inventory_ui.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
@@ -25,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://bs5suuc5hp2cb" path="res://assets/ui/inventory/slot_bg_amulet.png" id="15_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://beiqj8ko03k1q" path="res://assets/ui/inventory/slot_bg_belt.png" id="16_2f3dj"]
 [ext_resource type="Script" uid="uid://csvrl7v1kaipr" path="res://systems/debug/debug_button_generate_loot.gd" id="16_jbj1t"]
-[ext_resource type="Resource" uid="uid://31w675mxggbn" path="res://entities/enemies/normal_enemies/orc/orc_drop_table.tres" id="17_muem4"]
 [ext_resource type="Texture2D" uid="uid://caslqdy7r0ius" path="res://assets/ui/inventory/slot_bg_wings.png" id="17_yq6so"]
 [ext_resource type="PackedScene" uid="uid://ovmxuyq7rd0j" path="res://shared/ui/windows/character_screen/crafting_slot.tscn" id="21_2f3dj"]
 [ext_resource type="Script" uid="uid://br42kaxbnvlef" path="res://shared/ui/windows/character_screen/skill_bar.gd" id="22_qkpxi"]
@@ -33,15 +31,7 @@
 [ext_resource type="Script" uid="uid://qa31udwrx1ut" path="res://shared/ui/windows/character_screen/skill_selection_bar.gd" id="25_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://uvexmmqcgs6t" path="res://shared/ui/windows/character_screen/skill_selection_slot.tscn" id="25_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://dx7w044rsadf3" path="res://shared/ui/screens/area_screens/forest_area_screen.tscn" id="32_dgi5k"]
-
-[sub_resource type="Resource" id="Resource_5q0nq"]
-resource_local_to_scene = true
-script = ExtResource("7_5q0nq")
-base_max_health = 1000
-base_cold_damage = 5
-base_cold_damage_range = 5
-base_crit_chance = 20
-metadata/_custom_type_script = "uid://n8wtim8qm2cq"
+[ext_resource type="Resource" uid="uid://b2juo74fyf2wm" path="res://entities/enemies/normal_enemies/orc/orc_enemy_data.tres" id="33_5q0nq"]
 
 [node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
@@ -71,7 +61,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
-stats = SubResource("Resource_5q0nq")
 
 [node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true
@@ -1108,7 +1097,7 @@ offset_bottom = 15.0
 theme_override_font_sizes/font_size = 6
 text = "generate loot"
 script = ExtResource("16_jbj1t")
-drop_table = ExtResource("17_muem4")
+looted_enemy = ExtResource("33_5q0nq")
 
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Tabs/EquipmentScreenButton" to="UI/InterfaceContainer/CharacterScreenUI" method="_on_equipment_screen_button_pressed"]
 [connection signal="pressed" from="UI/InterfaceContainer/CharacterScreenUI/MarginContainer/VBoxContainer/Tabs/CraftingScreenButton" to="UI/InterfaceContainer/CharacterScreenUI" method="_on_crafting_screen_button_pressed"]

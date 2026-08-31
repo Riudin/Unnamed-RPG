@@ -2,8 +2,6 @@ class_name Projectile
 extends Node2D
 
 
-#signal target_hit()
-
 var context: BattleContext
 
 @export var target_pos: Vector2
@@ -14,8 +12,6 @@ var context: BattleContext
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var hit_effect_particles: GPUParticles2D = %HitEffectParticles
 
-var damage_dealt: int = 0
-var is_crit: bool = false
 
 var target_reached: bool = false # helper to stop processing once target is hit. needed because queue_free waits for particles to finish
 
@@ -38,6 +34,10 @@ func _process(delta: float) -> void:
 func _on_hit():
 	target_reached = true
 
+	var dmg_instance = context.build_damage_instance()
+	var is_crit: bool = DamageSystem.resolve_crit(dmg_instance)
+	var damage_dealt: int = DamageSystem.resolve(dmg_instance, is_crit)
+
 	if context.defender and context.defender.health_component.has_method("take_damage"):
 		context.defender.health_component.take_damage(damage_dealt)
 
@@ -50,7 +50,6 @@ func _on_hit():
 			is_crit
 			)
 
-	#target_hit.emit()
 
 	if hit_effect_particles and has_particles:
 		animated_sprite.hide()

@@ -122,7 +122,7 @@ func _set_affixes(item: ItemInstance) -> void:
 		#if not p: continue
 		var display = AFFIX_DISPLAY_SCENE.instantiate()
 		item_affixes.add_child(display)
-		display.set_description("Prefix Tier " + str(p.tier))
+		display.set_description("Prefix Tier " + str(p.tier) + " - " + AffixData.tags_to_string(p.tags))
 		display.description.visible = false if not display_details else true
 
 		for mod in p.mods:
@@ -140,7 +140,7 @@ func _set_affixes(item: ItemInstance) -> void:
 	for s in item.suffixes:
 		var display = AFFIX_DISPLAY_SCENE.instantiate()
 		item_affixes.add_child(display)
-		display.set_description("Suffix Tier " + str(s.tier))
+		display.set_description("Suffix Tier " + str(s.tier) + " - " + AffixData.tags_to_string(s.tags))
 		display.description.visible = false if not display_details else true
 
 		for mod in s.mods:

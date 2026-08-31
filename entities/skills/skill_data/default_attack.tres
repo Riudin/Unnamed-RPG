@@ -11,14 +11,14 @@ resource_local_to_scene = true
 script = ExtResource("2_1t1ei")
 metadata/_custom_type_script = "uid://b3ta7aty8xv1f"
 
-[sub_resource type="Resource" id="Resource_5c50g"]
+[sub_resource type="Resource" id="Resource_1t1ei"]
 resource_local_to_scene = true
 script = ExtResource("2_2pfub")
 stat = 13
 type = 1
 description = "default attack"
 amount = 3.0
-range_amount = 4.0
+range_amount = 5.0
 metadata/_custom_type_script = "uid://cdr82mudv2t0w"
 
 [resource]
@@ -27,6 +27,6 @@ skill_name = "Default Attack"
 tags = Array[int]([0, 2])
 skill_icon = ExtResource("5_payac")
 emit_particles = true
-inherent_mods = Array[ExtResource("2_2pfub")]([SubResource("Resource_5c50g")])
+inherent_mods = Array[ExtResource("2_2pfub")]([SubResource("Resource_1t1ei")])
 behaviors = Array[ExtResource("1_2jk62")]([SubResource("Resource_payac")])
 base_speed = 0.6

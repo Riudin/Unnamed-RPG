@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://hsv323wup8qh"]
+
+[ext_resource type="Texture2D" uid="uid://b48t8owqo3b7o" path="res://assets/misc/info_panel_mockup.png" id="1_frd8b"]
+
+[node name="InfoPanel" type="Control" unique_id=1008327727]
+custom_minimum_size = Vector2(106, 62)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 106.0
+offset_bottom = 62.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=640639016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=840191320]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1339309834]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_frd8b")
+stretch_mode = 2

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AffixRule" format=3 uid="uid://c5e1v815k251r"]
+
+[ext_resource type="Script" uid="uid://chvdc3b8nsxto" path="res://entities/items/affix_rules/affix_rule.gd" id="1_ac5o8"]
+
+[resource]
+script = ExtResource("1_ac5o8")
+rule_name = "No Damage on Armor"
+affix_tags_governed = 8
+item_excluded_tags = 8
+metadata/_custom_type_script = "uid://chvdc3b8nsxto"

@@ -4,10 +4,12 @@ extends Resource
 
 enum EnemyType {NORMAL, ELITE, BOSS}
 
+@export_group("Base Data")
 @export var type: EnemyType = EnemyType.NORMAL
 @export var name: String = "Name Missing"
 @export var texture: Texture2D
 
+@export_group("Stats")
 @export var stats: Stats = null
 @export var level: int = 1
 @export var equipped_skills: Array[SkillData]
@@ -21,8 +23,14 @@ enum EnemyType {NORMAL, ELITE, BOSS}
 			for mod in active_skill.inherent_mods:
 				stats.add_modifier(mod)
 
-@export var drop_table: ItemDropTable
+@export_group("Item Drops")
+@export var base_drop_slots: int = 1 # each slot represents a chance to drop an item
+@export var base_drop_chance: float = 0.2 # chance to drop an item per slot. if modified beyond 1, additional items can be dropped
+@export var special_drop_slots: int = 0 # slots for drops specific to this enemy
+@export var special_drop_chance: float = 0.0 # chance for special drop slots
+@export var special_drop_table: ItemDropTable = null # used by special drop slots and additional to the default trop table
 
+@export_group("Curves")
 @export var damage_curve: Curve = preload("uid://cqaljfl16eh4d")
 @export var damage_range_curve: Curve = preload("uid://bonbeehw3fa7s")
 @export var health_curve: Curve = preload("uid://dyo345vjfo34m")

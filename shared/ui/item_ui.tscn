@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckuqamuti4yj6" path="res://shared/ui/item_ui.gd" id="1_kfu1v"]
 [ext_resource type="PackedScene" uid="uid://c0noo2eqn5l61" path="res://shared/ui/windows/inventory/item_tooltip.tscn" id="2_13pny"]
-[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="3_awt8w"]
+[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/misc/white.png" id="3_awt8w"]
 
 [node name="ItemUI" type="Control" unique_id=381047854]
 custom_minimum_size = Vector2(22, 22)

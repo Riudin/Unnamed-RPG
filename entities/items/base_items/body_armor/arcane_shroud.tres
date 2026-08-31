@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://beq6pv7aifvu1"]
+
+[ext_resource type="Script" uid="uid://cwd4pb5qhi6v0" path="res://entities/items/affix_data.gd" id="1_t0eo8"]
+[ext_resource type="Texture2D" uid="uid://btly31ddjxtkp" path="res://assets/items/equipment/body_armor/arcane_shroud.png" id="2_71uge"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="2_xmbpg"]
+[ext_resource type="Resource" uid="uid://bgdhouwd813ku" path="res://entities/items/affixes/suffixes/increased_intelligence.tres" id="3_676ax"]
+
+[resource]
+script = ExtResource("2_xmbpg")
+name = "Arcane Shroud"
+type = 2
+icon = ExtResource("2_71uge")
+tags = 12
+implicit_modifiers = Array[ExtResource("1_t0eo8")]([ExtResource("3_676ax")])
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

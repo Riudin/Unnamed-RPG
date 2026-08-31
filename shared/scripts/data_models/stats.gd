@@ -155,6 +155,10 @@ signal level_up(new_level)
 @export var base_item_find: int = 0
 @export var base_gold_find: int = 0
 
+# Item Drop Modifiers
+@export var base_item_quantity: int = 0
+@export var base_item_rarity: int = 0
+
 
 ### Derived Stats
 # Primary Attributes
@@ -251,6 +255,9 @@ var current_mana_cost_reduction: int = 0
 var current_item_find: int = 0
 var current_gold_find: int = 0
 
+# Item Drop Modifiers
+@export var current_item_quantity: int = 0
+@export var current_item_rarity: int = 0
 
 ### Variable Stats
 # var health: int = 0 : set = _on_health_set
