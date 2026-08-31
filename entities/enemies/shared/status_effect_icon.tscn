@@ -18,11 +18,13 @@ border_blend = true
 bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.7882353)
 
 [node name="StatusEffectIcon" type="Control" unique_id=2133233531]
-custom_minimum_size = Vector2(14, 14)
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 10.0
+offset_bottom = 10.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_ll0g2")
 
 [node name="Panel" type="Panel" parent="." unique_id=662275498]
@@ -36,7 +38,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_b1lj4")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1334188946]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(12, 12)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,14 +55,12 @@ stretch_mode = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1560634396]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(8, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(68, -18)
 theme_override_styles/background = SubResource("StyleBoxEmpty_njqwk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_13qdw")
 value = 36.25

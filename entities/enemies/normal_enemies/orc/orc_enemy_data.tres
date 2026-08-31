@@ -3,22 +3,19 @@
 [ext_resource type="Curve" uid="uid://cqaljfl16eh4d" path="res://entities/enemies/shared/balancing/enemy_damage.tres" id="1_gcy68"]
 [ext_resource type="Curve" uid="uid://bonbeehw3fa7s" path="res://entities/enemies/shared/balancing/enemy_damage_range.tres" id="2_ncjaa"]
 [ext_resource type="Curve" uid="uid://j28agwrmkxbx" path="res://entities/enemies/shared/balancing/enemy_defenses.tres" id="3_5djk0"]
+[ext_resource type="Texture2D" uid="uid://c6nm8nhx8iknw" path="res://assets/characters/enemy_icons/Orc_icon.png" id="7_gyct7"]
+[ext_resource type="Resource" uid="uid://bdtwgc7mpxmk7" path="res://entities/enemies/normal_enemies/orc/orc_stats.tres" id="8_5oj4t"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="9_s3iqy"]
 [ext_resource type="Resource" uid="uid://cyp3bjll45wav" path="res://entities/skills/skill_data/heavy_blow.tres" id="10_2u4wg"]
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="11_t0qtf"]
-[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="12_571ju"]
 [ext_resource type="Texture2D" uid="uid://cmkfsgs5de5tx" path="res://entities/enemies/shared/assets/Orc.png" id="13_j62ag"]
 [ext_resource type="Curve" uid="uid://dyo345vjfo34m" path="res://entities/enemies/shared/balancing/enemy_health.tres" id="14_1h68f"]
-
-[sub_resource type="Resource" id="Resource_7k8nc"]
-script = ExtResource("12_571ju")
-base_max_health = 80
-metadata/_custom_type_script = "uid://n8wtim8qm2cq"
 
 [resource]
 script = ExtResource("11_t0qtf")
 name = "Green Orc"
 texture = ExtResource("13_j62ag")
-stats = SubResource("Resource_7k8nc")
+icon = ExtResource("7_gyct7")
+stats = ExtResource("8_5oj4t")
 equipped_skills = Array[ExtResource("9_s3iqy")]([ExtResource("10_2u4wg"), ExtResource("10_2u4wg"), ExtResource("10_2u4wg"), ExtResource("10_2u4wg"), ExtResource("10_2u4wg")])
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

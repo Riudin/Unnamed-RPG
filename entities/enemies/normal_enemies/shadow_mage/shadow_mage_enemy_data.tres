@@ -3,11 +3,11 @@
 [ext_resource type="Curve" uid="uid://cqaljfl16eh4d" path="res://entities/enemies/shared/balancing/enemy_damage.tres" id="1_4igd7"]
 [ext_resource type="Curve" uid="uid://bonbeehw3fa7s" path="res://entities/enemies/shared/balancing/enemy_damage_range.tres" id="2_oo0i0"]
 [ext_resource type="Curve" uid="uid://j28agwrmkxbx" path="res://entities/enemies/shared/balancing/enemy_defenses.tres" id="3_smd1a"]
-[ext_resource type="Resource" uid="uid://pisc5mnq8pmy" path="res://entities/enemies/normal_enemies/shadow_mage/shadow_mage_drop_table.tres" id="4_t874u"]
 [ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="5_m3el6"]
 [ext_resource type="Resource" uid="uid://csriyw7thspcs" path="res://entities/skills/skill_data/ice_shards.tres" id="6_esqas"]
 [ext_resource type="Resource" uid="uid://ccsn7qcjcvh8p" path="res://entities/skills/skill_data/fireball.tres" id="7_5ib2c"]
 [ext_resource type="Curve" uid="uid://dyo345vjfo34m" path="res://entities/enemies/shared/balancing/enemy_health.tres" id="8_1irs8"]
+[ext_resource type="Texture2D" uid="uid://cnx8sbeqhgnol" path="res://assets/characters/enemy_icons/shadow_mage_icon.png" id="8_4igd7"]
 [ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="9_juqne"]
 [ext_resource type="Resource" uid="uid://dntfrd4b3752l" path="res://entities/enemies/normal_enemies/shadow_mage/shadow_mage_stats.tres" id="10_xph0b"]
 [ext_resource type="Texture2D" uid="uid://xy00x3c1enhf" path="res://assets/characters/enemies/shadow_mage.png" id="11_5cipf"]
@@ -16,7 +16,7 @@
 script = ExtResource("9_juqne")
 name = "Shadow Mage"
 texture = ExtResource("11_5cipf")
+icon = ExtResource("8_4igd7")
 stats = ExtResource("10_xph0b")
 equipped_skills = Array[ExtResource("5_m3el6")]([ExtResource("6_esqas"), ExtResource("7_5ib2c")])
-drop_table = ExtResource("4_t874u")
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

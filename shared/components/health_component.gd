@@ -2,7 +2,7 @@ class_name HealthComponent
 extends Node
 
 
-# signal health_changed(new_health)
+signal health_changed(new_health)
 signal died(body)
 
 var health: float
@@ -31,6 +31,8 @@ func _ready() -> void:
 func take_damage(damage: int):
 	health -= int(damage * damage_taken_modifier)
 	health = clampf(health, 0.0, max_health)
+
+	health_changed.emit(health)
 
 	if health_bar:
 		health_bar.update_bar(float(health), float(max_health))

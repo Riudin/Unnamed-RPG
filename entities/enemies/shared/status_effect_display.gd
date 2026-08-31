@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 
 const STATUS_EFFECT_ICON_SCENE: PackedScene = preload("uid://hnqrmw5lrmgh")

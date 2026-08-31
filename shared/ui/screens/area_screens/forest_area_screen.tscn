@@ -18,6 +18,8 @@ script = ExtResource("8_j8r8n")
 normal_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("7_1wnsn"), ExtResource("8_3g6v7"), ExtResource("9_j8r8n"), ExtResource("10_uvus1"), ExtResource("11_mi4np")])
 elite_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("6_1pb04")])
 boss_enemy_pool = Array[ExtResource("4_yqsht")]([ExtResource("5_3g6v7")])
+min_enemies = 5
+max_enemies = 5
 max_enemy_level = 10
 metadata/_custom_type_script = "uid://c3a78j3j723ql"
 

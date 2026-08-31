@@ -1,15 +1,29 @@
 [gd_scene format=3 uid="uid://hsv323wup8qh"]
 
-[ext_resource type="Texture2D" uid="uid://b48t8owqo3b7o" path="res://assets/misc/info_panel_mockup.png" id="1_frd8b"]
+[ext_resource type="Texture2D" uid="uid://c3f32udxf2i1s" path="res://assets/characters/enemy_icons/slime_icon.png" id="1_4tr32"]
+[ext_resource type="PackedScene" uid="uid://cdxb1hjh6bd7s" path="res://entities/enemies/shared/status_effect_display.tscn" id="1_5nfdv"]
+[ext_resource type="Script" uid="uid://csxi156ohg40q" path="res://shared/ui/combat/info_panel.gd" id="1_q7cth"]
+[ext_resource type="PackedScene" uid="uid://ddfs2supyi2fu" path="res://shared/ui/combat/stat_bar.tscn" id="2_m2ol7"]
+[ext_resource type="Texture2D" uid="uid://dtb8fqxdspxjt" path="res://assets/ui/combat/mana_bar_progress_front.png" id="3_4tr32"]
+[ext_resource type="Texture2D" uid="uid://oqmhpypottca" path="res://assets/misc/red_slash.png" id="3_q7cth"]
+[ext_resource type="Script" uid="uid://d3ae1u3d7w8rq" path="res://shared/ui/combat/combat_skill_bar.gd" id="5_cdhw4"]
+[ext_resource type="Texture2D" uid="uid://stcvvaaw7ens" path="res://assets/misc/skill_bg_empty.png" id="6_24u01"]
+[ext_resource type="Texture2D" uid="uid://h7t0gyvmub5i" path="res://assets/misc/arrow.png" id="6_tqw6q"]
+[ext_resource type="Texture2D" uid="uid://caw4idtkh0lnk" path="res://assets/icons/skill_icons/fireball.png" id="7_24u01"]
+[ext_resource type="PackedScene" uid="uid://hnqrmw5lrmgh" path="res://entities/enemies/shared/status_effect_icon.tscn" id="8_cdhw4"]
+[ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/misc/white.png" id="8_y4fgr"]
+[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="9_y4fgr"]
 
 [node name="InfoPanel" type="Control" unique_id=1008327727]
-custom_minimum_size = Vector2(106, 62)
+custom_minimum_size = Vector2(92, 59)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 106.0
-offset_bottom = 62.0
+offset_right = 92.0
+offset_bottom = 59.0
+script = ExtResource("1_q7cth")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=640639016]
+[node name="Content" type="Control" parent="." unique_id=1195394460]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,13 +31,184 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=840191320]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="Content" unique_id=640639016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Content/VBoxContainer" unique_id=840191320]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1339309834]
+[node name="MarginContainer" type="MarginContainer" parent="Content/VBoxContainer/PanelContainer" unique_id=1755377462]
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("1_frd8b")
-stretch_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/PanelContainer/MarginContainer" unique_id=729849443]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=817391359]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1844018184]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="TextureRect" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=206596419]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_4tr32")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1256823883]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="HealthBar" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=526058230 instance=ExtResource("2_m2ol7")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+low_hp_pulse = false
+
+[node name="HealthBarLabel" type="Label" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HealthBar" unique_id=1140447053]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 4
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaBar" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1770249997 instance=ExtResource("2_m2ol7")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+low_hp_pulse = false
+
+[node name="FrontBar" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ManaBar" index="1" unique_id=1977534986]
+texture_progress = ExtResource("3_4tr32")
+
+[node name="ManaBarLabel" type="Label" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ManaBar" unique_id=103668998]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 4
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CombatSkillBar" type="HBoxContainer" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2101821116]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+script = ExtResource("5_cdhw4")
+
+[node name="SkillSlot1" type="TextureRect" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar" unique_id=839855741]
+layout_mode = 2
+texture = ExtResource("6_24u01")
+stretch_mode = 3
+
+[node name="SkillIcon1" type="TextureRect" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar/SkillSlot1" unique_id=171462073]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_24u01")
+stretch_mode = 3
+
+[node name="AttackProgress" type="TextureProgressBar" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar/SkillSlot1" unique_id=1803236284]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_progress = ExtResource("8_y4fgr")
+tint_progress = Color(1, 1, 1, 0.69803923)
+
+[node name="Arrow" type="TextureRect" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar" unique_id=1678042473]
+layout_mode = 2
+texture = ExtResource("6_tqw6q")
+stretch_mode = 3
+
+[node name="SkillSlot2" type="TextureRect" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar" unique_id=116810238]
+layout_mode = 2
+texture = ExtResource("6_24u01")
+stretch_mode = 3
+
+[node name="SkillIcon2" type="TextureRect" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar/SkillSlot2" unique_id=1880644442]
+unique_name_in_owner = true
+modulate = Color(0.2921899, 0.29219007, 0.29219, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_y4fgr")
+stretch_mode = 3
+
+[node name="StatusEffectDisplay" parent="Content/VBoxContainer" unique_id=1186463465 instance=ExtResource("1_5nfdv")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="StatusEffectIcon" parent="Content/VBoxContainer/StatusEffectDisplay" unique_id=2133233531 instance=ExtResource("8_cdhw4")]
+visible = false
+layout_mode = 2
+
+[node name="Slash" type="TextureRect" parent="." unique_id=2058352509]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_q7cth")
+
+[node name="OwnershipLineAnchor" type="Marker2D" parent="." unique_id=367478302]
+unique_name_in_owner = true
+position = Vector2(-2, 25)
+
+[editable path="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ManaBar"]

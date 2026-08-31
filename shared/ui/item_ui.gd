@@ -24,9 +24,6 @@ func setup(i: ItemInstance):
 	item = i
 	if icon:
 		icon.texture = item.base.icon
-	
-	print(icon)
-	print(item)
 
 	rarity_background.modulate = item.get_color()
 	rarity_background.modulate.a = 0.5

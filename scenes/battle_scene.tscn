@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://udxrbudwfjc7" path="res://entities/enemies/shared/combat_enemy.tscn" id="3_pxwbd"]
 [ext_resource type="PackedScene" uid="uid://db3bmmpvnwg2q" path="res://entities/summons/combat_summon.tscn" id="4_pxwbd"]
 [ext_resource type="Texture2D" uid="uid://xru2t0c77uo5" path="res://assets/ui/backgrounds/CG/misty_forest.png" id="5_pxwbd"]
-[ext_resource type="Script" uid="uid://dk6sswbhn3jhp" path="res://scenes/battle_scene_ui.gd" id="6_1i8jf"]
+[ext_resource type="Script" uid="uid://dk6sswbhn3jhp" path="res://scenes/battle_ui.gd" id="6_1i8jf"]
+[ext_resource type="Texture2D" uid="uid://0hiows66qbuf" path="res://assets/misc/ownership_line.png" id="7_3oc74"]
 [ext_resource type="PackedScene" uid="uid://hsv323wup8qh" path="res://shared/ui/combat/InfoPanel.tscn" id="7_svpld"]
+[ext_resource type="Script" uid="uid://r66q2x2hungu" path="res://scenes/ownership_line_container.gd" id="8_rum4d"]
 
 [node name="BattleScene" type="Node2D" unique_id=747615073]
 script = ExtResource("1_kinr6")
@@ -15,6 +17,7 @@ combat_enemy = ExtResource("3_pxwbd")
 combat_summon = ExtResource("4_pxwbd")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1593467192]
+z_index = -1
 custom_minimum_size = Vector2(640, 360)
 offset_right = 640.0
 offset_bottom = 360.0
@@ -47,6 +50,12 @@ position = Vector2(468, 132)
 unique_name_in_owner = true
 position = Vector2(482, 215)
 
+[node name="OwnershipLineContainer" type="Node2D" parent="." unique_id=820799951]
+unique_name_in_owner = true
+z_index = -1
+script = ExtResource("8_rum4d")
+ownership_line_texture = ExtResource("7_3oc74")
+
 [node name="AllyPos1" type="Marker2D" parent="." unique_id=1447329677]
 unique_name_in_owner = true
 position = Vector2(224, 138)
@@ -64,10 +73,10 @@ unique_name_in_owner = true
 position = Vector2(234, 266)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=277637005]
+unique_name_in_owner = true
 script = ExtResource("6_1i8jf")
 
 [node name="EnemyInfo" type="MarginContainer" parent="UI" unique_id=887610483]
-visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -79,23 +88,30 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/EnemyInfo" unique_id=1005172402]
+[node name="EnemyInfoPanels" type="VBoxContainer" parent="UI/EnemyInfo" unique_id=1005172402]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="InfoPanel" parent="UI/EnemyInfo/VBoxContainer" unique_id=1008327727 instance=ExtResource("7_svpld")]
-layout_mode = 2
-
-[node name="InfoPanel2" parent="UI/EnemyInfo/VBoxContainer" unique_id=1985136664 instance=ExtResource("7_svpld")]
-layout_mode = 2
-
-[node name="InfoPanel3" parent="UI/EnemyInfo/VBoxContainer" unique_id=587850304 instance=ExtResource("7_svpld")]
+[node name="InfoPanel" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=1008327727 instance=ExtResource("7_svpld")]
+visible = false
 layout_mode = 2
 
-[node name="InfoPanel4" parent="UI/EnemyInfo/VBoxContainer" unique_id=655198187 instance=ExtResource("7_svpld")]
+[node name="InfoPanel2" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=985608680 instance=ExtResource("7_svpld")]
+visible = false
 layout_mode = 2
 
-[node name="InfoPanel5" parent="UI/EnemyInfo/VBoxContainer" unique_id=345964919 instance=ExtResource("7_svpld")]
+[node name="InfoPanel3" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=492162677 instance=ExtResource("7_svpld")]
+visible = false
+layout_mode = 2
+
+[node name="InfoPanel4" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=1975552460 instance=ExtResource("7_svpld")]
+visible = false
+layout_mode = 2
+
+[node name="InfoPanel5" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=1839129349 instance=ExtResource("7_svpld")]
+visible = false
 layout_mode = 2
 
 [node name="SummonsInfo" type="MarginContainer" parent="UI" unique_id=954176622]
@@ -126,22 +142,25 @@ layout_mode = 2
 
 [node name="SpeedButtons" type="PanelContainer" parent="UI" unique_id=513198843]
 process_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -41.0
-grow_horizontal = 0
+offset_left = -61.0
+offset_top = -33.0
+offset_right = 61.0
+grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SpeedButtons" unique_id=2081112799]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/SpeedButtons/MarginContainer" unique_id=78417571]
 layout_mode = 2

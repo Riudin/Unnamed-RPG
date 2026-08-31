@@ -8,6 +8,7 @@ enum EnemyType {NORMAL, ELITE, BOSS}
 @export var type: EnemyType = EnemyType.NORMAL
 @export var name: String = "Name Missing"
 @export var texture: Texture2D
+@export var icon: Texture2D
 
 @export_group("Stats")
 @export var stats: Stats = null
@@ -37,21 +38,46 @@ enum EnemyType {NORMAL, ELITE, BOSS}
 @export var defense_curve: Curve = preload("uid://j28agwrmkxbx")
 
 
+# func _apply_level_scaling() -> void:
+# 	@warning_ignore_start("narrowing_conversion")
+# 	stats.base_physical_damage *= damage_curve.sample(level)
+# 	stats.base_fire_damage *= damage_curve.sample(level)
+# 	stats.base_cold_damage *= damage_curve.sample(level)
+# 	stats.base_lightning_damage *= damage_curve.sample(level)
+# 	stats.base_chaos_damage *= damage_curve.sample(level)
+	
+# 	stats.base_physical_damage_range *= damage_range_curve.sample(level)
+# 	stats.base_fire_damage_range *= damage_range_curve.sample(level)
+# 	stats.base_cold_damage_range *= damage_range_curve.sample(level)
+# 	stats.base_lightning_damage_range *= damage_range_curve.sample(level)
+# 	stats.base_chaos_damage *= damage_range_curve.sample(level)
+	
+# 	stats.base_max_health = health_curve.sample(level)
+	
+# 	stats.base_evasion = defense_curve.sample(level)
+# 	stats.base_max_energy_shield = defense_curve.sample(level)
+
 func _apply_level_scaling() -> void:
-	@warning_ignore_start("narrowing_conversion")
-	stats.base_physical_damage *= damage_curve.sample(level)
-	stats.base_fire_damage *= damage_curve.sample(level)
-	stats.base_cold_damage *= damage_curve.sample(level)
-	stats.base_lightning_damage *= damage_curve.sample(level)
-	stats.base_chaos_damage *= damage_curve.sample(level)
-	
-	stats.base_physical_damage_range *= damage_range_curve.sample(level)
-	stats.base_fire_damage_range *= damage_range_curve.sample(level)
-	stats.base_cold_damage_range *= damage_range_curve.sample(level)
-	stats.base_lightning_damage_range *= damage_range_curve.sample(level)
-	stats.base_chaos_damage *= damage_range_curve.sample(level)
-	
-	stats.base_max_health = health_curve.sample(level)
-	
-	stats.base_evasion = defense_curve.sample(level)
-	stats.base_max_energy_shield = defense_curve.sample(level)
+	if stats == null:
+		return
+
+	var damage_mult := damage_curve.sample(level)
+	var damage_range_mult := damage_range_curve.sample(level)
+	var health_mult := health_curve.sample(level)
+	var defense_mult := defense_curve.sample(level)
+
+	stats.base_physical_damage = int(round(stats.base_physical_damage * damage_mult))
+	stats.base_physical_damage_range = int(round(stats.base_physical_damage_range * damage_range_mult))
+	stats.base_fire_damage = int(round(stats.base_fire_damage * damage_mult))
+	stats.base_fire_damage_range = int(round(stats.base_fire_damage_range * damage_range_mult))
+	stats.base_cold_damage = int(round(stats.base_cold_damage * damage_mult))
+	stats.base_cold_damage_range = int(round(stats.base_cold_damage_range * damage_range_mult))
+	stats.base_lightning_damage = int(round(stats.base_lightning_damage * damage_mult))
+	stats.base_lightning_damage_range = int(round(stats.base_lightning_damage_range * damage_range_mult))
+	stats.base_chaos_damage = int(round(stats.base_chaos_damage * damage_mult))
+	stats.base_chaos_damage_range = int(round(stats.base_chaos_damage_range * damage_range_mult))
+
+	stats.base_max_health = int(round(stats.base_max_health * health_mult))
+	stats.base_evasion = int(round(stats.base_evasion * defense_mult))
+	stats.base_max_energy_shield = int(round(stats.base_max_energy_shield * defense_mult))
+	stats.recalculate_stats()

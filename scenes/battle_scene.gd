@@ -2,6 +2,10 @@ class_name BattleScene
 extends Node2D
 
 
+# signal enemy_instantiated(enemy: CombatEnemy)
+# signal player_instantiated(player: CombatPlayer)
+# signal summon_instantiated(summon: CombatSummon)
+
 @export var combat_player: PackedScene
 @export var combat_enemy: PackedScene
 @export var combat_summon: PackedScene
@@ -29,6 +33,7 @@ extends Node2D
 	ally_pos_3.global_position,
 	ally_pos_4.global_position
 ]
+@onready var battle_ui: BattleUI = %UI
 
 var current_player: CombatPlayer = null
 var current_enemy: CombatEnemy = null
@@ -63,6 +68,7 @@ func _setup_player():
 
 	player.health_component.died.connect(_on_player_died)
 
+	# player_instantiated.emit(player)
 	return player
 
 
@@ -73,7 +79,9 @@ func _setup_enemy(data: EnemyData) -> void:
 	new_enemy.global_position = enemy_positions.pick_random()
 	enemy_positions.erase(new_enemy.global_position)
 	
-	new_enemy.enemy_data = data
+	new_enemy.enemy_data = data.duplicate(true)
+	if new_enemy.enemy_data.stats != null:
+		new_enemy.enemy_data.stats = data.stats.duplicate(true)
 	new_enemy.enemy_data.level = enemy_level
 		
 	add_child(new_enemy)
@@ -82,6 +90,9 @@ func _setup_enemy(data: EnemyData) -> void:
 	new_enemy.health_component.died.connect(_on_enemy_died)
 	new_enemy.attack_component.target = current_player
 	
+	# enemy_instantiated.emit(new_enemy)
+	battle_ui.display_enemy_info(new_enemy)
+
 	current_enemy = new_enemy # temporary just so there is a target for the player
 
 
@@ -118,6 +129,8 @@ func _setup_summon(summon: EnemyData) -> void:
 	new_summon.health_component.died.connect(_on_summon_died)
 	new_summon.attack_component.target = active_enemies.pick_random()
 
+	# summon_instantiated.emit(new_summon)
+
 
 func _on_player_died(player):
 	Engine.time_scale = 1.0
@@ -131,7 +144,6 @@ func _on_enemy_died(enemy: CombatEnemy):
 
 	if loot_items.size() > 0:
 		for item in loot_items:
-			print(enemy.enemy_data.name, " dropped: ", item.get_display_name())
 			InventoryManager.add_item(item)
 			accumulated_loot.append(item)
 	

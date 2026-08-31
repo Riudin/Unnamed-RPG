@@ -2,7 +2,8 @@ class_name AttackComponent
 extends Node
 
 
-#signal progress_changed(progress: float)
+signal attack_progress_changed(progress: float)
+signal active_skill_changed(active_skill: SkillData, next_skill: SkillData) # this is used for the battleUI to display active and next skills
 
 var attack_interval_ticks: int = 0
 var tick_counter: int = 0
@@ -51,6 +52,7 @@ func _ready() -> void:
 		#parent_data.equipped_skills.append(default_attack)
 	assert(parent_data.equipped_skills, "Parent has no equipped_skills!")
 	set_skills(parent_data.equipped_skills)
+	print(parent_data.equipped_skills)
 	setup_skill_bar()
 	
 	# Wait for layout engine to compute positions of newly added skill bar icons
@@ -72,12 +74,14 @@ func set_skills(new_skills: Array[SkillData]):
 		if skills[skill_index] == null:
 			skill_index = (skill_index + 1) % skills.size()
 		
-	# if no skill is equipped TODO: use default attack
+	# if no skill is equipped push error, since the WorldPlayer is supposed to set a default attack in this case
 	if skills[skill_index] == null:
 		push_error("AttackComponent: No skill equipped")
-	else:
-		tick_counter = 0
-		_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
+
+	tick_counter = 0
+	_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
+
+	active_skill_changed.emit(skills[skill_index], _find_next_skill())
 
 
 func setup_skill_bar():
@@ -105,6 +109,7 @@ func _calculate_attack_interval(skill_speed: float) -> void:
 	
 	#tick_counter = 0
 
+	#attack_progress_changed.emit(0.0)
 	if attack_bar:
 		attack_bar.value = 0.0
 
@@ -121,6 +126,7 @@ func _on_tick():
 	# Calculate Progress for attack bar
 	var progress: float = float(tick_counter) / float(attack_interval_ticks)
 	progress = clamp(progress, 0.0, 1.0)
+	attack_progress_changed.emit(progress)
 
 	if attack_bar:
 		attack_bar.value = progress
@@ -130,6 +136,7 @@ func _on_tick():
 		tick_counter = 0
 		
 		trigger_attack()
+		attack_progress_changed.emit(0.0)
 
 		if attack_bar:
 			attack_bar.value = 0.0
@@ -167,14 +174,27 @@ func trigger_attack() -> void:
 
 	_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
 	
+	active_skill_changed.emit(skills[skill_index], _find_next_skill())
 	set_skill_bar_highlight()
 	play_windup_animation()
+
+
+func _find_next_skill() -> SkillData:
+	var i := skill_index
+
+	# look at next skillslot and loop back to beginning
+	i = (i + 1) % skills.size()
+
+	# skip empty slots
+	while skills[i] == null:
+		i = (i + 1) % skills.size()
+
+	return skills[i]
 
 
 func set_skill_bar_highlight():
 	if active_highlight != null:
 		active_highlight.queue_free()
-		#active_highlight = null
 
 	if skill_bar_highlight:
 		var highlight := skill_bar_highlight.instantiate()

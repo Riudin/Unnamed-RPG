@@ -5,4 +5,6 @@
 [resource]
 script = ExtResource("1_1qlx2")
 base_max_health = 80
+base_physical_damage = 8
+base_physical_damage_range = 12
 metadata/_custom_type_script = "uid://n8wtim8qm2cq"

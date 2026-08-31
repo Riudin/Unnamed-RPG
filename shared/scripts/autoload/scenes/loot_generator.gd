@@ -18,7 +18,6 @@ func _ready() -> void:
 func generate_loot(enemy: EnemyData) -> Array[ItemInstance]:
 	var loot_items: Array[ItemInstance] = []
 	var default_drops: int = _calculate_drop_count(enemy.base_drop_slots, enemy.base_drop_chance, rng)
-	print(default_drops)
 	var special_drops: int = _calculate_drop_count(enemy.special_drop_slots, enemy.special_drop_chance, rng)
 
 	for i in range(default_drops):
@@ -75,7 +74,6 @@ func generate_loot(enemy: EnemyData) -> Array[ItemInstance]:
 
 		loot_items.append(loot)
 
-	#print(loot_items)
 	return loot_items
 
 
@@ -132,27 +130,65 @@ func _generate_affixes(item: ItemInstance, rarity, rng: RandomNumberGenerator):
 	prefix_pool = valid_affixes.filter(func(a): return a.is_prefix)
 	suffix_pool = valid_affixes.filter(func(a): return not a.is_prefix) # Note: before the last change this diplicated the prefixes/suffixes arrays. in case of bugs look here
 
+	var affix_amount := 0
+	var max_prefixes := 0
+	var max_suffixes := 0
 	match rarity:
 		LootEnums.Rarity.COMMON:
-			pass
-		
+			affix_amount = 0
+
 		LootEnums.Rarity.UNCOMMON:
-			item.prefixes.append(_rand_prefix(rng))
-			item.suffixes.append(_rand_suffix(rng))
+			affix_amount = rng.randi_range(1, 2)
+			max_prefixes = 1
+			max_suffixes = 1
 
 		LootEnums.Rarity.RARE:
-			item.prefixes.append(_rand_prefix(rng))
-			item.prefixes.append(_rand_prefix(rng))
-			item.suffixes.append(_rand_suffix(rng))
-			item.suffixes.append(_rand_suffix(rng))
-		
+			affix_amount = rng.randi_range(2, 6)
+			max_prefixes = 3
+			max_suffixes = 3
+
 		LootEnums.Rarity.UNIQUE:
-			item.prefixes.append(_rand_prefix(rng))
-			item.prefixes.append(_rand_prefix(rng))
-			item.prefixes.append(_rand_prefix(rng))
-			item.suffixes.append(_rand_suffix(rng))
-			item.suffixes.append(_rand_suffix(rng))
-			item.suffixes.append(_rand_suffix(rng))
+			affix_amount = 0 # TODO: implement unique logic
+	
+	var prefix_count := 0
+	var suffix_count := 0
+	for a in range(affix_amount):
+		if rng.randf() < 0.5:
+			if prefix_count < max_prefixes:
+				item.prefixes.append(_rand_prefix(rng))
+				prefix_count += 1
+			elif suffix_count < max_suffixes:
+				item.suffixes.append(_rand_suffix(rng))
+				suffix_count += 1
+		else:
+			if suffix_count < max_suffixes:
+				item.suffixes.append(_rand_suffix(rng))
+				suffix_count += 1
+			elif prefix_count < max_prefixes:
+				item.prefixes.append(_rand_prefix(rng))
+				prefix_count += 1
+
+	# match rarity:
+	# 	LootEnums.Rarity.COMMON:
+	# 		pass
+		
+	# 	LootEnums.Rarity.UNCOMMON:
+	# 		item.prefixes.append(_rand_prefix(rng))
+	# 		item.suffixes.append(_rand_suffix(rng))
+
+	# 	LootEnums.Rarity.RARE:
+	# 		item.prefixes.append(_rand_prefix(rng))
+	# 		item.prefixes.append(_rand_prefix(rng))
+	# 		item.suffixes.append(_rand_suffix(rng))
+	# 		item.suffixes.append(_rand_suffix(rng))
+		
+	# 	LootEnums.Rarity.UNIQUE:
+	# 		item.prefixes.append(_rand_prefix(rng))
+	# 		item.prefixes.append(_rand_prefix(rng))
+	# 		item.prefixes.append(_rand_prefix(rng))
+	# 		item.suffixes.append(_rand_suffix(rng))
+	# 		item.suffixes.append(_rand_suffix(rng))
+	# 		item.suffixes.append(_rand_suffix(rng))
 
 
 func _rand_prefix(rng: RandomNumberGenerator) -> AffixData:

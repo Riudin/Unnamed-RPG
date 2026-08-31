@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://udxrbudwfjc7"]
 
 [ext_resource type="Script" uid="uid://cqkgll07yq4oa" path="res://entities/enemies/shared/combat_enemy.gd" id="1_4jwpl"]
-[ext_resource type="Texture2D" uid="uid://b3fw6rdj4np63" path="res://assets/misc/error.png" id="2_r7al3"]
+[ext_resource type="Texture2D" uid="uid://bfx3taxn40tk7" path="res://assets/misc/ownership_circle.png" id="2_mkffd"]
 [ext_resource type="Texture2D" uid="uid://b1k6bmacxotty" path="res://assets/animations/skill_windup/fire_windup.png" id="3_30n0q"]
 [ext_resource type="Script" uid="uid://casjk8xyj6crd" path="res://shared/components/attack_component.gd" id="3_hsq6x"]
+[ext_resource type="Texture2D" uid="uid://xy00x3c1enhf" path="res://assets/characters/enemies/shadow_mage.png" id="3_l3cxl"]
 [ext_resource type="PackedScene" uid="uid://b5016bn074vxg" path="res://shared/ui/combat/skill_bar_highlight.tscn" id="4_b07ak"]
 [ext_resource type="Texture2D" uid="uid://ch3s4bbrrk1jq" path="res://assets/misc/transparent.png" id="4_bkybs"]
 [ext_resource type="Script" uid="uid://urdreyx4totx" path="res://shared/components/health_component.gd" id="4_lq8k6"]
@@ -91,10 +92,18 @@ animations = [{
 [node name="CombatEnemy" type="Node2D" unique_id=1458892804]
 script = ExtResource("1_4jwpl")
 
+[node name="OwnershipCircle" type="Sprite2D" parent="." unique_id=1656736791]
+position = Vector2(0, -14)
+texture = ExtResource("2_mkffd")
+
+[node name="OwnershipLineAnchor" type="Marker2D" parent="." unique_id=602792760]
+unique_name_in_owner = true
+position = Vector2(16, -2)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=574382540]
 unique_name_in_owner = true
 position = Vector2(0, -16)
-texture = ExtResource("2_r7al3")
+texture = ExtResource("3_l3cxl")
 
 [node name="WindupAnimation" type="AnimatedSprite2D" parent="." unique_id=704079330]
 unique_name_in_owner = true

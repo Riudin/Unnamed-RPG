@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cssrgj2liy2dc" path="res://entities/enemies/shared/status_effect_display.gd" id="1_6br25"]
 
-[node name="StatusEffectIcons" type="VBoxContainer" unique_id=1186463465]
+[node name="StatusEffectIcons" type="HBoxContainer" unique_id=1031278116]
 custom_minimum_size = Vector2(14, 14)
 offset_right = 14.0
 offset_bottom = 14.0

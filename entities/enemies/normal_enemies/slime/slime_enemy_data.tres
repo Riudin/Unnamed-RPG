@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://b3ta7aty8xv1f" path="res://entities/skills/skill_behaviors/hit_behavior.gd" id="7_wb0rv"]
 [ext_resource type="Script" uid="uid://cdr82mudv2t0w" path="res://shared/scripts/data_models/stat_modifier.gd" id="8_oagam"]
 [ext_resource type="Texture2D" uid="uid://dpv1sv8wo2i6v" path="res://assets/icons/skill_icons/default_attack.png" id="9_wwg0y"]
+[ext_resource type="Resource" uid="uid://cyp3bjll45wav" path="res://entities/skills/skill_data/heavy_blow.tres" id="10_j8nra"]
 [ext_resource type="Resource" uid="uid://ccsn7qcjcvh8p" path="res://entities/skills/skill_data/fireball.tres" id="10_pllif"]
+[ext_resource type="Texture2D" uid="uid://c3f32udxf2i1s" path="res://assets/characters/enemy_icons/slime_icon.png" id="11_kh1j7"]
 [ext_resource type="Resource" uid="uid://bhqxpu32qijdl" path="res://entities/enemies/normal_enemies/slime/slime_stats.tres" id="13_tmasu"]
 [ext_resource type="Texture2D" uid="uid://c3v5m254inm55" path="res://assets/characters/enemies/slime.png" id="14_obnvs"]
 
@@ -43,6 +45,7 @@ base_speed = 0.7
 script = ExtResource("6_4eue1")
 name = "Slime"
 texture = ExtResource("14_obnvs")
+icon = ExtResource("11_kh1j7")
 stats = ExtResource("13_tmasu")
-equipped_skills = Array[ExtResource("4_3brb8")]([SubResource("Resource_iyxxw"), ExtResource("10_pllif")])
+equipped_skills = Array[ExtResource("4_3brb8")]([SubResource("Resource_iyxxw"), ExtResource("10_pllif"), ExtResource("10_j8nra")])
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

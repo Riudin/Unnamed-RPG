@@ -6,18 +6,19 @@ extends Node2D
 @onready var attack_component: AttackComponent = %AttackComponent
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var status_effect_component: StatusEffectComponent = %StatusEffectComponent
-@onready var resource_bars: VBoxContainer = %ResourceBars
+@onready var resource_bars: Control = %ResourceBars
 @onready var enemy_name: Label = %Name
 @onready var enemy_level: Label = %Level
-@onready var name_display: HBoxContainer = %NameDisplay
-@onready var status_effect_display: VBoxContainer = %StatusEffectDisplay
+@onready var name_display: Control = %NameDisplay
+@onready var status_effect_display: Control = %StatusEffectDisplay
+@onready var line_anchor: Marker2D = %OwnershipLineAnchor
 
 
 var enemy_data: EnemyData = null
 
 
 func _ready() -> void:
-	assert(enemy_data != null, "No EnemyData set for " + str(self ))
+	assert(enemy_data != null, "No EnemyData set for " + str(self))
 	if not enemy_data.stats:
 		print("EnemyData has no stats. Using default stats")
 		enemy_data.stats = Stats.new()
