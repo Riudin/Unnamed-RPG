@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://xru2t0c77uo5" path="res://assets/ui/backgrounds/CG/misty_forest.png" id="5_pxwbd"]
 [ext_resource type="Script" uid="uid://dk6sswbhn3jhp" path="res://scenes/battle_ui.gd" id="6_1i8jf"]
 [ext_resource type="Texture2D" uid="uid://0hiows66qbuf" path="res://assets/misc/ownership_line.png" id="7_3oc74"]
-[ext_resource type="PackedScene" uid="uid://hsv323wup8qh" path="res://shared/ui/combat/InfoPanel.tscn" id="7_svpld"]
 [ext_resource type="Script" uid="uid://r66q2x2hungu" path="res://scenes/ownership_line_container.gd" id="8_rum4d"]
 
 [node name="BattleScene" type="Node2D" unique_id=747615073]
@@ -50,12 +49,6 @@ position = Vector2(468, 132)
 unique_name_in_owner = true
 position = Vector2(482, 215)
 
-[node name="OwnershipLineContainer" type="Node2D" parent="." unique_id=820799951]
-unique_name_in_owner = true
-z_index = -1
-script = ExtResource("8_rum4d")
-ownership_line_texture = ExtResource("7_3oc74")
-
 [node name="AllyPos1" type="Marker2D" parent="." unique_id=1447329677]
 unique_name_in_owner = true
 position = Vector2(224, 138)
@@ -70,7 +63,13 @@ position = Vector2(149, 179)
 
 [node name="AllyPos4" type="Marker2D" parent="." unique_id=1332762622]
 unique_name_in_owner = true
-position = Vector2(234, 266)
+position = Vector2(226, 282)
+
+[node name="OwnershipLineContainer" type="Node2D" parent="." unique_id=820799951]
+unique_name_in_owner = true
+z_index = -1
+script = ExtResource("8_rum4d")
+ownership_line_texture = ExtResource("7_3oc74")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=277637005]
 unique_name_in_owner = true
@@ -94,51 +93,21 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="InfoPanel" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=1008327727 instance=ExtResource("7_svpld")]
-visible = false
-layout_mode = 2
-
-[node name="InfoPanel2" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=985608680 instance=ExtResource("7_svpld")]
-visible = false
-layout_mode = 2
-
-[node name="InfoPanel3" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=492162677 instance=ExtResource("7_svpld")]
-visible = false
-layout_mode = 2
-
-[node name="InfoPanel4" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=1975552460 instance=ExtResource("7_svpld")]
-visible = false
-layout_mode = 2
-
-[node name="InfoPanel5" parent="UI/EnemyInfo/EnemyInfoPanels" unique_id=1839129349 instance=ExtResource("7_svpld")]
-visible = false
-layout_mode = 2
-
 [node name="SummonsInfo" type="MarginContainer" parent="UI" unique_id=954176622]
-visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 70.0
+offset_right = 96.0
+offset_bottom = -38.0
 grow_vertical = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/SummonsInfo" unique_id=452465735]
+[node name="SummonsInfoPanels" type="VBoxContainer" parent="UI/SummonsInfo" unique_id=452465735]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 2
-
-[node name="InfoPanel" parent="UI/SummonsInfo/VBoxContainer" unique_id=1504618575 instance=ExtResource("7_svpld")]
-layout_mode = 2
-
-[node name="InfoPanel2" parent="UI/SummonsInfo/VBoxContainer" unique_id=264098004 instance=ExtResource("7_svpld")]
-layout_mode = 2
-
-[node name="InfoPanel3" parent="UI/SummonsInfo/VBoxContainer" unique_id=980880811 instance=ExtResource("7_svpld")]
-layout_mode = 2
-
-[node name="InfoPanel4" parent="UI/SummonsInfo/VBoxContainer" unique_id=1875656125 instance=ExtResource("7_svpld")]
-layout_mode = 2
+alignment = 1
 
 [node name="SpeedButtons" type="PanelContainer" parent="UI" unique_id=513198843]
 process_mode = 3

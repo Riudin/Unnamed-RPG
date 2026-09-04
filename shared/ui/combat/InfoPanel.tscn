@@ -9,10 +9,8 @@
 [ext_resource type="Script" uid="uid://d3ae1u3d7w8rq" path="res://shared/ui/combat/combat_skill_bar.gd" id="5_cdhw4"]
 [ext_resource type="Texture2D" uid="uid://stcvvaaw7ens" path="res://assets/misc/skill_bg_empty.png" id="6_24u01"]
 [ext_resource type="Texture2D" uid="uid://h7t0gyvmub5i" path="res://assets/misc/arrow.png" id="6_tqw6q"]
-[ext_resource type="Texture2D" uid="uid://caw4idtkh0lnk" path="res://assets/icons/skill_icons/fireball.png" id="7_24u01"]
 [ext_resource type="PackedScene" uid="uid://hnqrmw5lrmgh" path="res://entities/enemies/shared/status_effect_icon.tscn" id="8_cdhw4"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/misc/white.png" id="8_y4fgr"]
-[ext_resource type="Texture2D" uid="uid://cipy6wlc17uyv" path="res://assets/icons/skill_icons/heavy_blow.png" id="9_y4fgr"]
 
 [node name="InfoPanel" type="Control" unique_id=1008327727]
 custom_minimum_size = Vector2(92, 59)
@@ -139,7 +137,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_24u01")
 stretch_mode = 3
 
 [node name="AttackProgress" type="TextureProgressBar" parent="Content/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CombatSkillBar/SkillSlot1" unique_id=1803236284]
@@ -181,7 +178,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_y4fgr")
 stretch_mode = 3
 
 [node name="StatusEffectDisplay" parent="Content/VBoxContainer" unique_id=1186463465 instance=ExtResource("1_5nfdv")]

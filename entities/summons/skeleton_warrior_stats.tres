@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Stats" format=3 uid="uid://b8h5qxa8nkngy"]
+
+[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="1_50phc"]
+
+[resource]
+script = ExtResource("1_50phc")
+base_physical_damage = 4
+base_physical_damage_range = 7
+metadata/_custom_type_script = "uid://n8wtim8qm2cq"

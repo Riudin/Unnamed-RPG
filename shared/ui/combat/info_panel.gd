@@ -17,12 +17,15 @@ signal died(panel: InfoPanel)
 @onready var line_anchor: Marker2D = %OwnershipLineAnchor
 
 var is_dead: bool = false
+var associated_entity: Node2D
 
 @export var enemy_name: String:
 	set(new_value):
 		enemy_name = new_value
 		if name_label:
 			name_label.text = enemy_name
+
+@export var entity_y_position: float # used for ordering the panels
 
 @export var max_health: float:
 	set(new_value):

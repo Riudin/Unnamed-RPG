@@ -27,8 +27,10 @@ func on_effect_applied(instance: StatusEffectInstance) -> void:
 
 
 func on_effect_updated(instance) -> void:
-	active_effects[instance].update(instance)
+	if active_effects[instance]:
+		active_effects[instance].update(instance)
 
 
 func on_effect_removed(instance) -> void:
-	active_effects[instance].queue_free()
+	if active_effects[instance]:
+		active_effects[instance].queue_free()

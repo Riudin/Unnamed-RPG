@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d0l3a6vg7x0re" path="res://scenes/mystic_woods_level.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://cuo88opv8am4k" path="res://shared/scripts/global/spawn_manager.gd" id="4_choun"]
 [ext_resource type="Script" uid="uid://butt1q8h63mk1" path="res://shared/scripts/global/ui_manager.gd" id="5_tefeu"]
-[ext_resource type="Resource" uid="uid://ccsn7qcjcvh8p" path="res://entities/skills/skill_data/fireball.tres" id="7_5q0nq"]
+[ext_resource type="Script" uid="uid://n8wtim8qm2cq" path="res://shared/scripts/data_models/stats.gd" id="7_dgi5k"]
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/misc/white.png" id="7_tipki"]
+[ext_resource type="Resource" uid="uid://ctqyp2lirv34g" path="res://entities/skills/skill_data/summon_skeleton.tres" id="8_dgi5k"]
 [ext_resource type="Script" uid="uid://dbmoyj38ooa3s" path="res://shared/ui/windows/character_screen/character_screen_ui.gd" id="8_trceg"]
 [ext_resource type="Script" uid="uid://ctgym2ebc4lj7" path="res://shared/ui/windows/inventory/inventory_ui.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dcmgm128i2mnr" path="res://shared/ui/windows/inventory/inventory_slot.tscn" id="9_eb6dy"]
@@ -33,6 +34,21 @@
 [ext_resource type="PackedScene" uid="uid://uvexmmqcgs6t" path="res://shared/ui/windows/character_screen/skill_selection_slot.tscn" id="25_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://dx7w044rsadf3" path="res://shared/ui/screens/area_screens/forest_area_screen.tscn" id="32_dgi5k"]
 [ext_resource type="Resource" uid="uid://b2juo74fyf2wm" path="res://entities/enemies/normal_enemies/orc/orc_enemy_data.tres" id="33_5q0nq"]
+
+[sub_resource type="Resource" id="Resource_j8jky"]
+resource_local_to_scene = true
+script = ExtResource("7_dgi5k")
+base_max_health = 1500
+base_fire_damage = 3
+base_fire_damage_range = 4
+base_cold_damage = 3
+base_cold_damage_range = 4
+base_lightning_damage = 30
+base_lightning_damage_range = 33
+base_burn_chance = 100
+base_freeze_chance = 80
+base_crit_chance = 20
+metadata/_custom_type_script = "uid://n8wtim8qm2cq"
 
 [node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
@@ -62,7 +78,8 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
-default_attack = ExtResource("7_5q0nq")
+stats = SubResource("Resource_j8jky")
+default_attack = ExtResource("8_dgi5k")
 
 [node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true

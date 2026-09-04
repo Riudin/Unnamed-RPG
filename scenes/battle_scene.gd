@@ -36,7 +36,7 @@ extends Node2D
 @onready var battle_ui: BattleUI = %UI
 
 var current_player: CombatPlayer = null
-var current_enemy: CombatEnemy = null
+# var current_enemy: CombatEnemy = null
 var active_enemies: Array[CombatEnemy] = []
 var active_summons: Array[CombatSummon] = []
 var enemy_level: int = 0
@@ -55,8 +55,8 @@ func _ready() -> void:
 	current_player = _setup_player()
 	_setup_enemies()
 
-	current_player.attack_component.target = current_enemy
-	current_enemy.attack_component.target = current_player
+	#current_player.attack_component.target = current_enemy
+	# current_enemy.attack_component.target = current_player
 
 	SignalBus.summon_requested.connect(_setup_summon)
 
@@ -93,7 +93,8 @@ func _setup_enemy(data: EnemyData) -> void:
 	# enemy_instantiated.emit(new_enemy)
 	battle_ui.display_enemy_info(new_enemy)
 
-	current_enemy = new_enemy # temporary just so there is a target for the player
+	# current_enemy = new_enemy # temporary just so there is a target for the player
+	current_player.attack_component.target = active_enemies.pick_random()
 
 
 func _setup_enemies() -> void:
@@ -102,6 +103,8 @@ func _setup_enemies() -> void:
 			var amount := randi_range(dungeon_data.min_enemies, dungeon_data.max_enemies)
 			for enemy in amount:
 				_setup_enemy(dungeon_data.normal_enemy_pool.pick_random())
+			battle_ui.sort_enemy_panels()
+			
 		BattleType.ELITE:
 			var total_amount := randi_range(dungeon_data.min_enemies, dungeon_data.max_enemies)
 			var elite_amount := randi_range(dungeon_data.min_enemies, total_amount)
@@ -109,11 +112,14 @@ func _setup_enemies() -> void:
 				_setup_enemy(dungeon_data.elite_enemy_pool.pick_random())
 			for normal in total_amount - elite_amount:
 				_setup_enemy(dungeon_data.normal_enemy_pool.pick_random())
+			battle_ui.sort_enemy_panels()
+
 		BattleType.BOSS:
 			_setup_enemy(dungeon_data.boss_enemy_pool.pick_random())
+			battle_ui.sort_enemy_panels()
 
 
-func _setup_summon(summon: EnemyData) -> void:
+func _setup_summon(summon_data: EnemyData) -> void:
 	var new_summon = combat_summon.instantiate()
 
 	if ally_positions.size() <= 0: return
@@ -121,7 +127,7 @@ func _setup_summon(summon: EnemyData) -> void:
 	new_summon.global_position = ally_positions.pick_random()
 	ally_positions.erase(new_summon.global_position)
 	
-	new_summon.enemy_data = summon
+	new_summon.enemy_data = summon_data
 
 	add_child(new_summon)
 	active_summons.append(new_summon)
@@ -129,7 +135,21 @@ func _setup_summon(summon: EnemyData) -> void:
 	new_summon.health_component.died.connect(_on_summon_died)
 	new_summon.attack_component.target = active_enemies.pick_random()
 
-	# summon_instantiated.emit(new_summon)
+	battle_ui.display_summon_info(new_summon)
+	battle_ui.sort_summon_panels()
+
+	### TEMPORARY to let enemies target summons as well
+	# var enemy_targets: Array[Node2D] = []
+	# enemy_targets.append(current_player)
+	# for summon in active_summons:
+	# 	enemy_targets.append(summon)
+	# for enemy in active_enemies:
+	# 	enemy.attack_component.target = enemy_targets.pick_random()
+	
+	# when a summon in summoned, every enemy has a 20% chance to switch targets to it
+	for enemy in active_enemies:
+		if randf() <= 1.0:
+			enemy.attack_component.target = new_summon
 
 
 func _on_player_died(player):
@@ -181,4 +201,19 @@ func _on_enemy_died(enemy: CombatEnemy):
 
 
 func _on_summon_died(summon: CombatSummon) -> void:
+	active_summons.erase(summon)
+
+	# make the ally position available again
+	ally_positions.append(summon.global_position)
+
+	# when a summon dies, every enemy that fought it gets a random new target
+	var enemy_targets: Array[Node2D] = []
+	enemy_targets.append(current_player)
+	for s in active_summons:
+		enemy_targets.append(s)
+
+	for enemy in active_enemies:
+		if enemy.attack_component.target == summon:
+			enemy.attack_component.target = enemy_targets.pick_random()
+
 	summon.queue_free()

@@ -26,7 +26,6 @@ enum SkillTag {
 @export var emit_particles: bool = false
 
 @export_group("Stats Data")
-#@export var damage_sources: Array[DamageSource] = []
 @export var inherent_mods: Array[StatModifier] = []
 
 @export_group("Behavior")
@@ -35,9 +34,7 @@ enum SkillTag {
 @export var mana_cost: float # TODO: implement mana cost for skills
 
 @export_group("Summoning")
-@export var summon_texture: Texture2D
-@export var summon_stats: Stats
-@export var summon_skills: Array[SkillData]
+@export var summon_data: EnemyData
 
 
 var projectile: PackedScene = preload("uid://ce0b6wmvlgec2")

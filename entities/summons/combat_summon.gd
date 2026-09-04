@@ -10,7 +10,8 @@ extends Node2D
 @onready var enemy_name: Label = %Name
 @onready var enemy_level: Label = %Level
 @onready var name_display: HBoxContainer = %NameDisplay
-@onready var status_effect_display: VBoxContainer = %StatusEffectDisplay
+@onready var status_effect_display: Control = %StatusEffectDisplay
+@onready var line_anchor: Marker2D = %OwnershipLineAnchor
 
 
 var enemy_data: EnemyData = null

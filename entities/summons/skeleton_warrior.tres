@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://djcfp5fpa2k20"]
+
+[ext_resource type="Curve" uid="uid://cqaljfl16eh4d" path="res://entities/enemies/shared/balancing/enemy_damage.tres" id="1_qk5xe"]
+[ext_resource type="Curve" uid="uid://bonbeehw3fa7s" path="res://entities/enemies/shared/balancing/enemy_damage_range.tres" id="2_8dreu"]
+[ext_resource type="Curve" uid="uid://j28agwrmkxbx" path="res://entities/enemies/shared/balancing/enemy_defenses.tres" id="3_2mqt4"]
+[ext_resource type="Script" uid="uid://diqj52rxjhysk" path="res://entities/skills/skill_data.gd" id="4_g0p30"]
+[ext_resource type="Curve" uid="uid://dyo345vjfo34m" path="res://entities/enemies/shared/balancing/enemy_health.tres" id="5_2yc67"]
+[ext_resource type="Resource" uid="uid://b0hc4byhh8tuk" path="res://entities/skills/skill_data/default_attack.tres" id="5_6rfms"]
+[ext_resource type="Script" uid="uid://eut4fcsnf5nn" path="res://shared/scripts/data_models/enemy_data.gd" id="6_6rfms"]
+[ext_resource type="Texture2D" uid="uid://bcvp7ktmu2yp1" path="res://assets/characters/summons_icons/sceleton_warrior_icon.png" id="7_sggs0"]
+[ext_resource type="Resource" uid="uid://b8h5qxa8nkngy" path="res://entities/summons/skeleton_warrior_stats.tres" id="9_vns1i"]
+[ext_resource type="Texture2D" uid="uid://bjv0o0f725xqg" path="res://assets/characters/enemies/sceleton_warrior.png" id="10_b0cwt"]
+
+[resource]
+script = ExtResource("6_6rfms")
+name = "Skeleton Warrior"
+texture = ExtResource("10_b0cwt")
+icon = ExtResource("7_sggs0")
+stats = ExtResource("9_vns1i")
+equipped_skills = Array[ExtResource("4_g0p30")]([ExtResource("5_6rfms")])
+metadata/_custom_type_script = "uid://eut4fcsnf5nn"

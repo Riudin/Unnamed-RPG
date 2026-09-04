@@ -6,15 +6,17 @@ extends Node2D
 
 var ownership_lines: Array[Dictionary] = []
 
+var elbow_offset: int = 120 # how many pixels from the border of the screen will the line bend
+
 
 func _draw() -> void:
 	for i in range(ownership_lines.size() - 1, -1, -1):
 		var line_data = ownership_lines[i]
-		var enemy: CombatEnemy = line_data["enemy"]
+		var entity: Node2D = line_data["entity"]
 		var target: Marker2D = line_data["target"]
 		var panel: InfoPanel = line_data.get("panel")
 
-		if not is_instance_valid(enemy) or not is_instance_valid(target):
+		if not is_instance_valid(entity) or not is_instance_valid(target):
 			ownership_lines.remove_at(i)
 			continue
 		if panel and panel.is_dead:
@@ -23,9 +25,12 @@ func _draw() -> void:
 				target.queue_free()
 			continue
 
-		var start: Vector2 = enemy.line_anchor.global_position
+		var start: Vector2 = entity.line_anchor.global_position
 		var end: Vector2 = target.global_position
-		var elbow: Vector2 = Vector2(520.0, start.y)
+		var elbow: Vector2 = Vector2(640 - elbow_offset, start.y)
+
+		if entity is CombatSummon:
+			elbow.x = elbow_offset
 
 		_draw_line_segment(start, elbow)
 		_draw_line_segment(elbow, end)

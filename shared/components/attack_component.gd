@@ -52,7 +52,6 @@ func _ready() -> void:
 		#parent_data.equipped_skills.append(default_attack)
 	assert(parent_data.equipped_skills, "Parent has no equipped_skills!")
 	set_skills(parent_data.equipped_skills)
-	print(parent_data.equipped_skills)
 	setup_skill_bar()
 	
 	# Wait for layout engine to compute positions of newly added skill bar icons
@@ -63,6 +62,8 @@ func _ready() -> void:
 	if attack_bar:
 		attack_bar.value = 0.0
 		attack_bar.visible = true # for visual clarity it's set to false in the editor
+
+	active_skill_changed.emit(skills[skill_index], _find_next_skill())
 
 
 func set_skills(new_skills: Array[SkillData]):
@@ -80,8 +81,6 @@ func set_skills(new_skills: Array[SkillData]):
 
 	tick_counter = 0
 	_calculate_attack_interval(skills[skill_index].base_speed * action_speed)
-
-	active_skill_changed.emit(skills[skill_index], _find_next_skill())
 
 
 func setup_skill_bar():

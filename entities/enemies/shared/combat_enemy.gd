@@ -25,8 +25,8 @@ func _ready() -> void:
 	enemy_data._apply_level_scaling()
 	
 	# Giving the attacks a bit variety so they dont all land at the same time
-	for skill in enemy_data.equipped_skills.size():
-		enemy_data.equipped_skills[skill].base_speed *= randf_range(0.8, 1.2)
+	# for skill in enemy_data.equipped_skills.size():
+	# 	enemy_data.equipped_skills[skill].base_speed *= randf_range(0.8, 1.2)
 	
 	attack_component.parent_data = enemy_data
 	health_component.parent_data = enemy_data
